@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 03: Core Workflows: Classification, Regression & Generalization — Chollet · Keras 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-dlwp">Chollet · Keras 3</div>
+        <h2 class="sidebar-course-title">Deep Learning with Python</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./dlwp-01-what-is-deep-learning-tensors.html"><span class="chapter-num">01</span> What is Deep Learning & Tensor Mathematical Foundations</a></li>
+        <li><a href="./dlwp-02-unified-frameworks-keras3.html"><span class="chapter-num">02</span> The Multi-Backend Paradigm: TensorFlow, PyTorch, JAX & Keras 3</a></li>
+        <li><a href="./dlwp-03-classification-regression-workflows.html" class="active"><span class="chapter-num">03</span> Core Workflows: Classification, Regression & Generalization</a></li>
+        <li><a href="./dlwp-04-convnets-computer-vision.html"><span class="chapter-num">04</span> Modern Computer Vision: ConvNets, Residuals & Grad-CAM</a></li>
+        <li><a href="./dlwp-05-segmentation-object-detection.html"><span class="chapter-num">05</span> Advanced Vision: Semantic Segmentation (U-Net) & Detection</a></li>
+        <li><a href="./dlwp-06-sequences-timeseries-rnns.html"><span class="chapter-num">06</span> Sequential Modeling & Timeseries Forecasting (GRUs/LSTMs)</a></li>
+        <li><a href="./dlwp-07-transformers-language-models.html"><span class="chapter-num">07</span> Attention Mechanisms, Transformers & Self-Supervised Models</a></li>
+        <li><a href="./dlwp-08-generative-ai-text-llms.html"><span class="chapter-num">08</span> Generative AI for Text: Causal Decoders & Modern LLMs</a></li>
+        <li><a href="./dlwp-09-diffusion-models-image-generation.html"><span class="chapter-num">09</span> Generative Vision: VAEs & Latent Diffusion Models</a></li>
+        <li><a href="./dlwp-10-production-mlops-future.html"><span class="chapter-num">10</span> Production Engineering, Multi-GPU Scaling & The Future of AI</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-dlwp">Chollet · Keras 3</span>
+            </div>
+            <h1 class="chapter-title">Chapter 03: Core Workflows: Classification, Regression & Generalization</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="chapter-header">
+
+<p class="subtitle">Building robust models that generalize to unseen data.</p>
+</div><h2 id="workflows">End-to-End Workflows</h2><p>The standard supervised learning workflows are:</p><ul>
+<li><strong>Binary Classification:</strong> One output node with Sigmoid activation. Binary Crossentropy loss.</li>
+<li><strong>Multiclass Single-Label Classification:</strong> N output nodes with Softmax activation. Categorical Crossentropy loss.</li>
+<li><strong>Scalar Regression:</strong> One output node with Linear activation. Mean Squared Error (MSE) loss.</li>
+</ul><h2 id="generalization">Generalization vs Overfitting</h2><p>A model's primary goal is to generalize to unseen data, not just memorize the training set. Techniques to prevent overfitting include:</p><ul>
+<li><strong>Weight Decay (L1/L2 Regularization):</strong> Constraining model complexity.</li>
+<li><strong>Dropout:</strong> Randomly zeroing out activation units during training.</li>
+<li><strong>Early Stopping:</strong> Halting training when validation loss degrades.</li>
+</ul><div class="code-block">
+<pre><code>import keras
+from keras import layers, callbacks
+
+# A robust multiclass classifier with regularization
+def build_model(num_classes):
+    inputs = keras.Input(shape=(10000,))
+    x = layers.Dense(64, activation="relu", kernel_regularizer=keras.regularizers.l2(0.001))(inputs)
+    x = layers.Dropout(0.5)(x)
+    x = layers.Dense(64, activation="relu", kernel_regularizer=keras.regularizers.l2(0.001))(x)
+    x = layers.Dropout(0.5)(x)
+    outputs = layers.Dense(num_classes, activation="softmax")(x)
+    
+    model = keras.Model(inputs, outputs)
+    
+    # Custom Learning Rate Schedule
+    lr_schedule = keras.optimizers.schedules.ExponentialDecay(
+        initial_learning_rate=1e-3,
+        decay_steps=1000,
+        decay_rate=0.9
+    )
+    
+    model.compile(optimizer=keras.optimizers.Adam(learning_rate=lr_schedule),
+                  loss="categorical_crossentropy",
+                  metrics=["accuracy"])
+    return model
+
+# Early stopping callback
+early_stopping = callbacks.EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)
+
+# Training assumes `x_train`, `y_train`, `x_val`, `y_val` exist
+# model = build_model(46)
+# model.fit(x_train, y_train, epochs=20, validation_data=(x_val, y_val), callbacks=[early_stopping])
+</code></pre>
+</div><div class="chapter-nav">
+<a href="./dlwp-02-unified-frameworks-keras3.html">← Previous: Chapter 45</a>
+<a href="./dlwp-04-convnets-computer-vision.html">Next: Chapter 47 →</a>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./dlwp-02-unified-frameworks-keras3.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">02. The Multi-Backend Paradigm: TensorFlow, PyTorch, JAX & Keras 3</span>
+            </a>
+            <a href="./dlwp-04-convnets-computer-vision.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">04. Modern Computer Vision: ConvNets, Residuals & Grad-CAM</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#workflows">End-to-End Workflows</a></li>
+          <li><a href="#generalization">Generalization vs Overfitting</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

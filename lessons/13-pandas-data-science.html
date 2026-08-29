@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 04: Tabular Data Science & Engineering with Pandas — Stanford CME193</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-icme">Stanford CME193</div>
+        <h2 class="sidebar-course-title">Introduction to Scientific Python</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./10-scientific-python-ecosystem.html"><span class="chapter-num">01</span> The Scientific Python Ecosystem & Performance</a></li>
+        <li><a href="./11-numpy-numerical-computing.html"><span class="chapter-num">02</span> High-Performance Numerical Computing with NumPy</a></li>
+        <li><a href="./12-computational-linear-algebra.html"><span class="chapter-num">03</span> Computational Linear Algebra, SVD & Least Squares</a></li>
+        <li><a href="./13-pandas-data-science.html" class="active"><span class="chapter-num">04</span> Tabular Data Science & Engineering with Pandas</a></li>
+        <li><a href="./14-scipy-scientific-computing.html"><span class="chapter-num">05</span> Scientific Optimization & Differential Equations</a></li>
+        <li><a href="./15-scikit-learn-machine-learning.html"><span class="chapter-num">06</span> Classical Machine Learning with Scikit-Learn</a></li>
+        <li><a href="./16-pytorch-deep-learning.html"><span class="chapter-num">07</span> Modern Deep Learning Foundations with PyTorch</a></li>
+        <li><a href="./17-capstone-and-beyond.html"><span class="chapter-num">08</span> Capstone Synthesis & The AI Frontier</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-icme">Stanford CME193</span>
+            </div>
+            <h1 class="chapter-title">Chapter 04: Tabular Data Science & Engineering with Pandas</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<h2 id="pandas-architecture">1. The Pandas Architecture: Series and DataFrames</h2><p>In NumPy, we worked with homogeneous arrays of numerical data. But real-world data is messy, tabular, and heterogeneous—mixing strings, dates, integers, and floats. Enter <strong>Pandas</strong>. Pandas provides two foundational data structures: the 1D <code>Series</code> and the 2D <code>DataFrame</code>. Both are built on top of NumPy, but they introduce the concept of an <strong>Index</strong>—explicit labels for rows and columns.</p><div class="concept-diagram">
+<pre>
+Pandas DataFrame Memory Model
++-------+-------------------+-------------------+-------------------+
+| Index | Column A (int64)  | Column B (float)  | Column C (object) |
++-------+-------------------+-------------------+-------------------+
+|   0   |        42         |       3.14        |      "Apple"      |
+|   1   |        17         |       2.71        |      "Banana"     |
+|   2   |        99         |       1.41        |      "Cherry"     |
++-------+-------------------+-------------------+-------------------+
+ ^^^     ^^^ Each column is a Pandas Series (wrapping a NumPy array)
+ Explicit Row Labels
+</pre>
+</div><h2 id="data-ingestion">2. Data Ingestion &amp; Export</h2><p>Getting data in and out of Pandas is often a single line of code. The workhorse function is <code>pd.read_csv()</code>.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">import pandas as pd
+
+# Ingestion: parsing dates and setting an index
+df = pd.read_csv("data.csv", sep=",", parse_dates=["timestamp"], index_col="id")
+
+# Export
+df.to_csv("cleaned_data.csv")
+</code></pre></div><h2 id="eda">3. Exploratory Data Analysis (EDA)</h2><p>Before modifying data, we must understand its shape and structure.</p><ul>
+<li><code>df.head()</code> / <code>df.tail()</code>: View top/bottom rows.</li>
+<li><code>df.info()</code>: Memory usage, column dtypes, and non-null counts.</li>
+<li><code>df.describe()</code>: Summary statistics for numerical columns.</li>
+<li><code>df.value_counts()</code>: Frequency counts for categorical columns.</li>
+</ul><h2 id="indexing">4. Indexing &amp; Slicing Mechanics: .loc vs .iloc</h2><p>Pandas distinguishes between <em>implicit positional indexing</em> (like Python lists) and <em>explicit label indexing</em> (like Python dictionaries).</p><div class="callout-warning">
+<strong>Warning:</strong> Never use bracket slicing <code>df[0:5]</code> for rows unless you are exploring. Always use <code>.loc</code> (labels) or <code>.iloc</code> (integer positions) to avoid ambiguity.
+        </div><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python"># Position-based (rows 0, 1, 2; cols 0, 1)
+df.iloc[0:3, 0:2]
+
+# Label-based (rows 'A' to 'C'; columns 'Age' and 'Salary')
+df.loc['A':'C', ['Age', 'Salary']]
+
+# Boolean masking (conditional querying)
+rich_and_young = df.loc[(df['Salary'] &gt; 100000) &amp; (df['Age'] &lt; 30)]
+</code></pre></div><h2 id="cleaning">5. Data Cleaning &amp; Missing Values</h2><p>Missing data is represented as <code>NaN</code> (Not a Number). You can detect nulls with <code>.isna()</code>, drop them with <code>.dropna()</code>, or impute them with <code>.fillna()</code>.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python"># Impute missing ages with the median age
+median_age = df['Age'].median()
+df['Age'] = df['Age'].fillna(median_age)
+</code></pre></div><h2 id="split-apply-combine">6. Split-Apply-Combine with GroupBy</h2><p>The <code>groupby</code> operation is the cornerstone of data aggregation. It conceptually splits the data based on a key, applies a function to each group independently, and combines the results.</p><div class="concept-diagram">
+<pre>
+Split-Apply-Combine Process:
+1. SPLIT: DataFrame -&gt; [Group A], [Group B], [Group C]
+2. APPLY: mean(Group A), mean(Group B), mean(Group C)
+3. COMBINE: New DataFrame with index [A, B, C] and their respective means.
+</pre>
+</div><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python"># Average salary by department
+dept_salaries = df.groupby('Department')['Salary'].mean()
+
+# Multiple statistics
+df.groupby('Department').agg({
+    'Salary': ['mean', 'max'],
+    'Employee_ID': 'count'
+})
+</code></pre></div><h2 id="joins">7. Relational Joins &amp; Reshaping</h2><p>Pandas mirrors SQL's relational join semantics via <code>pd.merge()</code>.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python"># Inner Join
+pd.merge(employees, departments, on="dept_id", how="inner")
+</code></pre></div><div class="callout-tip">
+<strong>Tip:</strong> Use <code>pd.concat()</code> to glue DataFrames vertically or horizontally when they don't have a relational link but share index/column structure.
+        </div><div class="exercise-box">
+<h3 id="exercise-1-data-cleaning">Exercise 1: Data Cleaning</h3>
+<p>Given a DataFrame of users with missing 'Age' and 'Income' columns, fill missing ages with the median age, and drop rows where 'Income' is missing.</p>
+<details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python"># Solution
+df['Age'] = df['Age'].fillna(df['Age'].median())
+df = df.dropna(subset=['Income'])
+</code></pre></div>
+</details>
+</div><div class="footnotes-section">
+<hr/>
+<p><strong>Footnotes:</strong><br/>
+            [1] Stanford CME193 Syllabus: Pandas Data Structures.<br/>
+            [2] CME193 Colab Lecture 5: Advanced GroupBy &amp; Aggregations.</p>
+</div><div class="chapter-nav">
+<a href="./12-computational-linear-algebra.html">← Previous: Chapter 12</a> | 
+            <a href="./14-scipy-scientific-computing.html">Next: Chapter 14 →</a>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./12-computational-linear-algebra.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">03. Computational Linear Algebra, SVD & Least Squares</span>
+            </a>
+            <a href="./14-scipy-scientific-computing.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">05. Scientific Optimization & Differential Equations</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#pandas-architecture">1. The Pandas Architecture: Series and DataFrames</a></li>
+          <li><a href="#data-ingestion">2. Data Ingestion & Export</a></li>
+          <li><a href="#eda">3. Exploratory Data Analysis (EDA)</a></li>
+          <li><a href="#indexing">4. Indexing & Slicing Mechanics: .loc vs .iloc</a></li>
+          <li><a href="#cleaning">5. Data Cleaning & Missing Values</a></li>
+          <li><a href="#split-apply-combine">6. Split-Apply-Combine with GroupBy</a></li>
+          <li><a href="#joins">7. Relational Joins & Reshaping</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

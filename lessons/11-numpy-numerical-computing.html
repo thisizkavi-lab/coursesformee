@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 02: High-Performance Numerical Computing with NumPy — Stanford CME193</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-icme">Stanford CME193</div>
+        <h2 class="sidebar-course-title">Introduction to Scientific Python</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./10-scientific-python-ecosystem.html"><span class="chapter-num">01</span> The Scientific Python Ecosystem & Performance</a></li>
+        <li><a href="./11-numpy-numerical-computing.html" class="active"><span class="chapter-num">02</span> High-Performance Numerical Computing with NumPy</a></li>
+        <li><a href="./12-computational-linear-algebra.html"><span class="chapter-num">03</span> Computational Linear Algebra, SVD & Least Squares</a></li>
+        <li><a href="./13-pandas-data-science.html"><span class="chapter-num">04</span> Tabular Data Science & Engineering with Pandas</a></li>
+        <li><a href="./14-scipy-scientific-computing.html"><span class="chapter-num">05</span> Scientific Optimization & Differential Equations</a></li>
+        <li><a href="./15-scikit-learn-machine-learning.html"><span class="chapter-num">06</span> Classical Machine Learning with Scikit-Learn</a></li>
+        <li><a href="./16-pytorch-deep-learning.html"><span class="chapter-num">07</span> Modern Deep Learning Foundations with PyTorch</a></li>
+        <li><a href="./17-capstone-and-beyond.html"><span class="chapter-num">08</span> Capstone Synthesis & The AI Frontier</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-icme">Stanford CME193</span>
+            </div>
+            <h1 class="chapter-title">Chapter 02: High-Performance Numerical Computing with NumPy</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<section id="ndarray">
+<h2 id="11-1-the-ndarray-architecture">11.1 The <code>ndarray</code> Architecture</h2>
+<p>At the core of NumPy is the <code>ndarray</code> (N-dimensional array). Unlike Python lists, ndarrays store uniform data in contiguous memory blocks, characterized by <code>dtype</code>, <code>shape</code>, and <code>strides</code>.</p>
+<div class="concept-diagram"><pre>
+Memory Buffer: [ 1, 2, 3, 4, 5, 6 ]
+Shape: (2, 3)
+Strides: (12 bytes, 4 bytes) -- assuming int32 (4 bytes per item)
+Yields View:
+[[1, 2, 3],
+ [4, 5, 6]]
+            </pre></div>
+</section><section id="broadcasting">
+<h2 id="11-2-the-universal-broadcasting-rules">11.2 The Universal Broadcasting Rules</h2>
+<p>Broadcasting allows arithmetic operations between arrays of different shapes without explicit data copying.</p>
+<div class="callout-note">
+<strong>The Two Rules of Broadcasting:</strong>
+<ol>
+<li>If arrays differ in rank, prepend the shape of the lower rank array with 1s.</li>
+<li>Dimensions are compatible if they are equal, or if one of them is 1. (The dimension of size 1 is "stretched" to match).</li>
+</ol>
+</div>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>import numpy as np
+matrix = np.ones((3, 3))
+vector = np.array([1, 2, 3])
+print(matrix + vector) # Broadcasts vector across rows</code></pre></div>
+<div class="output-block"><code>[[2. 3. 4.]
+ [2. 3. 4.]
+ [2. 3. 4.]]</code></div>
+</section><section id="filtering">
+<h2 id="11-3-boolean-masking-filtering">11.3 Boolean Masking &amp; Filtering</h2>
+<p>Advanced indexing lets you filter arrays efficiently using boolean conditions.</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>arr = np.array([10, -5, 20, -2, 7])
+mask = arr &gt; 0
+print(arr[mask])</code></pre></div>
+<div class="output-block"><code>[10 20  7]</code></div>
+</section><section id="reductions">
+<h2 id="11-4-multi-axis-reductions">11.4 Multi-Axis Reductions</h2>
+<p>Operations like <code>np.sum</code> or <code>np.max</code> can collapse dimensions across specified axes.</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>grid = np.array([[1, 2], [3, 4]])
+print(np.sum(grid, axis=0)) # Sum down the columns</code></pre></div>
+<div class="output-block"><code>[4 6]</code></div>
+</section><section class="exercise-box">
+<h3 id="practice-exercises">Practice Exercises</h3>
+<p><strong>Exercise 1:</strong> Calculate Euclidean distance between a point <code>p</code> and a set of points <code>X</code> without loops.</p>
+<details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>dist = np.sqrt(np.sum((X - p)**2, axis=1))</code></pre></div>
+</details>
+</section><div class="chapter-nav">
+<a class="prev-chapter" href="./10-scientific-python-ecosystem.html">← Chapter 10: Scientific Stack</a>
+<a class="next-chapter" href="./12-computational-linear-algebra.html">Chapter 12: Linear Algebra →</a>
+</div><div class="footnotes-section">
+<hr/>
+<p>Sources: Stanford CME193 Syllabus, Colab Lecture 3.</p>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./10-scientific-python-ecosystem.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">01. The Scientific Python Ecosystem & Performance</span>
+            </a>
+            <a href="./12-computational-linear-algebra.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">03. Computational Linear Algebra, SVD & Least Squares</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#11-1-the-ndarray-architecture">11.1 The ndarray Architecture</a></li>
+          <li><a href="#11-2-the-universal-broadcasting-rules">11.2 The Universal Broadcasting Rules</a></li>
+          <li><a href="#11-3-boolean-masking-filtering">11.3 Boolean Masking & Filtering</a></li>
+          <li><a href="#11-4-multi-axis-reductions">11.4 Multi-Axis Reductions</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

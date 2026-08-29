@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 05: Advanced Vision: Semantic Segmentation (U-Net) & Detection — Chollet · Keras 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-dlwp">Chollet · Keras 3</div>
+        <h2 class="sidebar-course-title">Deep Learning with Python</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./dlwp-01-what-is-deep-learning-tensors.html"><span class="chapter-num">01</span> What is Deep Learning & Tensor Mathematical Foundations</a></li>
+        <li><a href="./dlwp-02-unified-frameworks-keras3.html"><span class="chapter-num">02</span> The Multi-Backend Paradigm: TensorFlow, PyTorch, JAX & Keras 3</a></li>
+        <li><a href="./dlwp-03-classification-regression-workflows.html"><span class="chapter-num">03</span> Core Workflows: Classification, Regression & Generalization</a></li>
+        <li><a href="./dlwp-04-convnets-computer-vision.html"><span class="chapter-num">04</span> Modern Computer Vision: ConvNets, Residuals & Grad-CAM</a></li>
+        <li><a href="./dlwp-05-segmentation-object-detection.html" class="active"><span class="chapter-num">05</span> Advanced Vision: Semantic Segmentation (U-Net) & Detection</a></li>
+        <li><a href="./dlwp-06-sequences-timeseries-rnns.html"><span class="chapter-num">06</span> Sequential Modeling & Timeseries Forecasting (GRUs/LSTMs)</a></li>
+        <li><a href="./dlwp-07-transformers-language-models.html"><span class="chapter-num">07</span> Attention Mechanisms, Transformers & Self-Supervised Models</a></li>
+        <li><a href="./dlwp-08-generative-ai-text-llms.html"><span class="chapter-num">08</span> Generative AI for Text: Causal Decoders & Modern LLMs</a></li>
+        <li><a href="./dlwp-09-diffusion-models-image-generation.html"><span class="chapter-num">09</span> Generative Vision: VAEs & Latent Diffusion Models</a></li>
+        <li><a href="./dlwp-10-production-mlops-future.html"><span class="chapter-num">10</span> Production Engineering, Multi-GPU Scaling & The Future of AI</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-dlwp">Chollet · Keras 3</span>
+            </div>
+            <h1 class="chapter-title">Chapter 05: Advanced Vision: Semantic Segmentation (U-Net) & Detection</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="chapter-header">
+
+<p class="subtitle">Pixel-perfect predictions and bounding box regressions.</p>
+</div><h2 id="segmentation">Semantic Segmentation and U-Net</h2><p>Semantic segmentation involves predicting a class label for every individual pixel in an image. The U-Net architecture is a widely used encoder-decoder network that excels at this task by concatenating high-resolution features from the encoder with upsampled features in the decoder.</p><div class="code-block">
+<pre><code>import keras
+from keras import layers
+
+def get_unet(img_size, num_classes):
+    inputs = keras.Input(shape=img_size + (3,))
+    
+    # Encoder (Contracting Path)
+    x = layers.Conv2D(64, 3, padding="same", activation="relu")(inputs)
+    x = layers.Conv2D(64, 3, padding="same", activation="relu")(x)
+    skip1 = x
+    x = layers.MaxPooling2D(2, strides=2)(x)
+    
+    x = layers.Conv2D(128, 3, padding="same", activation="relu")(x)
+    x = layers.Conv2D(128, 3, padding="same", activation="relu")(x)
+    skip2 = x
+    x = layers.MaxPooling2D(2, strides=2)(x)
+    
+    # Bottleneck
+    x = layers.Conv2D(256, 3, padding="same", activation="relu")(x)
+    
+    # Decoder (Expanding Path)
+    x = layers.Conv2DTranspose(128, 2, strides=2, padding="same")(x)
+    x = layers.Concatenate()([x, skip2])
+    x = layers.Conv2D(128, 3, padding="same", activation="relu")(x)
+    
+    x = layers.Conv2DTranspose(64, 2, strides=2, padding="same")(x)
+    x = layers.Concatenate()([x, skip1])
+    x = layers.Conv2D(64, 3, padding="same", activation="relu")(x)
+    
+    # Output layer
+    outputs = layers.Conv2D(num_classes, 3, activation="softmax", padding="same")(x)
+    
+    model = keras.Model(inputs, outputs)
+    return model
+
+# unet = get_unet((256, 256), num_classes=3)
+</code></pre>
+</div><h2 id="detection">Object Detection Foundations</h2><p>Object detection outputs both bounding boxes and class labels. Key concepts include:</p><ul>
+<li><strong>Anchor Boxes:</strong> Pre-defined boxes of various aspect ratios serving as priors.</li>
+<li><strong>IoU (Intersection over Union):</strong> Metric to measure the overlap between a predicted box and the ground truth.</li>
+<li><strong>NMS (Non-Maximum Suppression):</strong> Algorithm to filter out duplicate bounding box predictions.</li>
+</ul><div class="chapter-nav">
+<a href="./dlwp-04-convnets-computer-vision.html">← Previous: Chapter 47</a>
+<a href="#">Next: Capstone →</a>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./dlwp-04-convnets-computer-vision.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">04. Modern Computer Vision: ConvNets, Residuals & Grad-CAM</span>
+            </a>
+            <a href="./dlwp-06-sequences-timeseries-rnns.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">06. Sequential Modeling & Timeseries Forecasting (GRUs/LSTMs)</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#segmentation">Semantic Segmentation and U-Net</a></li>
+          <li><a href="#detection">Object Detection Foundations</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

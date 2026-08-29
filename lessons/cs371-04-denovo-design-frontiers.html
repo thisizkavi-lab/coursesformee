@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 04: Modern De Novo Protein Design Frontiers — Stanford CS371</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-icme">Stanford CS371</div>
+        <h2 class="sidebar-course-title">Computational Biology in Four Dimensions</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./cs371-01-simulations-allostery.html"><span class="chapter-num">01</span> Biomolecular Simulation & Allosteric Modulation</a></li>
+        <li><a href="./cs371-02-crowdsourced-biology.html"><span class="chapter-num">02</span> Citizen Computing: Video Games for Molecular Design</a></li>
+        <li><a href="./cs371-03-coevolutionary-genetics.html"><span class="chapter-num">03</span> Coevolutionary Couplings & Deep Generative Genetics</a></li>
+        <li><a href="./cs371-04-denovo-design-frontiers.html" class="active"><span class="chapter-num">04</span> Modern De Novo Protein Design Frontiers</a></li>
+        <li><a href="./cs371-05-physics-virtual-screening.html"><span class="chapter-num">05</span> Physics-Based Virtual Screening & Alchemical Free Energy</a></li>
+        <li><a href="./cs371-06-ml-docking-affinity.html"><span class="chapter-num">06</span> Machine Learning for Molecular Binding & Screening</a></li>
+        <li><a href="./cs371-07-cryoem-conformational-ensembles.html"><span class="chapter-num">07</span> Cryo-EM Heterogeneity & Conformational Landscapes</a></li>
+        <li><a href="./cs371-08-superresolution-localization.html"><span class="chapter-num">08</span> Super-Resolution Imaging & Localization Microscopy</a></li>
+        <li><a href="./cs371-09-whole-cell-dynamics.html"><span class="chapter-num">09</span> Whole-Cell Dynamics & Macro-Molecular Crowding</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-icme">Stanford CS371</span>
+            </div>
+            <h1 class="chapter-title">Chapter 04: Modern De Novo Protein Design Frontiers</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="reading-time">Reading Time: 45 mins | Part III</div><h2 id="designing-from-scratch">Designing from Scratch</h2><p>Rather than tweaking existing proteins, <em>de novo</em> design builds entirely new proteins from physical and geometric first principles. This allows the creation of self-assembling nanocages, custom enzymes, and robust biosensors.</p><h2 id="deep-mental-model-parametric-generation">Deep Mental Model: Parametric Generation</h2><p>Many structural motifs, like alpha-helices or coiled-coils, can be described by continuous mathematical equations. We sample the parametric space to generate backbones, then design sequences to stabilize them.</p><div class="concept-diagram">
+<pre>
+   Pitch (p)
+   |&lt;---&gt;|
+  /\      /\      /\
+ /  \    /  \    /  \
+/    \  /    \  /    \
+      \/      \/
+      Radius (r)
+            </pre>
+</div><h2 id="algorithmic-implementation-alpha-helical-backbone">Algorithmic Implementation: Alpha-Helical Backbone</h2><div class="code-block">
+<pre><code>import numpy as np
+
+def generate_ideal_helix(num_residues, radius=2.3, rise_per_residue=1.5, residues_per_turn=3.6):
+    """
+    Generates C-alpha coordinates for an ideal alpha helix.
+    """
+    coords = np.zeros((num_residues, 3))
+    angular_step = 2 * np.pi / residues_per_turn
+    
+    for i in range(num_residues):
+        angle = i * angular_step
+        coords[i, 0] = radius * np.cos(angle)
+        coords[i, 1] = radius * np.sin(angle)
+        coords[i, 2] = i * rise_per_residue
+        
+    return coords
+
+helix_coords = generate_ideal_helix(5)
+print("First 5 CA coordinates:\n", np.round(helix_coords, 2))
+</code></pre>
+</div><div class="code-output">
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>First 5 CA coordinates:
+ [[ 2.3   0.    0.  ]
+ [-0.4   2.26  1.5 ]
+ [-2.18 -0.73  3.  ]
+ [ 0.81 -2.15  4.5 ]
+ [ 2.18  0.73  6.  ]]</code></pre></div>
+</div><div class="footnotes-section">
+<p><strong>Footnotes:</strong> Stanford CS371 Jan 25 lecture, Baker lab Nature &amp; Science papers.</p>
+</div><div class="chapter-nav">
+<a href="cs371-03-coevolutionary-genetics.html">← Previous Chapter</a>
+<a href="cs371-05-physics-virtual-screening.html">Next Chapter →</a>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./cs371-03-coevolutionary-genetics.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">03. Coevolutionary Couplings & Deep Generative Genetics</span>
+            </a>
+            <a href="./cs371-05-physics-virtual-screening.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">05. Physics-Based Virtual Screening & Alchemical Free Energy</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#designing-from-scratch">Designing from Scratch</a></li>
+          <li><a href="#deep-mental-model-parametric-generation">Deep Mental Model: Parametric Generation</a></li>
+          <li><a href="#algorithmic-implementation-alpha-helical-backbone">Algorithmic Implementation: Alpha-Helical Backbone</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

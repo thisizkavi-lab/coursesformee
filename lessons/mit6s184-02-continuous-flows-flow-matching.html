@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 02: Continuous Normalizing Flows & Conditional Flow Matching — MIT 6.S184</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-mit">MIT 6.S184</div>
+        <h2 class="sidebar-course-title">Flow Matching & Diffusion Models</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./mit6s184-01-generative-foundations-sde.html"><span class="chapter-num">01</span> Generative Foundations, ODEs & Stochastic Calculus</a></li>
+        <li><a href="./mit6s184-02-continuous-flows-flow-matching.html" class="active"><span class="chapter-num">02</span> Continuous Normalizing Flows & Conditional Flow Matching</a></li>
+        <li><a href="./mit6s184-03-score-matching-diffusion-sde.html"><span class="chapter-num">03</span> Score-Based Diffusion Models & Reverse-Time SDEs</a></li>
+        <li><a href="./mit6s184-04-probability-flow-ode-likelihood.html"><span class="chapter-num">04</span> The Probability Flow ODE, Exact Likelihood & Hutchinson Trace</a></li>
+        <li><a href="./mit6s184-05-optimal-transport-ot-cfm.html"><span class="chapter-num">05</span> Optimal Transport Flow Matching (OT-CFM) & Straight Paths</a></li>
+        <li><a href="./mit6s184-06-guided-generation-cfg.html"><span class="chapter-num">06</span> Guided Generation & Classifier-Free Guidance (CFG)</a></li>
+        <li><a href="./mit6s184-07-latent-flows-diffusion-transformers.html"><span class="chapter-num">07</span> Latent Flow Matching, DiT & Multimodal Architectures</a></li>
+        <li><a href="./mit6s184-08-fast-solvers-rectified-distillation.html"><span class="chapter-num">08</span> Fast Solvers, Rectified Flow & Few-Step Distillation</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-mit">MIT 6.S184</span>
+            </div>
+            <h1 class="chapter-title">Chapter 02: Continuous Normalizing Flows & Conditional Flow Matching</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<p><strong>Course:</strong> MIT 6.S184 | <strong>Reading Time:</strong> 50 mins | <strong>Part:</strong> Advanced Generative AI</p><h2 id="continuous-normalizing-flows">Continuous Normalizing Flows</h2><p>Continuous Normalizing Flows (CNFs) model a probability density over time governed by the continuity equation:</p><p>$\partial_t p_t(x) + \nabla \cdot (p_t(x) v_t(x)) = 0$</p><div class="callout-warning">
+<strong>Intractable Marginal Matching</strong><br/>
+            Directly matching a marginal vector field $v_t(x)$ is generally intractable because we do not have access to the ground-truth marginal probability path. 
+        </div><h2 id="conditional-flow-matching-cfm">Conditional Flow Matching (CFM)</h2><p>Lipman et al. introduced Conditional Flow Matching. We define simple conditional paths between a datapoint $x_1$ and noise $x_0$, such as the linear Gaussian path: $x_t = (1-t)x_0 + t x_1$.</p><p>The conditional vector field is $u_t(x|x_1) = x_1 - x_0$.</p><div class="concept-diagram"><pre>
+Noise x_0  ========================&gt; Data x_1
+  (Conditional Paths aggregate to Marginal Field)
+        </pre></div><div class="code-block">
+<pre><code>import torch
+import torch.nn as nn
+
+def compute_cfm_loss(model, x_1, x_0):
+    t = torch.rand(x_1.shape[0], 1)
+    # Linear interpolation
+    x_t = (1 - t) * x_0 + t * x_1
+    # Target vector field
+    u_t = x_1 - x_0
+    
+    # Model prediction
+    v_pred = model(x_t, t)
+    
+    loss = torch.mean((v_pred - u_t) ** 2)
+    return loss
+            </code></pre>
+</div><div class="exercise-box">
+<h3 id="exercise-train-cfm-on-swiss-roll">Exercise: Train CFM on Swiss Roll</h3>
+<p>Implement a full PyTorch training loop on the Swiss Roll dataset using CFM.</p>
+<details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<div class="code-block">
+<pre><code># Assume model and optimizer defined
+for epoch in range(100):
+    x_1 = sample_swiss_roll(batch_size=128)
+    x_0 = torch.randn_like(x_1)
+    
+    loss = compute_cfm_loss(model, x_1, x_0)
+    
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()</code></pre>
+</div>
+</details>
+</div><div class="chapter-nav">
+<div>Previous: <a href="./mit6s184-01-generative-foundations-sde.html">Chapter 54</a></div>
+<div>Next: <a href="./mit6s184-03-score-matching-diffusion-sde.html">Chapter 56</a></div>
+</div><div class="footnotes-section">
+<p>1. Lipman et al., "Flow Matching for Generative Modeling". arXiv:2210.02747</p>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./mit6s184-01-generative-foundations-sde.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">01. Generative Foundations, ODEs & Stochastic Calculus</span>
+            </a>
+            <a href="./mit6s184-03-score-matching-diffusion-sde.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">03. Score-Based Diffusion Models & Reverse-Time SDEs</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#continuous-normalizing-flows">Continuous Normalizing Flows</a></li>
+          <li><a href="#conditional-flow-matching-cfm">Conditional Flow Matching (CFM)</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

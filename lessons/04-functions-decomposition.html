@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 04: Functions, Decomposition & The Call Stack — Stanford CS106A</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-stanford">Stanford CS106A</div>
+        <h2 class="sidebar-course-title">Programming Methodology</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./01-karel-computational-thinking.html"><span class="chapter-num">01</span> The Philosophy of Code & Karel the Robot</a></li>
+        <li><a href="./02-python-fundamentals.html"><span class="chapter-num">02</span> Python Fundamentals & The Memory Box Model</a></li>
+        <li><a href="./03-control-flow-logic.html"><span class="chapter-num">03</span> Logic, Conditionals & Iteration Invariants</a></li>
+        <li><a href="./04-functions-decomposition.html" class="active"><span class="chapter-num">04</span> Functions, Decomposition & The Call Stack</a></li>
+        <li><a href="./05-strings-lists.html"><span class="chapter-num">05</span> Sequential Structures: Strings, Lists & Mutability</a></li>
+        <li><a href="./06-grids-images.html"><span class="chapter-num">06</span> Multi-Dimensional Data & Image Processing</a></li>
+        <li><a href="./07-dictionaries-files.html"><span class="chapter-num">07</span> Associative Arrays: Hash Maps, Dicts & Files</a></li>
+        <li><a href="./08-object-oriented-programming.html"><span class="chapter-num">08</span> Object-Oriented Architecture & Special Methods</a></li>
+        <li><a href="./09-algorithms-systems.html"><span class="chapter-num">09</span> Algorithms, Search Engines, Web APIs & Ethics</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-stanford">Stanford CS106A</span>
+            </div>
+            <h1 class="chapter-title">Chapter 04: Functions, Decomposition & The Call Stack</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<h2 id="sec1">The Purpose of Functions</h2><p>Functions allow us to encapsulate complexity, turning blocks of code into abstract, reusable tools (black boxes).</p><h2 id="sec2">Anatomy of a Function</h2><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">
+def calculate_tax(amount, rate=0.08):
+    """Calculates tax based on the given rate."""
+    return amount * rate
+        </code></pre></div><h2 id="sec3">The Runtime Call Stack</h2><p>When a function is called, a new frame is pushed onto the call stack. This isolates local variables.</p><div class="concept-diagram">
+<pre>
+|-------------------|
+| calculate_tax()   | &lt;- Top Frame (active)
+| amount: 100       |
+| rate: 0.08        |
+|-------------------|
+| main()            | &lt;- Bottom Frame
+|-------------------|
+</pre>
+</div><h2 id="sec4">Parameter Passing Mechanics</h2><p>Python uses "pass-by-object-reference". The argument's reference is passed to the function's parameter.</p><div class="callout-note">
+<strong>Mutable Default Arguments:</strong> Never use a mutable object like a list as a default argument, as it is evaluated only once when the function is defined.
+        </div><div class="exercise-box">
+<h3 id="exercise-1-factorial">Exercise 1: Factorial</h3>
+<p>Write a function to compute the factorial of n using a loop.</p>
+<details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">
+def factorial(n):
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+                </code></pre></div>
+</details>
+</div><div class="footnotes-section">
+<p>[1] <a href="#">Stanford CS106A Syllabus</a></p>
+</div><div class="chapter-nav">
+<div><a href="./03-control-flow-logic.html">← Prev: Chapter 3</a></div>
+<div><a href="./05-strings-lists.html">Next: Chapter 5 →</a></div>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./03-control-flow-logic.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">03. Logic, Conditionals & Iteration Invariants</span>
+            </a>
+            <a href="./05-strings-lists.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">05. Sequential Structures: Strings, Lists & Mutability</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#sec1">The Purpose of Functions</a></li>
+          <li><a href="#sec2">Anatomy of a Function</a></li>
+          <li><a href="#sec3">The Runtime Call Stack</a></li>
+          <li><a href="#sec4">Parameter Passing Mechanics</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

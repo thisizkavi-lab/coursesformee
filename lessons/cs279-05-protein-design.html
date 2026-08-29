@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 05: De Novo Protein Design & Diffusion Models — Stanford CS279</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-stanford">Stanford CS279</div>
+        <h2 class="sidebar-course-title">Computational Biology: Structure & Organization</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./cs279-01-biomolecular-structure.html"><span class="chapter-num">01</span> Biomolecular Structure & Protein Geometry</a></li>
+        <li><a href="./cs279-02-energy-forcefields.html"><span class="chapter-num">02</span> Energy Functions & Molecular Conformations</a></li>
+        <li><a href="./cs279-03-molecular-dynamics.html"><span class="chapter-num">03</span> Molecular Dynamics Simulation</a></li>
+        <li><a href="./cs279-04-structure-prediction-alphafold.html"><span class="chapter-num">04</span> Protein Structure Prediction & AlphaFold</a></li>
+        <li><a href="./cs279-05-protein-design.html" class="active"><span class="chapter-num">05</span> De Novo Protein Design & Diffusion Models</a></li>
+        <li><a href="./cs279-06-microscopy-image-analysis.html"><span class="chapter-num">06</span> Optical Microscopy, Fourier Transforms & Super-Resolution</a></li>
+        <li><a href="./cs279-07-diffusion-cellular-simulation.html"><span class="chapter-num">07</span> Cellular Diffusion & Spatial Stochastic Simulation</a></li>
+        <li><a href="./cs279-08-docking-drug-discovery.html"><span class="chapter-num">08</span> Molecular Docking, Virtual Screening & Free Energy</a></li>
+        <li><a href="./cs279-09-cryo-em-crystallography.html"><span class="chapter-num">09</span> Cryo-EM & X-Ray Crystallography Determination</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-stanford">Stanford CS279</span>
+            </div>
+            <h1 class="chapter-title">Chapter 05: De Novo Protein Design & Diffusion Models</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<h2 id="intro">1. Introduction to De Novo Protein Design</h2><p>Welcome to Chapter 22. The study of De Novo Protein Design &amp; Diffusion Models is fundamental to our understanding of biological systems. We explore topics such as: <strong>Forward folding vs inverse folding, Rosetta rotamer sampling, ProteinMPNN, SE(3)-equivariant diffusion models (RFdiffusion).</strong>. By mastering these concepts, we bridge the gap between abstract computer science and tangible physical realities of the cell.</p><h3 id="theory">1.1 Theoretical Foundations</h3><p>In computational biology, our models are only as good as the underlying physical or mathematical principles we base them on. When investigating these systems, we often start with basic atomic or cellular interactions and scale up to macroscopic phenomena. This process requires a strong grasp of both continuous mathematics (like differential equations and energy potentials) and discrete algorithms (like dynamic programming or graph search for structure prediction).</p><div class="callout-tip">
+<strong>Mental Model:</strong> Think of this system as a complex network of interacting state machines. Each element—whether an atom, a protein, or a cell—follows local rules that give rise to global emergent behavior.
+            </div><h2 id="mechanisms">2. Core Mechanisms and Architectures</h2><p>To fully grasp the computational methods we will deploy, it is crucial to build a robust structural and mathematical intuition.</p><div class="concept-diagram"><pre>
+RFdiffusion:
+Noise ---&gt; (Denoising Network) ---&gt; Backbone Coordinates
+</pre></div><h3 id="walkthrough">2.1 Detailed Walkthrough</h3><p>The diagram above illustrates the primary mechanism at play. Notice how the different components interact. For instance, in structural problems, the precise geometry and energy landscapes dictate the final stable conformation. In cellular and systems biology, it is the stochastic nature of interactions that drives the system forward. The mathematical formulations we use (e.g., Fourier transforms, Monte Carlo methods, or deep learning architectures) are carefully chosen to map onto these physical realities.</p><div class="callout-deepdive">
+<strong>Deep Dive: The Computational Lens</strong><br/>
+                When translating physical mechanisms into code, we must consider memory layout, vectorization, and computational complexity. A simple formula in physics might require sophisticated numerical approximations when scaled to billions of interactions.
+            </div><h2 id="implementation">3. Computational Implementation</h2><p>To truly understand these concepts, we must write code. The following snippet provides a robust implementation of the core algorithmic step using standard scientific Python libraries.</p><div class="code-block">
+<pre><code class="language-python">import numpy as np
+
+def sample_sequence(score_matrix, temperature=1.0):
+    """Autoregressive sequence sampling."""
+    probs = np.exp(score_matrix / temperature)
+    probs /= np.sum(probs, axis=-1, keepdims=True)
+    
+    seq = []
+    for p in probs:
+        amino_acid = np.random.choice(20, p=p)
+        seq.append(amino_acid)
+    return seq
+
+scores = np.random.randn(10, 20)
+print(f"Designed sequence indices: {sample_sequence(scores, temperature=0.5)}")
+</code></pre>
+<div class="code-output"><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre>Designed sequence indices: [4, 17, 2, 8, 19, 1, 14, 3, 5, 11]</pre></div></div>
+</div><h2 id="practice">4. Practice and Exploration</h2><p>Now it is your turn to apply these concepts. Computational biology is best learned through active implementation.</p><div class="exercise-box">
+<strong>Exercise 22.1:</strong> Extend the sampling to include pairwise energy terms (e.g., MRF).
+                <details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<p><em>Step 1:</em> Identify the inputs and required outputs.<br/>
+<em>Step 2:</em> Apply the core mathematical transformation discussed in Section 2.<br/>
+<em>Step 3:</em> Implement the solution using vectorized operations in NumPy or SciPy to ensure performance.<br/>
+<em>Result:</em> You should see the expected physical metrics correctly calculated, confirming your understanding of the chapter.</p>
+</details>
+</div><div class="chapter-nav">
+<a href="./cs279-04-structure-prediction-alphafold.html">← Previous Chapter</a>
+<a href="./cs279-06-microscopy-image-analysis.html">Next Chapter →</a>
+</div><div class="footnotes-section">
+<strong>Footnotes &amp; References:</strong><br/>
+                [1] Stanford CS279 Lecture 6 slides, ProteinMPNN Science paper, RFdiffusion Nature paper.
+            </div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./cs279-04-structure-prediction-alphafold.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">04. Protein Structure Prediction & AlphaFold</span>
+            </a>
+            <a href="./cs279-06-microscopy-image-analysis.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">06. Optical Microscopy, Fourier Transforms & Super-Resolution</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#intro">1. Introduction to De Novo Protein Design</a></li>
+          <li><a href="#mechanisms">2. Core Mechanisms and Architectures</a></li>
+          <li><a href="#implementation">3. Computational Implementation</a></li>
+          <li><a href="#practice">4. Practice and Exploration</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

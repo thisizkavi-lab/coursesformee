@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 05: Sequential Structures: Strings, Lists & Mutability — Stanford CS106A</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-stanford">Stanford CS106A</div>
+        <h2 class="sidebar-course-title">Programming Methodology</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./01-karel-computational-thinking.html"><span class="chapter-num">01</span> The Philosophy of Code & Karel the Robot</a></li>
+        <li><a href="./02-python-fundamentals.html"><span class="chapter-num">02</span> Python Fundamentals & The Memory Box Model</a></li>
+        <li><a href="./03-control-flow-logic.html"><span class="chapter-num">03</span> Logic, Conditionals & Iteration Invariants</a></li>
+        <li><a href="./04-functions-decomposition.html"><span class="chapter-num">04</span> Functions, Decomposition & The Call Stack</a></li>
+        <li><a href="./05-strings-lists.html" class="active"><span class="chapter-num">05</span> Sequential Structures: Strings, Lists & Mutability</a></li>
+        <li><a href="./06-grids-images.html"><span class="chapter-num">06</span> Multi-Dimensional Data & Image Processing</a></li>
+        <li><a href="./07-dictionaries-files.html"><span class="chapter-num">07</span> Associative Arrays: Hash Maps, Dicts & Files</a></li>
+        <li><a href="./08-object-oriented-programming.html"><span class="chapter-num">08</span> Object-Oriented Architecture & Special Methods</a></li>
+        <li><a href="./09-algorithms-systems.html"><span class="chapter-num">09</span> Algorithms, Search Engines, Web APIs & Ethics</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-stanford">Stanford CS106A</span>
+            </div>
+            <h1 class="chapter-title">Chapter 05: Sequential Structures: Strings, Lists & Mutability</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<section id="sequences-memory">
+<h2 id="sequences-in-memory">Sequences in Memory</h2>
+<p>In Python, a sequence is a contiguously ordered collection of items. Elements in a sequence have a predictable order and can be accessed via numerical indices. The two most prominent sequences are strings (ordered collections of characters) and lists (ordered collections of arbitrary objects).</p>
+<div class="concept-diagram"><pre>
+Memory Address: 0x100      0x104      0x108      0x10C
+Index:             0          1          2          3
+                +----------+----------+----------+----------+
+string "CODE"   |   'C'    |   'O'    |   'D'    |   'E'    |
+                +----------+----------+----------+----------+
+Index (Neg):      -4         -3         -2         -1
+            </pre></div>
+<p>Python utilizes 0-based indexing. The first element is at index 0. It also seamlessly supports negative indexing, where <code>-1</code> retrieves the last element.</p>
+</section><section id="slicing-semantics">
+<h2 id="slicing-syntax-semantics">Slicing Syntax &amp; Semantics</h2>
+<p>Slicing allows you to extract a sub-sequence using the notation <code>seq[start:stop:step]</code>. The slice begins at <code>start</code> (inclusive) and goes up to, but not including, <code>stop</code> (exclusive), stepping by <code>step</code>.</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>text = "PYTHON"
+print(text[1:4])   # 'YTH'
+print(text[:3])    # 'PYT' (omitted start defaults to 0)
+print(text[3:])    # 'HON' (omitted stop defaults to end)
+print(text[::-1])  # 'NOHTYP' (step of -1 reverses the sequence)
+</code></pre></div>
+<div class="callout-note">
+<strong>Note:</strong> Slicing a sequence always creates a new "shallow copy" of that sequence. Modifying the slice does not modify the original sequence (relevant for mutable sequences).
+            </div>
+</section><section id="mutability">
+<h2 id="mutability-vs-immutability">Mutability vs Immutability</h2>
+<p>This is one of Python's most critical concepts. <strong>Strings are immutable</strong>. Once a string is created in memory, its characters cannot be changed. Attempting <code>text[0] = 'X'</code> will raise a TypeError. Operations like <code>.upper()</code> or <code>.replace()</code> return <em>new</em> strings.</p>
+<p><strong>Lists, however, are mutable</strong>. You can alter their elements in place without changing the list's memory address.</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code># Strings (Immutable)
+s = "cat"
+s = "b" + s[1:] # Creates a new string "bat", reassigned to s
+
+# Lists (Mutable)
+lst = ['c', 'a', 't']
+lst[0] = 'b'    # Modifies the list in memory: ['b', 'a', 't']
+</code></pre></div>
+</section><section id="lists-in-depth">
+<h2 id="python-lists-in-depth">Python Lists in Depth</h2>
+<p>Under the hood, Python lists are dynamic arrays. They over-allocate memory to ensure that appending elements is amortized $O(1)$ time complexity. When the underlying array is full, Python allocates a new, larger array and copies the elements over.</p>
+<ul>
+<li><code>.append(x)</code>: Adds item x to the end.</li>
+<li><code>.pop([i])</code>: Removes and returns the item at index i (defaults to last item).</li>
+<li><code>.insert(i, x)</code>: Inserts x at index i.</li>
+<li><code>.extend(iterable)</code>: Appends all items from iterable.</li>
+</ul>
+</section><section id="aliasing">
+<h2 id="aliasing-vs-cloning">Aliasing vs Cloning</h2>
+<p>Because variables are merely references to objects in memory, assignment creates an alias.</p>
+<div class="concept-diagram"><pre>
+list_a = [1, 2, 3]
+list_b = list_a       &lt;-- ALIAS: list_a and list_b point to the SAME object
+list_c = list_a[:]    &lt;-- CLONE: list_c points to a NEW list with same contents
+            </pre></div>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>list_a = [1, 2, 3]
+list_b = list_a
+list_b[0] = 99
+print(list_a) # Output: [99, 2, 3] (Affected!)
+
+list_c = list_a.copy() # or list_a[:]
+list_c[0] = 5
+print(list_a) # Output: [99, 2, 3] (Unaffected)
+</code></pre></div>
+</section><section id="exercises">
+<h2 id="practical-exercises">Practical Exercises</h2>
+<div class="exercise-box">
+<h4>Exercise 1: Palindrome Verifier</h4>
+<p>Write a function <code>is_palindrome(text)</code> that checks if a string is a palindrome, ignoring spaces, punctuation, and capitalization.</p>
+<details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>def is_palindrome(text):
+    # 1. Clean the string
+    cleaned = ""
+    for char in text:
+        if char.isalnum():
+            cleaned += char.lower()
+    
+    # 2. Check if reverse equals the cleaned string
+    return cleaned == cleaned[::-1]
+
+print(is_palindrome("A man, a plan, a canal: Panama")) # True
+</code></pre></div>
+</details>
+</div>
+</section><footer class="footnotes-section">
+<p>[1] Reference: Stanford CS106A Syllabus and Lecture 8</p>
+</footer><div class="chapter-nav">
+<a href="./04-functions-decomposition.html">← Chapter 4: Functions</a>
+<a href="./06-grids-images.html">Chapter 6: Grids &amp; Images →</a>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./04-functions-decomposition.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">04. Functions, Decomposition & The Call Stack</span>
+            </a>
+            <a href="./06-grids-images.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">06. Multi-Dimensional Data & Image Processing</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#sequences-in-memory">Sequences in Memory</a></li>
+          <li><a href="#slicing-syntax-semantics">Slicing Syntax & Semantics</a></li>
+          <li><a href="#mutability-vs-immutability">Mutability vs Immutability</a></li>
+          <li><a href="#python-lists-in-depth">Python Lists in Depth</a></li>
+          <li><a href="#aliasing-vs-cloning">Aliasing vs Cloning</a></li>
+          <li><a href="#practical-exercises">Practical Exercises</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

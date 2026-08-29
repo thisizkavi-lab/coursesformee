@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 08: Generative AI for Text: Causal Decoders & Modern LLMs — Chollet · Keras 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-dlwp">Chollet · Keras 3</div>
+        <h2 class="sidebar-course-title">Deep Learning with Python</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./dlwp-01-what-is-deep-learning-tensors.html"><span class="chapter-num">01</span> What is Deep Learning & Tensor Mathematical Foundations</a></li>
+        <li><a href="./dlwp-02-unified-frameworks-keras3.html"><span class="chapter-num">02</span> The Multi-Backend Paradigm: TensorFlow, PyTorch, JAX & Keras 3</a></li>
+        <li><a href="./dlwp-03-classification-regression-workflows.html"><span class="chapter-num">03</span> Core Workflows: Classification, Regression & Generalization</a></li>
+        <li><a href="./dlwp-04-convnets-computer-vision.html"><span class="chapter-num">04</span> Modern Computer Vision: ConvNets, Residuals & Grad-CAM</a></li>
+        <li><a href="./dlwp-05-segmentation-object-detection.html"><span class="chapter-num">05</span> Advanced Vision: Semantic Segmentation (U-Net) & Detection</a></li>
+        <li><a href="./dlwp-06-sequences-timeseries-rnns.html"><span class="chapter-num">06</span> Sequential Modeling & Timeseries Forecasting (GRUs/LSTMs)</a></li>
+        <li><a href="./dlwp-07-transformers-language-models.html"><span class="chapter-num">07</span> Attention Mechanisms, Transformers & Self-Supervised Models</a></li>
+        <li><a href="./dlwp-08-generative-ai-text-llms.html" class="active"><span class="chapter-num">08</span> Generative AI for Text: Causal Decoders & Modern LLMs</a></li>
+        <li><a href="./dlwp-09-diffusion-models-image-generation.html"><span class="chapter-num">09</span> Generative Vision: VAEs & Latent Diffusion Models</a></li>
+        <li><a href="./dlwp-10-production-mlops-future.html"><span class="chapter-num">10</span> Production Engineering, Multi-GPU Scaling & The Future of AI</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-dlwp">Chollet · Keras 3</span>
+            </div>
+            <h1 class="chapter-title">Chapter 08: Generative AI for Text: Causal Decoders & Modern LLMs</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<h2 id="1-autoregressive-generation">1. Autoregressive Generation</h2><p>Modern LLMs are causal decoders. They predict the next token given all previous tokens. To scale efficiently, techniques like KV-Caching and parameter-efficient fine-tuning (LoRA) are essential.</p><div class="callout-tip">
+<strong>Sampling Strategies</strong>: Use <code>temperature</code> to control randomness, <code>top-k</code> to truncate the vocabulary to the top k tokens, and <code>top-p</code> (nucleus sampling) to truncate to the top percentile of mass.
+      </div><h2 id="2-code-walkthrough-generating-text-with-temperature">2. Code Walkthrough: Generating text with temperature</h2><div class="code-block">
+<pre><code class="language-python">
+import numpy as np
+
+def sample_with_temperature(logits, temperature=1.0):
+    # Scale logits by temperature
+    logits = np.array(logits) / temperature
+    
+    # Softmax to get probabilities
+    exp_preds = np.exp(logits)
+    preds = exp_preds / np.sum(exp_preds)
+    
+    # Sample from the resulting distribution
+    probas = np.random.multinomial(1, preds, 1)
+    return np.argmax(probas)
+</code></pre>
+</div><div class="exercise-box">
+<h3 id="exercise-kv-caching-concept">Exercise: KV Caching Concept</h3>
+<p>Why do we cache Keys and Values in autoregressive decoding?</p>
+<details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<p>Since the previous tokens do not change, their Key and Value projections in the attention mechanism remain constant. Caching them prevents re-computing the matrix multiplications for all prior tokens on every new step.</p>
+</details>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./dlwp-07-transformers-language-models.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">07. Attention Mechanisms, Transformers & Self-Supervised Models</span>
+            </a>
+            <a href="./dlwp-09-diffusion-models-image-generation.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">09. Generative Vision: VAEs & Latent Diffusion Models</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#1-autoregressive-generation">1. Autoregressive Generation</a></li>
+          <li><a href="#2-code-walkthrough-generating-text-with-temperature">2. Code Walkthrough: Generating text with temperature</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

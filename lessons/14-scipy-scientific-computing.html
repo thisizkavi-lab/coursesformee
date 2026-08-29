@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 05: Scientific Optimization & Differential Equations — Stanford CME193</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-icme">Stanford CME193</div>
+        <h2 class="sidebar-course-title">Introduction to Scientific Python</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./10-scientific-python-ecosystem.html"><span class="chapter-num">01</span> The Scientific Python Ecosystem & Performance</a></li>
+        <li><a href="./11-numpy-numerical-computing.html"><span class="chapter-num">02</span> High-Performance Numerical Computing with NumPy</a></li>
+        <li><a href="./12-computational-linear-algebra.html"><span class="chapter-num">03</span> Computational Linear Algebra, SVD & Least Squares</a></li>
+        <li><a href="./13-pandas-data-science.html"><span class="chapter-num">04</span> Tabular Data Science & Engineering with Pandas</a></li>
+        <li><a href="./14-scipy-scientific-computing.html" class="active"><span class="chapter-num">05</span> Scientific Optimization & Differential Equations</a></li>
+        <li><a href="./15-scikit-learn-machine-learning.html"><span class="chapter-num">06</span> Classical Machine Learning with Scikit-Learn</a></li>
+        <li><a href="./16-pytorch-deep-learning.html"><span class="chapter-num">07</span> Modern Deep Learning Foundations with PyTorch</a></li>
+        <li><a href="./17-capstone-and-beyond.html"><span class="chapter-num">08</span> Capstone Synthesis & The AI Frontier</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-icme">Stanford CME193</span>
+            </div>
+            <h1 class="chapter-title">Chapter 05: Scientific Optimization & Differential Equations</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<h2 id="scipy-architecture">1. SciPy Subpackage Architecture</h2><p>While NumPy provides fast array operations, <strong>SciPy</strong> builds on top of it to provide higher-level numerical routines. SciPy is organized into subpackages covering specific scientific domains:</p><ul>
+<li><code>scipy.optimize</code>: Root finding, minimization, and curve fitting.</li>
+<li><code>scipy.integrate</code>: Quadrature and Ordinary Differential Equations (ODEs).</li>
+<li><code>scipy.interpolate</code>: Splines and grid interpolation.</li>
+<li><code>scipy.stats</code>: Continuous/discrete distributions and statistical tests.</li>
+<li><code>scipy.linalg</code>: Advanced linear algebra (extending <code>numpy.linalg</code>).</li>
+</ul><div class="concept-diagram">
+<pre>
+SciPy Ecosystem Layering
++-----------------------------------------------------+
+|                     SciPy                           |
+| (optimize, integrate, interpolate, stats, linalg)   |
++-----------------------------------------------------+
+|                     NumPy                           |
+| (N-dimensional Arrays, Vectorized Math, Broadcasting|
++-----------------------------------------------------+
+|                  C / Fortran                        |
+| (BLAS, LAPACK, MINPACK, ODEPACK)                    |
++-----------------------------------------------------+
+</pre>
+</div><h2 id="optimization">2. Mathematical Optimization</h2><p>Optimization is the process of finding the inputs to a function that result in its minimum (or maximum) value.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">from scipy.optimize import minimize
+import numpy as np
+
+# Rosenbrock function: a classic non-convex optimization test
+def rosenbrock(x):
+    return (1 - x[0])**2 + 100 * (x[1] - x[0]**2)**2
+
+# Minimize using the BFGS algorithm
+initial_guess = np.array([0.0, 0.0])
+result = minimize(rosenbrock, initial_guess, method='BFGS')
+print(f"Minimum at: {result.x}")
+</code></pre></div><h2 id="curve-fitting">3. Non-linear Parametric Curve Fitting</h2><p>In the physical sciences, we often want to fit a theoretical mathematical model to noisy experimental data using <code>curve_fit()</code>.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">from scipy.optimize import curve_fit
+
+# 1. Define the model
+def decaying_sine(t, A, gamma, omega):
+    return A * np.exp(-gamma * t) * np.cos(omega * t)
+
+# 2. Fit to data (t_data, y_data)
+popt, pcov = curve_fit(decaying_sine, t_data, y_data)
+A_opt, gamma_opt, omega_opt = popt
+</code></pre></div><h2 id="integration">4. Numerical Integration</h2><p>For integrating mathematical functions over a definite interval, SciPy provides <code>quad()</code> (adaptive quadrature).</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">from scipy.integrate import quad
+
+def integrand(x):
+    return np.exp(-x**2)
+
+# Integrate from 0 to infinity
+integral, error = quad(integrand, 0, np.inf)
+</code></pre></div><h2 id="odes">5. Ordinary Differential Equations (ODEs)</h2><p>To simulate dynamical systems over time (e.g., pendulums, chemical kinetics, population dynamics), we solve Initial Value Problems (IVPs) using <code>solve_ivp()</code>.</p><div class="callout-deepdive">
+<strong>Deep Dive: The State Vector</strong>
+            When solving ODEs in SciPy, you must rewrite higher-order ODEs as a system of first-order ODEs. The state vector $y$ contains all dependent variables. The ODE function must accept <code>(t, y)</code> and return the derivative <code>dy/dt</code>.
+        </div><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">from scipy.integrate import solve_ivp
+
+# Lotka-Volterra (Predator-Prey)
+def lotka_volterra(t, z, alpha, beta, delta, gamma):
+    x, y = z # x: prey, y: predators
+    dxdt = alpha * x - beta * x * y
+    dydt = delta * x * y - gamma * y
+    return [dxdt, dydt]
+
+# Solve from t=0 to t=15
+sol = solve_ivp(lotka_volterra, [0, 15], y0=[10, 5], args=(1.5, 1, 1, 3), dense_output=True)
+</code></pre></div><div class="exercise-box">
+<h3 id="exercise-1-root-finding">Exercise 1: Root Finding</h3>
+<p>Use <code>scipy.optimize.root_scalar</code> to find the root of the equation $f(x) = x^3 - 2x - 5$ in the interval [2, 3].</p>
+<details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">from scipy.optimize import root_scalar
+def f(x):
+    return x**3 - 2*x - 5
+
+result = root_scalar(f, bracket=[2, 3], method='brentq')
+print("Root:", result.root)
+</code></pre></div>
+</details>
+</div><div class="footnotes-section">
+<hr/>
+<p><strong>Footnotes:</strong><br/>
+            [1] Stanford CME193 Syllabus: Numerical Methods.<br/>
+            [2] CME193 Colab Lecture 6: SciPy &amp; Differential Equations.</p>
+</div><div class="chapter-nav">
+<a href="./13-pandas-data-science.html">← Previous: Chapter 13</a> | 
+            <a href="./15-scikit-learn-machine-learning.html">Next: Chapter 15 →</a>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./13-pandas-data-science.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">04. Tabular Data Science & Engineering with Pandas</span>
+            </a>
+            <a href="./15-scikit-learn-machine-learning.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">06. Classical Machine Learning with Scikit-Learn</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#scipy-architecture">1. SciPy Subpackage Architecture</a></li>
+          <li><a href="#optimization">2. Mathematical Optimization</a></li>
+          <li><a href="#curve-fitting">3. Non-linear Parametric Curve Fitting</a></li>
+          <li><a href="#integration">4. Numerical Integration</a></li>
+          <li><a href="#odes">5. Ordinary Differential Equations (ODEs)</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

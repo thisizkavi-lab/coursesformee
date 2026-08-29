@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 06: Classical Machine Learning with Scikit-Learn — Stanford CME193</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-icme">Stanford CME193</div>
+        <h2 class="sidebar-course-title">Introduction to Scientific Python</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./10-scientific-python-ecosystem.html"><span class="chapter-num">01</span> The Scientific Python Ecosystem & Performance</a></li>
+        <li><a href="./11-numpy-numerical-computing.html"><span class="chapter-num">02</span> High-Performance Numerical Computing with NumPy</a></li>
+        <li><a href="./12-computational-linear-algebra.html"><span class="chapter-num">03</span> Computational Linear Algebra, SVD & Least Squares</a></li>
+        <li><a href="./13-pandas-data-science.html"><span class="chapter-num">04</span> Tabular Data Science & Engineering with Pandas</a></li>
+        <li><a href="./14-scipy-scientific-computing.html"><span class="chapter-num">05</span> Scientific Optimization & Differential Equations</a></li>
+        <li><a href="./15-scikit-learn-machine-learning.html" class="active"><span class="chapter-num">06</span> Classical Machine Learning with Scikit-Learn</a></li>
+        <li><a href="./16-pytorch-deep-learning.html"><span class="chapter-num">07</span> Modern Deep Learning Foundations with PyTorch</a></li>
+        <li><a href="./17-capstone-and-beyond.html"><span class="chapter-num">08</span> Capstone Synthesis & The AI Frontier</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-icme">Stanford CME193</span>
+            </div>
+            <h1 class="chapter-title">Chapter 06: Classical Machine Learning with Scikit-Learn</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<h2 id="estimator-api">1. The Scikit-Learn Object Model</h2><p>Scikit-Learn's genius lies in its strict, unified API. Almost everything in the library acts as an <strong>Estimator</strong>. Objects typically implement <code>fit(X, y)</code> to learn from data, and either <code>predict(X)</code> (for models) or <code>transform(X)</code> (for data preprocessors).</p><div class="concept-diagram">
+<pre>
+Scikit-Learn API Geometry:
+[ Raw Data X_train ] ---&gt; ( fit() ) ---&gt; [ Internal Parameters Learned ]
+                                                  |
+[ New Data X_test  ] ---&gt; ( predict/transform ) --+--&gt; [ Predictions / Scaled Data ]
+</pre>
+</div><h2 id="preprocessing">2. Data Preprocessing &amp; Splitting</h2><p>Machine learning models require numerical, appropriately scaled data. Before training, we must split our data into training and hold-out testing sets to evaluate generalizability.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+scaler = StandardScaler()
+# FIT on train, TRANSFORM train
+X_train_scaled = scaler.fit_transform(X_train)
+# TRANSFORM test (DO NOT FIT ON TEST DATA!)
+X_test_scaled = scaler.transform(X_test)
+</code></pre></div><div class="callout-warning">
+<strong>Data Leakage Warning:</strong> Never call <code>fit()</code> or <code>fit_transform()</code> on your test set. The scaler must only learn parameters (like mean and variance) from the training set.
+        </div><h2 id="classification">3. Supervised Classification</h2><p>Classification predicts categorical labels (e.g., spam vs. not spam). Scikit-learn provides algorithms like Logistic Regression, Support Vector Machines (SVC), and Random Forests.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+clf = RandomForestClassifier(n_estimators=100, max_depth=5)
+clf.fit(X_train_scaled, y_train)
+
+y_pred = clf.predict(X_test_scaled)
+print(classification_report(y_test, y_pred))
+</code></pre></div><h2 id="regression">4. Supervised Regression</h2><p>Regression predicts continuous values (e.g., housing prices). Linear models can be heavily penalized (regularized) using Ridge (L2) or Lasso (L1) to prevent overfitting.</p><h2 id="unsupervised">5. Unsupervised Learning: PCA &amp; Clustering</h2><p>Unsupervised learning discovers hidden structure in unlabeled data. <strong>PCA (Principal Component Analysis)</strong> is an essential tool for dimensionality reduction, projecting high-dimensional data onto orthogonal axes of maximum variance.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">from sklearn.decomposition import PCA
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_train_scaled)
+# Now X is 2D and can be plotted on a scatter plot
+</code></pre></div><h2 id="pipelines">6. Encapsulation with Pipelines</h2><p>To strictly enforce sequence and prevent data leakage during Cross-Validation, we use <code>Pipeline</code>.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">from sklearn.pipeline import make_pipeline
+from sklearn.svm import SVC
+
+# Creates a single estimator that scales then fits SVC
+pipeline = make_pipeline(StandardScaler(), SVC(kernel='rbf'))
+pipeline.fit(X_train, y_train)
+accuracy = pipeline.score(X_test, y_test)
+</code></pre></div><div class="exercise-box">
+<h3 id="exercise-1-the-full-pipeline">Exercise 1: The Full Pipeline</h3>
+<p>Construct a Pipeline that applies Min-Max scaling followed by a Logistic Regression model. Fit it on <code>X_train</code>, <code>y_train</code> and score it on <code>X_test</code>.</p>
+<details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.linear_model import LogisticRegression
+
+pipe = make_pipeline(MinMaxScaler(), LogisticRegression())
+pipe.fit(X_train, y_train)
+print("Score:", pipe.score(X_test, y_test))
+</code></pre></div>
+</details>
+</div><div class="footnotes-section">
+<hr/>
+<p><strong>Footnotes:</strong><br/>
+            [1] Stanford CME193 Syllabus: Machine Learning.<br/>
+            [2] CME193 Colab Lecture 7: Scikit-learn pipelines.</p>
+</div><div class="chapter-nav">
+<a href="./14-scipy-scientific-computing.html">← Previous: Chapter 14</a> | 
+            <a href="./16-pytorch-deep-learning.html">Next: Chapter 16 →</a>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./14-scipy-scientific-computing.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">05. Scientific Optimization & Differential Equations</span>
+            </a>
+            <a href="./16-pytorch-deep-learning.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">07. Modern Deep Learning Foundations with PyTorch</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#estimator-api">1. The Scikit-Learn Object Model</a></li>
+          <li><a href="#preprocessing">2. Data Preprocessing & Splitting</a></li>
+          <li><a href="#classification">3. Supervised Classification</a></li>
+          <li><a href="#regression">4. Supervised Regression</a></li>
+          <li><a href="#unsupervised">5. Unsupervised Learning: PCA & Clustering</a></li>
+          <li><a href="#pipelines">6. Encapsulation with Pipelines</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

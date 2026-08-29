@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 01: Biological Scales & Statistical Mechanics of the Cell — Stanford APPHYS 205</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-apphys">Stanford APPHYS 205</div>
+        <h2 class="sidebar-course-title">Introduction to Biophysics</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./apphys205-01-scales-statistical-mechanics.html" class="active"><span class="chapter-num">01</span> Biological Scales & Statistical Mechanics of the Cell</a></li>
+        <li><a href="./apphys205-02-dna-elasticity-macromolecules.html"><span class="chapter-num">02</span> Polymer Physics & Macromolecular Elasticity</a></li>
+        <li><a href="./apphys205-03-low-reynolds-transport.html"><span class="chapter-num">03</span> Life at Low Reynolds Number & Diffusion Limits</a></li>
+        <li><a href="./apphys205-04-chemical-kinetics-allostery.html"><span class="chapter-num">04</span> Chemical Kinetics, Cooperativity & Allosteric Transitions</a></li>
+        <li><a href="./apphys205-05-molecular-motors-ratchets.html"><span class="chapter-num">05</span> Molecular Motors & Non-Equilibrium Ratchet Mechanisms</a></li>
+        <li><a href="./apphys205-06-kinetic-proofreading.html"><span class="chapter-num">06</span> Kinetic Proofreading & Dissipative Accuracy</a></li>
+        <li><a href="./apphys205-07-electrophysiology-action-potentials.html"><span class="chapter-num">07</span> Electrophysiology & The Hodgkin-Huxley Action Potential</a></li>
+        <li><a href="./apphys205-08-information-chemotaxis.html"><span class="chapter-num">08</span> Biological Information, Sensing & Bacterial Chemotaxis</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-apphys">Stanford APPHYS 205</span>
+            </div>
+            <h1 class="chapter-title">Chapter 01: Biological Scales & Statistical Mechanics of the Cell</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<section class="narrative">
+<h2 id="biological-scales">1. Length, Time, and Energy Scales</h2>
+<p>Before writing equations, we must orient ourselves in the universe of the cell. Biology happens at scales spanning 1 nm (the diameter of a DNA helix) to 10 μm (a typical mammalian cell). An E. coli bacterium is roughly a cylinder 1 μm in diameter and 2 μm long, possessing a volume of roughly 1 femtoliter ($10^{-15}$ L).</p>
+<p>At these scales, the dominant energy currency is thermal energy. The characteristic scale is defined by the product of Boltzmann's constant $k_B$ and the absolute temperature $T$. At room temperature (roughly 300 K), $k_B T \approx 4.1 \text{ pN} \cdot \text{nm}$.</p>
+<div class="callout-tip">
+<strong>Rule of Thumb:</strong> 
+                Always compare the energy of a biological interaction to $k_B T$. If a process involves energies much less than $k_B T$, it will be completely washed out by thermal noise. ATP hydrolysis releases about $20-25 \text{ } k_B T$, safely above the thermal noise floor, allowing directed work.
+            </div>
+<h2 id="statistical-mechanics">2. Statistical Mechanics &amp; The Boltzmann Distribution</h2>
+<p>Statistical mechanics connects the microscopic interactions of molecules to macroscopic observables. The cornerstone of equilibrium statistical mechanics is the Boltzmann distribution, which states that the probability $P_i$ of a system being in a specific microstate $i$ with energy $E_i$ is:</p>
+<p>$$P_i = \frac{1}{Z} e^{-E_i / k_B T}$$</p>
+<p>Where $Z = \sum_j e^{-E_j / k_B T}$ is the partition function, representing the sum over all possible microstates.</p>
+<h3 id="free-energy">Free Energy Minimization ($F = E - TS$)</h3>
+<p>We often care about macrostates—collections of microstates that look identical macroscopically. The probability of a macrostate depends on both its energy and its multiplicity (entropy, $S$). This gives rise to the Helmholtz Free Energy $F = E - TS$. Biological systems at equilibrium naturally minimize their free energy.</p>
+<div class="concept-diagram"><pre>
+Energy Landscape of a Two-State System (e.g., Protein Unfolding)
+
+       Folded State (F)                  Unfolded State (U)
+      (Low Energy, Low S)              (High Energy, High S)
+               |                                 |
+ E             |      Transition State           |
+ ^             |           __*_                  |
+ |             |          /    \                 |
+ |             |         /      \                |
+ |            _|_       /        \             _|_
+ |           |   |     /          \           |   |
+ |   --------|   |----/            \----------|   |-------
+ |           |___|                            |___|
+ |
+ +----------------------------------------------------------&gt; Reaction Coordinate
+            </pre></div>
+<h2 id="code-equilibrium">3. Computing Equilibrium Probabilities</h2>
+<p>Let's simulate a two-state system, such as an ion channel gating or protein unfolding, varying the energy difference and observing the thermal equilibrium probabilities.</p>
+<div class="code-block">
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+def two_state_probability(delta_E_kBT):
+    """
+    Computes the probability of being in state 2 given the energy difference
+    delta_E = E2 - E1 in units of k_B T.
+    """
+    # Partition function relative to state 1 (E1 = 0)
+    Z = 1 + np.exp(-delta_E_kBT)
+    P2 = np.exp(-delta_E_kBT) / Z
+    return P2
+
+energies = np.linspace(-5, 5, 100)
+probabilities = two_state_probability(energies)
+
+print(f"P(State 2) at ΔE = 0 kBT: {two_state_probability(0):.2f}")
+print(f"P(State 2) at ΔE = 3 kBT: {two_state_probability(3):.4f}")
+print(f"P(State 2) at ΔE = -3 kBT: {two_state_probability(-3):.4f}")
+</code></pre>
+</div>
+<div class="code-output">
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>P(State 2) at ΔE = 0 kBT: 0.50
+P(State 2) at ΔE = 3 kBT: 0.0474
+P(State 2) at ΔE = -3 kBT: 0.9526
+</code></pre></div>
+</div>
+<div class="exercise-box">
+<h3 id="exercise-ion-channel-voltage-gating">Exercise: Ion Channel Voltage Gating</h3>
+<p>Assume the energy difference between the open and closed states of an ion channel depends linearly on the transmembrane voltage $V$: $\Delta E(V) = q V + \Delta E_0$. Write a function to calculate the open probability as a function of voltage.</p>
+<details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">
+def p_open(V, q, dE0, T=300):
+    k_B = 1.38e-23  # J/K
+    k_BT = k_B * T
+    # Convert everything to Joules
+    delta_E = q * V + dE0
+    return 1 / (1 + np.exp(delta_E / k_BT))
+                    </code></pre></div>
+</details>
+</div>
+</section><div class="footnotes-section">
+<h3 id="references-further-reading">References &amp; Further Reading</h3>
+<ol>
+<li>Stanford APPHYS 205 Course Page (Prof. Benjamin H. Good &amp; Prof. Mark J. Schnitzer).</li>
+<li>Phillips, R., Kondev, J., Theriot, J., &amp; Garcia, H. (2012). Physical Biology of the Cell. Garland Science.</li>
+</ol>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="../index.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">All Courses</span>
+            </a>
+            <a href="./apphys205-02-dna-elasticity-macromolecules.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">02. Polymer Physics & Macromolecular Elasticity</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#biological-scales">1. Length, Time, and Energy Scales</a></li>
+          <li><a href="#statistical-mechanics">2. Statistical Mechanics & The Boltzmann Distribution</a></li>
+          <li><a href="#code-equilibrium">3. Computing Equilibrium Probabilities</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Setup Guide — CS106A</title>
+  <meta name="description" content="Step-by-step guide to installing Python 3, setting up PyCharm and VS Code, running code from the command line, and managing packages with pip.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <style>
+    .setup-page {
+      max-width: 860px;
+      margin: calc(var(--navbar-height) + 30px) auto 80px;
+      padding: 0 24px;
+    }
+    .os-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin: 24px 0 32px;
+    }
+    .os-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .os-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 0;
+      font-size: 1.15rem;
+    }
+    .step-badge {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      background: var(--color-accent);
+      color: #fff;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-right: 8px;
+    }
+    .terminal-window {
+      background: #1e1e1e;
+      border-radius: var(--radius-md);
+      border: 1px solid #333;
+      overflow: hidden;
+      margin: 16px 0 24px;
+    }
+    .terminal-header {
+      background: #2d2d2d;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+    .terminal-body {
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: #e0e0e0;
+      line-height: 1.6;
+      overflow-x: auto;
+    }
+    .terminal-prompt {
+      color: #61afef;
+    }
+    .terminal-cmd {
+      color: #fff;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Table of Contents</a></li>
+      <li><a href="../lessons/01-karel-computational-thinking.html">Start Reading</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="setup.html">Environment Setup</a></li>
+      <li><a href="https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1268/syllabus" target="_blank" rel="noopener">CS106A</a></li>
+      <li><a href="https://web.stanford.edu/class/cme193/syllabus.html" target="_blank" rel="noopener">CME193</a></li>
+    </ul>
+  </nav>
+
+  <div class="setup-page">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <h1 style="font-size: 2.4rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em;">⚙️ Python Setup Guide</h1>
+      <p style="font-size: 1.15rem; color: var(--color-text-muted); max-width: 650px; margin: 0 auto;">
+        Get your computer ready for CS106A: installing Python 3, configuring professional code editors, and using the command line.
+      </p>
+    </div>
+
+    <div class="callout callout-note">
+      <div class="callout-title">📌 Requirements</div>
+      <p>
+        You will need a computer running <strong>macOS</strong> (10.15+), <strong>Windows</strong> (10/11), or <strong>Linux</strong> (Ubuntu/Debian/Fedora). Chromebooks and iPad tablets can also run Python using cloud environments like Google Colab or Replit.
+      </p>
+    </div>
+
+    <hr>
+
+    <!-- Step 1: Installing Python 3 -->
+    <h2 style="margin-top: 40px; font-size: 1.5rem; font-weight: 700;">
+      <span class="step-badge">1</span> Installing Python 3
+    </h2>
+    <p>
+      CS106A uses modern <strong>Python 3 (version 3.10, 3.11, or 3.12)</strong>. Follow the instructions for your operating system:
+    </p>
+
+    <div class="os-grid">
+      <div class="os-card">
+        <h3>🍎 macOS</h3>
+        <p style="font-size: 0.9rem; color: var(--color-text-muted);">
+          1. Visit <a href="https://www.python.org/downloads/" target="_blank">python.org/downloads</a> and download the macOS 64-bit installer.
+          <br><br>2. Run the <code>.pkg</code> installer and click through the prompts.
+          <br><br>3. Open <strong>Terminal</strong> (Press <kbd>Cmd</kbd>+<kbd>Space</kbd>, type <code>Terminal</code>, press Enter) and verify:
+        </p>
+        <div class="code-block" style="margin: 8px 0 0;">
+          <pre><code class="language-bash">python3 --version</code></pre>
+        </div>
+      </div>
+
+      <div class="os-card">
+        <h3>🪟 Windows</h3>
+        <p style="font-size: 0.9rem; color: var(--color-text-muted);">
+          1. Visit <a href="https://www.python.org/downloads/" target="_blank">python.org/downloads</a> and download the Windows installer.
+          <br><br>2. <strong>Crucial:</strong> Check the box that says <strong>"Add python.exe to PATH"</strong> before clicking Install Now!
+          <br><br>3. Open <strong>Command Prompt</strong> or <strong>PowerShell</strong> and verify:
+        </p>
+        <div class="code-block" style="margin: 8px 0 0;">
+          <pre><code class="language-bash">python --version</code></pre>
+        </div>
+      </div>
+
+      <div class="os-card">
+        <h3>🐧 Linux</h3>
+        <p style="font-size: 0.9rem; color: var(--color-text-muted);">
+          Python 3 comes pre-installed on most modern Linux distributions. On Debian/Ubuntu systems, install the latest tools using apt:
+        </p>
+        <div class="code-block" style="margin: 8px 0 0;">
+          <pre><code class="language-bash">sudo apt update
+sudo apt install python3 python3-pip python3-venv</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Step 2: Code Editor Setup -->
+    <h2 style="margin-top: 40px; font-size: 1.5rem; font-weight: 700;">
+      <span class="step-badge">2</span> Choosing & Installing an Editor (IDE)
+    </h2>
+    <p>
+      An IDE (<em>Integrated Development Environment</em>) gives you syntax highlighting, auto-completion, error indicators, and a built-in terminal. Stanford CS106A recommends either <strong>PyCharm Community Edition</strong> or <strong>Visual Studio Code</strong>. Both are completely free.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-card" style="text-align: left;">
+        <div class="icon">💎</div>
+        <h3>PyCharm Community Edition</h3>
+        <p style="margin-bottom: 12px;"><strong>Stanford's Recommended Editor</strong></p>
+        <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+          Built specifically for Python by JetBrains. Comes out-of-the-box with intelligent autocomplete, integrated debugger, test runner, and virtual environment support.
+        </p>
+        <div style="margin-top: 16px;">
+          <a href="https://www.jetbrains.com/pycharm/download/" target="_blank" class="cta-btn" style="padding: 6px 14px; font-size: 0.85rem;">Download PyCharm (Free) ↗</a>
+        </div>
+      </div>
+
+      <div class="feature-card" style="text-align: left;">
+        <div class="icon">🟦</div>
+        <h3>Visual Studio Code (VS Code)</h3>
+        <p style="margin-bottom: 12px;"><strong>Industry Standard Lightweight Editor</strong></p>
+        <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+          Extremely popular, lightweight editor by Microsoft. After installing, search for the official <strong>"Python" extension</strong> by Microsoft in the Extensions tab (<kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd>).
+        </p>
+        <div style="margin-top: 16px;">
+          <a href="https://code.visualstudio.com/" target="_blank" class="cta-btn" style="padding: 6px 14px; font-size: 0.85rem; background: #0078d4;">Download VS Code (Free) ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Step 3: Running Your First Program -->
+    <h2 style="margin-top: 40px; font-size: 1.5rem; font-weight: 700;">
+      <span class="step-badge">3</span> Running Your First Python Program
+    </h2>
+    <p>
+      Create a new file named <code>hello.py</code> on your computer and type the following code:
+    </p>
+
+    <div class="code-block">
+      <div class="code-block-header">
+        <span class="code-block-lang">Python (hello.py)</span>
+        <button class="code-block-copy" type="button">Copy</button>
+      </div>
+      <pre><code class="language-python">def main():
+    print("Welcome to CS106A!")
+    name = input("What is your name? ")
+    print(f"Hello, {name}! Ready to write some code? 🚀")
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+    </div>
+
+    <p>
+      To run this program, open your command-line terminal, navigate to the folder where you saved <code>hello.py</code>, and type:
+    </p>
+
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <span class="terminal-dot dot-red"></span>
+        <span class="terminal-dot dot-yellow"></span>
+        <span class="terminal-dot dot-green"></span>
+        <span style="color: #888; font-size: 0.75rem; margin-left: 8px;">Terminal / Command Prompt</span>
+      </div>
+      <div class="terminal-body">
+        <span class="terminal-prompt">$ </span><span class="terminal-cmd">python3 hello.py</span><br>
+        Welcome to CS106A!<br>
+        What is your name? <span style="color: #98c379;">Karel</span><br>
+        Hello, Karel! Ready to write some code? 🚀
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Step 4: Essential Terminal Commands -->
+    <h2 style="margin-top: 40px; font-size: 1.5rem; font-weight: 700;">
+      <span class="step-badge">4</span> Essential Terminal / Command Line Cheat Sheet
+    </h2>
+    <p>
+      As a programmer, navigating directories via the terminal is a core daily skill. Here are the 5 commands you will use most often:
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Mac / Linux</th>
+          <th>Windows (PowerShell)</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>pwd</code></td>
+          <td><code>pwd</code> or <code>echo %cd%</code></td>
+          <td><strong>Print Working Directory:</strong> Shows full path of current folder.</td>
+        </tr>
+        <tr>
+          <td><code>ls</code></td>
+          <td><code>dir</code> or <code>ls</code></td>
+          <td><strong>List:</strong> Displays all files and subfolders in current folder.</td>
+        </tr>
+        <tr>
+          <td><code>cd foldername</code></td>
+          <td><code>cd foldername</code></td>
+          <td><strong>Change Directory:</strong> Enters a specific subfolder.</td>
+        </tr>
+        <tr>
+          <td><code>cd ..</code></td>
+          <td><code>cd ..</code></td>
+          <td><strong>Go Up:</strong> Moves one directory level up towards parent folder.</td>
+        </tr>
+        <tr>
+          <td><code>python3 script.py</code></td>
+          <td><code>python script.py</code></td>
+          <td><strong>Run Script:</strong> Executes the specified Python program.</td>
+        </tr>
+        <tr>
+          <td><code>python3 -i script.py</code></td>
+          <td><code>python -i script.py</code></td>
+          <td><strong>Interactive Mode:</strong> Runs the script and keeps interactive REPL open.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <!-- Step 5: Managing Packages with Pip -->
+    <h2 style="margin-top: 40px; font-size: 1.5rem; font-weight: 700;">
+      <span class="step-badge">5</span> Installing Libraries with <code>pip</code>
+    </h2>
+    <p>
+      Python's package manager, <code>pip</code>, allows you to install thousands of community-built libraries from the <a href="https://pypi.org/" target="_blank">Python Package Index (PyPI)</a>.
+    </p>
+
+    <div class="code-block">
+      <div class="code-block-header">
+        <span class="code-block-lang">Terminal</span>
+        <button class="code-block-copy" type="button">Copy</button>
+      </div>
+      <pre><code class="language-bash"># Install standard utilities
+pip install requests pillow pytest
+
+# Install the CME193 Scientific Python & Machine Learning Stack
+pip install numpy scipy pandas matplotlib scikit-learn
+pip install torch torchvision
+pip install jupyterlab
+</code></pre>
+    </div>
+
+    <div class="callout callout-tip">
+      <div class="callout-title">💡 Virtual Environments (Best Practice)</div>
+      <p>
+        When working on multiple Python projects, use virtual environments to keep each project's dependencies isolated:
+      </p>
+      <div class="code-block" style="margin-top: 10px;">
+        <pre><code class="language-bash">python3 -m venv myenv       # 1. Create a virtual environment folder
+source myenv/bin/activate   # 2. Activate on macOS/Linux (on Windows: myenv\Scripts\activate)
+pip install requests        # 3. Packages install inside myenv only!
+deactivate                  # 4. Exit virtual environment when done</code></pre>
+      </div>
+    </div>
+
+    <div class="callout callout-success" style="margin-top: 32px;">
+      <div class="callout-title">🎉 You're All Set!</div>
+      <p>
+        Your development environment is now fully configured. Head over to <a href="../lessons/01-karel-computational-thinking.html"><strong>Chapter 1: The Philosophy of Code & Karel the Robot</strong></a> and begin your journey!
+      </p>
+    </div>
+
+  </div>
+
+  <div class="landing-footer">
+    The Python & Scientific Computing Handbook · Synthesized from Stanford CS106A & CME193 · <a href="https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1268/syllabus" target="_blank" rel="noopener">CS106A Syllabus</a> · <a href="https://web.stanford.edu/class/cme193/syllabus.html" target="_blank" rel="noopener">CME193 Syllabus</a>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

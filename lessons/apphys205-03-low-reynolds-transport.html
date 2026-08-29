@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 03: Life at Low Reynolds Number & Diffusion Limits — Stanford APPHYS 205</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-apphys">Stanford APPHYS 205</div>
+        <h2 class="sidebar-course-title">Introduction to Biophysics</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./apphys205-01-scales-statistical-mechanics.html"><span class="chapter-num">01</span> Biological Scales & Statistical Mechanics of the Cell</a></li>
+        <li><a href="./apphys205-02-dna-elasticity-macromolecules.html"><span class="chapter-num">02</span> Polymer Physics & Macromolecular Elasticity</a></li>
+        <li><a href="./apphys205-03-low-reynolds-transport.html" class="active"><span class="chapter-num">03</span> Life at Low Reynolds Number & Diffusion Limits</a></li>
+        <li><a href="./apphys205-04-chemical-kinetics-allostery.html"><span class="chapter-num">04</span> Chemical Kinetics, Cooperativity & Allosteric Transitions</a></li>
+        <li><a href="./apphys205-05-molecular-motors-ratchets.html"><span class="chapter-num">05</span> Molecular Motors & Non-Equilibrium Ratchet Mechanisms</a></li>
+        <li><a href="./apphys205-06-kinetic-proofreading.html"><span class="chapter-num">06</span> Kinetic Proofreading & Dissipative Accuracy</a></li>
+        <li><a href="./apphys205-07-electrophysiology-action-potentials.html"><span class="chapter-num">07</span> Electrophysiology & The Hodgkin-Huxley Action Potential</a></li>
+        <li><a href="./apphys205-08-information-chemotaxis.html"><span class="chapter-num">08</span> Biological Information, Sensing & Bacterial Chemotaxis</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-apphys">Stanford APPHYS 205</span>
+            </div>
+            <h1 class="chapter-title">Chapter 03: Life at Low Reynolds Number & Diffusion Limits</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<section class="narrative">
+<h2 id="reynolds-number">1. The Reynolds Number in Microbiology</h2>
+<p>The Navier-Stokes equations dictate fluid dynamics. The relative importance of inertial forces versus viscous forces is captured by a dimensionless parameter known as the Reynolds number ($Re$):</p>
+<p>$$ Re = \frac{\rho v L}{\eta} $$</p>
+<p>For a human swimming in a pool, $Re \approx 10^4$ (inertia dominates). For an E. coli bacterium ($L \approx 1 \text{ } \mu\text{m}$, $v \approx 20 \text{ } \mu\text{m/s}$) in water ($\eta \approx 10^{-3} \text{ Pa}\cdot\text{s}$), $Re \approx 10^{-4}$. At these low Reynolds numbers, inertia is entirely negligible. If a swimming bacterium stops moving its flagella, it will coast to a halt in less than the diameter of an atom!</p>
+<h2 id="scallop-theorem">2. Purcell's Scallop Theorem</h2>
+<p>Because the Stokes equation (Navier-Stokes without the inertial terms) is time-reversible, any reciprocal motion (like a scallop opening and closing its shell) results in zero net displacement. To swim at low Reynolds number, an organism must employ non-reciprocal motion. E. coli achieves this by rotating a helical flagellum.</p>
+<div class="concept-diagram"><pre>
+Non-Reciprocal Motion (Helical Propeller)
+      
+       (Cell Body)
+         /-----\      Rotation
+        |       | ---&gt;   ~~~~===~~~~===~~~~=== (Helical Flagellum)
+         \-----/
+
+    * Does not look the same played forwards and backwards in time.
+    * Breaks time-reversibility -&gt; Net thrust generated.
+            </pre></div>
+<h2 id="diffusion">3. Brownian Motion &amp; The Berg-Purcell Limit</h2>
+<p>At the microscale, molecules move primarily by diffusion. The Stokes-Einstein relation connects the diffusion constant $D$ to temperature and fluid viscosity:</p>
+<p>$$ D = \frac{k_B T}{6 \pi \eta a} $$</p>
+<p>How well can a cell measure its environment? The Berg-Purcell limit describes the fundamental uncertainty in concentration measurement due to the random arrival of molecules at a receptor. The fractional error in estimating concentration $c$ over a time $\tau$ by a receptor of size $a$ is:</p>
+<p>$$ \frac{\delta c}{c} \approx \frac{1}{\sqrt{D a c \tau}} $$</p>
+<h2 id="code-berg-purcell">4. Simulating Berg-Purcell Sensory Noise</h2>
+<p>Let's write a short python script to compute the Berg-Purcell noise limit for a typical bacterial sensing task.</p>
+<div class="code-block">
+<pre><code class="language-python">import numpy as np
+
+def berg_purcell_error(c_uM, a_nm, tau_s, T_K=300, eta=1e-3):
+    """
+    Computes the fractional error (noise-to-signal ratio) of concentration sensing.
+    """
+    # Constants
+    k_B = 1.38e-23
+    N_A = 6.022e23
+    
+    # Unit conversions
+    a_m = a_nm * 1e-9
+    c_m3 = c_uM * 1e-6 * 1e3 * N_A  # molecules / m^3
+    
+    # Stokes-Einstein Diffusion (assume small molecule radius ~ 1nm)
+    r_molecule = 1e-9
+    D = (k_B * T_K) / (6 * np.pi * eta * r_molecule)
+    
+    # Berg-Purcell equation
+    variance = 1 / (D * a_m * c_m3 * tau_s)
+    fractional_error = np.sqrt(variance)
+    
+    return fractional_error
+
+error = berg_purcell_error(c_uM=1.0, a_nm=10.0, tau_s=1.0)
+print(f"Fractional Error for 1uM sensing over 1s: {error*100:.2f}%")
+</code></pre>
+</div>
+<div class="code-output">
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>Fractional Error for 1uM sensing over 1s: 1.05%
+</code></pre></div>
+</div>
+<div class="exercise-box">
+<h3 id="exercise-coasting-to-a-stop">Exercise: Coasting to a stop</h3>
+<p>Calculate analytically the coasting distance of a 1 micron bacterium swimming at 20 microns/sec if the driving force instantly drops to zero. Assume spherical geometry for simplicity.</p>
+<details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<p>Using $m \frac{dv}{dt} = -6\pi\eta r v$, the velocity decays exponentially with time constant $\tau = \frac{m}{6\pi\eta r}$. Integrating velocity to get distance gives $x_{coast} = v_0 \tau$. For E. coli, this distance is on the order of 0.1 Angstroms!</p>
+</details>
+</div>
+</section><div class="footnotes-section">
+<h3 id="references-further-reading">References &amp; Further Reading</h3>
+<ol>
+<li>Stanford APPHYS 205 Course Page.</li>
+<li>Purcell, E. M. (1977). Life at low Reynolds number. American Journal of Physics, 45(1), 3-11.</li>
+<li>Berg, H. C., &amp; Purcell, E. M. (1977). Physics of chemoreception. Biophysical journal, 20(2), 193-219.</li>
+</ol>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./apphys205-02-dna-elasticity-macromolecules.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">02. Polymer Physics & Macromolecular Elasticity</span>
+            </a>
+            <a href="./apphys205-04-chemical-kinetics-allostery.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">04. Chemical Kinetics, Cooperativity & Allosteric Transitions</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#reynolds-number">1. The Reynolds Number in Microbiology</a></li>
+          <li><a href="#scallop-theorem">2. Purcell's Scallop Theorem</a></li>
+          <li><a href="#diffusion">3. Brownian Motion & The Berg-Purcell Limit</a></li>
+          <li><a href="#code-berg-purcell">4. Simulating Berg-Purcell Sensory Noise</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

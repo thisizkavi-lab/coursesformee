@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 05: Molecular Motors & Non-Equilibrium Ratchet Mechanisms — Stanford APPHYS 205</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-apphys">Stanford APPHYS 205</div>
+        <h2 class="sidebar-course-title">Introduction to Biophysics</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./apphys205-01-scales-statistical-mechanics.html"><span class="chapter-num">01</span> Biological Scales & Statistical Mechanics of the Cell</a></li>
+        <li><a href="./apphys205-02-dna-elasticity-macromolecules.html"><span class="chapter-num">02</span> Polymer Physics & Macromolecular Elasticity</a></li>
+        <li><a href="./apphys205-03-low-reynolds-transport.html"><span class="chapter-num">03</span> Life at Low Reynolds Number & Diffusion Limits</a></li>
+        <li><a href="./apphys205-04-chemical-kinetics-allostery.html"><span class="chapter-num">04</span> Chemical Kinetics, Cooperativity & Allosteric Transitions</a></li>
+        <li><a href="./apphys205-05-molecular-motors-ratchets.html" class="active"><span class="chapter-num">05</span> Molecular Motors & Non-Equilibrium Ratchet Mechanisms</a></li>
+        <li><a href="./apphys205-06-kinetic-proofreading.html"><span class="chapter-num">06</span> Kinetic Proofreading & Dissipative Accuracy</a></li>
+        <li><a href="./apphys205-07-electrophysiology-action-potentials.html"><span class="chapter-num">07</span> Electrophysiology & The Hodgkin-Huxley Action Potential</a></li>
+        <li><a href="./apphys205-08-information-chemotaxis.html"><span class="chapter-num">08</span> Biological Information, Sensing & Bacterial Chemotaxis</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-apphys">Stanford APPHYS 205</span>
+            </div>
+            <h1 class="chapter-title">Chapter 05: Molecular Motors & Non-Equilibrium Ratchet Mechanisms</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<section class="narrative">
+<h2 id="kinesin-motor">1. Kinesin and Molecular Walking</h2>
+<p>Molecular motors like Kinesin and Myosin convert chemical energy (ATP hydrolysis, $\Delta G_{\text{ATP}} \approx 20-25 \text{ } k_B T$) into mechanical work. Kinesin "walks" along microtubules taking distinct 8 nm steps. It can produce forces up to roughly 6-7 pN before stalling.</p>
+<h2 id="flashing-ratchet">2. The Flashing Ratchet Model</h2>
+<p>At the nanoscale, thermal noise is violent. How do you move forward in a storm? You rectify the noise. The <strong>Feynman-Smoluchowski ratchet</strong> demonstrates that you cannot extract work from equilibrium thermal fluctuations. However, by coupling the system to a non-equilibrium chemical reaction (ATP hydrolysis), the potential energy landscape can "flash" between an asymmetric saw-tooth potential and a flat potential.</p>
+<div class="concept-diagram"><pre>
+State 1: Asymmetric Potential (ATP bound)
+      /\          /\
+     /  \        /  \
+    /    \      /    \
+___/      \____/      \___
+
+State 2: Flat Potential (ATP hydrolyzed, free diffusion)
+__________________________
+
+* When potential is flat, particle diffuses symmetrically.
+* When potential turns on, particle slides down the closest steep slope.
+* Net result: Directed motion to the right without a macroscopic "push"!
+            </pre></div>
+<div class="callout-warning">
+<strong>Crucial Insight:</strong> Motors do not "swim" or "push" their way through the fluid like macroscopic engines. They bias the probability of thermal fluctuations. The energy of ATP is spent to prevent backward steps, rectifying Brownian motion.
+            </div>
+<h2 id="code-ratchet">3. Simulating a 1D Langevin Flashing Ratchet</h2>
+<p>Let's simulate a particle undergoing Brownian motion, where the underlying potential toggles on and off.</p>
+<div class="code-block">
+<pre><code class="language-python">import numpy as np
+
+def simulate_flashing_ratchet(steps=10000, dt=0.01, flash_period=50):
+    """
+    Simulates a 1D flashing ratchet.
+    """
+    x = 0.0
+    trajectory = []
+    
+    for step in range(steps):
+        # Brownian noise step
+        dx_noise = np.random.normal(0, np.sqrt(2 * dt))
+        
+        # Determine if potential is ON or OFF
+        if (step // flash_period) % 2 == 0:
+            # ON state: Asymmetric force
+            # Simple saw-tooth gradient approximation
+            phase = x % 1.0
+            if phase &lt; 0.8:
+                force = -1.0  # Slow climb to the right
+            else:
+                force = 4.0   # Fast drop to the right
+        else:
+            # OFF state: Flat potential
+            force = 0.0
+            
+        dx_drift = force * dt
+        x += dx_drift + dx_noise
+        trajectory.append(x)
+        
+    return trajectory
+
+traj = simulate_flashing_ratchet()
+print(f"Final particle position: {traj[-1]:.2f} (Net directed motion!)")
+</code></pre>
+</div>
+<div class="code-output">
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>Final particle position: 42.15 (Net directed motion!)
+</code></pre></div>
+</div>
+</section><div class="footnotes-section">
+<h3 id="references-further-reading">References &amp; Further Reading</h3>
+<ol>
+<li>Stanford APPHYS 205 Course Page.</li>
+<li>Schnitzer, M. J., &amp; Block, S. M. (1997). Kinesin hydrolyses one ATP per 8-nm step. Nature, 388(6640), 386-390.</li>
+</ol>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./apphys205-04-chemical-kinetics-allostery.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">04. Chemical Kinetics, Cooperativity & Allosteric Transitions</span>
+            </a>
+            <a href="./apphys205-06-kinetic-proofreading.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">06. Kinetic Proofreading & Dissipative Accuracy</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#kinesin-motor">1. Kinesin and Molecular Walking</a></li>
+          <li><a href="#flashing-ratchet">2. The Flashing Ratchet Model</a></li>
+          <li><a href="#code-ratchet">3. Simulating a 1D Langevin Flashing Ratchet</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 01: The Scientific Python Ecosystem & Performance — Stanford CME193</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-icme">Stanford CME193</div>
+        <h2 class="sidebar-course-title">Introduction to Scientific Python</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./10-scientific-python-ecosystem.html" class="active"><span class="chapter-num">01</span> The Scientific Python Ecosystem & Performance</a></li>
+        <li><a href="./11-numpy-numerical-computing.html"><span class="chapter-num">02</span> High-Performance Numerical Computing with NumPy</a></li>
+        <li><a href="./12-computational-linear-algebra.html"><span class="chapter-num">03</span> Computational Linear Algebra, SVD & Least Squares</a></li>
+        <li><a href="./13-pandas-data-science.html"><span class="chapter-num">04</span> Tabular Data Science & Engineering with Pandas</a></li>
+        <li><a href="./14-scipy-scientific-computing.html"><span class="chapter-num">05</span> Scientific Optimization & Differential Equations</a></li>
+        <li><a href="./15-scikit-learn-machine-learning.html"><span class="chapter-num">06</span> Classical Machine Learning with Scikit-Learn</a></li>
+        <li><a href="./16-pytorch-deep-learning.html"><span class="chapter-num">07</span> Modern Deep Learning Foundations with PyTorch</a></li>
+        <li><a href="./17-capstone-and-beyond.html"><span class="chapter-num">08</span> Capstone Synthesis & The AI Frontier</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-icme">Stanford CME193</span>
+            </div>
+            <h1 class="chapter-title">Chapter 01: The Scientific Python Ecosystem & Performance</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<section id="revolution">
+<h2 id="10-1-the-scientific-computing-revolution">10.1 The Scientific Computing Revolution</h2>
+<p>Python is historically slow as an interpreted, dynamically-typed language. Yet, it dominates AI, Data Science, and Scientific Computing. How? Python serves as high-level "glue" for lightning-fast C and Fortran libraries.</p>
+</section><section id="cpython">
+<h2 id="10-2-cpython-execution-overhead">10.2 CPython Execution &amp; Overhead</h2>
+<p>In standard Python (CPython), everything is an object. An integer isn't just 4 bytes of memory—it's a <code>PyObject</code> struct containing a reference count, type pointer, and the actual value. This creates massive memory overhead and pointer indirection.</p>
+<div class="concept-diagram"><pre>
+Python List of Integers (Pointer Indirection):
+List Object -&gt; [ ptr1, ptr2, ptr3 ]
+                  |      |      |
+                  v      v      v
+              PyInt1  PyInt2 PyInt3
+            </pre></div>
+</section><section id="stack">
+<h2 id="10-3-the-scientific-stack-hierarchy">10.3 The Scientific Stack Hierarchy</h2>
+<p>To bypass Python's loops, the ecosystem relies on a stacked architecture:</p>
+<ul>
+<li><strong>BLAS/LAPACK (C/Fortran)</strong>: Deeply optimized math kernels.</li>
+<li><strong>NumPy</strong>: Exposes these kernels to Python via contiguous memory buffers.</li>
+<li><strong>SciPy / Pandas</strong>: Built on top of NumPy for algorithms and dataframes.</li>
+<li><strong>Scikit-Learn / PyTorch</strong>: Machine learning and auto-differentiation layered on top.</li>
+</ul>
+</section><section id="idioms">
+<h2 id="10-4-advanced-python-idioms">10.4 Advanced Python Idioms</h2>
+<p>Writing fast "pure" Python requires idiomatic constructs like comprehensions and generators.</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code># Generator expression (memory efficient, lazy evaluation)
+sum_squares = sum(x*x for x in range(10_000_000))
+print(sum_squares)</code></pre></div>
+</section><section id="case-study">
+<h2 id="10-5-case-study-monte-carlo-walk">10.5 Case Study: Monte Carlo Walk</h2>
+<p>Comparing a raw Python loop to vectorized execution (previewing Chapter 11).</p>
+<div class="callout-deepdive">
+<strong>Vectorization Advantage</strong>
+<p>A loop in Python doing 1 million math ops means 1 million dynamic type checks. Vectorization performs 1 type check and pushes the loop into native C.</p>
+</div>
+</section><section class="exercise-box">
+<h3 id="practice-exercises">Practice Exercises</h3>
+<p><strong>Exercise 1:</strong> Time a list comprehension vs a standard for-loop using the <code>time</code> module.</p>
+<details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>import time
+start = time.time()
+res = [x**2 for x in range(1000000)]
+print(f"Comp: {time.time() - start:.4f}s")</code></pre></div>
+</details>
+</section><div class="chapter-nav">
+<a class="prev-chapter" href="./09-algorithms-systems.html">← Chapter 9: Algorithms &amp; Systems</a>
+<a class="next-chapter" href="./11-numpy-numerical-computing.html">Chapter 11: NumPy →</a>
+</div><div class="footnotes-section">
+<hr/>
+<p>Sources: Stanford CME193 Syllabus, Colab Lecture 1 &amp; 2.</p>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="../index.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">All Courses</span>
+            </a>
+            <a href="./11-numpy-numerical-computing.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">02. High-Performance Numerical Computing with NumPy</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#10-1-the-scientific-computing-revolution">10.1 The Scientific Computing Revolution</a></li>
+          <li><a href="#10-2-cpython-execution-overhead">10.2 CPython Execution & Overhead</a></li>
+          <li><a href="#10-3-the-scientific-stack-hierarchy">10.3 The Scientific Stack Hierarchy</a></li>
+          <li><a href="#10-4-advanced-python-idioms">10.4 Advanced Python Idioms</a></li>
+          <li><a href="#10-5-case-study-monte-carlo-walk">10.5 Case Study: Monte Carlo Walk</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

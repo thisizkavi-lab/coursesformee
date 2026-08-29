@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 08: Biological Information, Sensing & Bacterial Chemotaxis — Stanford APPHYS 205</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-apphys">Stanford APPHYS 205</div>
+        <h2 class="sidebar-course-title">Introduction to Biophysics</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./apphys205-01-scales-statistical-mechanics.html"><span class="chapter-num">01</span> Biological Scales & Statistical Mechanics of the Cell</a></li>
+        <li><a href="./apphys205-02-dna-elasticity-macromolecules.html"><span class="chapter-num">02</span> Polymer Physics & Macromolecular Elasticity</a></li>
+        <li><a href="./apphys205-03-low-reynolds-transport.html"><span class="chapter-num">03</span> Life at Low Reynolds Number & Diffusion Limits</a></li>
+        <li><a href="./apphys205-04-chemical-kinetics-allostery.html"><span class="chapter-num">04</span> Chemical Kinetics, Cooperativity & Allosteric Transitions</a></li>
+        <li><a href="./apphys205-05-molecular-motors-ratchets.html"><span class="chapter-num">05</span> Molecular Motors & Non-Equilibrium Ratchet Mechanisms</a></li>
+        <li><a href="./apphys205-06-kinetic-proofreading.html"><span class="chapter-num">06</span> Kinetic Proofreading & Dissipative Accuracy</a></li>
+        <li><a href="./apphys205-07-electrophysiology-action-potentials.html"><span class="chapter-num">07</span> Electrophysiology & The Hodgkin-Huxley Action Potential</a></li>
+        <li><a href="./apphys205-08-information-chemotaxis.html" class="active"><span class="chapter-num">08</span> Biological Information, Sensing & Bacterial Chemotaxis</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-apphys">Stanford APPHYS 205</span>
+            </div>
+            <h1 class="chapter-title">Chapter 08: Biological Information, Sensing & Bacterial Chemotaxis</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<section class="narrative">
+<h2 id="information-theory">1. Biological Information Processing</h2>
+<p>Living systems must extract information from noisy environments. Concepts from Shannon's Information Theory—such as Entropy $H = -\sum p \log_2 p$ and Mutual Information $I(X;Y)$—are powerfully applied to determine the channel capacity of biological signaling networks.</p>
+<h2 id="chemotaxis">2. E. coli Run-and-Tumble Chemotaxis</h2>
+<p>E. coli is too small to measure spatial chemical gradients across its body length (the noise from diffusion swamps the signal). Instead, Berg and Brown (1972) discovered it uses a <strong>temporal comparison</strong>. It records the concentration now, compares it to the concentration a few seconds ago, and biases a random walk based on the derivative.</p>
+<p>The movement consists of straight "runs" and randomized "tumbles". If the cell senses life is getting better (positive temporal derivative of attractant), it lowers the tumbling frequency, thereby lengthening the runs up the gradient.</p>
+<div class="callout-deepdive">
+<strong>Perfect Adaptation (Integral Feedback):</strong>
+                To remain sensitive over a massive concentration range (from nM to mM), the receptor cluster undergoes biochemical methylation. This shifts the $K_D$ dynamically so the baseline tumbling rate always resets to exactly the same resting state, a feature mathematically equivalent to integral feedback control.
+            </div>
+<h2 id="code-chemotaxis">3. 2D Agent-Based Chemotaxis Simulation</h2>
+<p>We'll write a simplified 2D simulation showing a bacterium performing a biased random walk up an exponential gradient.</p>
+<div class="code-block">
+<pre><code class="language-python">import numpy as np
+
+def run_chemotaxis_sim(steps=1000):
+    # Field properties: C(x) = exp(x/100)
+    def conc(x): return np.exp(x/100.0)
+    
+    pos = np.array([0.0, 0.0])
+    angle = np.random.uniform(0, 2*np.pi)
+    velocity = 20.0  # um/s
+    dt = 0.1
+    
+    trajectory = [pos.copy()]
+    memory_C = conc(pos[0]) # initial memory
+    
+    for _ in range(steps):
+        current_C = conc(pos[0])
+        dC_dt = (current_C - memory_C) / dt
+        
+        # Base tumble probability
+        p_tumble = 0.1
+        if dC_dt &gt; 0:
+            # Life is getting better, tumble less!
+            p_tumble = 0.02
+            
+        if np.random.rand() &lt; p_tumble:
+            angle = np.random.uniform(0, 2*np.pi) # Tumble
+            
+        # Run
+        pos[0] += velocity * np.cos(angle) * dt
+        pos[1] += velocity * np.sin(angle) * dt
+        
+        memory_C = current_C # update memory
+        trajectory.append(pos.copy())
+        
+    return np.array(trajectory)
+
+traj = run_chemotaxis_sim(steps=500)
+print(f"Start pos: ({traj[0,0]:.1f}, {traj[0,1]:.1f})")
+print(f"End pos:   ({traj[-1,0]:.1f}, {traj[-1,1]:.1f})")
+print("Net motion should bias strongly toward +X axis (higher nutrient).")
+</code></pre>
+</div>
+<div class="code-output">
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>Start pos: (0.0, 0.0)
+End pos:   (452.3, 12.4)
+Net motion should bias strongly toward +X axis (higher nutrient).
+</code></pre></div>
+</div>
+</section><div class="footnotes-section">
+<h3 id="references-further-reading">References &amp; Further Reading</h3>
+<ol>
+<li>Stanford APPHYS 205 Course Page.</li>
+<li>Berg, H. C., &amp; Brown, D. A. (1972). Chemotaxis in Escherichia coli analysed by three-dimensional tracking. Nature, 239(5374), 500-504.</li>
+<li>Bialek, W. (2012). Biophysics: searching for principles. Princeton University Press.</li>
+</ol>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./apphys205-07-electrophysiology-action-potentials.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">07. Electrophysiology & The Hodgkin-Huxley Action Potential</span>
+            </a>
+            <a href="../index.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">All Courses</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#information-theory">1. Biological Information Processing</a></li>
+          <li><a href="#chemotaxis">2. E. coli Run-and-Tumble Chemotaxis</a></li>
+          <li><a href="#code-chemotaxis">3. 2D Agent-Based Chemotaxis Simulation</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

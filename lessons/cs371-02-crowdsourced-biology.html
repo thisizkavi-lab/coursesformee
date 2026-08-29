@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 02: Citizen Computing: Video Games for Molecular Design — Stanford CS371</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-icme">Stanford CS371</div>
+        <h2 class="sidebar-course-title">Computational Biology in Four Dimensions</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./cs371-01-simulations-allostery.html"><span class="chapter-num">01</span> Biomolecular Simulation & Allosteric Modulation</a></li>
+        <li><a href="./cs371-02-crowdsourced-biology.html" class="active"><span class="chapter-num">02</span> Citizen Computing: Video Games for Molecular Design</a></li>
+        <li><a href="./cs371-03-coevolutionary-genetics.html"><span class="chapter-num">03</span> Coevolutionary Couplings & Deep Generative Genetics</a></li>
+        <li><a href="./cs371-04-denovo-design-frontiers.html"><span class="chapter-num">04</span> Modern De Novo Protein Design Frontiers</a></li>
+        <li><a href="./cs371-05-physics-virtual-screening.html"><span class="chapter-num">05</span> Physics-Based Virtual Screening & Alchemical Free Energy</a></li>
+        <li><a href="./cs371-06-ml-docking-affinity.html"><span class="chapter-num">06</span> Machine Learning for Molecular Binding & Screening</a></li>
+        <li><a href="./cs371-07-cryoem-conformational-ensembles.html"><span class="chapter-num">07</span> Cryo-EM Heterogeneity & Conformational Landscapes</a></li>
+        <li><a href="./cs371-08-superresolution-localization.html"><span class="chapter-num">08</span> Super-Resolution Imaging & Localization Microscopy</a></li>
+        <li><a href="./cs371-09-whole-cell-dynamics.html"><span class="chapter-num">09</span> Whole-Cell Dynamics & Macro-Molecular Crowding</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-icme">Stanford CS371</span>
+            </div>
+            <h1 class="chapter-title">Chapter 02: Citizen Computing: Video Games for Molecular Design</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="reading-time">Reading Time: 45 mins | Part III</div><h2 id="gamification-in-scientific-discovery">Gamification in Scientific Discovery</h2><p>Automated algorithms excel at rapid local optimization, but human intuition remains unparalleled at navigating complex spatial topologies. By framing molecular design as a puzzle, projects like Foldit and EteRNA have crowdsourced solutions to protein folding and RNA design, often outperforming automated methods.</p><h2 id="deep-mental-model-human-intuition-vs-monte-carlo-sampling">Deep Mental Model: Human Intuition vs. Monte Carlo Sampling</h2><p>While an algorithm might blindly sample the local energy landscape via Monte Carlo methods, humans utilize global spatial planning, identifying large-scale topological shifts that algorithms struggle to cross.</p><div class="concept-diagram">
+<pre>
+Automated Monte Carlo:              Human Player:
+[Start] -&gt; [Local Min] -&gt; [Stuck]   [Start] ---&gt; (Identifies global pattern)
+   |                                            \
+   v                                             v
+ (Small random steps)                 (Large coordinated moves)
+                                                 |
+                                                 v
+                                          [Global Minimum]
+            </pre>
+</div><div class="callout-tip">
+<strong>Insight:</strong> Foldit players successfully discovered the crystal structure of an AIDS-causing retrovirus enzyme that had stumped scientists for a decade.
+        </div><h2 id="algorithmic-implementation-rna-secondary-structure-nussinov">Algorithmic Implementation: RNA Secondary Structure (Nussinov)</h2><p>Before designing RNA, we must predict how a sequence folds. The Nussinov dynamic programming algorithm predicts the secondary structure by maximizing base-pair matching.</p><div class="code-block">
+<pre><code>import numpy as np
+
+def nussinov(sequence):
+    """
+    Dynamic programming to find the maximum number of base pairs in an RNA sequence.
+    Valid pairs: A-U, C-G.
+    """
+    n = len(sequence)
+    dp = np.zeros((n, n))
+    
+    def is_pair(base1, base2):
+        pairs = {('A', 'U'), ('U', 'A'), ('C', 'G'), ('G', 'C')}
+        return (base1, base2) in pairs
+
+    for length in range(1, n):
+        for i in range(n - length):
+            j = i + length
+            # Case 1: i and j are paired
+            if is_pair(sequence[i], sequence[j]):
+                dp[i][j] = dp[i+1][j-1] + 1
+            # Case 2: i and j are not paired
+            dp[i][j] = max(dp[i][j], dp[i+1][j], dp[i][j-1])
+            # Case 3: Bifurcation
+            for k in range(i+1, j):
+                dp[i][j] = max(dp[i][j], dp[i][k] + dp[k+1][j])
+                
+    return dp[0][n-1]
+
+seq = "GCACG"
+max_pairs = nussinov(seq)
+print(f"Maximum base pairs for {seq}: {max_pairs}")
+</code></pre>
+</div><div class="code-output">
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>Maximum base pairs for GCACG: 2.0</code></pre></div>
+</div><div class="exercise-box" id="exercise">
+<h3 id="exercise-traceback">Exercise: Traceback</h3>
+<p>Modify the Nussinov algorithm to perform a traceback and return the actual base pairings in dot-bracket notation (e.g., `(..)`).</p>
+<details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<p>Create a recursive function that starts at `(0, n-1)`. Check which of the 3 recurrence relations yielded `dp[i][j]`. If it came from `i` and `j` pairing, record the pair and recurse on `(i+1, j-1)`. Otherwise, follow the path of the maximum value.</p>
+</details>
+</div><div class="footnotes-section">
+<p><strong>Footnotes:</strong> Stanford CS371 Jan 18 lecture, Foldit Nature and EteRNA PNAS papers.</p>
+</div><div class="chapter-nav">
+<a href="cs371-01-simulations-allostery.html">← Previous Chapter</a>
+<a href="cs371-03-coevolutionary-genetics.html">Next Chapter →</a>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./cs371-01-simulations-allostery.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">01. Biomolecular Simulation & Allosteric Modulation</span>
+            </a>
+            <a href="./cs371-03-coevolutionary-genetics.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">03. Coevolutionary Couplings & Deep Generative Genetics</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#gamification-in-scientific-discovery">Gamification in Scientific Discovery</a></li>
+          <li><a href="#deep-mental-model-human-intuition-vs-monte-carlo-sampling">Deep Mental Model: Human Intuition vs. Monte Carlo Sampling</a></li>
+          <li><a href="#algorithmic-implementation-rna-secondary-structure-nussinov">Algorithmic Implementation: RNA Secondary Structure (Nussinov)</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 08: Capstone Synthesis & The AI Frontier — Stanford CME193</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-icme">Stanford CME193</div>
+        <h2 class="sidebar-course-title">Introduction to Scientific Python</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./10-scientific-python-ecosystem.html"><span class="chapter-num">01</span> The Scientific Python Ecosystem & Performance</a></li>
+        <li><a href="./11-numpy-numerical-computing.html"><span class="chapter-num">02</span> High-Performance Numerical Computing with NumPy</a></li>
+        <li><a href="./12-computational-linear-algebra.html"><span class="chapter-num">03</span> Computational Linear Algebra, SVD & Least Squares</a></li>
+        <li><a href="./13-pandas-data-science.html"><span class="chapter-num">04</span> Tabular Data Science & Engineering with Pandas</a></li>
+        <li><a href="./14-scipy-scientific-computing.html"><span class="chapter-num">05</span> Scientific Optimization & Differential Equations</a></li>
+        <li><a href="./15-scikit-learn-machine-learning.html"><span class="chapter-num">06</span> Classical Machine Learning with Scikit-Learn</a></li>
+        <li><a href="./16-pytorch-deep-learning.html"><span class="chapter-num">07</span> Modern Deep Learning Foundations with PyTorch</a></li>
+        <li><a href="./17-capstone-and-beyond.html" class="active"><span class="chapter-num">08</span> Capstone Synthesis & The AI Frontier</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-icme">Stanford CME193</span>
+            </div>
+            <h1 class="chapter-title">Chapter 08: Capstone Synthesis & The AI Frontier</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<h2 id="full-synthesis">1. The Full Synthesis</h2><p>In CS106A, we learned the building blocks of computation—variables, memory models, control flow, functions, and object-oriented design. In CME193, we mapped these primitives onto the massive parallel scale of arrays, vectors, and computational graphs.</p><div class="concept-diagram">
+<pre>
+The Evolutionary Ladder of Abstraction:
+1. Karel the Robot (while loops, logic)
+2. Python Lists &amp; Dicts (Memory, Hashing)
+3. Object-Oriented Architecture (State + Behavior)
+4. NumPy / Pandas (Vectorization, Memory locality)
+5. PyTorch (Dynamic Graphs, Automatic Differentiation, GPU acceleration)
+</pre>
+</div><h2 id="software-architecture">2. Architecture of Real-World Software</h2><p>Scaling from a Jupyter Notebook to production software requires discipline. Modern engineering stacks use modular files, test-driven development with <code>pytest</code>, and environment managers (like <code>conda</code> or <code>pipenv</code>) to freeze dependencies.</p><div class="callout-note">
+<strong>Testing Strategy:</strong> Always write isolated unit tests for pure functions, and integration tests for modules that interact with file systems or external APIs.
+        </div><h2 id="cs106b-preview">3. Stanford CS106B Preview</h2><p>What comes next? <strong>CS106B (Programming Abstractions)</strong> shifts focus to algorithmic complexity (Big-O), recursion, and memory-managed languages like C++. You will learn how the data structures (Dictionaries, Lists) we took for granted in Python are physically built in memory using Pointers, Linked Lists, Trees, and Graphs.</p><h2 id="ai-landscape">4. The Modern AI &amp; Scientific Python Landscape</h2><p>The ecosystem evolves rapidly. Beyond PyTorch, you will encounter:</p><ul>
+<li><strong>Hugging Face Transformers:</strong> Open-source foundation models (LLMs) and embeddings.</li>
+<li><strong>JAX:</strong> High-performance array computing and automatic differentiation via XLA.</li>
+<li><strong>Polars / DuckDB:</strong> Next-generation data manipulation, surpassing Pandas in speed by using Rust/C++ multi-threading.</li>
+</ul><h2 id="capstone-blueprints">5. Capstone Project Blueprints</h2><p>Here are architectural outlines for major engineering feats bridging the skills you've acquired:</p><ul>
+<li><strong>Algorithmic Stock Optimizer:</strong> Use <code>pandas</code> for time-series ingestion, <code>numpy</code> for covariance matrices, and <code>scipy.optimize</code> for Markowitz mean-variance portfolio allocation.</li>
+<li><strong>Semantic Search Engine:</strong> Vectorize documents with PyTorch embeddings, compute cosine similarities using NumPy, and return the closest semantic matches.</li>
+<li><strong>Image Classifier Web App:</strong> A PyTorch ResNet model served behind a Flask/FastAPI REST backend, containerized via Docker.</li>
+</ul><div class="exercise-box">
+<h3 id="the-grand-capstone-challenge">The Grand Capstone Challenge</h3>
+<p>Design a system that downloads a tabular dataset, trains a Random Forest and a PyTorch neural network, compares their accuracy metrics, and saves the best model architecture to disk. <em>(Refer to the GitHub repository for full architectural solution and tests)</em>.</p>
+</div><div class="footnotes-section">
+<hr/>
+<p><strong>Footnotes:</strong><br/>
+            [1] Stanford CS106A &amp; CME193 Syllabi.<br/>
+            [2] Stanford CS106B: Programming Abstractions.<br/>
+            [3] Modern Scientific Stack Documentation: PyTorch, Polars, JAX.</p>
+</div><div class="chapter-nav">
+<a href="./16-pytorch-deep-learning.html">← Previous: Chapter 16</a> | 
+            <span class="disabled">Next: None (Grand Finale)</span>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./16-pytorch-deep-learning.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">07. Modern Deep Learning Foundations with PyTorch</span>
+            </a>
+            <a href="../index.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">All Courses</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#full-synthesis">1. The Full Synthesis</a></li>
+          <li><a href="#software-architecture">2. Architecture of Real-World Software</a></li>
+          <li><a href="#cs106b-preview">3. Stanford CS106B Preview</a></li>
+          <li><a href="#ai-landscape">4. The Modern AI & Scientific Python Landscape</a></li>
+          <li><a href="#capstone-blueprints">5. Capstone Project Blueprints</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

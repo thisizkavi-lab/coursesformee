@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programming Assignments — CS106A</title>
+  <meta name="description" content="Official programming assignments from Stanford CS106A: Karel the Robot, Khansole Academy, Sand Particle Simulation, Infinite Story, and Bajillion Calculator.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <style>
+    .assignments-page {
+      max-width: 960px;
+      margin: calc(var(--navbar-height) + 30px) auto 80px;
+      padding: 0 24px;
+    }
+    .assignment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin: 32px 0;
+    }
+    .assignment-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+    .assignment-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .assignment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .assignment-title-area {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .assignment-badge {
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: var(--color-accent-light);
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .assignment-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--color-text);
+    }
+    .assignment-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0;
+    }
+    .topic-tag {
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-light);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      color: var(--color-text-muted);
+    }
+    .assignment-desc {
+      color: var(--color-text);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .assignment-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-stanford {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      background: #8c1515; /* Stanford Cardinal Red */
+      color: #fff !important;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      text-decoration: none !important;
+      transition: background 0.15s;
+    }
+    .btn-stanford:hover {
+      background: #6e1010;
+    }
+    .related-lesson {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+    }
+    .related-lesson a {
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Table of Contents</a></li>
+      <li><a href="../lessons/01-karel-computational-thinking.html">Start Reading</a></li>
+      <li><a href="index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Environment Setup</a></li>
+      <li><a href="https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1268/syllabus" target="_blank" rel="noopener">CS106A</a></li>
+      <li><a href="https://web.stanford.edu/class/cme193/syllabus.html" target="_blank" rel="noopener">CME193</a></li>
+    </ul>
+  </nav>
+
+  <div class="assignments-page">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <h1 style="font-size: 2.4rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em;">📝 Programming Assignments</h1>
+      <p style="font-size: 1.15rem; color: var(--color-text-muted); max-width: 680px; margin: 0 auto;">
+        Hands-on programming assignments from Stanford CS106A. These projects solidify concepts from Karel algorithms to 2D simulations, dictionary engines, and OOP classes.
+      </p>
+    </div>
+
+    <div class="callout callout-note">
+      <div class="callout-title">💡 How to Complete Assignments</div>
+      <p>
+        Click <strong>View Stanford Handout ↗</strong> on any assignment below to view the official project specification, starter zip files, and grading criteria on Stanford's course archive. Make sure you have completed the <a href="../resources/setup.html">Python Setup Guide</a> before starting!
+      </p>
+    </div>
+
+    <div class="assignment-list">
+
+      <!-- Assignment 0 -->
+      <div class="assignment-card">
+        <div class="assignment-header">
+          <div class="assignment-title-area">
+            <span class="assignment-badge">Assignment 0</span>
+            <h2 class="assignment-name">Welcome to CS106A</h2>
+          </div>
+        </div>
+        <p class="assignment-desc">
+          Get acquainted with course logistics, software installation, and programming environment setup. Complete an introductory background survey and verify that your Python interpreter and IDE are correctly installed and configured.
+        </p>
+        <div class="assignment-topics">
+          <span class="topic-tag">Environment Setup</span>
+          <span class="topic-tag">PyCharm / VS Code</span>
+          <span class="topic-tag">Course Survey</span>
+        </div>
+        <div class="assignment-actions">
+          <a href="https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1268/assignments/0-welcome/" target="_blank" class="btn-stanford">
+            View Stanford Handout ↗
+          </a>
+          <span class="related-lesson">Related: <a href="../lessons/01-karel-computational-thinking.html">Chapter 1: The Philosophy of Code & Karel</a></span>
+        </div>
+      </div>
+
+      <!-- Assignment 1 -->
+      <div class="assignment-card">
+        <div class="assignment-header">
+          <div class="assignment-title-area">
+            <span class="assignment-badge">Assignment 1</span>
+            <h2 class="assignment-name">Karel the Robot</h2>
+          </div>
+        </div>
+        <p class="assignment-desc">
+          Program Karel the Robot to solve four iconic computational puzzles: Collect Newspaper, Arches & Columns repair, Checkerboard Karel, and Midpoint Finding. Master function decomposition, pre/post-conditions, loops, and conditional reasoning.
+        </p>
+        <div class="assignment-topics">
+          <span class="topic-tag">Karel Commands</span>
+          <span class="topic-tag">Function Decomposition</span>
+          <span class="topic-tag">While Loops</span>
+          <span class="topic-tag">Pre/Post Conditions</span>
+          <span class="topic-tag">Algorithmic Invariants</span>
+        </div>
+        <div class="assignment-actions">
+          <a href="https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1268/assignments/1-karel/" target="_blank" class="btn-stanford">
+            View Stanford Handout ↗
+          </a>
+          <span class="related-lesson">Related: <a href="../lessons/01-karel-computational-thinking.html">Chapter 1: Karel & Computational Thinking</a></span>
+        </div>
+      </div>
+
+      <!-- Assignment 2 -->
+      <div class="assignment-card">
+        <div class="assignment-header">
+          <div class="assignment-title-area">
+            <span class="assignment-badge">Assignment 2</span>
+            <h2 class="assignment-name">Khansole Academy & Computing Interest</h2>
+          </div>
+        </div>
+        <p class="assignment-desc">
+          Build interactive console programs in pure Python! Create Khansole Academy (an automated math tutor that generates addition problems and tracks consecutive correct answers) and a financial compound interest calculator with monthly payment schedules.
+        </p>
+        <div class="assignment-topics">
+          <span class="topic-tag">Variables & Expressions</span>
+          <span class="topic-tag">Random Number Generation</span>
+          <span class="topic-tag">While Loops & Counters</span>
+          <span class="topic-tag">Console I/O</span>
+          <span class="topic-tag">Float Precision</span>
+        </div>
+        <div class="assignment-actions">
+          <a href="https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1268/assignments/2-khansole/" target="_blank" class="btn-stanford">
+            View Stanford Handout ↗
+          </a>
+          <span class="related-lesson">Related: <a href="../lessons/02-python-fundamentals.html">Chapter 2: Python Fundamentals</a></span>
+        </div>
+      </div>
+
+      <!-- Assignment 3 -->
+      <div class="assignment-card">
+        <div class="assignment-header">
+          <div class="assignment-title-area">
+            <span class="assignment-badge">Assignment 3</span>
+            <h2 class="assignment-name">Sand (Falling Particle Simulation)</h2>
+          </div>
+        </div>
+        <p class="assignment-desc">
+          Implement a falling-sand physics simulation grid on a 2D canvas. Write algorithms that govern how grains of sand, rock barriers, and water particles fall straight down, tumble diagonally around obstacles, and interact on a grid in real time.
+        </p>
+        <div class="assignment-topics">
+          <span class="topic-tag">2D Lists (Grids)</span>
+          <span class="topic-tag">Nested Loops</span>
+          <span class="topic-tag">Grid Boundary Checking</span>
+          <span class="topic-tag">Cell-by-Cell Physics</span>
+          <span class="topic-tag">Doctests</span>
+        </div>
+        <div class="assignment-actions">
+          <a href="https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1268/assignments/3-sand/" target="_blank" class="btn-stanford">
+            View Stanford Handout ↗
+          </a>
+          <span class="related-lesson">Related: <a href="../lessons/06-grids-images.html">Chapter 6: Grids & Image Processing</a></span>
+        </div>
+      </div>
+
+      <!-- Assignment 4 -->
+      <div class="assignment-card">
+        <div class="assignment-header">
+          <div class="assignment-title-area">
+            <span class="assignment-badge">Assignment 4</span>
+            <h2 class="assignment-name">Infinite Story (Text Adventure Engine)</h2>
+          </div>
+        </div>
+        <p class="assignment-desc">
+          Build a dynamic, data-driven "choose your own adventure" game engine using nested Python dictionaries. Parse story definition files, model branching narrative graphs, track player inventory and state transitions, and explore AI story generation.
+        </p>
+        <div class="assignment-topics">
+          <span class="topic-tag">Nested Dictionaries</span>
+          <span class="topic-tag">File Parsing</span>
+          <span class="topic-tag">State Machines</span>
+          <span class="topic-tag">String Tokenization</span>
+          <span class="topic-tag">Interactive CLI</span>
+        </div>
+        <div class="assignment-actions">
+          <a href="https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1268/assignments/4-infinite/" target="_blank" class="btn-stanford">
+            View Stanford Handout ↗
+          </a>
+          <span class="related-lesson">Related: <a href="../lessons/07-dictionaries-files.html">Chapter 7: Hash Maps & Dictionaries</a></span>
+        </div>
+      </div>
+
+      <!-- Assignment 5 -->
+      <div class="assignment-card">
+        <div class="assignment-header">
+          <div class="assignment-title-area">
+            <span class="assignment-badge">Assignment 5</span>
+            <h2 class="assignment-name">Bajillion (Large Number Calculator)</h2>
+          </div>
+        </div>
+        <p class="assignment-desc">
+          Create an arbitrary-precision numerical calculator using custom Object-Oriented classes. Implement digit-by-digit addition and multiplication algorithms to perform exact arithmetic on numbers containing thousands of digits without integer overflow.
+        </p>
+        <div class="assignment-topics">
+          <span class="topic-tag">Class Design</span>
+          <span class="topic-tag">Operator Overloading</span>
+          <span class="topic-tag">__init__, __str__, __add__</span>
+          <span class="topic-tag">Digit Arrays</span>
+          <span class="topic-tag">Unit Testing</span>
+        </div>
+        <div class="assignment-actions">
+          <a href="https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1268/assignments/5-bajillion/" target="_blank" class="btn-stanford">
+            View Stanford Handout ↗
+          </a>
+          <span class="related-lesson">Related: <a href="../lessons/08-object-oriented-programming.html">Chapter 8: Object-Oriented Architecture</a></span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Attribution & Footer Note -->
+    <div class="callout callout-tip" style="margin-top: 40px;">
+      <div class="callout-title">🎓 Stanford Course Copyright</div>
+      <p>
+        All assignment specifications, handouts, and starter zip files are property of Stanford University CS106A (Summer 2026). This webbook provides references and study guides for independent learners.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="landing-footer">
+    Based on Stanford CS106A · Built as an interactive learning companion · <a href="https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1268/syllabus" target="_blank">Original Course</a>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

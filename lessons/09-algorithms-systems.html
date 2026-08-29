@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 09: Algorithms, Search Engines, Web APIs & Ethics — Stanford CS106A</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-stanford">Stanford CS106A</div>
+        <h2 class="sidebar-course-title">Programming Methodology</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./01-karel-computational-thinking.html"><span class="chapter-num">01</span> The Philosophy of Code & Karel the Robot</a></li>
+        <li><a href="./02-python-fundamentals.html"><span class="chapter-num">02</span> Python Fundamentals & The Memory Box Model</a></li>
+        <li><a href="./03-control-flow-logic.html"><span class="chapter-num">03</span> Logic, Conditionals & Iteration Invariants</a></li>
+        <li><a href="./04-functions-decomposition.html"><span class="chapter-num">04</span> Functions, Decomposition & The Call Stack</a></li>
+        <li><a href="./05-strings-lists.html"><span class="chapter-num">05</span> Sequential Structures: Strings, Lists & Mutability</a></li>
+        <li><a href="./06-grids-images.html"><span class="chapter-num">06</span> Multi-Dimensional Data & Image Processing</a></li>
+        <li><a href="./07-dictionaries-files.html"><span class="chapter-num">07</span> Associative Arrays: Hash Maps, Dicts & Files</a></li>
+        <li><a href="./08-object-oriented-programming.html"><span class="chapter-num">08</span> Object-Oriented Architecture & Special Methods</a></li>
+        <li><a href="./09-algorithms-systems.html" class="active"><span class="chapter-num">09</span> Algorithms, Search Engines, Web APIs & Ethics</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-stanford">Stanford CS106A</span>
+            </div>
+            <h1 class="chapter-title">Chapter 09: Algorithms, Search Engines, Web APIs & Ethics</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<section id="custom-sorting">
+<h2 id="9-1-custom-sorting-in-python">9.1 Custom Sorting in Python</h2>
+<p>Sorting data efficiently is fundamental in computer science. Python provides two built-in mechanisms for sorting: the <code>sorted()</code> function and the in-place <code>.sort()</code> list method.</p>
+<div class="callout-tip">
+<strong>In-Place vs. New Object</strong>
+<p><code>my_list.sort()</code> modifies the list directly and returns <code>None</code> (in-place operation), while <code>sorted(my_iterable)</code> creates and returns a brand-new list without modifying the original data.</p>
+</div>
+<h3 id="the-key-parameter-and-lambda-expressions">The <code>key=</code> Parameter and Lambda Expressions</h3>
+<p>Often, we need to sort complex objects. Python’s sorting functions accept a <code>key</code> parameter—a function that extracts a comparison key from each element.</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>students = [('Alice', 88), ('Bob', 95), ('Charlie', 72)]
+# Sort by score (the second element in the tuple)
+sorted_students = sorted(students, key=lambda student: student[1])
+print(sorted_students)</code></pre></div>
+<div class="output-block"><code>[('Charlie', 72), ('Alice', 88), ('Bob', 95)]</code></div>
+</section><section id="search-engines">
+<h2 id="9-2-information-retrieval-search-engines">9.2 Information Retrieval &amp; Search Engines</h2>
+<p>Search engines process vast collections of text to instantly find documents matching user queries. This requires transforming natural language into structured data.</p>
+<h3 id="forward-vs-inverted-indices">Forward vs. Inverted Indices</h3>
+<p>A <strong>Forward Index</strong> maps documents to the words they contain. It's easy to build but terribly slow for search, requiring scanning every document. An <strong>Inverted Index</strong> reverses this mapping: it maps words to the documents that contain them.</p>
+<div class="concept-diagram"><pre>
+Forward Index (Doc -&gt; Words)        Inverted Index (Word -&gt; Docs)
+Doc1: [apple, banana, apple]  ==&gt;   apple:  [Doc1, Doc2]
+Doc2: [apple, cherry]               banana: [Doc1]
+                                    cherry: [Doc2]
+            </pre></div>
+<h3 id="query-execution-boolean-intersections">Query Execution (Boolean Intersections)</h3>
+<p>When searching for multiple terms like "apple AND banana", the search engine simply computes the set intersection of the document lists for "apple" and "banana".</p>
+</section><section id="networking">
+<h2 id="9-3-client-server-architecture-the-internet">9.3 Client-Server Architecture &amp; The Internet</h2>
+<p>The web operates on the client-server model, utilizing a hierarchy of protocols to ensure reliable communication across a decentralized network.</p>
+<h3 id="http-and-rest-apis">HTTP and REST APIs</h3>
+<p>HyperText Transfer Protocol (HTTP) is the language of the web. Modern systems interact via APIs using formats like JSON (JavaScript Object Notation).</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>import json
+import urllib.request
+
+url = "https://api.github.com/users/octocat"
+response = urllib.request.urlopen(url)
+data = json.loads(response.read().decode('utf-8'))
+print(data["name"])</code></pre></div>
+<div class="output-block"><code>The Octocat</code></div>
+</section><section id="ethics">
+<h2 id="9-4-ethics-in-computing">9.4 Ethics in Computing</h2>
+<p>Code is not neutral. As software engineers, our systems impact millions of lives. Algorithmic bias occurs when models perpetuate historical discrimination, often through proxy variables (e.g., zip codes proxying for race).</p>
+<div class="callout-warning">
+<strong>Facial Recognition Disparities</strong>
+<p>Studies (like the Gender Shades project) have shown massive demographic disparities in facial recognition systems, with significantly higher error rates for darker-skinned females due to unrepresentative training data.</p>
+</div>
+</section><section class="exercise-box">
+<h3 id="practice-exercises">Practice Exercises</h3>
+<p><strong>Exercise 1:</strong> Write a function <code>build_index(docs)</code> that takes a list of strings and returns an inverted index (dictionary).</p>
+<details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>def build_index(docs):
+    index = {}
+    for i, doc in enumerate(docs):
+        words = set(doc.lower().split())
+        for word in words:
+            if word not in index:
+                index[word] = set()
+            index[word].add(i)
+    return index</code></pre></div>
+</details>
+</section><div class="chapter-nav">
+<a class="prev-chapter" href="./08-object-oriented-programming.html">← Chapter 8: OOP</a>
+<a class="next-chapter" href="./10-scientific-python-ecosystem.html">Chapter 10: Scientific Stack →</a>
+</div><div class="footnotes-section">
+<hr/>
+<p>Sources: Stanford CS106A Syllabus, Lectures 15-20, Sections 6-7.</p>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./08-object-oriented-programming.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">08. Object-Oriented Architecture & Special Methods</span>
+            </a>
+            <a href="../index.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">All Courses</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#9-1-custom-sorting-in-python">9.1 Custom Sorting in Python</a></li>
+          <li><a href="#9-2-information-retrieval-search-engines">9.2 Information Retrieval & Search Engines</a></li>
+          <li><a href="#9-3-client-server-architecture-the-internet">9.3 Client-Server Architecture & The Internet</a></li>
+          <li><a href="#9-4-ethics-in-computing">9.4 Ethics in Computing</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

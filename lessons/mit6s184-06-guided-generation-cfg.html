@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 06: Guided Generation & Classifier-Free Guidance (CFG) — MIT 6.S184</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-mit">MIT 6.S184</div>
+        <h2 class="sidebar-course-title">Flow Matching & Diffusion Models</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./mit6s184-01-generative-foundations-sde.html"><span class="chapter-num">01</span> Generative Foundations, ODEs & Stochastic Calculus</a></li>
+        <li><a href="./mit6s184-02-continuous-flows-flow-matching.html"><span class="chapter-num">02</span> Continuous Normalizing Flows & Conditional Flow Matching</a></li>
+        <li><a href="./mit6s184-03-score-matching-diffusion-sde.html"><span class="chapter-num">03</span> Score-Based Diffusion Models & Reverse-Time SDEs</a></li>
+        <li><a href="./mit6s184-04-probability-flow-ode-likelihood.html"><span class="chapter-num">04</span> The Probability Flow ODE, Exact Likelihood & Hutchinson Trace</a></li>
+        <li><a href="./mit6s184-05-optimal-transport-ot-cfm.html"><span class="chapter-num">05</span> Optimal Transport Flow Matching (OT-CFM) & Straight Paths</a></li>
+        <li><a href="./mit6s184-06-guided-generation-cfg.html" class="active"><span class="chapter-num">06</span> Guided Generation & Classifier-Free Guidance (CFG)</a></li>
+        <li><a href="./mit6s184-07-latent-flows-diffusion-transformers.html"><span class="chapter-num">07</span> Latent Flow Matching, DiT & Multimodal Architectures</a></li>
+        <li><a href="./mit6s184-08-fast-solvers-rectified-distillation.html"><span class="chapter-num">08</span> Fast Solvers, Rectified Flow & Few-Step Distillation</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-mit">MIT 6.S184</span>
+            </div>
+            <h1 class="chapter-title">Chapter 06: Guided Generation & Classifier-Free Guidance (CFG)</h1>
+          </header>
+
+          <div class="chapter-body">
+            <h2 id="conditional-generative-modeling">Conditional Generative Modeling</h2><p>To control what a generative model creates, we condition generation on some context $c$ (e.g., text, classes), modeling $p(x|c)$. By Bayes' rule on scores, we have:
+  $$\nabla_x \log p_t(x|c) = \nabla_x \log p_t(x) + \nabla_x \log p_t(c|x)$$
+  This formulation led to Classifier Guidance, using a pre-trained noisy classifier to guide the unconditional score.</p><h2 id="classifier-free-guidance-cfg">Classifier-Free Guidance (CFG)</h2><p>Jonathan Ho and Tim Salimans introduced Classifier-Free Guidance (CFG) to eliminate the need for a separate classifier. Instead, the model is trained jointly for conditional and unconditional generation. During training, we drop the condition (replacing it with a null token $c = \emptyset$) with some probability $p_{\text{uncond}} \approx 10\%-20\%$.</p><p>During inference, we extrapolate between the unconditional and conditional predictions. For flow matching / diffusion, the guided vector field $\tilde{v}_t$ is:
+  $$\tilde{v}_t(x, c) = v_t(x, \emptyset) + w(v_t(x, c) - v_t(x, \emptyset))$$
+  where $w &gt; 1$ is the guidance scale. This yields a strong trade-off between sample quality/fidelity (lower FID) and diversity.</p><div class="callout-note">
+<strong>Note:</strong> Very high guidance scales $w$ can push samples out of distribution. Dynamic thresholding and clip guidance are techniques to mitigate this.
+  </div><h2 id="code-classifier-free-guidance-in-pytorch">Code: Classifier-Free Guidance in PyTorch</h2><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre class="code-block"><code class="language-python">
+import torch
+
+def cfg_sample_step(model, x_t, t, c, w=3.0):
+    """
+    Performs a single step of CFG prediction for vector field.
+    w: guidance scale (typically &gt; 1.0)
+    """
+    # Batch size
+    B = x_t.shape[0]
+    
+    # Create batched inputs for parallel execution of conditional and unconditional
+    # [x_t, x_t]
+    x_in = torch.cat([x_t, x_t], dim=0)
+    t_in = torch.cat([t, t], dim=0)
+    
+    # Null condition (e.g., zero tensor or specific learned embedding)
+    c_null = torch.zeros_like(c)
+    c_in = torch.cat([c, c_null], dim=0)
+    
+    # Forward pass
+    v_pred = model(x_in, t_in, c_in)
+    
+    # Split predictions
+    v_cond, v_uncond = torch.chunk(v_pred, 2, dim=0)
+    
+    # Apply CFG formula
+    v_guided = v_uncond + w * (v_cond - v_uncond)
+    
+    return v_guided
+  </code></pre></div><div class="exercise-box">
+<h3 id="exercise-1-implement-dynamic-thresholding">Exercise 1: Implement Dynamic Thresholding</h3>
+<p>High CFG scales can cause values to exceed the valid range [-1, 1]. Implement dynamic thresholding on the predicted data to scale it back safely.</p>
+<details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>
+def dynamic_thresholding(x_pred, p=0.99):
+    s = torch.quantile(torch.abs(x_pred.view(x_pred.size(0), -1)), p, dim=1)
+    s = torch.clamp(s, min=1.0)
+    s = s.view(-1, 1, 1, 1) # reshape for images
+    return torch.clamp(x_pred, -s, s) / s
+      </code></pre></div>
+</details>
+</div><div class="footnotes-section">
+<p>Footnotes: Reference MIT 6.S184 (diffusion.csail.mit.edu). See also Ho &amp; Salimans, Classifier-Free Diffusion Guidance.</p>
+</div><div class="chapter-nav">
+<a href="./mit6s184-05-optimal-transport-ot-cfm.html">Previous: Chapter 58</a>
+<a href="./mit6s184-07-latent-flows-diffusion-transformers.html">Next: Chapter 60</a>
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./mit6s184-05-optimal-transport-ot-cfm.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">05. Optimal Transport Flow Matching (OT-CFM) & Straight Paths</span>
+            </a>
+            <a href="./mit6s184-07-latent-flows-diffusion-transformers.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">07. Latent Flow Matching, DiT & Multimodal Architectures</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#conditional-generative-modeling">Conditional Generative Modeling</a></li>
+          <li><a href="#classifier-free-guidance-cfg">Classifier-Free Guidance (CFG)</a></li>
+          <li><a href="#code-classifier-free-guidance-in-pytorch">Code: Classifier-Free Guidance in PyTorch</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

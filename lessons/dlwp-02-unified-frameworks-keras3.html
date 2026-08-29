@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 02: The Multi-Backend Paradigm: TensorFlow, PyTorch, JAX & Keras 3 — Chollet · Keras 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-dlwp">Chollet · Keras 3</div>
+        <h2 class="sidebar-course-title">Deep Learning with Python</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./dlwp-01-what-is-deep-learning-tensors.html"><span class="chapter-num">01</span> What is Deep Learning & Tensor Mathematical Foundations</a></li>
+        <li><a href="./dlwp-02-unified-frameworks-keras3.html" class="active"><span class="chapter-num">02</span> The Multi-Backend Paradigm: TensorFlow, PyTorch, JAX & Keras 3</a></li>
+        <li><a href="./dlwp-03-classification-regression-workflows.html"><span class="chapter-num">03</span> Core Workflows: Classification, Regression & Generalization</a></li>
+        <li><a href="./dlwp-04-convnets-computer-vision.html"><span class="chapter-num">04</span> Modern Computer Vision: ConvNets, Residuals & Grad-CAM</a></li>
+        <li><a href="./dlwp-05-segmentation-object-detection.html"><span class="chapter-num">05</span> Advanced Vision: Semantic Segmentation (U-Net) & Detection</a></li>
+        <li><a href="./dlwp-06-sequences-timeseries-rnns.html"><span class="chapter-num">06</span> Sequential Modeling & Timeseries Forecasting (GRUs/LSTMs)</a></li>
+        <li><a href="./dlwp-07-transformers-language-models.html"><span class="chapter-num">07</span> Attention Mechanisms, Transformers & Self-Supervised Models</a></li>
+        <li><a href="./dlwp-08-generative-ai-text-llms.html"><span class="chapter-num">08</span> Generative AI for Text: Causal Decoders & Modern LLMs</a></li>
+        <li><a href="./dlwp-09-diffusion-models-image-generation.html"><span class="chapter-num">09</span> Generative Vision: VAEs & Latent Diffusion Models</a></li>
+        <li><a href="./dlwp-10-production-mlops-future.html"><span class="chapter-num">10</span> Production Engineering, Multi-GPU Scaling & The Future of AI</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-dlwp">Chollet · Keras 3</span>
+            </div>
+            <h1 class="chapter-title">Chapter 02: The Multi-Backend Paradigm: TensorFlow, PyTorch, JAX & Keras 3</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="chapter-header">
+<div class="badge">Part III · Deep Learning Foundations</div>
+
+<p class="subtitle">Mastering the modern deep learning stack with backend-agnostic workflows.</p>
+<p class="reading-time">⏱️ Reading Time: 35 mins</p>
+</div><h2 id="landscape">The Multi-Framework Landscape</h2><p>The deep learning landscape has evolved significantly. While TensorFlow initially dominated with static graphs, PyTorch brought the eager execution revolution, and JAX introduced highly optimized functional transformations.</p><h3 id="frameworks">PyTorch, TensorFlow, and JAX</h3><ul>
+<li><strong>PyTorch:</strong> Known for its Pythonic, imperative style and dynamic computational graphs.</li>
+<li><strong>TensorFlow:</strong> An expansive ecosystem prioritizing scalable production deployment.</li>
+<li><strong>JAX:</strong> Focused on composable functional transformations (<code>jax.grad</code>, <code>jax.jit</code>, <code>jax.vmap</code>) on NumPy-like arrays.</li>
+</ul><div class="callout callout-note">
+<strong>Keras 3 Multi-Backend Architecture</strong>
+<p>Keras 3 allows you to write models once and run them on PyTorch, TensorFlow, or JAX transparently using the <code>keras.ops</code> module, which mirrors the NumPy API but works across all three backends.</p>
+</div><h2 id="keras-ops">Writing Backend-Agnostic Custom Layers</h2><p>By using <code>keras.ops</code> instead of backend-specific operations (like <code>tf.matmul</code> or <code>torch.matmul</code>), your custom layers become universally compatible.</p><div class="code-block">
+<pre><code>import keras
+from keras import layers
+import keras.ops as ops
+
+class CustomAttentionLayer(layers.Layer):
+    def __init__(self, units, **kwargs):
+        super().__init__(**kwargs)
+        self.units = units
+
+    def build(self, input_shape):
+        dim = input_shape[-1]
+        self.W_q = self.add_weight(shape=(dim, self.units), initializer="glorot_uniform", name="W_q")
+        self.W_k = self.add_weight(shape=(dim, self.units), initializer="glorot_uniform", name="W_k")
+        self.W_v = self.add_weight(shape=(dim, self.units), initializer="glorot_uniform", name="W_v")
+
+    def call(self, inputs):
+        # inputs shape: (batch_size, sequence_length, dim)
+        q = ops.matmul(inputs, self.W_q)
+        k = ops.matmul(inputs, self.W_k)
+        v = ops.matmul(inputs, self.W_v)
+        
+        scores = ops.matmul(q, ops.transpose(k, axes=(0, 2, 1)))
+        scores = scores / ops.sqrt(ops.cast(self.units, "float32"))
+        
+        weights = ops.softmax(scores, axis=-1)
+        output = ops.matmul(weights, v)
+        return output
+
+# This layer can now be used with OS backend set to "torch", "jax", or "tensorflow"!
+</code></pre>
+</div><div class="chapter-nav">
+<a href="./dlwp-01-what-is-deep-learning-tensors.html">← Previous: Chapter 44</a>
+<a href="./dlwp-03-classification-regression-workflows.html">Next: Chapter 46 →</a>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./dlwp-01-what-is-deep-learning-tensors.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">01. What is Deep Learning & Tensor Mathematical Foundations</span>
+            </a>
+            <a href="./dlwp-03-classification-regression-workflows.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">03. Core Workflows: Classification, Regression & Generalization</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#landscape">The Multi-Framework Landscape</a></li>
+          <li><a href="#keras-ops">Writing Backend-Agnostic Custom Layers</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

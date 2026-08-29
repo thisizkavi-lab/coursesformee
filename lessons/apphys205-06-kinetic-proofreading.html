@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 06: Kinetic Proofreading & Dissipative Accuracy — Stanford APPHYS 205</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-apphys">Stanford APPHYS 205</div>
+        <h2 class="sidebar-course-title">Introduction to Biophysics</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./apphys205-01-scales-statistical-mechanics.html"><span class="chapter-num">01</span> Biological Scales & Statistical Mechanics of the Cell</a></li>
+        <li><a href="./apphys205-02-dna-elasticity-macromolecules.html"><span class="chapter-num">02</span> Polymer Physics & Macromolecular Elasticity</a></li>
+        <li><a href="./apphys205-03-low-reynolds-transport.html"><span class="chapter-num">03</span> Life at Low Reynolds Number & Diffusion Limits</a></li>
+        <li><a href="./apphys205-04-chemical-kinetics-allostery.html"><span class="chapter-num">04</span> Chemical Kinetics, Cooperativity & Allosteric Transitions</a></li>
+        <li><a href="./apphys205-05-molecular-motors-ratchets.html"><span class="chapter-num">05</span> Molecular Motors & Non-Equilibrium Ratchet Mechanisms</a></li>
+        <li><a href="./apphys205-06-kinetic-proofreading.html" class="active"><span class="chapter-num">06</span> Kinetic Proofreading & Dissipative Accuracy</a></li>
+        <li><a href="./apphys205-07-electrophysiology-action-potentials.html"><span class="chapter-num">07</span> Electrophysiology & The Hodgkin-Huxley Action Potential</a></li>
+        <li><a href="./apphys205-08-information-chemotaxis.html"><span class="chapter-num">08</span> Biological Information, Sensing & Bacterial Chemotaxis</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-apphys">Stanford APPHYS 205</span>
+            </div>
+            <h1 class="chapter-title">Chapter 06: Kinetic Proofreading & Dissipative Accuracy</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<section class="narrative">
+<h2 id="accuracy-problem">1. The Accuracy Problem in Biology</h2>
+<p>During DNA replication or protein translation, the molecular machinery must select the correct (cognate) monomer out of a pool of many incorrect (non-cognate) monomers. The difference in binding energy $\Delta\Delta G$ between a correct and an incorrect match is typically around $1-4 \text{ } k_B T$.</p>
+<p>If the system relied purely on thermodynamic equilibrium to discriminate, the error rate would be $e^{-\Delta\Delta G / k_B T} \approx 10^{-2}$. Yet, the ribosome achieves an error rate of $\approx 10^{-4}$, and DNA polymerase achieves $\approx 10^{-9}$. How does biology beat the thermodynamic limit?</p>
+<h2 id="kinetic-proofreading">2. Hopfield's Kinetic Proofreading</h2>
+<p>In 1974, John Hopfield proposed a mechanism called <strong>Kinetic Proofreading</strong>. The system introduces a time delay via a high-energy intermediate state (driven by ATP/GTP hydrolysis). This allows the system to effectively "test" the substrate twice.</p>
+<p>By irreversibly dissipating energy, the binding and unbinding kinetics are decoupled from strict microscopic reversibility. The incorrect substrates fall off faster during the intermediate delay, squaring the discrimination factor.</p>
+<div class="concept-diagram"><pre>
+Kinetic Proofreading Branching Scheme:
+
+           E + S  &lt;===&gt;  ES  ----(ATP hydrolysis)---&gt;  ES*  ----&gt; E + Product
+                           \                             |
+                            \ (reject)                   | (reject)
+                             \                           |
+                              v                          v
+                            E + S                      E + S
+
+- ES*: High-energy intermediate.
+- The energy from ATP ensures the reaction ES* -&gt; ES is effectively zero.
+- Rejection happens twice: once at the ES stage, and again at the ES* stage.
+            </pre></div>
+<div class="callout-tip">
+<strong>Speed, Accuracy, Energy Trade-off:</strong>
+                To get the maximum theoretical accuracy (squaring the equilibrium error rate to $10^{-4}$), the proofreading discard step must be slow, which costs both time and energy (hydrolyzing a nucleotide without forming a product).
+            </div>
+<h2 id="code-proofreading">3. Computing the Error Rate</h2>
+<p>Let's calculate the steady-state error fraction with and without kinetic proofreading given off-rates for cognate ($w_c$) and non-cognate ($w_n$) substrates.</p>
+<div class="code-block">
+<pre><code class="language-python">def error_rates(k_on, k_off_c, k_off_n, k_cat, k_hydrolysis, k_discard_c, k_discard_n):
+    """
+    Compute theoretical error rates for Michaelis-Menten (Eq) and Proofreading.
+    c = cognate (correct), n = non-cognate (incorrect)
+    """
+    # 1. Equilibrium Error (no proofreading)
+    # Error approx ratio of dissociation constants if k_cat is small
+    Kd_c = k_off_c / k_on
+    Kd_n = k_off_n / k_on
+    eq_error = Kd_c / Kd_n
+    
+    # 2. Kinetic Proofreading Error
+    # Branching ratio: chance it goes forward vs falls off
+    fwd_c = k_cat / (k_cat + k_discard_c)
+    fwd_n = k_cat / (k_cat + k_discard_n)
+    
+    # Proofreading squares the discrimination
+    kp_error = eq_error * (fwd_n / fwd_c)
+    
+    return eq_error, kp_error
+
+# Non-cognate falls off 100x faster
+k_off_c = 1.0
+k_off_n = 100.0
+
+eq_err, kp_err = error_rates(k_on=10.0, k_off_c=1.0, k_off_n=100.0, 
+                             k_cat=0.1, k_hydrolysis=10.0, 
+                             k_discard_c=1.0, k_discard_n=100.0)
+
+print(f"Equilibrium Error: 1 in {int(1/eq_err)}")
+print(f"Proofreading Error: 1 in {int(1/kp_err)}")
+</code></pre>
+</div>
+<div class="code-output">
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>Equilibrium Error: 1 in 100
+Proofreading Error: 1 in 91000
+</code></pre></div>
+</div>
+</section><div class="footnotes-section">
+<h3 id="references-further-reading">References &amp; Further Reading</h3>
+<ol>
+<li>Stanford APPHYS 205 Course Page.</li>
+<li>Hopfield, J. J. (1974). Kinetic proofreading: a new mechanism for reducing errors in biosynthetic processes requiring high specificity. PNAS, 71(10), 4135-4139.</li>
+</ol>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./apphys205-05-molecular-motors-ratchets.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">05. Molecular Motors & Non-Equilibrium Ratchet Mechanisms</span>
+            </a>
+            <a href="./apphys205-07-electrophysiology-action-potentials.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">07. Electrophysiology & The Hodgkin-Huxley Action Potential</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#accuracy-problem">1. The Accuracy Problem in Biology</a></li>
+          <li><a href="#kinetic-proofreading">2. Hopfield's Kinetic Proofreading</a></li>
+          <li><a href="#code-proofreading">3. Computing the Error Rate</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 03: Computational Linear Algebra, SVD & Least Squares — Stanford CME193</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">Courses</a></li>
+      <li><a href="../assignments/index.html">Assignments</a></li>
+      <li><a href="../resources/setup.html">Setup</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Current Course) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-icme">Stanford CME193</div>
+        <h2 class="sidebar-course-title">Introduction to Scientific Python</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./10-scientific-python-ecosystem.html"><span class="chapter-num">01</span> The Scientific Python Ecosystem & Performance</a></li>
+        <li><a href="./11-numpy-numerical-computing.html"><span class="chapter-num">02</span> High-Performance Numerical Computing with NumPy</a></li>
+        <li><a href="./12-computational-linear-algebra.html" class="active"><span class="chapter-num">03</span> Computational Linear Algebra, SVD & Least Squares</a></li>
+        <li><a href="./13-pandas-data-science.html"><span class="chapter-num">04</span> Tabular Data Science & Engineering with Pandas</a></li>
+        <li><a href="./14-scipy-scientific-computing.html"><span class="chapter-num">05</span> Scientific Optimization & Differential Equations</a></li>
+        <li><a href="./15-scikit-learn-machine-learning.html"><span class="chapter-num">06</span> Classical Machine Learning with Scikit-Learn</a></li>
+        <li><a href="./16-pytorch-deep-learning.html"><span class="chapter-num">07</span> Modern Deep Learning Foundations with PyTorch</a></li>
+        <li><a href="./17-capstone-and-beyond.html"><span class="chapter-num">08</span> Capstone Synthesis & The AI Frontier</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="content-container">
+        <article class="article-content">
+          
+          <header class="chapter-header">
+            <div class="chapter-meta">
+              <span class="chapter-part-tag course-badge-icme">Stanford CME193</span>
+            </div>
+            <h1 class="chapter-title">Chapter 03: Computational Linear Algebra, SVD & Least Squares</h1>
+          </header>
+
+          <div class="chapter-body">
+            <div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<div class="content-container">
+<article class="article-content">
+<div class="chapter-body">
+<section id="matrix-ops">
+<h2 id="12-1-vectors-and-matrices-in-numpy">12.1 Vectors and Matrices in NumPy</h2>
+<p>Linear algebra is the mathematical engine of ML. In Python, matrix multiplication is natively supported via the <code>@</code> operator (syntactic sugar for <code>np.matmul</code>).</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>import numpy as np
+A = np.array([[1, 2], [3, 4]])
+x = np.array([1, 1])
+print(A @ x)</code></pre></div>
+<div class="output-block"><code>[3 7]</code></div>
+</section><section id="linear-systems">
+<h2 id="12-2-solving-linear-systems-ax-b">12.2 Solving Linear Systems $Ax = b$</h2>
+<p>Mathematically, $x = A^{-1}b$. Computationally, explicitly computing the inverse $A^{-1}$ is disastrous for numerical stability. Always use solvers like <code>np.linalg.solve</code>.</p>
+<div class="callout-warning">
+<strong>Never compute explicit inverse!</strong>
+<p>Computing an explicit inverse is slower and more prone to floating point errors than LU or Cholesky factorizations used by built-in solvers.</p>
+</div>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>x = np.linalg.solve(A, b)</code></pre></div>
+</section><section id="svd">
+<h2 id="12-3-singular-value-decomposition-svd">12.3 Singular Value Decomposition (SVD)</h2>
+<p>SVD factorizes any matrix $A$ into $U \Sigma V^T$. It is the Swiss Army knife of linear algebra, used for PCA, data compression, and pseudo-inverses.</p>
+<div class="concept-diagram"><pre>
+A       =   U       *   Σ       *   V^T
+(m x n)     (m x m)     (m x n)     (n x n)
+Data        Orthogonal  Diagonal    Orthogonal
+            </pre></div>
+<p>Truncating $\Sigma$ to keep only the largest singular values gives an optimal low-rank approximation of the matrix.</p>
+</section><section id="ols">
+<h2 id="12-4-ordinary-least-squares-ols">12.4 Ordinary Least Squares (OLS)</h2>
+<p>For overdetermined systems (more equations than unknowns), we want to find $x$ that minimizes $||Ax - b||_2^2$. This is solved via <code>np.linalg.lstsq</code>.</p>
+</section><section class="exercise-box">
+<h3 id="practice-exercises">Practice Exercises</h3>
+<p><strong>Exercise 1:</strong> Reconstruct a rank-2 approximation of matrix A using SVD.</p>
+<details class="exercise-solution">
+<summary>Reveal Step-by-Step Solution</summary>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>U, s, Vt = np.linalg.svd(A, full_matrices=False)
+A_rank2 = U[:,:2] @ np.diag(s[:2]) @ Vt[:2,:]</code></pre></div>
+</details>
+</section><div class="chapter-nav">
+<a class="prev-chapter" href="./11-numpy-numerical-computing.html">← Chapter 11: NumPy</a>
+<a class="next-chapter" href="./13-pandas-data-science.html">Chapter 13: Pandas →</a>
+</div><div class="footnotes-section">
+<hr/>
+<p>Sources: Stanford CME193 Syllabus, Colab Lecture 4.</p>
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+</div>
+<!-- Bottom Chapter Navigation -->
+</article>
+<!-- Right Sticky TOC -->
+
+</div>
+          </div>
+
+          <!-- Bottom In-Course Chapter Navigation -->
+          <nav class="chapter-nav">
+            <a href="./11-numpy-numerical-computing.html" class="nav-card prev">
+              <span class="nav-direction">← Previous</span>
+              <span class="nav-chapter-title">02. High-Performance Numerical Computing with NumPy</span>
+            </a>
+            <a href="./13-pandas-data-science.html" class="nav-card next">
+              <span class="nav-direction">Next →</span>
+              <span class="nav-chapter-title">04. Tabular Data Science & Engineering with Pandas</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- Right Sticky TOC -->
+        <aside class="toc-sidebar">
+          <div class="toc-title">On This Page</div>
+          <ul class="toc-links">
+          <li><a href="#12-1-vectors-and-matrices-in-numpy">12.1 Vectors and Matrices in NumPy</a></li>
+          <li><a href="#12-2-solving-linear-systems-ax-b">12.2 Solving Linear Systems $Ax = b$</a></li>
+          <li><a href="#12-3-singular-value-decomposition-svd">12.3 Singular Value Decomposition (SVD)</a></li>
+          <li><a href="#12-4-ordinary-least-squares-ols">12.4 Ordinary Least Squares (OLS)</a></li>
+
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
