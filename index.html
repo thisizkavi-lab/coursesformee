@@ -3,147 +3,166 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Courses — Coursebook</title>
+  <title>Coursebook — Digital Textbook Library</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
-<body style="background-color: var(--bg-primary);">
+<body>
 
   <!-- Top Navigation Bar -->
   <nav class="navbar">
-    <a href="index.html" class="navbar-brand">Coursebook</a>
-    <ul class="navbar-nav">
-      <li><a href="index.html" class="active">Courses</a></li>
-      <li><a href="assignments/index.html">Assignments</a></li>
-      <li><a href="resources/setup.html">Setup</a></li>
-    </ul>
+    <a href="./index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
+
+    <div class="navbar-right">
+      <ul class="navbar-nav">
+        <li><a href="./index.html" class="active">Courses</a></li>
+        <li><a href="./assignments/index.html">Assignments</a></li>
+        <li><a href="./resources/setup.html">Setup</a></li>
+      </ul>
+
+      <!-- Top Right Reader Controls -->
+      <div class="reader-tools">
+        <div class="font-size-group" title="Adjust text size">
+          <button class="tool-btn font-decrease-btn" aria-label="Decrease font size">A-</button>
+          <button class="tool-btn font-increase-btn" aria-label="Increase font size">A+</button>
+        </div>
+
+        <button class="tool-btn font-family-btn" title="Switch reading font (Serif / Sans)" aria-label="Toggle serif/sans font">
+          <span class="font-indicator">Serif</span>
+        </button>
+
+        <button class="tool-btn theme-toggle-btn" title="Toggle Dark / Light Mode" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
   </nav>
 
-  <!-- Minimal Header -->
-  <header style="max-width: 960px; margin: 48px auto 24px; padding: 0 24px;">
-    <h1 style="font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; color: var(--text-primary); margin: 0;">Courses</h1>
-  </header>
-
-  <!-- Course Cards Grid -->
-  <main style="max-width: 960px; margin: 0 auto 80px; padding: 0 24px;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 24px;">
-
-      <!-- Course 1: CS106A -->
-      <a href="lessons/01-karel-computational-thinking.html" class="course-card" style="padding: 26px;">
-        <div class="course-card-top" style="margin-bottom: 12px;">
-          <div style="margin-bottom: 12px;">
+  <!-- Homepage Content -->
+  <div style="max-width: 1040px; margin: 0 auto; padding: 48px 24px 96px;">
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 24px;">
+      
+      <!-- Stanford CS106A -->
+      <a href="./lessons/01-karel-computational-thinking.html" class="course-card">
+        <div>
+          <div style="margin-bottom: 14px;">
             <span class="course-code-badge course-badge-stanford">Stanford CS106A</span>
           </div>
-          <h2 class="course-card-title" style="font-size: 1.3rem; margin-bottom: 8px;">Programming Methodology</h2>
-          <p class="course-card-desc" style="font-size: 0.92rem; margin-bottom: 0;">
-            Fundamental programming principles, computational thinking, algorithms, and software design in Python. Covers Karel the Robot, memory models, control flow, functions, 2D grids, dictionaries, and object-oriented architecture.
+          <h2 class="course-card-title">Programming Methodology</h2>
+          <p class="course-card-desc" style="margin-top: 10px;">
+            Fundamental programming principles, computational thinking, algorithms, and software design in Python.
           </p>
         </div>
-        <div class="course-card-footer" style="padding-top: 14px;">
-          <span style="font-size: 0.85rem; font-weight: 600; color: var(--accent-primary);">Open Course →</span>
+        <div class="course-card-footer" style="margin-top: 24px; padding-top: 14px;">
+          <span style="font-size: 0.86rem; font-weight: 600; color: var(--accent-primary);">Open Course →</span>
         </div>
       </a>
 
-      <!-- Course 2: CME193 -->
-      <a href="lessons/10-scientific-python-ecosystem.html" class="course-card" style="padding: 26px;">
-        <div class="course-card-top" style="margin-bottom: 12px;">
-          <div style="margin-bottom: 12px;">
+      <!-- Stanford CME193 -->
+      <a href="./lessons/10-scientific-python-ecosystem.html" class="course-card">
+        <div>
+          <div style="margin-bottom: 14px;">
             <span class="course-code-badge course-badge-icme">Stanford CME193</span>
           </div>
-          <h2 class="course-card-title" style="font-size: 1.3rem; margin-bottom: 8px;">Introduction to Scientific Python</h2>
-          <p class="course-card-desc" style="font-size: 0.92rem; margin-bottom: 0;">
-            Scientific computing, numerical data analysis, and machine learning with Python. Covers NumPy array vectorization, computational linear algebra & SVD, Pandas tabular data, SciPy optimization, Scikit-Learn, and PyTorch deep learning.
+          <h2 class="course-card-title">Introduction to Scientific Python</h2>
+          <p class="course-card-desc" style="margin-top: 10px;">
+            Scientific computing, numerical data analysis, and machine learning with NumPy, Pandas, SciPy, Scikit-Learn, and PyTorch.
           </p>
         </div>
-        <div class="course-card-footer" style="padding-top: 14px;">
-          <span style="font-size: 0.85rem; font-weight: 600; color: var(--part2-color);">Open Course →</span>
+        <div class="course-card-footer" style="margin-top: 24px; padding-top: 14px;">
+          <span style="font-size: 0.86rem; font-weight: 600; color: var(--accent-primary);">Open Course →</span>
         </div>
       </a>
 
-      <!-- Course 3: CS279 -->
-      <a href="lessons/cs279-01-biomolecular-structure.html" class="course-card" style="padding: 26px;">
-        <div class="course-card-top" style="margin-bottom: 12px;">
-          <div style="margin-bottom: 12px;">
+      <!-- Stanford CS279 -->
+      <a href="./lessons/cs279-01-biomolecular-structure.html" class="course-card">
+        <div>
+          <div style="margin-bottom: 14px;">
             <span class="course-code-badge course-badge-stanford">Stanford CS279</span>
           </div>
-          <h2 class="course-card-title" style="font-size: 1.3rem; margin-bottom: 8px;">Computational Biology: Structure & Organization</h2>
-          <p class="course-card-desc" style="font-size: 0.92rem; margin-bottom: 0;">
-            Computational techniques used to study the structure and dynamics of biomolecules and cells. Covers molecular modeling, energy functions & force fields, molecular dynamics simulation, AlphaFold structure prediction, de novo protein design (RFdiffusion, ProteinMPNN), optical microscopy, cellular diffusion (MCell), Cryo-EM, and molecular docking.
+          <h2 class="course-card-title">Computational Biology: Structure & Organization</h2>
+          <p class="course-card-desc" style="margin-top: 10px;">
+            Molecular modeling, energy functions & force fields, molecular dynamics simulation, AlphaFold, de novo protein design, Cryo-EM, and docking.
           </p>
         </div>
-        <div class="course-card-footer" style="padding-top: 14px;">
-          <span style="font-size: 0.85rem; font-weight: 600; color: #8c1515;">Open Course →</span>
+        <div class="course-card-footer" style="margin-top: 24px; padding-top: 14px;">
+          <span style="font-size: 0.86rem; font-weight: 600; color: var(--accent-primary);">Open Course →</span>
         </div>
       </a>
 
-      <!-- Course 4: CS371 -->
-      <a href="lessons/cs371-01-simulations-allostery.html" class="course-card" style="padding: 26px;">
-        <div class="course-card-top" style="margin-bottom: 12px;">
-          <div style="margin-bottom: 12px;">
+      <!-- Stanford CS371 -->
+      <a href="./lessons/cs371-01-simulations-allostery.html" class="course-card">
+        <div>
+          <div style="margin-bottom: 14px;">
             <span class="course-code-badge course-badge-icme">Stanford CS371</span>
           </div>
-          <h2 class="course-card-title" style="font-size: 1.3rem; margin-bottom: 8px;">Computational Biology in Four Dimensions</h2>
-          <p class="course-card-desc" style="font-size: 0.92rem; margin-bottom: 0;">
-            Cutting-edge research frontiers in structural biology, biophysics, and drug discovery. Covers long-timescale allosteric simulations, crowdsourced molecular design (Foldit, EteRNA), coevolutionary deep generative genetics, physics-based alchemical free energy perturbation (FEP+), 3D graph neural networks for docking, continuous Cryo-EM landscapes, and whole-cell spatial dynamics.
+          <h2 class="course-card-title">Computational Biology in Four Dimensions</h2>
+          <p class="course-card-desc" style="margin-top: 10px;">
+            Research frontiers in 4D structural biology: allosteric simulation, Foldit/EteRNA citizen science, coevolutionary genetics, free energy perturbation, and whole-cell modeling.
           </p>
         </div>
-        <div class="course-card-footer" style="padding-top: 14px;">
-          <span style="font-size: 0.85rem; font-weight: 600; color: var(--part2-color);">Open Course →</span>
+        <div class="course-card-footer" style="margin-top: 24px; padding-top: 14px;">
+          <span style="font-size: 0.86rem; font-weight: 600; color: var(--accent-primary);">Open Course →</span>
         </div>
       </a>
 
-      <!-- Course 5: APPHYS 205 -->
-      <a href="lessons/apphys205-01-scales-statistical-mechanics.html" class="course-card" style="padding: 26px;">
-        <div class="course-card-top" style="margin-bottom: 12px;">
-          <div style="margin-bottom: 12px;">
-            <span class="course-code-badge course-badge-stanford" style="background: #f0fdf4; color: #166534; border-color: #bbf7d0;">Stanford APPHYS 205</span>
+      <!-- Stanford APPHYS 205 -->
+      <a href="./lessons/apphys205-01-scales-statistical-mechanics.html" class="course-card">
+        <div>
+          <div style="margin-bottom: 14px;">
+            <span class="course-code-badge course-badge-apphys">Stanford APPHYS 205</span>
           </div>
-          <h2 class="course-card-title" style="font-size: 1.3rem; margin-bottom: 8px;">Introduction to Biophysics</h2>
-          <p class="course-card-desc" style="font-size: 0.92rem; margin-bottom: 0;">
-            Physical principles governing the structural, dynamical, and functional organization of biological systems. Covers statistical mechanics of the cell, DNA polymer elasticity (WLC), life at low Reynolds number & diffusion limits, allosteric transitions (MWC), molecular motors & flashing ratchets, Hopfield kinetic proofreading, Hodgkin-Huxley electrophysiology, and bacterial chemotaxis.
+          <h2 class="course-card-title">Introduction to Biophysics</h2>
+          <p class="course-card-desc" style="margin-top: 10px;">
+            Physical principles of living systems: statistical mechanics of the cell, DNA elasticity, low Reynolds transport, allostery, molecular motors, and electrophysiology.
           </p>
         </div>
-        <div class="course-card-footer" style="padding-top: 14px;">
-          <span style="font-size: 0.85rem; font-weight: 600; color: #166534;">Open Course →</span>
+        <div class="course-card-footer" style="margin-top: 24px; padding-top: 14px;">
+          <span style="font-size: 0.86rem; font-weight: 600; color: var(--accent-primary);">Open Course →</span>
         </div>
       </a>
 
-      <!-- Course 6: Deep Learning with Python -->
-      <a href="lessons/dlwp-01-what-is-deep-learning-tensors.html" class="course-card" style="padding: 26px;">
-        <div class="course-card-top" style="margin-bottom: 12px;">
-          <div style="margin-bottom: 12px;">
-            <span class="course-code-badge" style="background: #fdf4ff; color: #86198f; border: 1px solid #f0abfc;">Chollet · Keras 3</span>
+      <!-- Deep Learning with Python -->
+      <a href="./lessons/dlwp-01-what-is-deep-learning-tensors.html" class="course-card">
+        <div>
+          <div style="margin-bottom: 14px;">
+            <span class="course-code-badge course-badge-dlwp">Chollet · Keras 3</span>
           </div>
-          <h2 class="course-card-title" style="font-size: 1.3rem; margin-bottom: 8px;">Deep Learning with Python</h2>
-          <p class="course-card-desc" style="font-size: 0.92rem; margin-bottom: 0;">
-            Comprehensive guide to deep learning and generative AI by François Chollet. Covers tensor math, Keras 3 multi-backend (TensorFlow, PyTorch, JAX), ConvNets & Grad-CAM interpretability, U-Net semantic segmentation, Transformers, text generation with LLMs & KV-caching, Latent Diffusion models, and production MLOps.
+          <h2 class="course-card-title">Deep Learning with Python</h2>
+          <p class="course-card-desc" style="margin-top: 10px;">
+            Modern deep learning, computer vision, transformers, and generative AI across TensorFlow, PyTorch, and JAX with Keras 3.
           </p>
         </div>
-        <div class="course-card-footer" style="padding-top: 14px;">
-          <span style="font-size: 0.85rem; font-weight: 600; color: #86198f;">Open Course →</span>
+        <div class="course-card-footer" style="margin-top: 24px; padding-top: 14px;">
+          <span style="font-size: 0.86rem; font-weight: 600; color: var(--accent-primary);">Open Course →</span>
         </div>
       </a>
 
-      <!-- Course 7: MIT 6.S184 -->
-      <a href="lessons/mit6s184-01-generative-foundations-sde.html" class="course-card" style="padding: 26px;">
-        <div class="course-card-top" style="margin-bottom: 12px;">
-          <div style="margin-bottom: 12px;">
-            <span class="course-code-badge" style="background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa;">MIT 6.S184</span>
+      <!-- MIT 6.S184 -->
+      <a href="./lessons/mit6s184-01-generative-foundations-sde.html" class="course-card">
+        <div>
+          <div style="margin-bottom: 14px;">
+            <span class="course-code-badge course-badge-mit">MIT 6.S184</span>
           </div>
-          <h2 class="course-card-title" style="font-size: 1.3rem; margin-bottom: 8px;">Flow Matching & Diffusion Models</h2>
-          <p class="course-card-desc" style="font-size: 0.92rem; margin-bottom: 0;">
-            Mathematical foundations of modern continuous generative models from first principles (MIT CSAIL). Covers ordinary and stochastic differential equations (ODEs/SDEs), Continuous Normalizing Flows, Conditional Flow Matching (CFM), Denoising Score Matching, Probability Flow ODEs, Optimal Transport (OT-CFM), Classifier-Free Guidance (CFG), Diffusion Transformers (DiT), and Rectified Flow distillation.
+          <h2 class="course-card-title">Flow Matching & Diffusion Models</h2>
+          <p class="course-card-desc" style="margin-top: 10px;">
+            Mathematical foundations of continuous generative models: stochastic differential equations, optimal transport, flow matching, and diffusion transformers (MIT CSAIL).
           </p>
         </div>
-        <div class="course-card-footer" style="padding-top: 14px;">
-          <span style="font-size: 0.85rem; font-weight: 600; color: #c2410c;">Open Course →</span>
+        <div class="course-card-footer" style="margin-top: 24px; padding-top: 14px;">
+          <span style="font-size: 0.86rem; font-weight: 600; color: var(--accent-primary);">Open Course →</span>
         </div>
       </a>
 
     </div>
-  </main>
 
+  </div>
+
+  <script src="./js/main.js"></script>
 </body>
 </html>

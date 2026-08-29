@@ -6,7 +6,7 @@
   <title>Chapter 04: Tabular Data Science & Engineering with Pandas — Stanford CME193</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
@@ -18,11 +18,30 @@
     <a href="../index.html" class="navbar-brand">
       <span>📖</span> Coursebook
     </a>
-    <ul class="navbar-nav">
-      <li><a href="../index.html">Courses</a></li>
-      <li><a href="../assignments/index.html">Assignments</a></li>
-      <li><a href="../resources/setup.html">Setup</a></li>
-    </ul>
+
+    <div class="navbar-right">
+      <ul class="navbar-nav">
+        <li><a href="../index.html">Courses</a></li>
+        <li><a href="../assignments/index.html">Assignments</a></li>
+        <li><a href="../resources/setup.html">Setup</a></li>
+      </ul>
+
+      <!-- Top Right Reader Controls -->
+      <div class="reader-tools">
+        <div class="font-size-group" title="Adjust text size">
+          <button class="tool-btn font-decrease-btn" aria-label="Decrease font size">A-</button>
+          <button class="tool-btn font-increase-btn" aria-label="Increase font size">A+</button>
+        </div>
+
+        <button class="tool-btn font-family-btn" title="Switch reading font (Serif / Sans)" aria-label="Toggle serif/sans font">
+          <span class="font-indicator">Serif</span>
+        </button>
+
+        <button class="tool-btn theme-toggle-btn" title="Toggle Dark / Light Mode" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
   </nav>
 
   <div class="page-wrapper">
@@ -61,6 +80,7 @@
           </header>
 
           <div class="chapter-body">
+<div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <h2 id="pandas-architecture">1. The Pandas Architecture: Series and DataFrames</h2>
 <p>In NumPy, we worked with homogeneous arrays of numerical data. But real-world data is messy, tabular, and heterogeneous—mixing strings, dates, integers, and floats. Enter <strong>Pandas</strong>. Pandas provides two foundational data structures: the 1D <code>Series</code> and the 2D <code>DataFrame</code>. Both are built on top of NumPy, but they introduce the concept of an <strong>Index</strong>—explicit labels for rows and columns.</p>

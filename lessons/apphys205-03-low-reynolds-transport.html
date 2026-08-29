@@ -6,7 +6,7 @@
   <title>Chapter 03: Life at Low Reynolds Number & Diffusion Limits — Stanford APPHYS 205</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
@@ -18,11 +18,30 @@
     <a href="../index.html" class="navbar-brand">
       <span>📖</span> Coursebook
     </a>
-    <ul class="navbar-nav">
-      <li><a href="../index.html">Courses</a></li>
-      <li><a href="../assignments/index.html">Assignments</a></li>
-      <li><a href="../resources/setup.html">Setup</a></li>
-    </ul>
+
+    <div class="navbar-right">
+      <ul class="navbar-nav">
+        <li><a href="../index.html">Courses</a></li>
+        <li><a href="../assignments/index.html">Assignments</a></li>
+        <li><a href="../resources/setup.html">Setup</a></li>
+      </ul>
+
+      <!-- Top Right Reader Controls -->
+      <div class="reader-tools">
+        <div class="font-size-group" title="Adjust text size">
+          <button class="tool-btn font-decrease-btn" aria-label="Decrease font size">A-</button>
+          <button class="tool-btn font-increase-btn" aria-label="Increase font size">A+</button>
+        </div>
+
+        <button class="tool-btn font-family-btn" title="Switch reading font (Serif / Sans)" aria-label="Toggle serif/sans font">
+          <span class="font-indicator">Serif</span>
+        </button>
+
+        <button class="tool-btn theme-toggle-btn" title="Toggle Dark / Light Mode" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
   </nav>
 
   <div class="page-wrapper">
@@ -61,6 +80,7 @@
           </header>
 
           <div class="chapter-body">
+<div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <h2 id="reynolds-number">1. The Reynolds Number in Microbiology</h2>
 <p>The Navier-Stokes equations dictate fluid dynamics. The relative importance of inertial forces versus viscous forces is captured by a dimensionless parameter known as the Reynolds number ($Re$):</p>
