@@ -1,11 +1,10 @@
 // ==========================================================================
 // COURSEBOOK INTERACTIVE JAVASCRIPT
-// Theme (Dark/Light), Font Scaling (A-/A+), Font Modes (Sans/Serif), TOC & Copy
+// Dark/Light Theme Toggle (Top Right), Sidebar Auto-Scroll, TOC & Code Copy
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
-  initFontControls();
   initSidebar();
   initCodeCopy();
   initTocScrollSpy();
@@ -38,65 +37,6 @@ function applyTheme(theme) {
     document.querySelectorAll('.theme-icon').forEach(icon => icon.textContent = '🌙');
   }
   localStorage.setItem('coursebook-theme', theme);
-}
-
-// --- Font Family & Size Controls ---
-const FONT_SIZES = [14, 15, 16, 17, 18, 20, 22];
-
-function initFontControls() {
-  // Font Family
-  const savedFont = localStorage.getItem('coursebook-font') || 'sans';
-  applyFontFamily(savedFont);
-
-  document.querySelectorAll('.font-family-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const isSerif = document.body.classList.contains('font-serif');
-      const nextFont = isSerif ? 'sans' : 'serif';
-      applyFontFamily(nextFont);
-    });
-  });
-
-  // Font Size
-  let currentSize = parseInt(localStorage.getItem('coursebook-font-size')) || 16;
-  applyFontSize(currentSize);
-
-  document.querySelectorAll('.font-decrease-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const idx = FONT_SIZES.indexOf(currentSize);
-      if (idx > 0) {
-        currentSize = FONT_SIZES[idx - 1];
-        applyFontSize(currentSize);
-      }
-    });
-  });
-
-  document.querySelectorAll('.font-increase-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const idx = FONT_SIZES.indexOf(currentSize);
-      if (idx < FONT_SIZES.length - 1) {
-        currentSize = FONT_SIZES[idx + 1];
-        applyFontSize(currentSize);
-      }
-    });
-  });
-}
-
-function applyFontFamily(font) {
-  if (font === 'serif') {
-    document.body.classList.remove('font-sans');
-    document.body.classList.add('font-serif');
-    document.querySelectorAll('.font-indicator').forEach(el => el.textContent = 'Sans');
-  } else {
-    document.body.classList.remove('font-serif');
-    document.body.classList.add('font-sans');
-    document.querySelectorAll('.font-indicator').forEach(el => el.textContent = 'Serif');
-  }
-  localStorage.setItem('coursebook-font', font);
-}
-
-function applyFontSize(size) {
-  document.documentElement.style.setProperty('--base-font-size', `${size}px`);
-  localStorage.setItem('coursebook-font-size', size);
 }
 
 // --- Sidebar Toggle & Smooth Auto-Scroll ---

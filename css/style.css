@@ -1,19 +1,19 @@
 /* ==========================================================================
-   COURSEBOOK DESIGN SYSTEM — SOOTHING DARK/LIGHT THEME & READER CONTROLS
-   Inspired by ChatGPT, Linear, Notion, Apple Books, and Stripe Documentation
+   COURSEBOOK DESIGN SYSTEM
+   Typography matched to Deep Learning with Python (Chollet):
+   - Prose / Body: "Lora", Georgia, serif (soothing, book typography)
+   - Headers / UI: "Inter", -apple-system, sans-serif (crisp modern structure)
+   - Code: "JetBrains Mono", monospace
+   - Theme: Clean Light & Soothing Slate Dark Mode
    ========================================================================== */
 
-/* --- Google Fonts Import --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
 :root {
-  /* Typography Families */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, sans-serif;
-  --font-serif: 'Newsreader', Georgia, Cambria, 'Times New Roman', serif;
+  /* Typography */
+  --font-body: 'Lora', Georgia, Cambria, 'Times New Roman', serif;
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, Consolas, monospace;
-
-  /* Font Scaling */
-  --base-font-size: 16px;
 
   /* --- Light Theme Palette --- */
   --bg-primary: #ffffff;
@@ -26,19 +26,18 @@
   --bg-code-header: #1e293b;
   --bg-diagram: #0f172a;
   
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-muted: #64748b;
-  --text-light: #94a3b8;
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+  --text-light: #9ca3af;
 
-  --border-light: #e2e8f0;
-  --border-subtle: #f1f5f9;
+  --border-light: #e5e7eb;
+  --border-subtle: #f3f4f6;
   --border-hover: #cbd5e1;
 
   --accent-primary: #0284c7;
   --accent-primary-hover: #0369a1;
   --accent-light: #f0f9ff;
-  --accent-soft: rgba(2, 132, 199, 0.08);
 
   --sidebar-item-hover: rgba(15, 23, 42, 0.04);
   --sidebar-item-active: rgba(15, 23, 42, 0.075);
@@ -102,7 +101,7 @@
 }
 
 /* ==========================================================================
-   SOOTHING DARK THEME
+   SOOTHING DARK THEME (Deep Learning / Slate)
    ========================================================================== */
 [data-theme="dark"] {
   --bg-primary: #0f172a;           /* Deep Slate 900 */
@@ -116,7 +115,7 @@
   --bg-diagram: #030712;
 
   --text-primary: #f1f5f9;         /* Soft high-contrast text */
-  --text-secondary: #cbd5e1;       /* Soothing slate text */
+  --text-secondary: #cbd5e1;       /* Soothing slate reading text */
   --text-muted: #94a3b8;           /* Muted text */
   --text-light: #64748b;
 
@@ -127,7 +126,6 @@
   --accent-primary: #38bdf8;       /* Sky 400 */
   --accent-primary-hover: #7dd3fc; /* Sky 300 */
   --accent-light: rgba(56, 189, 248, 0.12);
-  --accent-soft: rgba(56, 189, 248, 0.1);
 
   --sidebar-item-hover: rgba(255, 255, 255, 0.05);
   --sidebar-item-active: rgba(255, 255, 255, 0.1);
@@ -183,36 +181,20 @@
 }
 
 html {
-  font-size: var(--base-font-size);
+  font-size: 16px;
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--navbar-height) + 32px);
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   color: var(--text-primary);
   background-color: var(--bg-primary);
-  line-height: 1.75;
+  line-height: 1.85;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-/* --- Reader Font Modes --- */
-body.font-serif {
-  font-family: var(--font-serif);
-}
-
-body.font-serif .chapter-body p,
-body.font-serif .chapter-body li {
-  font-family: var(--font-serif);
-  font-size: 1.08rem;
-  line-height: 1.85;
-}
-
-body.font-sans {
-  font-family: var(--font-sans);
 }
 
 a {
@@ -228,7 +210,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   TOP NAVIGATION BAR & RIGHT-CORNER CONTROLS
+   TOP NAVIGATION BAR & TOP RIGHT THEME TOGGLE
    ========================================================================== */
 .navbar {
   position: fixed;
@@ -246,6 +228,7 @@ a:hover {
   padding: 0 24px;
   z-index: 1000;
   transition: background-color 0.2s ease, border-color 0.2s ease;
+  font-family: var(--font-ui);
 }
 
 .navbar-brand {
@@ -292,65 +275,28 @@ a:hover {
   color: var(--text-primary);
 }
 
-/* Reader Tools Container (Top Right Corner) */
-.reader-tools {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding-left: 12px;
-  border-left: 1px solid var(--border-light);
-}
-
-.tool-btn {
+/* Clean Top-Right Theme Button */
+.theme-toggle-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 32px;
-  min-width: 32px;
-  padding: 0 8px;
+  height: 34px;
+  width: 34px;
   background: var(--bg-secondary);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 1rem;
   color: var(--text-secondary);
   cursor: pointer;
   user-select: none;
   transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.tool-btn:hover {
+.theme-toggle-btn:hover {
   background: var(--bg-tertiary);
   color: var(--text-primary);
   border-color: var(--border-hover);
-}
-
-.tool-btn.active {
-  background: var(--accent-light);
-  color: var(--accent-primary);
-  border-color: var(--accent-primary);
-}
-
-.font-size-group {
-  display: flex;
-  align-items: center;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-}
-
-.font-size-group .tool-btn {
-  border: none;
-  border-radius: 0;
-  height: 30px;
-  min-width: 28px;
-  padding: 0 6px;
-}
-
-.font-size-group .tool-btn:first-child {
-  border-right: 1px solid var(--border-light);
+  transform: scale(1.05);
 }
 
 .navbar-toggle {
@@ -388,6 +334,7 @@ a:hover {
   padding: 20px 12px 48px;
   z-index: 900;
   scrollbar-width: thin;
+  font-family: var(--font-ui);
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -497,7 +444,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   MAIN CONTENT & READING TYPOGRAPHY
+   MAIN CONTENT & READING TYPOGRAPHY (Deep Learning with Python style)
    ========================================================================== */
 .main-content {
   margin-left: var(--sidebar-width);
@@ -526,6 +473,7 @@ a:hover {
   margin-bottom: 40px;
   padding-bottom: 24px;
   border-bottom: 1px solid var(--border-light);
+  font-family: var(--font-ui);
 }
 
 .chapter-meta {
@@ -553,8 +501,13 @@ a:hover {
   line-height: 1.25;
 }
 
-/* --- Article Body Typography --- */
+/* --- Article Body (Lora Prose) --- */
+.chapter-body {
+  font-family: var(--font-body);
+}
+
 .chapter-body h2 {
+  font-family: var(--font-ui);
   font-size: 1.45rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -571,6 +524,7 @@ a:hover {
 }
 
 .chapter-body h3 {
+  font-family: var(--font-ui);
   font-size: 1.15rem;
   font-weight: 600;
   letter-spacing: -0.015em;
@@ -579,21 +533,22 @@ a:hover {
 }
 
 .chapter-body p {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   color: var(--text-secondary);
-  font-size: 1.02rem;
-  line-height: 1.8;
+  font-size: 1.06rem;
+  line-height: 1.85;
 }
 
 .chapter-body ul, 
 .chapter-body ol {
   margin: 0 0 24px 24px;
   color: var(--text-secondary);
+  font-size: 1.04rem;
 }
 
 .chapter-body li {
   margin-bottom: 8px;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 /* ==========================================================================
@@ -606,6 +561,7 @@ a:hover {
   background: var(--bg-code);
   border: 1px solid var(--border-light);
   box-shadow: var(--shadow-sm);
+  font-family: var(--font-mono);
 }
 
 .code-block-header {
@@ -666,6 +622,7 @@ a:hover {
   border: 1px solid var(--border-light);
   border-top: none;
   padding: 12px 18px;
+  font-family: var(--font-mono);
 }
 
 .code-output-label {
@@ -695,6 +652,7 @@ a:hover {
   border: 1px solid var(--border-light);
   padding: 20px 24px;
   overflow-x: auto;
+  font-family: var(--font-mono);
 }
 
 .concept-diagram pre {
@@ -713,8 +671,8 @@ a:hover {
   padding: 18px 22px;
   border-radius: var(--radius-md);
   border-left: 4px solid;
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: 0.96rem;
+  line-height: 1.75;
 }
 
 .callout-tip {
@@ -753,6 +711,7 @@ a:hover {
 }
 
 .exercise-box h3 {
+  font-family: var(--font-ui);
   margin-top: 0;
   margin-bottom: 12px;
   font-size: 1.1rem;
@@ -764,6 +723,7 @@ a:hover {
 }
 
 .exercise-solution summary {
+  font-family: var(--font-ui);
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--accent-primary);
@@ -792,6 +752,7 @@ a:hover {
   border-top: 1px solid var(--border-light);
   font-size: 0.85rem;
   color: var(--text-muted);
+  font-family: var(--font-ui);
 }
 
 .footnotes-section h3 {
@@ -823,6 +784,7 @@ a:hover {
   margin-top: 56px;
   padding-top: 28px;
   border-top: 1px solid var(--border-light);
+  font-family: var(--font-ui);
 }
 
 .nav-card {
@@ -877,6 +839,7 @@ a:hover {
   max-height: calc(100vh - var(--navbar-height) - 64px);
   overflow-y: auto;
   align-self: flex-start;
+  font-family: var(--font-ui);
 }
 
 .toc-title {
@@ -929,6 +892,7 @@ a:hover {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none !important;
   box-shadow: var(--shadow-sm);
+  font-family: var(--font-ui);
 }
 
 .course-card:hover {
@@ -1014,10 +978,6 @@ a:hover {
 @media (max-width: 768px) {
   .navbar-toggle {
     display: block;
-  }
-  .reader-tools {
-    border-left: none;
-    padding-left: 0;
   }
   .navbar-nav {
     display: none;
