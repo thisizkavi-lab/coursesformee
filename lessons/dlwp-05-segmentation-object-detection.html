@@ -98,6 +98,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="segmentation">Semantic Segmentation and U-Net</h2>
 <p>Semantic segmentation involves predicting a class label for every individual pixel in an image. The U-Net architecture is a widely used encoder-decoder network that excels at this task by concatenating high-resolution features from the encoder with upsampled features in the decoder.</p>
 <div class="code-block"><div class="code-block-header">
@@ -162,15 +163,21 @@ def get_unet(img_size, num_classes):
 </ul>
           </div>
 
-          <!-- Bottom In-Course Chapter Navigation -->
+          <!-- Bottom In-Course Chapter Navigation (Sleek Vercel/Stripe style) -->
           <nav class="chapter-nav">
-            <a href="./dlwp-04-convnets-computer-vision.html" class="nav-card prev">
-              <span class="nav-direction">← Previous</span>
-              <span class="nav-chapter-title">04. Modern Computer Vision: ConvNets, Residuals & Grad-CAM</span>
+            <a href="./dlwp-04-convnets-computer-vision.html" class="chapter-nav-card prev">
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              <div class="nav-card-text">
+                <span class="nav-card-label">Previous Chapter</span>
+                <span class="nav-card-title">04. Modern Computer Vision: ConvNets, Residuals & Grad-CAM</span>
+              </div>
             </a>
-            <a href="./dlwp-06-sequences-timeseries-rnns.html" class="nav-card next">
-              <span class="nav-direction">Next →</span>
-              <span class="nav-chapter-title">06. Sequential Modeling & Timeseries Forecasting (GRUs/LSTMs)</span>
+            <a href="./dlwp-06-sequences-timeseries-rnns.html" class="chapter-nav-card next">
+              <div class="nav-card-text">
+                <span class="nav-card-label">Next Chapter</span>
+                <span class="nav-card-title">06. Sequential Modeling & Timeseries Forecasting (GRUs/LSTMs)</span>
+              </div>
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </a>
           </nav>
 

@@ -96,6 +96,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="the-geometry-of-generative-paths">The Geometry of Generative Paths</h2>
 <p>In standard diffusion models and basic Continuous Normalizing Flows (CNFs), the trajectories linking the prior distribution (noise) to the target distribution (data) can be highly curved and self-intersecting. This curvature stems from standard independent coupling between the distributions, $q(x_0, x_1) = q(x_0)q(x_1)$. Highly curved paths are computationally expensive to simulate during inference because ODE solvers require many small steps to accurately integrate complex vector fields without massive truncation errors.</p>
 <h2 id="optimal-transport-ot-to-the-rescue">Optimal Transport (OT) to the Rescue</h2>
@@ -184,15 +185,21 @@ def ot_cfm_loss(model, x1, x0):
 </div>
           </div>
 
-          <!-- Bottom In-Course Chapter Navigation -->
+          <!-- Bottom In-Course Chapter Navigation (Sleek Vercel/Stripe style) -->
           <nav class="chapter-nav">
-            <a href="./mit6s184-04-probability-flow-ode-likelihood.html" class="nav-card prev">
-              <span class="nav-direction">← Previous</span>
-              <span class="nav-chapter-title">04. The Probability Flow ODE, Exact Likelihood & Hutchinson Trace</span>
+            <a href="./mit6s184-04-probability-flow-ode-likelihood.html" class="chapter-nav-card prev">
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              <div class="nav-card-text">
+                <span class="nav-card-label">Previous Chapter</span>
+                <span class="nav-card-title">04. The Probability Flow ODE, Exact Likelihood & Hutchinson Trace</span>
+              </div>
             </a>
-            <a href="./mit6s184-06-guided-generation-cfg.html" class="nav-card next">
-              <span class="nav-direction">Next →</span>
-              <span class="nav-chapter-title">06. Guided Generation & Classifier-Free Guidance (CFG)</span>
+            <a href="./mit6s184-06-guided-generation-cfg.html" class="chapter-nav-card next">
+              <div class="nav-card-text">
+                <span class="nav-card-label">Next Chapter</span>
+                <span class="nav-card-title">06. Guided Generation & Classifier-Free Guidance (CFG)</span>
+              </div>
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </a>
           </nav>
 

@@ -97,6 +97,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="intro">1. Introduction to Optical Microscopy</h2>
 <p>Welcome to Chapter 23. The study of Optical Microscopy, Fourier Transforms &amp; Super-Resolution is fundamental to our understanding of biological systems. We explore topics such as: <strong>Light microscopy physics, wave optics, PSF, Abbe diffraction limit, 2D Fourier transforms, super-resolution.</strong>. By mastering these concepts, we bridge the gap between abstract computer science and tangible physical realities of the cell.</p>
 <h3 id="theory">1.1 Theoretical Foundations</h3>
@@ -180,15 +181,21 @@ def apply_lowpass_filter(image, cutoff):
             </div>
           </div>
 
-          <!-- Bottom In-Course Chapter Navigation -->
+          <!-- Bottom In-Course Chapter Navigation (Sleek Vercel/Stripe style) -->
           <nav class="chapter-nav">
-            <a href="./cs279-05-protein-design.html" class="nav-card prev">
-              <span class="nav-direction">← Previous</span>
-              <span class="nav-chapter-title">05. De Novo Protein Design & Diffusion Models</span>
+            <a href="./cs279-05-protein-design.html" class="chapter-nav-card prev">
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              <div class="nav-card-text">
+                <span class="nav-card-label">Previous Chapter</span>
+                <span class="nav-card-title">05. De Novo Protein Design & Diffusion Models</span>
+              </div>
             </a>
-            <a href="./cs279-07-diffusion-cellular-simulation.html" class="nav-card next">
-              <span class="nav-direction">Next →</span>
-              <span class="nav-chapter-title">07. Cellular Diffusion & Spatial Stochastic Simulation</span>
+            <a href="./cs279-07-diffusion-cellular-simulation.html" class="chapter-nav-card next">
+              <div class="nav-card-text">
+                <span class="nav-card-label">Next Chapter</span>
+                <span class="nav-card-title">07. Cellular Diffusion & Spatial Stochastic Simulation</span>
+              </div>
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </a>
           </nav>
 

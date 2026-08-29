@@ -97,6 +97,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="intro">1. Introduction to Biomolecular Structure</h2>
 <p>Welcome to Chapter 18. The study of Biomolecular Structure &amp; Protein Geometry is fundamental to our understanding of biological systems. We explore topics such as: <strong>Central dogma, protein primary/secondary/tertiary/quaternary structure, peptide bonds, torsion angles (phi, psi, omega), Ramachandran plots, alpha helices, beta sheets, hydrogen bonding networks, DNA double helix, RNA tertiary folds and riboswitches, PDB coordinates.</strong>. By mastering these concepts, we bridge the gap between abstract computer science and tangible physical realities of the cell.</p>
 <h3 id="theory">1.1 Theoretical Foundations</h3>
@@ -196,15 +197,21 @@ print(f"Calculated phi angle: {phi:.2f} degrees")
             </div>
           </div>
 
-          <!-- Bottom In-Course Chapter Navigation -->
+          <!-- Bottom In-Course Chapter Navigation (Sleek Vercel/Stripe style) -->
           <nav class="chapter-nav">
-            <a href="../index.html" class="nav-card prev">
-              <span class="nav-direction">← Previous</span>
-              <span class="nav-chapter-title">All Courses</span>
+            <a href="../index.html" class="chapter-nav-card prev">
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              <div class="nav-card-text">
+                <span class="nav-card-label">Back to Catalog</span>
+                <span class="nav-card-title">All Courses</span>
+              </div>
             </a>
-            <a href="./cs279-02-energy-forcefields.html" class="nav-card next">
-              <span class="nav-direction">Next →</span>
-              <span class="nav-chapter-title">02. Energy Functions & Molecular Conformations</span>
+            <a href="./cs279-02-energy-forcefields.html" class="chapter-nav-card next">
+              <div class="nav-card-text">
+                <span class="nav-card-label">Next Chapter</span>
+                <span class="nav-card-title">02. Energy Functions & Molecular Conformations</span>
+              </div>
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </a>
           </nav>
 

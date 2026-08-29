@@ -902,56 +902,100 @@ html.dark .concept-diagram {
 }
 
 /* ==========================================================================
-   BOTTOM IN-COURSE NAVIGATION
+   BEST-PRACTICE BOTTOM IN-COURSE NAVIGATION (Vercel / Stripe / GitBook Style)
    ========================================================================== */
 .chapter-nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  margin-top: 56px;
-  padding-top: 28px;
+  margin-top: 64px;
+  padding-top: 32px;
   border-top: 1px solid var(--border-light);
   font-family: var(--font-ui);
 }
 
-.nav-card {
+.chapter-nav-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   padding: 16px 20px;
-  border-radius: var(--radius-md);
+  border-radius: 10px;
   border: 1px solid var(--border-light);
-  background: var(--bg-secondary);
-  transition: all 0.15s ease;
+  background: transparent;
+  text-decoration: none !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 72px;
+}
+
+html[data-theme="dark"] .chapter-nav-card,
+html.dark .chapter-nav-card {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: #1e293b;
+}
+
+.chapter-nav-card.prev {
+  justify-content: flex-start;
+}
+
+.chapter-nav-card.next {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.chapter-nav-card:hover {
+  border-color: var(--accent-primary);
+  background: var(--accent-light);
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme="dark"] .chapter-nav-card:hover,
+html.dark .chapter-nav-card:hover {
+  background: rgba(56, 189, 248, 0.06);
+  border-color: #38bdf8;
+  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.3);
+}
+
+.nav-card-text {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  text-decoration: none !important;
+  gap: 2px;
+  min-width: 0;
 }
 
-.nav-card:hover {
-  border-color: var(--border-hover);
-  background: var(--bg-card);
-  box-shadow: var(--shadow-sm);
-}
-
-.nav-card.next {
-  text-align: right;
-  align-items: flex-end;
-}
-
-.nav-direction {
+.nav-card-label {
   font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   color: var(--text-muted);
+  transition: color 0.15s ease;
 }
 
-.nav-chapter-title {
+.nav-card-title {
   font-size: 0.92rem;
   font-weight: 600;
   color: var(--text-primary);
+  line-height: 1.4;
+  transition: color 0.15s ease;
 }
 
-.nav-card:hover .nav-chapter-title {
+.chapter-nav-card:hover .nav-card-title {
+  color: var(--accent-primary);
+}
+
+.chapter-nav-card .nav-arrow {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.15s ease;
+}
+
+.chapter-nav-card.prev:hover .nav-arrow {
+  transform: translateX(-4px);
+  color: var(--accent-primary);
+}
+
+.chapter-nav-card.next:hover .nav-arrow {
+  transform: translateX(4px);
   color: var(--accent-primary);
 }
 

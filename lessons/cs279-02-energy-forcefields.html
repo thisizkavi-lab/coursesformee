@@ -97,6 +97,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="intro">1. Introduction to Energy Functions</h2>
 <p>Welcome to Chapter 19. The study of Energy Functions &amp; Molecular Conformations is fundamental to our understanding of biological systems. We explore topics such as: <strong>Potential energy surfaces, bonded terms, non-bonded interactions, cutoffs, PBC, PME, neural network potentials (ANI-1, TorchANI).</strong>. By mastering these concepts, we bridge the gap between abstract computer science and tangible physical realities of the cell.</p>
 <h3 id="theory">1.1 Theoretical Foundations</h3>
@@ -183,15 +184,21 @@ print(f"Energy at minimum (3.8A): {min(energies):.3f} kcal/mol")
             </div>
           </div>
 
-          <!-- Bottom In-Course Chapter Navigation -->
+          <!-- Bottom In-Course Chapter Navigation (Sleek Vercel/Stripe style) -->
           <nav class="chapter-nav">
-            <a href="./cs279-01-biomolecular-structure.html" class="nav-card prev">
-              <span class="nav-direction">← Previous</span>
-              <span class="nav-chapter-title">01. Biomolecular Structure & Protein Geometry</span>
+            <a href="./cs279-01-biomolecular-structure.html" class="chapter-nav-card prev">
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              <div class="nav-card-text">
+                <span class="nav-card-label">Previous Chapter</span>
+                <span class="nav-card-title">01. Biomolecular Structure & Protein Geometry</span>
+              </div>
             </a>
-            <a href="./cs279-03-molecular-dynamics.html" class="nav-card next">
-              <span class="nav-direction">Next →</span>
-              <span class="nav-chapter-title">03. Molecular Dynamics Simulation</span>
+            <a href="./cs279-03-molecular-dynamics.html" class="chapter-nav-card next">
+              <div class="nav-card-text">
+                <span class="nav-card-label">Next Chapter</span>
+                <span class="nav-card-title">03. Molecular Dynamics Simulation</span>
+              </div>
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </a>
           </nav>
 

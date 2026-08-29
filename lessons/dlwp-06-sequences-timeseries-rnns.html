@@ -98,6 +98,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="1-the-challenge-of-time">1. The Challenge of Time</h2>
 <p>Until now, our models have treated inputs as independent and identically distributed (i.i.d). But what if you are predicting tomorrow's temperature? The order of the days matters. This chapter introduces sequence representation and recurrent neural networks (RNNs).</p>
 <div class="callout-note">
@@ -193,15 +194,21 @@ x = keras.layers.Bidirectional(keras.layers.GRU(32))(inputs)
 </div>
           </div>
 
-          <!-- Bottom In-Course Chapter Navigation -->
+          <!-- Bottom In-Course Chapter Navigation (Sleek Vercel/Stripe style) -->
           <nav class="chapter-nav">
-            <a href="./dlwp-05-segmentation-object-detection.html" class="nav-card prev">
-              <span class="nav-direction">← Previous</span>
-              <span class="nav-chapter-title">05. Advanced Vision: Semantic Segmentation (U-Net) & Detection</span>
+            <a href="./dlwp-05-segmentation-object-detection.html" class="chapter-nav-card prev">
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              <div class="nav-card-text">
+                <span class="nav-card-label">Previous Chapter</span>
+                <span class="nav-card-title">05. Advanced Vision: Semantic Segmentation (U-Net) & Detection</span>
+              </div>
             </a>
-            <a href="./dlwp-07-transformers-language-models.html" class="nav-card next">
-              <span class="nav-direction">Next →</span>
-              <span class="nav-chapter-title">07. Attention Mechanisms, Transformers & Self-Supervised Models</span>
+            <a href="./dlwp-07-transformers-language-models.html" class="chapter-nav-card next">
+              <div class="nav-card-text">
+                <span class="nav-card-label">Next Chapter</span>
+                <span class="nav-card-title">07. Attention Mechanisms, Transformers & Self-Supervised Models</span>
+              </div>
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </a>
           </nav>
 

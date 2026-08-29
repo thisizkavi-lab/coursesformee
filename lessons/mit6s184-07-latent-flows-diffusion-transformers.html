@@ -96,6 +96,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="high-resolution-computational-scaling">High-Resolution Computational Scaling</h2>
 <p>Operating directly in pixel space is computationally prohibitive for high-resolution images. Modern architectures employ Autoencoders with KL regularization (VAEs) to achieve spatial compression (typically $8\times$ to $16\times$). The generative modeling is then performed in this compressed, lower-dimensional "latent space" (Latent Flow Matching), as seen in Stable Diffusion 3 and FLUX architectures.</p>
 <h2 id="diffusion-transformers-dit">Diffusion Transformers (DiT)</h2>
@@ -198,15 +199,21 @@ class DiTBlock(nn.Module):
 </div>
           </div>
 
-          <!-- Bottom In-Course Chapter Navigation -->
+          <!-- Bottom In-Course Chapter Navigation (Sleek Vercel/Stripe style) -->
           <nav class="chapter-nav">
-            <a href="./mit6s184-06-guided-generation-cfg.html" class="nav-card prev">
-              <span class="nav-direction">← Previous</span>
-              <span class="nav-chapter-title">06. Guided Generation & Classifier-Free Guidance (CFG)</span>
+            <a href="./mit6s184-06-guided-generation-cfg.html" class="chapter-nav-card prev">
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              <div class="nav-card-text">
+                <span class="nav-card-label">Previous Chapter</span>
+                <span class="nav-card-title">06. Guided Generation & Classifier-Free Guidance (CFG)</span>
+              </div>
             </a>
-            <a href="./mit6s184-08-fast-solvers-rectified-distillation.html" class="nav-card next">
-              <span class="nav-direction">Next →</span>
-              <span class="nav-chapter-title">08. Fast Solvers, Rectified Flow & Few-Step Distillation</span>
+            <a href="./mit6s184-08-fast-solvers-rectified-distillation.html" class="chapter-nav-card next">
+              <div class="nav-card-text">
+                <span class="nav-card-label">Next Chapter</span>
+                <span class="nav-card-title">08. Fast Solvers, Rectified Flow & Few-Step Distillation</span>
+              </div>
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </a>
           </nav>
 

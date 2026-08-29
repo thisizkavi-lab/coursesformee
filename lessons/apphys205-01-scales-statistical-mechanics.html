@@ -96,6 +96,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="biological-scales">1. Length, Time, and Energy Scales</h2>
 <p>Before writing equations, we must orient ourselves in the universe of the cell. Biology happens at scales spanning 1 nm (the diameter of a DNA helix) to 10 μm (a typical mammalian cell). An E. coli bacterium is roughly a cylinder 1 μm in diameter and 2 μm long, possessing a volume of roughly 1 femtoliter ($10^{-15}$ L).</p>
 <p>At these scales, the dominant energy currency is thermal energy. The characteristic scale is defined by the product of Boltzmann's constant $k_B$ and the absolute temperature $T$. At room temperature (roughly 300 K), $k_B T \approx 4.1 \text{ pN} \cdot \text{nm}$.</p>
@@ -222,15 +223,21 @@ def p_open(V, q, dE0, T=300):
 </div>
           </div>
 
-          <!-- Bottom In-Course Chapter Navigation -->
+          <!-- Bottom In-Course Chapter Navigation (Sleek Vercel/Stripe style) -->
           <nav class="chapter-nav">
-            <a href="../index.html" class="nav-card prev">
-              <span class="nav-direction">← Previous</span>
-              <span class="nav-chapter-title">All Courses</span>
+            <a href="../index.html" class="chapter-nav-card prev">
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              <div class="nav-card-text">
+                <span class="nav-card-label">Back to Catalog</span>
+                <span class="nav-card-title">All Courses</span>
+              </div>
             </a>
-            <a href="./apphys205-02-dna-elasticity-macromolecules.html" class="nav-card next">
-              <span class="nav-direction">Next →</span>
-              <span class="nav-chapter-title">02. Polymer Physics & Macromolecular Elasticity</span>
+            <a href="./apphys205-02-dna-elasticity-macromolecules.html" class="chapter-nav-card next">
+              <div class="nav-card-text">
+                <span class="nav-card-label">Next Chapter</span>
+                <span class="nav-card-title">02. Polymer Physics & Macromolecular Elasticity</span>
+              </div>
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </a>
           </nav>
 

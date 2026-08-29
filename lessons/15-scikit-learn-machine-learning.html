@@ -96,6 +96,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="estimator-api">1. The Scikit-Learn Object Model</h2>
 <p>Scikit-Learn's genius lies in its strict, unified API. Almost everything in the library acts as an <strong>Estimator</strong>. Objects typically implement <code>fit(X, y)</code> to learn from data, and either <code>predict(X)</code> (for models) or <code>transform(X)</code> (for data preprocessors).</p>
 <div class="concept-diagram">
@@ -245,15 +246,21 @@ print("Score:", pipe.score(X_test, y_test))
 </div>
           </div>
 
-          <!-- Bottom In-Course Chapter Navigation -->
+          <!-- Bottom In-Course Chapter Navigation (Sleek Vercel/Stripe style) -->
           <nav class="chapter-nav">
-            <a href="./14-scipy-scientific-computing.html" class="nav-card prev">
-              <span class="nav-direction">← Previous</span>
-              <span class="nav-chapter-title">05. Scientific Optimization & Differential Equations</span>
+            <a href="./14-scipy-scientific-computing.html" class="chapter-nav-card prev">
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              <div class="nav-card-text">
+                <span class="nav-card-label">Previous Chapter</span>
+                <span class="nav-card-title">05. Scientific Optimization & Differential Equations</span>
+              </div>
             </a>
-            <a href="./16-pytorch-deep-learning.html" class="nav-card next">
-              <span class="nav-direction">Next →</span>
-              <span class="nav-chapter-title">07. Modern Deep Learning Foundations with PyTorch</span>
+            <a href="./16-pytorch-deep-learning.html" class="chapter-nav-card next">
+              <div class="nav-card-text">
+                <span class="nav-card-label">Next Chapter</span>
+                <span class="nav-card-title">07. Modern Deep Learning Foundations with PyTorch</span>
+              </div>
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </a>
           </nav>
 
