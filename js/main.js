@@ -1,7 +1,20 @@
 // ==========================================================================
 // COURSEBOOK INTERACTIVE JAVASCRIPT
-// Dark/Light Theme Toggle (Top Right), Sidebar Auto-Scroll, TOC & Code Copy
+// Instant Dark/Light Theme (SVG Icon), Sidebar Auto-Scroll, TOC & Code Copy
 // ==========================================================================
+
+// 1. Immediate execution before DOM ready to prevent flash
+(function() {
+  const saved = localStorage.getItem('coursebook-theme') || 
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    document.documentElement.classList.remove('dark');
+  }
+})();
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
@@ -14,15 +27,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- Theme Management (Dark / Light) ---
 function initTheme() {
-  const savedTheme = localStorage.getItem('coursebook-theme') || 
+  const current = localStorage.getItem('coursebook-theme') || 
     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   
-  applyTheme(savedTheme);
+  applyTheme(current);
 
   document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || document.documentElement.classList.contains('dark');
+      const nextTheme = isDark ? 'light' : 'dark';
       applyTheme(nextTheme);
     });
   });
@@ -31,10 +45,12 @@ function initTheme() {
 function applyTheme(theme) {
   if (theme === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
-    document.querySelectorAll('.theme-icon').forEach(icon => icon.textContent = '☀️');
+    document.documentElement.classList.add('dark');
+    if (document.body) document.body.classList.add('dark');
   } else {
     document.documentElement.removeAttribute('data-theme');
-    document.querySelectorAll('.theme-icon').forEach(icon => icon.textContent = '🌙');
+    document.documentElement.classList.remove('dark');
+    if (document.body) document.body.classList.remove('dark');
   }
   localStorage.setItem('coursebook-theme', theme);
 }

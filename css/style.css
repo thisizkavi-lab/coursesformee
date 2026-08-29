@@ -1,10 +1,10 @@
 /* ==========================================================================
    COURSEBOOK DESIGN SYSTEM
-   Typography matched to Deep Learning with Python (Chollet):
-   - Prose / Body: "Lora", Georgia, serif (soothing, book typography)
-   - Headers / UI: "Inter", -apple-system, sans-serif (crisp modern structure)
+   Typography:
+   - Body & Prose: "Lora", Georgia, serif (soothing, readable textbook font)
+   - UI & Headers: "Inter", -apple-system, sans-serif
    - Code: "JetBrains Mono", monospace
-   - Theme: Clean Light & Soothing Slate Dark Mode
+   - Theme: Crisp Light & Soothing Slate Dark Mode (Tailwind / Linear inspired)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
@@ -26,13 +26,13 @@
   --bg-code-header: #1e293b;
   --bg-diagram: #0f172a;
   
-  --text-primary: #111827;
-  --text-secondary: #374151;
-  --text-muted: #6b7280;
-  --text-light: #9ca3af;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
 
-  --border-light: #e5e7eb;
-  --border-subtle: #f3f4f6;
+  --border-light: #e2e8f0;
+  --border-subtle: #f1f5f9;
   --border-hover: #cbd5e1;
 
   --accent-primary: #0284c7;
@@ -101,10 +101,12 @@
 }
 
 /* ==========================================================================
-   SOOTHING DARK THEME (Deep Learning / Slate)
+   SOOTHING SLATE DARK THEME
    ========================================================================== */
-[data-theme="dark"] {
-  --bg-primary: #0f172a;           /* Deep Slate 900 */
+html[data-theme="dark"],
+html.dark,
+body.dark {
+  --bg-primary: #0f172a;           /* Slate 900 */
   --bg-secondary: #1e293b;         /* Slate 800 */
   --bg-tertiary: #334155;          /* Slate 700 */
   --bg-sidebar: #0b1120;           /* Slate 950 */
@@ -115,7 +117,7 @@
   --bg-diagram: #030712;
 
   --text-primary: #f1f5f9;         /* Soft high-contrast text */
-  --text-secondary: #cbd5e1;       /* Soothing slate reading text */
+  --text-secondary: #cbd5e1;       /* Soothing reading text */
   --text-muted: #94a3b8;           /* Muted text */
   --text-light: #64748b;
 
@@ -210,7 +212,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   TOP NAVIGATION BAR & TOP RIGHT THEME TOGGLE
+   TOP NAVIGATION BAR & BEST-PRACTICE SVG THEME TOGGLE
    ========================================================================== */
 .navbar {
   position: fixed;
@@ -275,28 +277,59 @@ a:hover {
   color: var(--text-primary);
 }
 
-/* Clean Top-Right Theme Button */
+/* --- Best-Practice SVG Theme Toggle Button (Lucide Style) --- */
 .theme-toggle-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 34px;
   width: 34px;
+  padding: 0;
   background: var(--bg-secondary);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
-  font-size: 1rem;
   color: var(--text-secondary);
   cursor: pointer;
   user-select: none;
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .theme-toggle-btn:hover {
   background: var(--bg-tertiary);
   color: var(--text-primary);
   border-color: var(--border-hover);
-  transform: scale(1.05);
+}
+
+.theme-toggle-btn svg {
+  width: 17px;
+  height: 17px;
+  stroke-width: 2;
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle-btn:hover svg {
+  transform: rotate(15deg);
+}
+
+/* Light mode: Show Moon (to switch to dark), Hide Sun */
+.theme-toggle-btn .sun-icon {
+  display: none;
+}
+.theme-toggle-btn .moon-icon {
+  display: block;
+}
+
+/* Dark mode: Show Sun (to switch to light), Hide Moon */
+html[data-theme="dark"] .theme-toggle-btn .sun-icon,
+html.dark .theme-toggle-btn .sun-icon,
+body.dark .theme-toggle-btn .sun-icon {
+  display: block;
+}
+
+html[data-theme="dark"] .theme-toggle-btn .moon-icon,
+html.dark .theme-toggle-btn .moon-icon,
+body.dark .theme-toggle-btn .moon-icon {
+  display: none;
 }
 
 .navbar-toggle {
