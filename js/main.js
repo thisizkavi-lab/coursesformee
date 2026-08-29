@@ -171,26 +171,132 @@ function initHighlight() {
 }
 
 // ==========================================================================
-// INTERACTIVE JAPANESE STUDY DECK ENGINE (Separated Sections & 3D Card Flip)
+// NATURAL JAPANESE AUDIO & INTERACTIVE STUDY DECK ENGINE
 // ==========================================================================
+
+let japaneseVoice = null;
+
+function loadBestJapaneseVoice() {
+  if (!('speechSynthesis' in window)) return null;
+  const voices = window.speechSynthesis.getVoices();
+  if (!voices || !voices.length) return null;
+
+  const jpVoices = voices.filter(v => 
+    v.lang === 'ja-JP' || v.lang === 'ja_JP' || v.lang.startsWith('ja') || v.name.toLowerCase().includes('japanese')
+  );
+  if (!jpVoices.length) return null;
+
+  // Preference hierarchy for the most natural, human-sounding voice:
+  const preferred = [
+    'google 日本語',
+    'kyoko (enhanced)',
+    'kyoko',
+    'otoya (enhanced)',
+    'otoya',
+    'nanami',
+    'keita',
+    'ayumi',
+    'haruka',
+    'ichiro'
+  ];
+
+  for (const name of preferred) {
+    const match = jpVoices.find(v => v.name.toLowerCase().includes(name));
+    if (match) {
+      japaneseVoice = match;
+      return match;
+    }
+  }
+
+  japaneseVoice = jpVoices[0];
+  return japaneseVoice;
+}
+
+if ('speechSynthesis' in window) {
+  window.speechSynthesis.onvoiceschanged = () => {
+    loadBestJapaneseVoice();
+  };
+}
+
+let activeAudioElement = null;
+
+function playNaturalJapaneseAudio(text, btn) {
+  if (!text) return;
+
+  if (btn) btn.classList.add('playing');
+
+  // Cancel any ongoing Web Speech synthesis
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  }
+
+  // Stop any active audio object
+  if (activeAudioElement) {
+    activeAudioElement.pause();
+    activeAudioElement = null;
+  }
+
+  // High-fidelity fallback function via Web Speech API with natural voice & cadence
+  let fallbackInvoked = false;
+  const invokeWebSpeechFallback = () => {
+    if (fallbackInvoked) return;
+    fallbackInvoked = true;
+
+    if ('speechSynthesis' in window) {
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'ja-JP';
+      utter.rate = 0.92;  // Natural, articulate cadence
+      utter.pitch = 1.0;
+
+      const voice = japaneseVoice || loadBestJapaneseVoice();
+      if (voice) utter.voice = voice;
+
+      utter.onend = () => { if (btn) btn.classList.remove('playing'); };
+      utter.onerror = () => { if (btn) btn.classList.remove('playing'); };
+
+      window.speechSynthesis.speak(utter);
+    } else {
+      if (btn) btn.classList.remove('playing');
+    }
+  };
+
+  try {
+    const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=ja&client=tw-ob&q=${encodeURIComponent(text)}`;
+    const audio = new Audio(audioUrl);
+    activeAudioElement = audio;
+
+    audio.onended = () => {
+      if (btn) btn.classList.remove('playing');
+    };
+
+    audio.onerror = () => {
+      invokeWebSpeechFallback();
+    };
+
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        invokeWebSpeechFallback();
+      });
+    }
+  } catch (err) {
+    invokeWebSpeechFallback();
+  }
+}
+
 function initJapaneseStudyDeck() {
   const container = document.querySelector('.japanese-page-container');
   if (!container) return;
 
   const levelId = container.getAttribute('data-level') || '1';
+  loadBestJapaneseVoice();
 
-  // --- 1. Audio Speech Synthesis Setup ---
+  // --- 1. Natural Audio Pronunciation Setup ---
   container.querySelectorAll('.audio-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const text = btn.getAttribute('data-speak');
-      if (text && 'speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.lang = 'ja-JP';
-        utter.rate = 0.9;
-        window.speechSynthesis.speak(utter);
-      }
+      playNaturalJapaneseAudio(text, btn);
     });
   });
 
