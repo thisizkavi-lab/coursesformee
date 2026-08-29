@@ -95,6 +95,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="estimator-api">1. The Scikit-Learn Object Model</h2>
 <p>Scikit-Learn's genius lies in its strict, unified API. Almost everything in the library acts as an <strong>Estimator</strong>. Objects typically implement <code>fit(X, y)</code> to learn from data, and either <code>predict(X)</code> (for models) or <code>transform(X)</code> (for data preprocessors).</p>
 <div class="concept-diagram">
@@ -107,7 +108,21 @@ Scikit-Learn API Geometry:
 </div>
 <h2 id="preprocessing">2. Data Preprocessing &amp; Splitting</h2>
 <p>Machine learning models require numerical, appropriately scaled data. Before training, we must split our data into training and hold-out testing sets to evaluate generalizability.</p>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">from sklearn.model_selection import train_test_split
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code class="language-python">from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -123,7 +138,21 @@ X_test_scaled = scaler.transform(X_test)
         </div>
 <h2 id="classification">3. Supervised Classification</h2>
 <p>Classification predicts categorical labels (e.g., spam vs. not spam). Scikit-learn provides algorithms like Logistic Regression, Support Vector Machines (SVC), and Random Forests.</p>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">from sklearn.ensemble import RandomForestClassifier
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code class="language-python">from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
 clf = RandomForestClassifier(n_estimators=100, max_depth=5)
@@ -136,14 +165,42 @@ print(classification_report(y_test, y_pred))
 <p>Regression predicts continuous values (e.g., housing prices). Linear models can be heavily penalized (regularized) using Ridge (L2) or Lasso (L1) to prevent overfitting.</p>
 <h2 id="unsupervised">5. Unsupervised Learning: PCA &amp; Clustering</h2>
 <p>Unsupervised learning discovers hidden structure in unlabeled data. <strong>PCA (Principal Component Analysis)</strong> is an essential tool for dimensionality reduction, projecting high-dimensional data onto orthogonal axes of maximum variance.</p>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">from sklearn.decomposition import PCA
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code class="language-python">from sklearn.decomposition import PCA
 pca = PCA(n_components=2)
 X_pca = pca.fit_transform(X_train_scaled)
 # Now X is 2D and can be plotted on a scatter plot
 </code></pre></div>
 <h2 id="pipelines">6. Encapsulation with Pipelines</h2>
 <p>To strictly enforce sequence and prevent data leakage during Cross-Validation, we use <code>Pipeline</code>.</p>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">from sklearn.pipeline import make_pipeline
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code class="language-python">from sklearn.pipeline import make_pipeline
 from sklearn.svm import SVC
 
 # Creates a single estimator that scales then fits SVC
@@ -156,7 +213,21 @@ accuracy = pipeline.score(X_test, y_test)
 <p>Construct a Pipeline that applies Min-Max scaling followed by a Logistic Regression model. Fit it on <code>X_train</code>, <code>y_train</code> and score it on <code>X_test</code>.</p>
 <details class="exercise-solution">
 <summary>Reveal Step-by-Step Solution</summary>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">from sklearn.pipeline import make_pipeline
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code class="language-python">from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LogisticRegression
 

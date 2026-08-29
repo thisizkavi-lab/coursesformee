@@ -95,6 +95,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="kinesin-motor">1. Kinesin and Molecular Walking</h2>
 <p>Molecular motors like Kinesin and Myosin convert chemical energy (ATP hydrolysis, $\Delta G_{\text{ATP}} \approx 20-25 \text{ } k_B T$) into mechanical work. Kinesin "walks" along microtubules taking distinct 8 nm steps. It can produce forces up to roughly 6-7 pN before stalling.</p>
 <h2 id="flashing-ratchet">2. The Flashing Ratchet Model</h2>
@@ -118,7 +119,21 @@ __________________________
             </div>
 <h2 id="code-ratchet">3. Simulating a 1D Langevin Flashing Ratchet</h2>
 <p>Let's simulate a particle undergoing Brownian motion, where the underlying potential toggles on and off.</p>
-<div class="code-block">
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div>
 <pre><code class="language-python">import numpy as np
 
 def simulate_flashing_ratchet(steps=10000, dt=0.01, flash_period=50):
@@ -156,7 +171,21 @@ print(f"Final particle position: {traj[-1]:.2f} (Net directed motion!)")
 </code></pre>
 </div>
 <div class="code-output">
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>Final particle position: 42.15 (Net directed motion!)
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code>Final particle position: 42.15 (Net directed motion!)
 </code></pre></div>
 </div>
 <div class="footnotes-section">

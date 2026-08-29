@@ -4,6 +4,7 @@
    - Body & Prose: "Lora", Georgia, serif (soothing, readable textbook font)
    - UI & Headers: "Inter", -apple-system, sans-serif
    - Code: "JetBrains Mono", monospace
+   - Code Blocks: Modern macOS terminal style with SVG copy buttons & ligatures
    - Theme: Crisp Light & Soothing Slate Dark Mode (Tailwind / Linear inspired)
    ========================================================================== */
 
@@ -311,7 +312,6 @@ a:hover {
   transform: rotate(15deg);
 }
 
-/* Light mode: Show Moon (to switch to dark), Hide Sun */
 .theme-toggle-btn .sun-icon {
   display: none;
 }
@@ -319,7 +319,6 @@ a:hover {
   display: block;
 }
 
-/* Dark mode: Show Sun (to switch to light), Hide Moon */
 html[data-theme="dark"] .theme-toggle-btn .sun-icon,
 html.dark .theme-toggle-btn .sun-icon,
 body.dark .theme-toggle-btn .sun-icon {
@@ -585,51 +584,106 @@ body.dark .theme-toggle-btn .moon-icon {
 }
 
 /* ==========================================================================
-   CODE BLOCKS & RUNNABLE OUTPUTS
+   BEST-PRACTICE CODE BLOCKS (Vercel / Stripe / GitHub Docs Style)
    ========================================================================== */
 .code-block {
-  margin: 24px 0 28px;
+  margin: 28px 0 32px;
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: var(--bg-code);
-  border: 1px solid var(--border-light);
-  box-shadow: var(--shadow-sm);
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.12);
   font-family: var(--font-mono);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+html[data-theme="dark"] .code-block,
+html.dark .code-block {
+  background: #030712;
+  border-color: #1f2937;
+  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.4);
+}
+
+.code-block:hover {
+  border-color: #334155;
+  box-shadow: 0 6px 20px -2px rgba(0, 0, 0, 0.18);
 }
 
 .code-block-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 16px;
-  background: var(--bg-code-header);
-  border-bottom: 1px solid var(--border-light);
+  padding: 9px 16px;
+  background: #1e293b;
+  border-bottom: 1px solid #334155;
 }
+
+html[data-theme="dark"] .code-block-header,
+html.dark .code-block-header {
+  background: #111827;
+  border-bottom-color: #1f2937;
+}
+
+.code-block-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.code-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.code-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-red { background: #ff5f56; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #27c93f; }
 
 .code-block-lang {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   color: #94a3b8;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 8px;
+  border-radius: 4px;
 }
 
+/* Modern Copy Button */
 .code-block-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-  padding: 3px 8px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-family: var(--font-ui);
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: #cbd5e1;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .code-block-copy:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.16);
   color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.code-block-copy .check-icon {
+  display: none;
 }
 
 .code-block-copy.copied {
@@ -638,21 +692,55 @@ body.dark .theme-toggle-btn .moon-icon {
   color: #ffffff;
 }
 
+.code-block-copy.copied .copy-icon {
+  display: none;
+}
+
+.code-block-copy.copied .check-icon {
+  display: block;
+}
+
 .code-block pre {
   margin: 0;
   padding: 18px 20px;
   overflow-x: auto;
   font-family: var(--font-mono);
-  font-size: 0.86rem;
-  line-height: 1.65;
-  color: #f1f5f9;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: #f8fafc;
+  font-feature-settings: "liga" 1, "calt" 1;
+}
+
+.code-block pre code {
+  font-family: inherit;
+  font-size: inherit;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* Inline Code in Prose */
+:not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: var(--bg-tertiary);
+  color: var(--accent-primary);
+  border: 1px solid var(--border-light);
+}
+
+html[data-theme="dark"] :not(pre) > code,
+html.dark :not(pre) > code {
+  background: rgba(56, 189, 248, 0.1);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.2);
 }
 
 .code-output {
-  margin: -18px 0 28px;
+  margin: -22px 0 28px;
   border-radius: 0 0 var(--radius-md) var(--radius-md);
   background: #030712;
-  border: 1px solid var(--border-light);
+  border: 1px solid #1e293b;
   border-top: none;
   padding: 12px 18px;
   font-family: var(--font-mono);
@@ -681,11 +769,17 @@ body.dark .theme-toggle-btn .moon-icon {
 .concept-diagram {
   margin: 28px 0;
   border-radius: var(--radius-md);
-  background: var(--bg-diagram);
-  border: 1px solid var(--border-light);
+  background: #0f172a;
+  border: 1px solid #1e293b;
   padding: 20px 24px;
   overflow-x: auto;
   font-family: var(--font-mono);
+}
+
+html[data-theme="dark"] .concept-diagram,
+html.dark .concept-diagram {
+  background: #030712;
+  border-color: #1f2937;
 }
 
 .concept-diagram pre {

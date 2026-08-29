@@ -97,6 +97,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="1-diffusion-models">1. Diffusion Models</h2>
 <p>Diffusion models construct images by learning to denoise pure noise over multiple steps.</p>
 <div class="concept-diagram">
@@ -109,7 +110,21 @@ Pure Noise x_T -&gt; Denoise U-Net -&gt; ... -&gt; Denoise U-Net -&gt; Data x_0
 </div>
 <h2 id="2-code-walkthrough-vae-reparameterization-trick">2. Code Walkthrough: VAE Reparameterization Trick</h2>
 <p>To backpropagate through stochastic nodes in a VAE, we use the reparameterization trick.</p>
-<div class="code-block">
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div>
 <pre><code class="language-python">
 import keras
 import tensorflow as tf

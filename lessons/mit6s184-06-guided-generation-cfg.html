@@ -95,6 +95,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="conditional-generative-modeling">Conditional Generative Modeling</h2>
 <p>To control what a generative model creates, we condition generation on some context $c$ (e.g., text, classes), modeling $p(x|c)$. By Bayes' rule on scores, we have:
   $$\nabla_x \log p_t(x|c) = \nabla_x \log p_t(x) + \nabla_x \log p_t(c|x)$$
@@ -108,7 +109,21 @@
 <strong>Note:</strong> Very high guidance scales $w$ can push samples out of distribution. Dynamic thresholding and clip guidance are techniques to mitigate this.
   </div>
 <h2 id="code-classifier-free-guidance-in-pytorch">Code: Classifier-Free Guidance in PyTorch</h2>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre class="code-block"><code class="language-python">
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre class="code-block"><code class="language-python">
 import torch
 
 def cfg_sample_step(model, x_t, t, c, w=3.0):
@@ -144,7 +159,21 @@ def cfg_sample_step(model, x_t, t, c, w=3.0):
 <p>High CFG scales can cause values to exceed the valid range [-1, 1]. Implement dynamic thresholding on the predicted data to scale it back safely.</p>
 <details class="exercise-solution">
 <summary>Reveal Step-by-Step Solution</summary>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code>
 def dynamic_thresholding(x_pred, p=0.99):
     s = torch.quantile(torch.abs(x_pred.view(x_pred.size(0), -1)), p, dim=1)
     s = torch.clamp(s, min=1.0)

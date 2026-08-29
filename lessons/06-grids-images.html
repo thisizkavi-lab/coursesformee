@@ -96,6 +96,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="2d-grids-as-lists-of-lists">2D Grids as Lists of Lists</h2>
 <p>To represent 2-dimensional spaces, we use lists of lists. This is typically done in a <em>row-major order</em>, where the outer list represents rows, and each inner list represents the columns within that row.</p>
 <div class="concept-diagram"><pre>
@@ -122,7 +123,21 @@ grid = [
 <p>By iterating over an image grid, we can apply transformations pixel by pixel.</p>
 <h3 id="grayscale-conversion">Grayscale Conversion</h3>
 <p>To convert an image to grayscale, we calculate the luminance of each pixel. Because human eyes are more sensitive to green, we use a weighted average:</p>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>def to_grayscale(image):
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code>def to_grayscale(image):
     for y in range(image.height):
         for x in range(image.width):
             pixel = image.get_pixel(x, y)
@@ -139,7 +154,21 @@ grid = [
 <p>Write an algorithm to mirror an image horizontally.</p>
 <details class="exercise-solution">
 <summary>Reveal Step-by-Step Solution</summary>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>def flip_horizontal(image):
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code>def flip_horizontal(image):
     width = image.width
     height = image.height
     for y in range(height):

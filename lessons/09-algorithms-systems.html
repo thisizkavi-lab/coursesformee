@@ -96,6 +96,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="9-1-custom-sorting-in-python">9.1 Custom Sorting in Python</h2>
 <p>Sorting data efficiently is fundamental in computer science. Python provides two built-in mechanisms for sorting: the <code>sorted()</code> function and the in-place <code>.sort()</code> list method.</p>
 <div class="callout-tip">
@@ -104,7 +105,21 @@
 </div>
 <h3 id="the-key-parameter-and-lambda-expressions">The <code>key=</code> Parameter and Lambda Expressions</h3>
 <p>Often, we need to sort complex objects. Python’s sorting functions accept a <code>key</code> parameter—a function that extracts a comparison key from each element.</p>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>students = [('Alice', 88), ('Bob', 95), ('Charlie', 72)]
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code>students = [('Alice', 88), ('Bob', 95), ('Charlie', 72)]
 # Sort by score (the second element in the tuple)
 sorted_students = sorted(students, key=lambda student: student[1])
 print(sorted_students)</code></pre></div>
@@ -125,7 +140,21 @@ Doc2: [apple, cherry]               banana: [Doc1]
 <p>The web operates on the client-server model, utilizing a hierarchy of protocols to ensure reliable communication across a decentralized network.</p>
 <h3 id="http-and-rest-apis">HTTP and REST APIs</h3>
 <p>HyperText Transfer Protocol (HTTP) is the language of the web. Modern systems interact via APIs using formats like JSON (JavaScript Object Notation).</p>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>import json
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code>import json
 import urllib.request
 
 url = "https://api.github.com/users/octocat"

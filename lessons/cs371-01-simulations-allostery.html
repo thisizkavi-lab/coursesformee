@@ -96,6 +96,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <div class="reading-time">Reading Time: 45 mins | Part III</div>
 <h2 id="microsecond-to-millisecond-all-atom-simulations">Microsecond to Millisecond All-Atom Simulations</h2>
 <p>In Stanford CS371, we explore the frontiers of computational biology by tracking atoms across time. Standard simulations historically captured only nanoseconds of biological time. Today, specialized architectures allow us to access the microsecond to millisecond timescale, where critical biological processes—like protein folding and allosteric modulation—actually occur.</p>
@@ -118,7 +119,21 @@ Landscape
         </div>
 <h2 id="algorithmic-implementation-change-point-detection">Algorithmic Implementation: Change-Point Detection</h2>
 <p>How do we identify when a protein jumps between states? We use change-point detection algorithms on the time-series of atomic distances.</p>
-<div class="code-block">
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div>
 <pre><code>import numpy as np
 from scipy import signal
 
@@ -147,7 +162,21 @@ print(f"Conformational shifts detected at indices: {change_points}")
 </code></pre>
 </div>
 <div class="code-output">
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>Conformational shifts detected at indices: [2999 6999]</code></pre></div>
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code>Conformational shifts detected at indices: [2999 6999]</code></pre></div>
 </div>
 <div class="exercise-box" id="exercise">
 <h3 id="exercise-building-a-transition-matrix">Exercise: Building a Transition Matrix</h3>

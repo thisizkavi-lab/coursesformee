@@ -95,6 +95,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="11-1-the-ndarray-architecture">11.1 The <code>ndarray</code> Architecture</h2>
 <p>At the core of NumPy is the <code>ndarray</code> (N-dimensional array). Unlike Python lists, ndarrays store uniform data in contiguous memory blocks, characterized by <code>dtype</code>, <code>shape</code>, and <code>strides</code>.</p>
 <div class="concept-diagram"><pre>
@@ -114,7 +115,21 @@ Yields View:
 <li>Dimensions are compatible if they are equal, or if one of them is 1. (The dimension of size 1 is "stretched" to match).</li>
 </ol>
 </div>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>import numpy as np
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code>import numpy as np
 matrix = np.ones((3, 3))
 vector = np.array([1, 2, 3])
 print(matrix + vector) # Broadcasts vector across rows</code></pre></div>
@@ -123,13 +138,41 @@ print(matrix + vector) # Broadcasts vector across rows</code></pre></div>
  [2. 3. 4.]]</code></div>
 <h2 id="11-3-boolean-masking-filtering">11.3 Boolean Masking &amp; Filtering</h2>
 <p>Advanced indexing lets you filter arrays efficiently using boolean conditions.</p>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>arr = np.array([10, -5, 20, -2, 7])
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code>arr = np.array([10, -5, 20, -2, 7])
 mask = arr &gt; 0
 print(arr[mask])</code></pre></div>
 <div class="output-block"><code>[10 20  7]</code></div>
 <h2 id="11-4-multi-axis-reductions">11.4 Multi-Axis Reductions</h2>
 <p>Operations like <code>np.sum</code> or <code>np.max</code> can collapse dimensions across specified axes.</p>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>grid = np.array([[1, 2], [3, 4]])
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code>grid = np.array([[1, 2], [3, 4]])
 print(np.sum(grid, axis=0)) # Sum down the columns</code></pre></div>
 <div class="output-block"><code>[4 6]</code></div>
 <div class="footnotes-section">

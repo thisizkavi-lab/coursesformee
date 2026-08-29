@@ -95,6 +95,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="biological-scales">1. Length, Time, and Energy Scales</h2>
 <p>Before writing equations, we must orient ourselves in the universe of the cell. Biology happens at scales spanning 1 nm (the diameter of a DNA helix) to 10 μm (a typical mammalian cell). An E. coli bacterium is roughly a cylinder 1 μm in diameter and 2 μm long, possessing a volume of roughly 1 femtoliter ($10^{-15}$ L).</p>
 <p>At these scales, the dominant energy currency is thermal energy. The characteristic scale is defined by the product of Boltzmann's constant $k_B$ and the absolute temperature $T$. At room temperature (roughly 300 K), $k_B T \approx 4.1 \text{ pN} \cdot \text{nm}$.</p>
@@ -127,7 +128,21 @@ Energy Landscape of a Two-State System (e.g., Protein Unfolding)
             </pre></div>
 <h2 id="code-equilibrium">3. Computing Equilibrium Probabilities</h2>
 <p>Let's simulate a two-state system, such as an ion channel gating or protein unfolding, varying the energy difference and observing the thermal equilibrium probabilities.</p>
-<div class="code-block">
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 
@@ -150,7 +165,21 @@ print(f"P(State 2) at ΔE = -3 kBT: {two_state_probability(-3):.4f}")
 </code></pre>
 </div>
 <div class="code-output">
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>P(State 2) at ΔE = 0 kBT: 0.50
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code>P(State 2) at ΔE = 0 kBT: 0.50
 P(State 2) at ΔE = 3 kBT: 0.0474
 P(State 2) at ΔE = -3 kBT: 0.9526
 </code></pre></div>
@@ -160,7 +189,21 @@ P(State 2) at ΔE = -3 kBT: 0.9526
 <p>Assume the energy difference between the open and closed states of an ion channel depends linearly on the transmembrane voltage $V$: $\Delta E(V) = q V + \Delta E_0$. Write a function to calculate the open probability as a function of voltage.</p>
 <details class="exercise-solution">
 <summary>Reveal Step-by-Step Solution</summary>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code class="language-python">
 def p_open(V, q, dE0, T=300):
     k_B = 1.38e-23  # J/K
     k_BT = k_B * T

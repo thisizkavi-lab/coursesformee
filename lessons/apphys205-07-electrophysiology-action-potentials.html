@@ -95,6 +95,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="membrane-circuit">1. The Equivalent Circuit Model of the Membrane</h2>
 <p>The lipid bilayer acts as a remarkably good insulator, providing a membrane capacitance of $C_m \approx 1 \text{ }\mu\text{F/cm}^2$. Embedded in this membrane are ion channels that act as variable resistors (conductances). The Nernst potential equations set the "battery" voltages for different ion species based on their concentration gradients (e.g., $E_K \approx -77 \text{ mV}$, $E_{Na} \approx +50 \text{ mV}$).</p>
 <p>The total membrane voltage dynamics are governed by Kirchhoff's current law:</p>
@@ -108,7 +109,21 @@
             </div>
 <h2 id="code-hh">3. Numerical Integration of HH Equations</h2>
 <p>Because the Hodgkin-Huxley equations are a system of non-linear ODEs, we solve them numerically using SciPy's <code>odeint</code>.</p>
-<div class="code-block">
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div>
 <pre><code class="language-python">import numpy as np
 from scipy.integrate import odeint
 

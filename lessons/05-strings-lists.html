@@ -96,6 +96,7 @@
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
 <div class="sidebar-overlay"></div>
+<div class="sidebar-overlay"></div>
 <h2 id="sequences-in-memory">Sequences in Memory</h2>
 <p>In Python, a sequence is a contiguously ordered collection of items. Elements in a sequence have a predictable order and can be accessed via numerical indices. The two most prominent sequences are strings (ordered collections of characters) and lists (ordered collections of arbitrary objects).</p>
 <div class="concept-diagram"><pre>
@@ -109,7 +110,21 @@ Index (Neg):      -4         -3         -2         -1
 <p>Python utilizes 0-based indexing. The first element is at index 0. It also seamlessly supports negative indexing, where <code>-1</code> retrieves the last element.</p>
 <h2 id="slicing-syntax-semantics">Slicing Syntax &amp; Semantics</h2>
 <p>Slicing allows you to extract a sub-sequence using the notation <code>seq[start:stop:step]</code>. The slice begins at <code>start</code> (inclusive) and goes up to, but not including, <code>stop</code> (exclusive), stepping by <code>step</code>.</p>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>text = "PYTHON"
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code>text = "PYTHON"
 print(text[1:4])   # 'YTH'
 print(text[:3])    # 'PYT' (omitted start defaults to 0)
 print(text[3:])    # 'HON' (omitted stop defaults to end)
@@ -121,7 +136,21 @@ print(text[::-1])  # 'NOHTYP' (step of -1 reverses the sequence)
 <h2 id="mutability-vs-immutability">Mutability vs Immutability</h2>
 <p>This is one of Python's most critical concepts. <strong>Strings are immutable</strong>. Once a string is created in memory, its characters cannot be changed. Attempting <code>text[0] = 'X'</code> will raise a TypeError. Operations like <code>.upper()</code> or <code>.replace()</code> return <em>new</em> strings.</p>
 <p><strong>Lists, however, are mutable</strong>. You can alter their elements in place without changing the list's memory address.</p>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code># Strings (Immutable)
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code># Strings (Immutable)
 s = "cat"
 s = "b" + s[1:] # Creates a new string "bat", reassigned to s
 
@@ -144,7 +173,21 @@ list_a = [1, 2, 3]
 list_b = list_a       &lt;-- ALIAS: list_a and list_b point to the SAME object
 list_c = list_a[:]    &lt;-- CLONE: list_c points to a NEW list with same contents
             </pre></div>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>list_a = [1, 2, 3]
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code>list_a = [1, 2, 3]
 list_b = list_a
 list_b[0] = 99
 print(list_a) # Output: [99, 2, 3] (Affected!)
@@ -159,7 +202,21 @@ print(list_a) # Output: [99, 2, 3] (Unaffected)
 <p>Write a function <code>is_palindrome(text)</code> that checks if a string is a palindrome, ignoring spaces, punctuation, and capitalization.</p>
 <details class="exercise-solution">
 <summary>Reveal Step-by-Step Solution</summary>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>def is_palindrome(text):
+<div class="code-block"><div class="code-block-header">
+<div class="code-block-meta">
+<span class="code-dots">
+<span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span>
+</span>
+<span class="code-block-lang">python</span>
+</div>
+<button aria-label="Copy code" class="code-block-copy" type="button">
+<svg class="copy-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="14" rx="2" ry="2" width="14" x="8" y="8"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+<svg class="check-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span class="copy-text">Copy</span>
+</button>
+</div><pre><code>def is_palindrome(text):
     # 1. Clean the string
     cleaned = ""
     for char in text:
