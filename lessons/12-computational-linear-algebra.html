@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -59,31 +61,7 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<section id="matrix-ops">
+<div class="sidebar-overlay"></div>
 <h2 id="12-1-vectors-and-matrices-in-numpy">12.1 Vectors and Matrices in NumPy</h2>
 <p>Linear algebra is the mathematical engine of ML. In Python, matrix multiplication is natively supported via the <code>@</code> operator (syntactic sugar for <code>np.matmul</code>).</p>
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>import numpy as np
@@ -91,7 +69,6 @@ A = np.array([[1, 2], [3, 4]])
 x = np.array([1, 1])
 print(A @ x)</code></pre></div>
 <div class="output-block"><code>[3 7]</code></div>
-</section><section id="linear-systems">
 <h2 id="12-2-solving-linear-systems-ax-b">12.2 Solving Linear Systems $Ax = b$</h2>
 <p>Mathematically, $x = A^{-1}b$. Computationally, explicitly computing the inverse $A^{-1}$ is disastrous for numerical stability. Always use solvers like <code>np.linalg.solve</code>.</p>
 <div class="callout-warning">
@@ -99,7 +76,6 @@ print(A @ x)</code></pre></div>
 <p>Computing an explicit inverse is slower and more prone to floating point errors than LU or Cholesky factorizations used by built-in solvers.</p>
 </div>
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>x = np.linalg.solve(A, b)</code></pre></div>
-</section><section id="svd">
 <h2 id="12-3-singular-value-decomposition-svd">12.3 Singular Value Decomposition (SVD)</h2>
 <p>SVD factorizes any matrix $A$ into $U \Sigma V^T$. It is the Swiss Army knife of linear algebra, used for PCA, data compression, and pseudo-inverses.</p>
 <div class="concept-diagram"><pre>
@@ -108,71 +84,11 @@ A       =   U       *   Σ       *   V^T
 Data        Orthogonal  Diagonal    Orthogonal
             </pre></div>
 <p>Truncating $\Sigma$ to keep only the largest singular values gives an optimal low-rank approximation of the matrix.</p>
-</section><section id="ols">
 <h2 id="12-4-ordinary-least-squares-ols">12.4 Ordinary Least Squares (OLS)</h2>
 <p>For overdetermined systems (more equations than unknowns), we want to find $x$ that minimizes $||Ax - b||_2^2$. This is solved via <code>np.linalg.lstsq</code>.</p>
-</section><section class="exercise-box">
-<h3 id="practice-exercises">Practice Exercises</h3>
-<p><strong>Exercise 1:</strong> Reconstruct a rank-2 approximation of matrix A using SVD.</p>
-<details class="exercise-solution">
-<summary>Reveal Step-by-Step Solution</summary>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>U, s, Vt = np.linalg.svd(A, full_matrices=False)
-A_rank2 = U[:,:2] @ np.diag(s[:2]) @ Vt[:2,:]</code></pre></div>
-</details>
-</section><div class="chapter-nav">
-<a class="prev-chapter" href="./11-numpy-numerical-computing.html">← Chapter 11: NumPy</a>
-<a class="next-chapter" href="./13-pandas-data-science.html">Chapter 13: Pandas →</a>
-</div><div class="footnotes-section">
+<div class="footnotes-section">
 <hr/>
 <p>Sources: Stanford CME193 Syllabus, Colab Lecture 4.</p>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

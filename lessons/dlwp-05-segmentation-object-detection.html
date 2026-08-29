@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -61,16 +63,10 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="chapter-header">
-
-<p class="subtitle">Pixel-perfect predictions and bounding box regressions.</p>
-</div><h2 id="segmentation">Semantic Segmentation and U-Net</h2><p>Semantic segmentation involves predicting a class label for every individual pixel in an image. The U-Net architecture is a widely used encoder-decoder network that excels at this task by concatenating high-resolution features from the encoder with upsampled features in the decoder.</p><div class="code-block">
+<div class="sidebar-overlay"></div>
+<h2 id="segmentation">Semantic Segmentation and U-Net</h2>
+<p>Semantic segmentation involves predicting a class label for every individual pixel in an image. The U-Net architecture is a widely used encoder-decoder network that excels at this task by concatenating high-resolution features from the encoder with upsampled features in the decoder.</p>
+<div class="code-block">
 <pre><code>import keras
 from keras import layers
 
@@ -108,26 +104,14 @@ def get_unet(img_size, num_classes):
 
 # unet = get_unet((256, 256), num_classes=3)
 </code></pre>
-</div><h2 id="detection">Object Detection Foundations</h2><p>Object detection outputs both bounding boxes and class labels. Key concepts include:</p><ul>
+</div>
+<h2 id="detection">Object Detection Foundations</h2>
+<p>Object detection outputs both bounding boxes and class labels. Key concepts include:</p>
+<ul>
 <li><strong>Anchor Boxes:</strong> Pre-defined boxes of various aspect ratios serving as priors.</li>
 <li><strong>IoU (Intersection over Union):</strong> Metric to measure the overlap between a predicted box and the ground truth.</li>
 <li><strong>NMS (Non-Maximum Suppression):</strong> Algorithm to filter out duplicate bounding box predictions.</li>
-</ul><div class="chapter-nav">
-<a href="./dlwp-04-convnets-computer-vision.html">← Previous: Chapter 47</a>
-<a href="#">Next: Capstone →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
+</ul>
           </div>
 
           <!-- Bottom In-Course Chapter Navigation -->

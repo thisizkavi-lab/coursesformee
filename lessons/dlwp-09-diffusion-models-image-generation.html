@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -61,20 +63,20 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<h2 id="1-diffusion-models">1. Diffusion Models</h2><p>Diffusion models construct images by learning to denoise pure noise over multiple steps.</p><div class="concept-diagram">
+<div class="sidebar-overlay"></div>
+<h2 id="1-diffusion-models">1. Diffusion Models</h2>
+<p>Diffusion models construct images by learning to denoise pure noise over multiple steps.</p>
+<div class="concept-diagram">
 <pre>
 Forward &amp; Reverse Diffusion
 ---------------------------
 Data x_0 -&gt; Add Noise -&gt; ... -&gt; Add Noise -&gt; Pure Noise x_T
 Pure Noise x_T -&gt; Denoise U-Net -&gt; ... -&gt; Denoise U-Net -&gt; Data x_0
 </pre>
-</div><h2 id="2-code-walkthrough-vae-reparameterization-trick">2. Code Walkthrough: VAE Reparameterization Trick</h2><p>To backpropagate through stochastic nodes in a VAE, we use the reparameterization trick.</p><div class="code-block">
+</div>
+<h2 id="2-code-walkthrough-vae-reparameterization-trick">2. Code Walkthrough: VAE Reparameterization Trick</h2>
+<p>To backpropagate through stochastic nodes in a VAE, we use the reparameterization trick.</p>
+<div class="code-block">
 <pre><code class="language-python">
 import keras
 import tensorflow as tf
@@ -88,25 +90,14 @@ class Sampling(keras.layers.Layer):
         epsilon = tf.random.normal(shape=(batch, dim))
         return z_mean + tf.exp(0.5 * z_log_var) * epsilon
 </code></pre>
-</div><div class="exercise-box">
+</div>
+<div class="exercise-box">
 <h3 id="exercise-vae-latent-space">Exercise: VAE Latent Space</h3>
 <p>Why do we add KL-divergence to the loss of a VAE?</p>
 <details class="exercise-solution">
 <summary>Reveal Step-by-Step Solution</summary>
 <p>It acts as a regularizer, forcing the latent space distributions to match a standard normal distribution, ensuring the space is continuous and can be sampled from.</p>
 </details>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

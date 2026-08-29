@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -61,21 +63,18 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="chapter-header">
-<div class="badge">Part III · Deep Learning Foundations</div>
-
-<p class="subtitle">Understanding representations, manifolds, and the geometry of optimization.</p>
-<p class="reading-time">⏱️ Reading Time: 45 mins</p>
-</div><h2 id="representations">Representations in AI vs Classical ML</h2><p>Deep learning is ultimately about representation learning. While classical machine learning requires careful feature engineering (creating representations manually), deep learning models learn hierarchical representations of data automatically.</p><h3 id="manifold">The Manifold Hypothesis and Crumpled Paper</h3><p>A useful geometric intuition for deep learning is the "crumpled paper ball" analogy. Imagine two sheets of paper, one red and one blue, crumpled together. The goal of a neural network is to systematically uncrumple this complex, non-linear manifold into a space where the two colors can be separated by a simple linear boundary.</p><div class="callout callout-deepdive">
+<div class="sidebar-overlay"></div>
+<h2 id="representations">Representations in AI vs Classical ML</h2>
+<p>Deep learning is ultimately about representation learning. While classical machine learning requires careful feature engineering (creating representations manually), deep learning models learn hierarchical representations of data automatically.</p>
+<h3 id="manifold">The Manifold Hypothesis and Crumpled Paper</h3>
+<p>A useful geometric intuition for deep learning is the "crumpled paper ball" analogy. Imagine two sheets of paper, one red and one blue, crumpled together. The goal of a neural network is to systematically uncrumple this complex, non-linear manifold into a space where the two colors can be separated by a simple linear boundary.</p>
+<div class="callout callout-deepdive">
 <strong>Deep Dive: The Manifold Hypothesis</strong>
 <p>Real-world high-dimensional data (like images of faces) lies on a low-dimensional manifold embedded in the high-dimensional space. Deep neural networks learn to continuously deform these manifolds into simpler, linearly separable representations.</p>
-</div><h2 id="tensors">Tensor Operations and Geometry</h2><p>Tensors are the fundamental data structures in deep learning. A tensor is a generalization of scalars (0D), vectors (1D), and matrices (2D) to arbitrary dimensions.</p><div class="concept-diagram">
+</div>
+<h2 id="tensors">Tensor Operations and Geometry</h2>
+<p>Tensors are the fundamental data structures in deep learning. A tensor is a generalization of scalars (0D), vectors (1D), and matrices (2D) to arbitrary dimensions.</p>
+<div class="concept-diagram">
 <pre>
 0D Tensor: 5 (Scalar)
 1D Tensor: [1, 2, 3] (Vector)
@@ -83,7 +82,12 @@
 3D Tensor: [[[...]]] (e.g., Image with height, width, channels)
 4D Tensor: [[[[...]]]] (e.g., Video: batch, frames, height, width, channels)
 </pre>
-</div><h3 id="broadcasting">Broadcasting Rules</h3><p>Broadcasting allows tensor operations on arrays with different shapes. Smaller tensors are "broadcast" (virtually copied) to match the shape of the larger tensor.</p><h2 id="gradient">Gradient-Based Optimization from Scratch</h2><p>Training a neural network involves minimizing a loss function by adjusting weights using gradients. Backpropagation computes these gradients efficiently using the chain rule.</p><div class="code-block">
+</div>
+<h3 id="broadcasting">Broadcasting Rules</h3>
+<p>Broadcasting allows tensor operations on arrays with different shapes. Smaller tensors are "broadcast" (virtually copied) to match the shape of the larger tensor.</p>
+<h2 id="gradient">Gradient-Based Optimization from Scratch</h2>
+<p>Training a neural network involves minimizing a loss function by adjusting weights using gradients. Backpropagation computes these gradients efficiently using the chain rule.</p>
+<div class="code-block">
 <pre><code>import numpy as np
 
 # A simple 2-layer neural network trained via SGD from scratch
@@ -124,7 +128,8 @@ for epoch in range(10000):
     weights0 += layer0.T.dot(layer1_delta) * learning_rate
 
 print("Final Predictions:\n", layer2)</code></pre>
-</div><div class="code-block-output">
+</div>
+<div class="code-block-output">
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre>
 Error at epoch 0: 0.49987...
 Error at epoch 5000: 0.05204...
@@ -134,31 +139,27 @@ Final Predictions:
   [0.963]
   [0.039]]
 </pre></div>
-</div><div class="exercise-box">
+</div>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre>
+Error at epoch 0: 0.49987...
+Error at epoch 5000: 0.05204...
+Final Predictions:
+ [[0.038]
+  [0.966]
+  [0.963]
+  [0.039]]
+</pre></div>
+<div class="exercise-box">
 <h3 id="exercise-implement-momentum">Exercise: Implement Momentum</h3>
 <p>Modify the SGD implementation above to include momentum, which helps accelerate gradients in the right direction and dampens oscillations.</p>
 <details class="exercise-solution">
 <summary>Reveal Step-by-Step Solution</summary>
 <p>Add velocity variables for each weight matrix and update them: <code>v = beta * v + (1 - beta) * gradient</code>, then apply to weights.</p>
 </details>
-</div><div class="chapter-nav">
-<a href="./09-algorithms-systems.html">← Previous: Chapter 09</a>
-<a href="./dlwp-02-unified-frameworks-keras3.html">Next: Chapter 45 →</a>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <hr/>
 <p>[1] Chollet, F. (2024). Deep Learning with Python, 3rd Edition.</p>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

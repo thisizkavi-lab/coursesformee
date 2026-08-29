@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -59,31 +61,7 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<section id="ndarray">
+<div class="sidebar-overlay"></div>
 <h2 id="11-1-the-ndarray-architecture">11.1 The <code>ndarray</code> Architecture</h2>
 <p>At the core of NumPy is the <code>ndarray</code> (N-dimensional array). Unlike Python lists, ndarrays store uniform data in contiguous memory blocks, characterized by <code>dtype</code>, <code>shape</code>, and <code>strides</code>.</p>
 <div class="concept-diagram"><pre>
@@ -94,7 +72,6 @@ Yields View:
 [[1, 2, 3],
  [4, 5, 6]]
             </pre></div>
-</section><section id="broadcasting">
 <h2 id="11-2-the-universal-broadcasting-rules">11.2 The Universal Broadcasting Rules</h2>
 <p>Broadcasting allows arithmetic operations between arrays of different shapes without explicit data copying.</p>
 <div class="callout-note">
@@ -111,80 +88,20 @@ print(matrix + vector) # Broadcasts vector across rows</code></pre></div>
 <div class="output-block"><code>[[2. 3. 4.]
  [2. 3. 4.]
  [2. 3. 4.]]</code></div>
-</section><section id="filtering">
 <h2 id="11-3-boolean-masking-filtering">11.3 Boolean Masking &amp; Filtering</h2>
 <p>Advanced indexing lets you filter arrays efficiently using boolean conditions.</p>
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>arr = np.array([10, -5, 20, -2, 7])
 mask = arr &gt; 0
 print(arr[mask])</code></pre></div>
 <div class="output-block"><code>[10 20  7]</code></div>
-</section><section id="reductions">
 <h2 id="11-4-multi-axis-reductions">11.4 Multi-Axis Reductions</h2>
 <p>Operations like <code>np.sum</code> or <code>np.max</code> can collapse dimensions across specified axes.</p>
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>grid = np.array([[1, 2], [3, 4]])
 print(np.sum(grid, axis=0)) # Sum down the columns</code></pre></div>
 <div class="output-block"><code>[4 6]</code></div>
-</section><section class="exercise-box">
-<h3 id="practice-exercises">Practice Exercises</h3>
-<p><strong>Exercise 1:</strong> Calculate Euclidean distance between a point <code>p</code> and a set of points <code>X</code> without loops.</p>
-<details class="exercise-solution">
-<summary>Reveal Step-by-Step Solution</summary>
-<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>dist = np.sqrt(np.sum((X - p)**2, axis=1))</code></pre></div>
-</details>
-</section><div class="chapter-nav">
-<a class="prev-chapter" href="./10-scientific-python-ecosystem.html">← Chapter 10: Scientific Stack</a>
-<a class="next-chapter" href="./12-computational-linear-algebra.html">Chapter 12: Linear Algebra →</a>
-</div><div class="footnotes-section">
+<div class="footnotes-section">
 <hr/>
 <p>Sources: Stanford CME193 Syllabus, Colab Lecture 3.</p>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

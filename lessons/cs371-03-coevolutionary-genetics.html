@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -60,19 +62,13 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="reading-time">Reading Time: 45 mins | Part III</div><h2 id="evolutionary-covariance">Evolutionary Covariance</h2><p>If two residues in a protein are physically in contact, a mutation in one usually exerts evolutionary pressure for a compensatory mutation in the other. By analyzing Multiple Sequence Alignments (MSAs), we can extract these coevolutionary couplings to predict 3D structures.</p><h2 id="deep-mental-model-direct-coupling-analysis-dca">Deep Mental Model: Direct Coupling Analysis (DCA)</h2><p>A simple correlation matrix is confounded by transitive correlations (if A binds B, and B binds C, A and C appear correlated). DCA, often utilizing Potts models, disentangles direct interactions from indirect ones.</p><div class="concept-diagram">
+<div class="sidebar-overlay"></div>
+<div class="reading-time">Reading Time: 45 mins | Part III</div>
+<h2 id="evolutionary-covariance">Evolutionary Covariance</h2>
+<p>If two residues in a protein are physically in contact, a mutation in one usually exerts evolutionary pressure for a compensatory mutation in the other. By analyzing Multiple Sequence Alignments (MSAs), we can extract these coevolutionary couplings to predict 3D structures.</p>
+<h2 id="deep-mental-model-direct-coupling-analysis-dca">Deep Mental Model: Direct Coupling Analysis (DCA)</h2>
+<p>A simple correlation matrix is confounded by transitive correlations (if A binds B, and B binds C, A and C appear correlated). DCA, often utilizing Potts models, disentangles direct interactions from indirect ones.</p>
+<div class="concept-diagram">
 <pre>
    A --------- B
     \         /
@@ -80,7 +76,10 @@
       \     /
          C
             </pre>
-</div><h2 id="algorithmic-implementation-computing-covariance">Algorithmic Implementation: Computing Covariance</h2><p>Let's calculate the empirical covariance from a synthetic MSA.</p><div class="code-block">
+</div>
+<h2 id="algorithmic-implementation-computing-covariance">Algorithmic Implementation: Computing Covariance</h2>
+<p>Let's calculate the empirical covariance from a synthetic MSA.</p>
+<div class="code-block">
 <pre><code>import numpy as np
 
 def compute_covariance_matrix(msa):
@@ -113,42 +112,18 @@ msa = np.array([
 print("Covariance Matrix:")
 print(compute_covariance_matrix(msa))
 </code></pre>
-</div><div class="code-output">
+</div>
+<div class="code-output">
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>Covariance Matrix:
 [[ 0.25  -0.125  0.25 ]
  [-0.125  0.1875 -0.125]
  [ 0.25  -0.125  0.25 ]]</code></pre></div>
-</div><div class="callout-tip">
+</div>
+<div class="callout-tip">
 <strong>Note:</strong> Notice how positions 0 and 2 are perfectly correlated (they mutate together), resulting in a high positive covariance.
-        </div><div class="footnotes-section">
+        </div>
+<div class="footnotes-section">
 <p><strong>Footnotes:</strong> Stanford CS371 Jan 23 lecture, Marks et al. &amp; Ovchinnikov Science papers.</p>
-</div><div class="chapter-nav">
-<a href="cs371-02-crowdsourced-biology.html">← Previous Chapter</a>
-<a href="cs371-04-denovo-design-frontiers.html">Next Chapter →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

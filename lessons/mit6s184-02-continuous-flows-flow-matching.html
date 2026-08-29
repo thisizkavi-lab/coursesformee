@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -59,16 +61,23 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<p><strong>Course:</strong> MIT 6.S184 | <strong>Reading Time:</strong> 50 mins | <strong>Part:</strong> Advanced Generative AI</p><h2 id="continuous-normalizing-flows">Continuous Normalizing Flows</h2><p>Continuous Normalizing Flows (CNFs) model a probability density over time governed by the continuity equation:</p><p>$\partial_t p_t(x) + \nabla \cdot (p_t(x) v_t(x)) = 0$</p><div class="callout-warning">
+<div class="sidebar-overlay"></div>
+<p><strong>Course:</strong> MIT 6.S184 | <strong>Reading Time:</strong> 50 mins | <strong>Part:</strong> Advanced Generative AI</p>
+<h2 id="continuous-normalizing-flows">Continuous Normalizing Flows</h2>
+<p>Continuous Normalizing Flows (CNFs) model a probability density over time governed by the continuity equation:</p>
+<p>$\partial_t p_t(x) + \nabla \cdot (p_t(x) v_t(x)) = 0$</p>
+<div class="callout-warning">
 <strong>Intractable Marginal Matching</strong><br/>
             Directly matching a marginal vector field $v_t(x)$ is generally intractable because we do not have access to the ground-truth marginal probability path. 
-        </div><h2 id="conditional-flow-matching-cfm">Conditional Flow Matching (CFM)</h2><p>Lipman et al. introduced Conditional Flow Matching. We define simple conditional paths between a datapoint $x_1$ and noise $x_0$, such as the linear Gaussian path: $x_t = (1-t)x_0 + t x_1$.</p><p>The conditional vector field is $u_t(x|x_1) = x_1 - x_0$.</p><div class="concept-diagram"><pre>
+        </div>
+<h2 id="conditional-flow-matching-cfm">Conditional Flow Matching (CFM)</h2>
+<p>Lipman et al. introduced Conditional Flow Matching. We define simple conditional paths between a datapoint $x_1$ and noise $x_0$, such as the linear Gaussian path: $x_t = (1-t)x_0 + t x_1$.</p>
+<p>The conditional vector field is $u_t(x|x_1) = x_1 - x_0$.</p>
+<div class="concept-diagram"><pre>
 Noise x_0  ========================&gt; Data x_1
   (Conditional Paths aggregate to Marginal Field)
-        </pre></div><div class="code-block">
+        </pre></div>
+<div class="code-block">
 <pre><code>import torch
 import torch.nn as nn
 
@@ -85,7 +94,8 @@ def compute_cfm_loss(model, x_1, x_0):
     loss = torch.mean((v_pred - u_t) ** 2)
     return loss
             </code></pre>
-</div><div class="exercise-box">
+</div>
+<div class="exercise-box">
 <h3 id="exercise-train-cfm-on-swiss-roll">Exercise: Train CFM on Swiss Roll</h3>
 <p>Implement a full PyTorch training loop on the Swiss Roll dataset using CFM.</p>
 <details class="exercise-solution">
@@ -103,17 +113,9 @@ for epoch in range(100):
     optimizer.step()</code></pre>
 </div>
 </details>
-</div><div class="chapter-nav">
-<div>Previous: <a href="./mit6s184-01-generative-foundations-sde.html">Chapter 54</a></div>
-<div>Next: <a href="./mit6s184-03-score-matching-diffusion-sde.html">Chapter 56</a></div>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <p>1. Lipman et al., "Flow Matching for Generative Modeling". arXiv:2210.02747</p>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

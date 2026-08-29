@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -60,19 +62,15 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="reading-time">Reading Time: 45 mins | Part III</div><h2 id="the-resolution-revolution-in-cryo-em">The Resolution Revolution in Cryo-EM</h2><p>Cryo-Electron Microscopy fires electrons at flash-frozen proteins, producing 2D projections. The computational challenge is reconstructing the 3D volume. When proteins exhibit continuous flexibility (conformational heterogeneity), tools like CryoSPARC and CryoDRGN use deep generative models to reconstruct a continuous landscape of states rather than a single rigid structure.</p><h2 id="deep-mental-model-generative-volume-reconstructions">Deep Mental Model: Generative Volume Reconstructions</h2><p>Instead of mapping all 2D images to one 3D consensus volume, we embed the images in a latent space and train an autoencoder or implicit neural representation to decode coordinates (x, y, z, and latent vector z) directly into electron density.</p><h2 id="algorithmic-implementation-autoencoder-for-3d-density">Algorithmic Implementation: Autoencoder for 3D Density</h2><p>We use PyTorch to sketch an autoencoder that models volume deformations.</p><div class="code-block">
+<div class="sidebar-overlay"></div>
+<div class="reading-time">Reading Time: 45 mins | Part III</div>
+<h2 id="the-resolution-revolution-in-cryo-em">The Resolution Revolution in Cryo-EM</h2>
+<p>Cryo-Electron Microscopy fires electrons at flash-frozen proteins, producing 2D projections. The computational challenge is reconstructing the 3D volume. When proteins exhibit continuous flexibility (conformational heterogeneity), tools like CryoSPARC and CryoDRGN use deep generative models to reconstruct a continuous landscape of states rather than a single rigid structure.</p>
+<h2 id="deep-mental-model-generative-volume-reconstructions">Deep Mental Model: Generative Volume Reconstructions</h2>
+<p>Instead of mapping all 2D images to one 3D consensus volume, we embed the images in a latent space and train an autoencoder or implicit neural representation to decode coordinates (x, y, z, and latent vector z) directly into electron density.</p>
+<h2 id="algorithmic-implementation-autoencoder-for-3d-density">Algorithmic Implementation: Autoencoder for 3D Density</h2>
+<p>We use PyTorch to sketch an autoencoder that models volume deformations.</p>
+<div class="code-block">
 <pre><code>import torch
 import torch.nn as nn
 
@@ -104,38 +102,13 @@ reconstructed = model(dummy_volume)
 print(f"Input shape: {dummy_volume.shape}")
 print(f"Reconstructed shape: {reconstructed.shape}")
 </code></pre>
-</div><div class="code-output">
+</div>
+<div class="code-output">
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>Input shape: torch.Size([1, 1, 32, 32, 32])
 Reconstructed shape: torch.Size([1, 1, 32, 32, 32])</code></pre></div>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <p><strong>Footnotes:</strong> Stanford CS371 papers, CryoSPARC and CryoDRGN publications.</p>
-</div><div class="chapter-nav">
-<a href="cs371-06-ml-docking-affinity.html">← Previous Chapter</a>
-<a href="cs371-08-superresolution-localization.html">Next Chapter →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

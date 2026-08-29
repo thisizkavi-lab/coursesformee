@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -59,15 +61,20 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<p><strong>Course:</strong> MIT 6.S184 | <strong>Reading Time:</strong> 60 mins | <strong>Part:</strong> Advanced Generative AI</p><h2 id="the-probability-flow-ode">The Probability Flow ODE</h2><p>Every SDE has a deterministic counterpart called the Probability Flow ODE, which shares the same marginal distributions $p_t(x)$:</p><p>$dx = [f(x,t) - \frac{1}{2}g(t)^2 \nabla_x \log p_t(x)]dt$</p><div class="callout-tip">
+<div class="sidebar-overlay"></div>
+<p><strong>Course:</strong> MIT 6.S184 | <strong>Reading Time:</strong> 60 mins | <strong>Part:</strong> Advanced Generative AI</p>
+<h2 id="the-probability-flow-ode">The Probability Flow ODE</h2>
+<p>Every SDE has a deterministic counterpart called the Probability Flow ODE, which shares the same marginal distributions $p_t(x)$:</p>
+<p>$dx = [f(x,t) - \frac{1}{2}g(t)^2 \nabla_x \log p_t(x)]dt$</p>
+<div class="callout-tip">
 <strong>Exact Likelihood Calculation</strong><br/>
             Using the instantaneous change of variables, we can compute exact likelihoods using the trace of the Jacobian of the vector field:
             <br/>
             $\log p_0(x_0) = \log p_1(x_1) + \int_0^1 \text{Tr}(\nabla_x v_t(x_t)) dt$
-        </div><h2 id="hutchinson-trace-estimator">Hutchinson Trace Estimator</h2><p>Computing the exact trace requires $D$ backwards passes for a $D$-dimensional vector field. Instead, we use the Hutchinson trace estimator: $\text{Tr}(J) \approx \mathbb{E}_{v \sim \mathcal{N}(0, I)} [v^T J v]$</p><div class="code-block">
+        </div>
+<h2 id="hutchinson-trace-estimator">Hutchinson Trace Estimator</h2>
+<p>Computing the exact trace requires $D$ backwards passes for a $D$-dimensional vector field. Instead, we use the Hutchinson trace estimator: $\text{Tr}(J) \approx \mathbb{E}_{v \sim \mathcal{N}(0, I)} [v^T J v]$</p>
+<div class="code-block">
 <pre><code>import torch
 
 def hutchinson_trace(x, fn):
@@ -84,7 +91,8 @@ def hutchinson_trace(x, fn):
     trace = torch.sum(vjp * noise, dim=1)
     return trace
             </code></pre>
-</div><div class="exercise-box">
+</div>
+<div class="exercise-box">
 <h3 id="exercise-compute-negative-log-likelihood">Exercise: Compute Negative Log-Likelihood</h3>
 <p>Implement the integration to compute exact NLL of a batch of samples.</p>
 <details class="exercise-solution">
@@ -100,18 +108,10 @@ def compute_nll(model, x_0):
                     </code></pre>
 </div>
 </details>
-</div><div class="chapter-nav">
-<div>Previous: <a href="./mit6s184-03-score-matching-diffusion-sde.html">Chapter 56</a></div>
-<div>Next: Chapter 58</div>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <p>1. MIT 6.S184 Flow Matching Tutorial: <a href="https://diffusion.csail.mit.edu">diffusion.csail.mit.edu</a></p>
 <p>2. Tutorial on Flow Matching: arXiv:2506.02070 (mock)</p>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

@@ -1,20 +1,18 @@
 /* ==========================================================================
-   COURSEBOOK DESIGN SYSTEM
-   Clean, Minimalist, Typography-First Webbook
-   Inspired by course.fast.ai, Quarto, and Stripe Documentation
+   COURSEBOOK DESIGN SYSTEM — MODERN, SMOOTH, SLEEK
+   Inspired by ChatGPT, Linear, Notion, and Stripe Documentation
    ========================================================================== */
 
 :root {
   /* Typography */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --font-serif: 'Newsreader', Georgia, Cambria, 'Times New Roman', serif;
-  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, Consolas, 'Liberation Mono', monospace;
 
   /* Color System */
   --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-tertiary: #f1f5f9;
-  --bg-card-hover: #fafbfc;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --bg-sidebar: #f8fafc;
   
   --text-primary: #0f172a;
   --text-secondary: #334155;
@@ -22,33 +20,34 @@
   --text-light: #94a3b8;
 
   --border-light: #e2e8f0;
-  --border-subtle: #cbd5e1;
-  --border-hover: #94a3b8;
+  --border-subtle: #f1f5f9;
+  --border-hover: #cbd5e1;
 
-  --accent-primary: #0284c7;
-  --accent-primary-hover: #0369a1;
-  --accent-light: #f0f9ff;
-  --accent-border: #bae6fd;
+  --accent-primary: #2563eb;
+  --accent-primary-hover: #1d4ed8;
+  --accent-light: #eff6ff;
+  --accent-soft: rgba(37, 99, 235, 0.08);
 
-  --part1-color: #0284c7;
-  --part1-bg: #e0f2fe;
-  --part2-color: #7c3aed;
-  --part2-bg: #f3e8ff;
+  /* Sidebar Active & Hover Pills (ChatGPT / Linear Style) */
+  --sidebar-item-hover: rgba(15, 23, 42, 0.04);
+  --sidebar-item-active: rgba(15, 23, 42, 0.07);
+  --sidebar-item-active-text: #0f172a;
 
+  /* Course Badges */
   --badge-stanford-bg: #fef2f2;
-  --badge-stanford-text: #991b1b;
+  --badge-stanford-text: #b91c1c;
   --badge-stanford-border: #fecaca;
 
   --badge-icme-bg: #f5f3ff;
-  --badge-icme-text: #6b21a8;
+  --badge-icme-text: #6d28d9;
   --badge-icme-border: #ddd6fe;
 
   --badge-apphys-bg: #f0fdf4;
-  --badge-apphys-text: #166534;
+  --badge-apphys-text: #15803d;
   --badge-apphys-border: #bbf7d0;
 
   --badge-dlwp-bg: #fdf4ff;
-  --badge-dlwp-text: #86198f;
+  --badge-dlwp-text: #a21caf;
   --badge-dlwp-border: #f0abfc;
 
   --badge-mit-bg: #fff7ed;
@@ -56,18 +55,18 @@
   --badge-mit-border: #fed7aa;
 
   /* Layout */
-  --navbar-height: 60px;
-  --sidebar-width: 320px;
-  --toc-width: 240px;
-  --reading-width: 820px;
+  --navbar-height: 56px;
+  --sidebar-width: 300px;
+  --toc-width: 220px;
+  --reading-width: 780px;
 
   /* Radii & Shadows */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
-  --shadow-hover: 0 8px 24px -4px rgba(0, 0, 0, 0.08), 0 4px 8px -4px rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
 }
 
 *, *::before, *::after {
@@ -89,6 +88,7 @@ body {
   background-color: var(--bg-primary);
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -103,16 +103,18 @@ a:hover {
   text-underline-offset: 3px;
 }
 
-/* --- Top Navigation Bar --- */
+/* ==========================================================================
+   TOP NAVIGATION BAR
+   ========================================================================== */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: var(--navbar-height);
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-light);
   display: flex;
   align-items: center;
@@ -122,11 +124,14 @@ a:hover {
 }
 
 .navbar-brand {
-  font-size: 1.15rem;
-  font-weight: 800;
+  font-size: 1.1rem;
+  font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--text-primary);
   text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .navbar-brand:hover {
@@ -136,12 +141,12 @@ a:hover {
 .navbar-nav {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   list-style: none;
 }
 
 .navbar-nav a {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 500;
   color: var(--text-secondary);
   padding: 6px 12px;
@@ -167,130 +172,158 @@ a:hover {
   cursor: pointer;
 }
 
-/* --- Layout Structure --- */
+/* ==========================================================================
+   PAGE WRAPPER
+   ========================================================================== */
 .page-wrapper {
   display: flex;
   margin-top: var(--navbar-height);
   min-height: calc(100vh - var(--navbar-height));
 }
 
-/* --- Scoped Left Sidebar --- */
+/* ==========================================================================
+   SMOOTH CHATGPT-STYLE SIDEBAR
+   ========================================================================== */
 .sidebar {
   position: fixed;
   top: var(--navbar-height);
   left: 0;
   bottom: 0;
   width: var(--sidebar-width);
-  background: var(--bg-secondary);
+  background: var(--bg-sidebar);
   border-right: 1px solid var(--border-light);
   overflow-y: auto;
-  padding: 24px 0 48px;
+  padding: 20px 12px 48px;
   z-index: 900;
   scrollbar-width: thin;
 }
 
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
 .sidebar-header {
-  padding: 0 24px 18px;
+  padding: 4px 12px 16px;
+  margin-bottom: 12px;
   border-bottom: 1px solid var(--border-light);
-  margin-bottom: 16px;
 }
 
 .sidebar-back-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 500;
   color: var(--text-muted);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   text-decoration: none !important;
   transition: color 0.15s ease;
 }
 
 .sidebar-back-link:hover {
-  color: var(--accent-primary);
+  color: var(--text-primary);
   text-decoration: none;
 }
 
 .sidebar-course-badge {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
-  margin-bottom: 8px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-bottom: 6px;
 }
 
 .sidebar-course-title {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text-primary);
   line-height: 1.35;
 }
 
+/* ChatGPT-Style Sidebar Navigation Links */
 .sidebar-links {
   list-style: none;
-  padding: 0 8px;
 }
 
 .sidebar-links li {
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .sidebar-links a {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 10px;
-  padding: 8px 16px;
-  font-size: 0.88rem;
+  padding: 9px 12px;
+  font-size: 0.86rem;
+  font-weight: 450;
   color: var(--text-secondary);
-  border-radius: var(--radius-sm);
-  border-left: 3px solid transparent;
+  border-radius: 8px;
   line-height: 1.45;
-  transition: all 0.15s ease;
+  transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1), color 0.15s ease;
   text-decoration: none !important;
 }
 
+/* Hover: Subtle pill highlight */
 .sidebar-links a:hover {
+  background: var(--sidebar-item-hover);
   color: var(--text-primary);
-  background: rgba(0, 0, 0, 0.03);
 }
 
+/* Active: Clean, smooth pill without harsh borders */
 .sidebar-links a.active {
-  color: var(--accent-primary);
-  background: var(--accent-light);
-  border-left-color: var(--accent-primary);
+  background: var(--sidebar-item-active);
+  color: var(--sidebar-item-active-text);
   font-weight: 600;
 }
 
 .sidebar-links .chapter-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
+  font-weight: 600;
   color: var(--text-muted);
-  min-width: 22px;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 2px 5px;
+  border-radius: 4px;
+  min-width: 24px;
+  margin-top: 1px;
+  flex-shrink: 0;
 }
 
 .sidebar-links a.active .chapter-num {
-  color: var(--accent-primary);
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--text-primary);
   font-weight: 700;
 }
 
-/* --- Main Content Area --- */
+/* ==========================================================================
+   MAIN CONTENT & READING TYPOGRAPHY
+   ========================================================================== */
 .main-content {
   margin-left: var(--sidebar-width);
   flex: 1;
   min-width: 0;
-  padding: 48px 40px 96px;
+  padding: 48px 48px 96px;
   background-color: var(--bg-primary);
 }
 
 .content-container {
   display: flex;
-  gap: 56px;
-  max-width: calc(var(--reading-width) + var(--toc-width) + 56px);
+  gap: 60px;
+  max-width: calc(var(--reading-width) + var(--toc-width) + 60px);
   margin: 0 auto;
 }
 
@@ -310,36 +343,36 @@ a:hover {
 .chapter-meta {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: 10px;
+  margin-bottom: 12px;
 }
 
 .chapter-part-tag {
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 3px 10px;
-  border-radius: var(--radius-sm);
+  padding: 3px 8px;
+  border-radius: 4px;
 }
 
 .chapter-title {
-  font-size: 2.25rem;
+  font-size: 2.2rem;
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   color: var(--text-primary);
   line-height: 1.25;
 }
 
-/* --- Article Typography --- */
+/* --- Article Body Typography --- */
 .chapter-body h2 {
   font-size: 1.45rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text-primary);
   margin: 48px 0 16px;
-  padding-top: 16px;
+  padding-top: 20px;
   border-top: 1px solid var(--border-light);
 }
 
@@ -352,7 +385,7 @@ a:hover {
 .chapter-body h3 {
   font-size: 1.15rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   color: var(--text-primary);
   margin: 28px 0 12px;
 }
@@ -375,13 +408,15 @@ a:hover {
   line-height: 1.7;
 }
 
-/* --- Code Blocks --- */
+/* ==========================================================================
+   CODE BLOCKS & RUNNABLE OUTPUTS
+   ========================================================================== */
 .code-block {
-  margin: 24px 0 32px;
+  margin: 24px 0 28px;
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: #0f172a;
-  border: 1px solid #1e293b;
+  background: #111827;
+  border: 1px solid #1f2937;
   box-shadow: var(--shadow-sm);
 }
 
@@ -390,8 +425,8 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   padding: 8px 16px;
-  background: #1e293b;
-  border-bottom: 1px solid #334155;
+  background: #1f2937;
+  border-bottom: 1px solid #374151;
 }
 
 .code-block-lang {
@@ -400,23 +435,23 @@ a:hover {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #94a3b8;
+  color: #9ca3af;
 }
 
 .code-block-copy {
-  background: none;
-  border: 1px solid #475569;
-  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
   padding: 3px 8px;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: #cbd5e1;
+  color: #e5e7eb;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .code-block-copy:hover {
-  background: #334155;
+  background: rgba(255, 255, 255, 0.18);
   color: #ffffff;
 }
 
@@ -431,16 +466,16 @@ a:hover {
   padding: 18px 20px;
   overflow-x: auto;
   font-family: var(--font-mono);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   line-height: 1.65;
-  color: #e2e8f0;
+  color: #f3f4f6;
 }
 
 .code-output {
-  margin: -20px 0 32px;
+  margin: -18px 0 28px;
   border-radius: 0 0 var(--radius-md) var(--radius-md);
-  background: #090d16;
-  border: 1px solid #1e293b;
+  background: #0b0f19;
+  border: 1px solid #1f2937;
   border-top: none;
   padding: 12px 18px;
 }
@@ -450,7 +485,7 @@ a:hover {
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #64748b;
+  color: #6b7280;
   margin-bottom: 4px;
 }
 
@@ -462,12 +497,14 @@ a:hover {
   white-space: pre-wrap;
 }
 
-/* --- Diagrams --- */
+/* ==========================================================================
+   CONCEPT DIAGRAMS
+   ========================================================================== */
 .concept-diagram {
   margin: 28px 0;
   border-radius: var(--radius-md);
-  background: #0f172a;
-  border: 1px solid #1e293b;
+  background: #111827;
+  border: 1px solid #1f2937;
   padding: 20px 24px;
   overflow-x: auto;
 }
@@ -480,7 +517,9 @@ a:hover {
   color: #93c5fd;
 }
 
-/* --- Callout Boxes --- */
+/* ==========================================================================
+   CALLOUT BOXES
+   ========================================================================== */
 .callout-tip, .callout-note, .callout-warning, .callout-deepdive {
   margin: 28px 0;
   padding: 18px 22px;
@@ -514,7 +553,9 @@ a:hover {
   color: #4c1d95;
 }
 
-/* --- Exercise Box --- */
+/* ==========================================================================
+   EXERCISE BOX & SOLUTIONS
+   ========================================================================== */
 .exercise-box {
   margin: 36px 0;
   padding: 24px;
@@ -554,7 +595,9 @@ a:hover {
   border: 1px solid var(--border-light);
 }
 
-/* --- Footnotes --- */
+/* ==========================================================================
+   FOOTNOTES
+   ========================================================================== */
 .footnotes-section {
   margin-top: 56px;
   padding-top: 24px;
@@ -582,18 +625,20 @@ a:hover {
   line-height: 1.6;
 }
 
-/* --- Bottom Chapter Navigation --- */
+/* ==========================================================================
+   BOTTOM IN-COURSE NAVIGATION
+   ========================================================================== */
 .chapter-nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 16px;
   margin-top: 56px;
   padding-top: 28px;
   border-top: 1px solid var(--border-light);
 }
 
 .nav-card {
-  padding: 18px 22px;
+  padding: 16px 20px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-light);
   background: var(--bg-secondary);
@@ -616,7 +661,7 @@ a:hover {
 }
 
 .nav-direction {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -624,7 +669,7 @@ a:hover {
 }
 
 .nav-chapter-title {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -633,7 +678,9 @@ a:hover {
   color: var(--accent-primary);
 }
 
-/* --- Right Sticky TOC --- */
+/* ==========================================================================
+   RIGHT STICKY TOC
+   ========================================================================== */
 .toc-sidebar {
   width: var(--toc-width);
   position: sticky;
@@ -645,12 +692,12 @@ a:hover {
 }
 
 .toc-title {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-muted);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .toc-links {
@@ -661,7 +708,7 @@ a:hover {
 .toc-links a {
   display: block;
   padding: 4px 0 4px 14px;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   line-height: 1.45;
   border-left: 2px solid transparent;
@@ -680,7 +727,9 @@ a:hover {
   font-weight: 600;
 }
 
-/* --- Course Cards Grid (Homepage) --- */
+/* ==========================================================================
+   HOMEPAGE COURSE CARDS
+   ========================================================================== */
 .course-card {
   display: flex;
   flex-direction: column;
@@ -688,8 +737,8 @@ a:hover {
   background: #ffffff;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
-  padding: 26px;
-  transition: all 0.2s ease;
+  padding: 24px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none !important;
   box-shadow: var(--shadow-sm);
 }
@@ -698,17 +747,16 @@ a:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
   border-color: var(--border-hover);
-  background: var(--bg-card-hover);
 }
 
 .course-code-badge {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 3px 10px;
-  border-radius: var(--radius-sm);
+  padding: 3px 8px;
+  border-radius: 4px;
 }
 
 .course-badge-stanford {
@@ -742,7 +790,7 @@ a:hover {
 }
 
 .course-card-title {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text-primary);
@@ -750,7 +798,7 @@ a:hover {
 }
 
 .course-card-desc {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.65;
 }
@@ -762,7 +810,9 @@ a:hover {
   border-top: 1px solid var(--border-light);
 }
 
-/* --- Mobile Responsiveness --- */
+/* ==========================================================================
+   RESPONSIVE LAYOUT
+   ========================================================================== */
 @media (max-width: 1024px) {
   .toc-sidebar {
     display: none;
@@ -782,7 +832,7 @@ a:hover {
   }
   .sidebar.open {
     transform: translateX(0);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-md);
   }
   .sidebar-overlay {
     position: fixed;
@@ -790,7 +840,7 @@ a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 23, 42, 0.4);
+    background: rgba(15, 23, 42, 0.35);
     backdrop-filter: blur(2px);
     z-index: 850;
     display: none;

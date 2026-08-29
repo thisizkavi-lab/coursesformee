@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -59,37 +61,19 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<h2 id="pytorch-tensors">1. PyTorch Tensor Mechanics</h2><p>PyTorch sits at the intersection of NumPy's numerical agility and hardware acceleration (GPUs). The core abstraction is the <code>Tensor</code>, which looks identical to an <code>ndarray</code> but has superpowers: it tracks mathematical operations to automatically compute derivatives.</p><div class="concept-diagram">
+<div class="sidebar-overlay"></div>
+<h2 id="pytorch-tensors">1. PyTorch Tensor Mechanics</h2>
+<p>PyTorch sits at the intersection of NumPy's numerical agility and hardware acceleration (GPUs). The core abstraction is the <code>Tensor</code>, which looks identical to an <code>ndarray</code> but has superpowers: it tracks mathematical operations to automatically compute derivatives.</p>
+<div class="concept-diagram">
 <pre>
 NumPy vs PyTorch Architecture
 CPU [ RAM ] -&gt; np.ndarray (CPU limited)
 GPU/MPS [ VRAM ] -&gt; torch.Tensor (Massively parallelized, Autograd-enabled)
 </pre>
-</div><h2 id="autograd">2. Automatic Differentiation (Autograd)</h2><p>Backpropagation is the engine of Deep Learning. PyTorch's <strong>Autograd</strong> builds a dynamic computational graph on the fly as you perform tensor operations.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">import torch
+</div>
+<h2 id="autograd">2. Automatic Differentiation (Autograd)</h2>
+<p>Backpropagation is the engine of Deep Learning. PyTorch's <strong>Autograd</strong> builds a dynamic computational graph on the fly as you perform tensor operations.</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">import torch
 
 # require_grad=True tells PyTorch to track operations on x
 x = torch.tensor([2.0], requires_grad=True)
@@ -98,7 +82,10 @@ y = x ** 2 + 5 * x
 # Compute derivatives
 y.backward()
 print(x.grad) # dy/dx at x=2.0 is 2*x + 5 = 9.0
-</code></pre></div><h2 id="nn-module">3. Constructing Neural Networks with torch.nn</h2><p>We build neural networks by subclassing <code>torch.nn.Module</code>. Layers are initialized in <code>__init__</code>, and the forward pass logic goes in <code>forward()</code>.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">import torch.nn as nn
+</code></pre></div>
+<h2 id="nn-module">3. Constructing Neural Networks with torch.nn</h2>
+<p>We build neural networks by subclassing <code>torch.nn.Module</code>. Layers are initialized in <code>__init__</code>, and the forward pass logic goes in <code>forward()</code>.</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">import torch.nn as nn
 
 class SimpleMLP(nn.Module):
     def __init__(self, input_dim, hidden_dim, output_dim):
@@ -114,14 +101,18 @@ class SimpleMLP(nn.Module):
         return x
 
 model = SimpleMLP(2, 16, 1)
-</code></pre></div><h2 id="training-loop">4. The Canonical 5-Step Training Loop</h2><p>Unlike Scikit-Learn's one-line <code>fit()</code>, PyTorch requires you to write the optimization loop explicitly. This gives you total control over the learning process.</p><div class="callout-important">
+</code></pre></div>
+<h2 id="training-loop">4. The Canonical 5-Step Training Loop</h2>
+<p>Unlike Scikit-Learn's one-line <code>fit()</code>, PyTorch requires you to write the optimization loop explicitly. This gives you total control over the learning process.</p>
+<div class="callout-important">
 <strong>The 5 Steps of Training:</strong>
             1. <strong>Zero Gradients</strong>: Clear old gradients from the last step.
             2. <strong>Forward Pass</strong>: Compute predictions.
             3. <strong>Loss</strong>: Calculate the error.
             4. <strong>Backward Pass</strong>: Compute the gradients (backpropagation).
             5. <strong>Optimizer Step</strong>: Update the network's weights.
-        </div><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+        </div>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
 criterion = nn.BCEWithLogitsLoss()
 
 # The Epoch Loop
@@ -142,7 +133,10 @@ for epoch in range(100):
     
     # 5. Parameter update
     optimizer.step()
-</code></pre></div><h2 id="dataloaders">5. Scalable Data Pipelines (DataLoaders)</h2><p>For large datasets, we cannot load everything into RAM. PyTorch uses <code>Dataset</code> and <code>DataLoader</code> to yield shuffled mini-batches dynamically.</p><div class="exercise-box">
+</code></pre></div>
+<h2 id="dataloaders">5. Scalable Data Pipelines (DataLoaders)</h2>
+<p>For large datasets, we cannot load everything into RAM. PyTorch uses <code>Dataset</code> and <code>DataLoader</code> to yield shuffled mini-batches dynamically.</p>
+<div class="exercise-box">
 <h3 id="exercise-1-implementing-a-pytorch-model">Exercise 1: Implementing a PyTorch Model</h3>
 <p>Write a PyTorch <code>nn.Module</code> for a 3-layer neural network using <code>nn.Sequential</code> inside the <code>__init__</code> block.</p>
 <details class="exercise-solution">
@@ -161,62 +155,12 @@ for epoch in range(100):
         return self.net(x)
 </code></pre></div>
 </details>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <hr/>
 <p><strong>Footnotes:</strong><br/>
             [1] Stanford CME193 Syllabus: Neural Networks.<br/>
             [2] CME193 Colab Lecture 8: PyTorch and Backprop.</p>
-</div><div class="chapter-nav">
-<a href="./15-scikit-learn-machine-learning.html">← Previous: Chapter 15</a> | 
-            <a href="./17-capstone-and-beyond.html">Next: Chapter 17 →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

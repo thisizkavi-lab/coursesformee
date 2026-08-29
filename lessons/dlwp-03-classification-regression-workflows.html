@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -61,24 +63,22 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="chapter-header">
-
-<p class="subtitle">Building robust models that generalize to unseen data.</p>
-</div><h2 id="workflows">End-to-End Workflows</h2><p>The standard supervised learning workflows are:</p><ul>
+<div class="sidebar-overlay"></div>
+<h2 id="workflows">End-to-End Workflows</h2>
+<p>The standard supervised learning workflows are:</p>
+<ul>
 <li><strong>Binary Classification:</strong> One output node with Sigmoid activation. Binary Crossentropy loss.</li>
 <li><strong>Multiclass Single-Label Classification:</strong> N output nodes with Softmax activation. Categorical Crossentropy loss.</li>
 <li><strong>Scalar Regression:</strong> One output node with Linear activation. Mean Squared Error (MSE) loss.</li>
-</ul><h2 id="generalization">Generalization vs Overfitting</h2><p>A model's primary goal is to generalize to unseen data, not just memorize the training set. Techniques to prevent overfitting include:</p><ul>
+</ul>
+<h2 id="generalization">Generalization vs Overfitting</h2>
+<p>A model's primary goal is to generalize to unseen data, not just memorize the training set. Techniques to prevent overfitting include:</p>
+<ul>
 <li><strong>Weight Decay (L1/L2 Regularization):</strong> Constraining model complexity.</li>
 <li><strong>Dropout:</strong> Randomly zeroing out activation units during training.</li>
 <li><strong>Early Stopping:</strong> Halting training when validation loss degrades.</li>
-</ul><div class="code-block">
+</ul>
+<div class="code-block">
 <pre><code>import keras
 from keras import layers, callbacks
 
@@ -112,21 +112,6 @@ early_stopping = callbacks.EarlyStopping(monitor='val_loss', patience=3, restore
 # model = build_model(46)
 # model.fit(x_train, y_train, epochs=20, validation_data=(x_val, y_val), callbacks=[early_stopping])
 </code></pre>
-</div><div class="chapter-nav">
-<a href="./dlwp-02-unified-frameworks-keras3.html">← Previous: Chapter 45</a>
-<a href="./dlwp-04-convnets-computer-vision.html">Next: Chapter 47 →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

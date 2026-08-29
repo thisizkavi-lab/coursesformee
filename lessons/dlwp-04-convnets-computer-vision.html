@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -61,16 +63,12 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="chapter-header">
-
-<p class="subtitle">Spatial hierarchies, skip connections, and seeing what a model sees.</p>
-</div><h2 id="convnets">Convolution Mechanics</h2><p>Convolutional Neural Networks (ConvNets) excel at vision tasks because they are translation invariant and learn spatial hierarchies of patterns.</p><h2 id="resnet">Residual Connections</h2><p>As networks grew deeper, the vanishing gradient problem hindered training. Residual connections solve this by providing a "shortcut" for gradients to flow backward through the network unimpeded.</p><div class="concept-diagram">
+<div class="sidebar-overlay"></div>
+<h2 id="convnets">Convolution Mechanics</h2>
+<p>Convolutional Neural Networks (ConvNets) excel at vision tasks because they are translation invariant and learn spatial hierarchies of patterns.</p>
+<h2 id="resnet">Residual Connections</h2>
+<p>As networks grew deeper, the vanishing gradient problem hindered training. Residual connections solve this by providing a "shortcut" for gradients to flow backward through the network unimpeded.</p>
+<div class="concept-diagram">
 <pre>
    x
    |
@@ -84,7 +82,10 @@
                 |
             [ ReLU ]
 </pre>
-</div><h2 id="interpretability">Visual Interpretability: Grad-CAM</h2><p>Gradient-weighted Class Activation Mapping (Grad-CAM) uses the gradients of any target concept flowing into the final convolutional layer to produce a coarse localization map highlighting important regions.</p><div class="code-block">
+</div>
+<h2 id="interpretability">Visual Interpretability: Grad-CAM</h2>
+<p>Gradient-weighted Class Activation Mapping (Grad-CAM) uses the gradients of any target concept flowing into the final convolutional layer to produce a coarse localization map highlighting important regions.</p>
+<div class="code-block">
 <pre><code>import keras
 import keras.ops as ops
 import numpy as np
@@ -117,21 +118,6 @@ def make_gradcam_heatmap(img_array, model, last_conv_layer_name, pred_index=None
     heatmap = ops.maximum(heatmap, 0) / ops.max(heatmap)
     return heatmap.numpy()
 </code></pre>
-</div><div class="chapter-nav">
-<a href="./dlwp-03-classification-regression-workflows.html">← Previous: Chapter 46</a>
-<a href="./dlwp-05-segmentation-object-detection.html">Next: Chapter 48 →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

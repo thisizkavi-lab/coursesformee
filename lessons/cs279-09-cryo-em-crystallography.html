@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -60,30 +62,29 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<h2 id="intro">1. Introduction to Cryo-EM &amp; X-Ray Crystallography</h2><p>Welcome to Chapter 26. The study of Cryo-EM &amp; X-Ray Crystallography Structure Determination is fundamental to our understanding of biological systems. We explore topics such as: <strong>X-ray crystallography, Bragg's law, phase problem, Cryo-EM workflow, motion correction, CTF estimation, 2D class averaging, 3D back-projection Fourier slice theorem.</strong>. By mastering these concepts, we bridge the gap between abstract computer science and tangible physical realities of the cell.</p><h3 id="theory">1.1 Theoretical Foundations</h3><p>In computational biology, our models are only as good as the underlying physical or mathematical principles we base them on. When investigating these systems, we often start with basic atomic or cellular interactions and scale up to macroscopic phenomena. This process requires a strong grasp of both continuous mathematics (like differential equations and energy potentials) and discrete algorithms (like dynamic programming or graph search for structure prediction).</p><div class="callout-tip">
+<div class="sidebar-overlay"></div>
+<h2 id="intro">1. Introduction to Cryo-EM &amp; X-Ray Crystallography</h2>
+<p>Welcome to Chapter 26. The study of Cryo-EM &amp; X-Ray Crystallography Structure Determination is fundamental to our understanding of biological systems. We explore topics such as: <strong>X-ray crystallography, Bragg's law, phase problem, Cryo-EM workflow, motion correction, CTF estimation, 2D class averaging, 3D back-projection Fourier slice theorem.</strong>. By mastering these concepts, we bridge the gap between abstract computer science and tangible physical realities of the cell.</p>
+<h3 id="theory">1.1 Theoretical Foundations</h3>
+<p>In computational biology, our models are only as good as the underlying physical or mathematical principles we base them on. When investigating these systems, we often start with basic atomic or cellular interactions and scale up to macroscopic phenomena. This process requires a strong grasp of both continuous mathematics (like differential equations and energy potentials) and discrete algorithms (like dynamic programming or graph search for structure prediction).</p>
+<div class="callout-tip">
 <strong>Mental Model:</strong> Think of this system as a complex network of interacting state machines. Each element—whether an atom, a protein, or a cell—follows local rules that give rise to global emergent behavior.
-            </div><h2 id="mechanisms">2. Core Mechanisms and Architectures</h2><p>To fully grasp the computational methods we will deploy, it is crucial to build a robust structural and mathematical intuition.</p><div class="concept-diagram"><pre>
+            </div>
+<h2 id="mechanisms">2. Core Mechanisms and Architectures</h2>
+<p>To fully grasp the computational methods we will deploy, it is crucial to build a robust structural and mathematical intuition.</p>
+<div class="concept-diagram"><pre>
 Fourier Slice Theorem:
 2D Projection ---&gt; 2D FFT ---&gt; Slice of 3D FFT
-</pre></div><h3 id="walkthrough">2.1 Detailed Walkthrough</h3><p>The diagram above illustrates the primary mechanism at play. Notice how the different components interact. For instance, in structural problems, the precise geometry and energy landscapes dictate the final stable conformation. In cellular and systems biology, it is the stochastic nature of interactions that drives the system forward. The mathematical formulations we use (e.g., Fourier transforms, Monte Carlo methods, or deep learning architectures) are carefully chosen to map onto these physical realities.</p><div class="callout-deepdive">
+</pre></div>
+<h3 id="walkthrough">2.1 Detailed Walkthrough</h3>
+<p>The diagram above illustrates the primary mechanism at play. Notice how the different components interact. For instance, in structural problems, the precise geometry and energy landscapes dictate the final stable conformation. In cellular and systems biology, it is the stochastic nature of interactions that drives the system forward. The mathematical formulations we use (e.g., Fourier transforms, Monte Carlo methods, or deep learning architectures) are carefully chosen to map onto these physical realities.</p>
+<div class="callout-deepdive">
 <strong>Deep Dive: The Computational Lens</strong><br/>
                 When translating physical mechanisms into code, we must consider memory layout, vectorization, and computational complexity. A simple formula in physics might require sophisticated numerical approximations when scaled to billions of interactions.
-            </div><h2 id="implementation">3. Computational Implementation</h2><p>To truly understand these concepts, we must write code. The following snippet provides a robust implementation of the core algorithmic step using standard scientific Python libraries.</p><div class="code-block">
+            </div>
+<h2 id="implementation">3. Computational Implementation</h2>
+<p>To truly understand these concepts, we must write code. The following snippet provides a robust implementation of the core algorithmic step using standard scientific Python libraries.</p>
+<div class="code-block">
 <pre><code class="language-python">import numpy as np
 from skimage.transform import radon, iradon
 
@@ -105,7 +106,10 @@ recon = reconstruct_2d_from_1d(dummy_img)
 print(f"Reconstruction MSE: {np.mean((dummy_img - recon)**2):.4f}")
 </code></pre>
 <div class="code-output"><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre>Reconstruction MSE: 0.0021</pre></div></div>
-</div><h2 id="practice">4. Practice and Exploration</h2><p>Now it is your turn to apply these concepts. Computational biology is best learned through active implementation.</p><div class="exercise-box">
+</div>
+<h2 id="practice">4. Practice and Exploration</h2>
+<p>Now it is your turn to apply these concepts. Computational biology is best learned through active implementation.</p>
+<div class="exercise-box">
 <strong>Exercise 26.1:</strong> Apply a contrast transfer function (CTF) to the simulated projections.
                 <details class="exercise-solution">
 <summary>Reveal Step-by-Step Solution</summary>
@@ -114,43 +118,11 @@ print(f"Reconstruction MSE: {np.mean((dummy_img - recon)**2):.4f}")
 <em>Step 3:</em> Implement the solution using vectorized operations in NumPy or SciPy to ensure performance.<br/>
 <em>Result:</em> You should see the expected physical metrics correctly calculated, confirming your understanding of the chapter.</p>
 </details>
-</div><div class="chapter-nav">
-<a href="./cs279-08-docking-drug-discovery.html">← Previous Chapter</a>
-<a href="#">Next Chapter →</a>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <strong>Footnotes &amp; References:</strong><br/>
                 [1] Stanford CS279 Lecture slides, CryoSPARC and RELION references.
             </div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
           </div>
 
           <!-- Bottom In-Course Chapter Navigation -->

@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -59,7 +61,12 @@
           </header>
 
           <div class="chapter-body">
-            <h2 id="high-resolution-computational-scaling">High-Resolution Computational Scaling</h2><p>Operating directly in pixel space is computationally prohibitive for high-resolution images. Modern architectures employ Autoencoders with KL regularization (VAEs) to achieve spatial compression (typically $8\times$ to $16\times$). The generative modeling is then performed in this compressed, lower-dimensional "latent space" (Latent Flow Matching), as seen in Stable Diffusion 3 and FLUX architectures.</p><h2 id="diffusion-transformers-dit">Diffusion Transformers (DiT)</h2><p>Pioneered by Peebles &amp; Xie, the Diffusion Transformer (DiT) replaces the traditional U-Net with a Vision Transformer (ViT) architecture. Instead of spatial convolutions, the latent image is split into patches. Crucially, DiT incorporates AdaLN-Zero (Adaptive LayerNorm) blocks, which adaptively inject conditioning signals (timestep $t$ and label/prompt embedding $c$) into the transformer blocks without breaking the standard Transformer architecture.</p><div class="concept-diagram"><pre>
+<div class="sidebar-overlay"></div>
+<h2 id="high-resolution-computational-scaling">High-Resolution Computational Scaling</h2>
+<p>Operating directly in pixel space is computationally prohibitive for high-resolution images. Modern architectures employ Autoencoders with KL regularization (VAEs) to achieve spatial compression (typically $8\times$ to $16\times$). The generative modeling is then performed in this compressed, lower-dimensional "latent space" (Latent Flow Matching), as seen in Stable Diffusion 3 and FLUX architectures.</p>
+<h2 id="diffusion-transformers-dit">Diffusion Transformers (DiT)</h2>
+<p>Pioneered by Peebles &amp; Xie, the Diffusion Transformer (DiT) replaces the traditional U-Net with a Vision Transformer (ViT) architecture. Instead of spatial convolutions, the latent image is split into patches. Crucially, DiT incorporates AdaLN-Zero (Adaptive LayerNorm) blocks, which adaptively inject conditioning signals (timestep $t$ and label/prompt embedding $c$) into the transformer blocks without breaking the standard Transformer architecture.</p>
+<div class="concept-diagram"><pre>
 DiT Block with AdaLN-Zero Architecture
 
       [ Input Latent Patches ]
@@ -81,7 +88,9 @@ DiT Block with AdaLN-Zero Architecture
             [ Gate 2 ] &lt;-------------|
                  |
            [ Output ]
-  </pre></div><h2 id="code-dit-block-in-pytorch">Code: DiT Block in PyTorch</h2><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre class="code-block"><code class="language-python">
+  </pre></div>
+<h2 id="code-dit-block-in-pytorch">Code: DiT Block in PyTorch</h2>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre class="code-block"><code class="language-python">
 import torch
 import torch.nn as nn
 
@@ -127,18 +136,17 @@ class DiTBlock(nn.Module):
         x = x + gate_mlp * mlp_out
         
         return x
-  </code></pre></div><div class="exercise-box">
+  </code></pre></div>
+<div class="exercise-box">
 <h3 id="exercise-1-adding-cross-attention">Exercise 1: Adding Cross-Attention</h3>
 <p>To handle variable-length text prompts, modify the DiT Block to include a Multi-Head Cross-Attention layer before the MLP.</p>
 <details class="exercise-solution">
 <summary>Reveal Step-by-Step Solution</summary>
 <p>Add <code>self.cross_attn = nn.MultiheadAttention(hidden_dim, num_heads)</code>. The text embeddings act as Keys/Values, and the image patch tokens act as Queries.</p>
 </details>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <p>Footnotes: Reference MIT 6.S184 (diffusion.csail.mit.edu). See also Peebles &amp; Xie (2022) DiT.</p>
-</div><div class="chapter-nav">
-<a href="./mit6s184-06-guided-generation-cfg.html">Previous: Chapter 59</a>
-<a href="./mit6s184-08-fast-solvers-rectified-distillation.html">Next: Chapter 61</a>
 </div>
           </div>
 

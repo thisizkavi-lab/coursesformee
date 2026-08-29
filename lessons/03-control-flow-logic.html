@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -60,49 +62,38 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<h2 id="sec1">Boolean Algebra &amp; Predicates</h2><p>Programming logic builds upon Boolean algebra. Expressions evaluate to <code>True</code> or <code>False</code>.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">
+<div class="sidebar-overlay"></div>
+<h2 id="sec1">Boolean Algebra &amp; Predicates</h2>
+<p>Programming logic builds upon Boolean algebra. Expressions evaluate to <code>True</code> or <code>False</code>.</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">
 x = 5
 is_even = (x % 2 == 0) # False
-        </code></pre></div><h2 id="sec2">Logical Connectives &amp; Short-Circuiting</h2><p>Python uses <code>and</code>, <code>or</code>, and <code>not</code>. Short-circuiting means Python stops evaluating as soon as the result is determined.</p><div class="callout-tip">
+        </code></pre></div>
+<h2 id="sec2">Logical Connectives &amp; Short-Circuiting</h2>
+<p>Python uses <code>and</code>, <code>or</code>, and <code>not</code>. Short-circuiting means Python stops evaluating as soon as the result is determined.</p>
+<div class="callout-tip">
 <strong>Short-circuit Safety:</strong> Use <code>and</code> to guard against errors, like <code>if x != 0 and 10/x &gt; 2:</code>.
-        </div><h2 id="sec3">Branching Structures</h2><p>The <code>if-elif-else</code> ladder creates multi-way decision trees.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">
+        </div>
+<h2 id="sec3">Branching Structures</h2>
+<p>The <code>if-elif-else</code> ladder creates multi-way decision trees.</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">
 if temp &gt; 80:
     print("Hot")
 elif temp &gt; 60:
     print("Nice")
 else:
     print("Cold")
-        </code></pre></div><h2 id="sec4">Iteration &amp; Sentinels</h2><p><code>while</code> loops continue until a condition breaks. A sentinel value signals the end of input.</p><div class="concept-diagram">
+        </code></pre></div>
+<h2 id="sec4">Iteration &amp; Sentinels</h2>
+<p><code>while</code> loops continue until a condition breaks. A sentinel value signals the end of input.</p>
+<div class="concept-diagram">
 <pre>
 LOOP INVARIANT:
 Sum always equals the total of all numbers read so far.
 [ init ] -&gt; [ check condition ] -&gt; [ body ] -&gt; [ update ] -&gt; (loop)
 </pre>
-</div><div class="exercise-box">
+</div>
+<div class="exercise-box">
 <h3 id="exercise-1-sentinel-loop">Exercise 1: Sentinel Loop</h3>
 <p>Read numbers until the user types -1, then print the sum.</p>
 <details class="exercise-solution">
@@ -117,59 +108,9 @@ while True:
 print("Total:", total)
                 </code></pre></div>
 </details>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <p>[1] <a href="#">Stanford CS106A Syllabus</a></p>
-</div><div class="chapter-nav">
-<div><a href="./02-python-fundamentals.html">← Prev: Chapter 2</a></div>
-<div><a href="./04-functions-decomposition.html">Next: Chapter 4 →</a></div>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

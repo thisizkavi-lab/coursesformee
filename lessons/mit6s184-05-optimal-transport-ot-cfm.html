@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -59,7 +61,12 @@
           </header>
 
           <div class="chapter-body">
-            <h2 id="the-geometry-of-generative-paths">The Geometry of Generative Paths</h2><p>In standard diffusion models and basic Continuous Normalizing Flows (CNFs), the trajectories linking the prior distribution (noise) to the target distribution (data) can be highly curved and self-intersecting. This curvature stems from standard independent coupling between the distributions, $q(x_0, x_1) = q(x_0)q(x_1)$. Highly curved paths are computationally expensive to simulate during inference because ODE solvers require many small steps to accurately integrate complex vector fields without massive truncation errors.</p><h2 id="optimal-transport-ot-to-the-rescue">Optimal Transport (OT) to the Rescue</h2><p>Monge-Kantorovich Optimal Transport (OT) provides a mathematical framework for moving one probability distribution to another with minimal effort. The effort is quantified by a cost function, typically the squared Euclidean distance. Minimizing this cost leads to the Wasserstein-2 distance $\mathcal{W}_2$. When we enforce this optimal coupling, particles (data points) travel from noise to data along straight lines without crossing, minimizing the total distance traveled.</p><div class="concept-diagram"><pre>
+<div class="sidebar-overlay"></div>
+<h2 id="the-geometry-of-generative-paths">The Geometry of Generative Paths</h2>
+<p>In standard diffusion models and basic Continuous Normalizing Flows (CNFs), the trajectories linking the prior distribution (noise) to the target distribution (data) can be highly curved and self-intersecting. This curvature stems from standard independent coupling between the distributions, $q(x_0, x_1) = q(x_0)q(x_1)$. Highly curved paths are computationally expensive to simulate during inference because ODE solvers require many small steps to accurately integrate complex vector fields without massive truncation errors.</p>
+<h2 id="optimal-transport-ot-to-the-rescue">Optimal Transport (OT) to the Rescue</h2>
+<p>Monge-Kantorovich Optimal Transport (OT) provides a mathematical framework for moving one probability distribution to another with minimal effort. The effort is quantified by a cost function, typically the squared Euclidean distance. Minimizing this cost leads to the Wasserstein-2 distance $\mathcal{W}_2$. When we enforce this optimal coupling, particles (data points) travel from noise to data along straight lines without crossing, minimizing the total distance traveled.</p>
+<div class="concept-diagram"><pre>
 Standard Independent Coupling         Optimal Transport Coupling (OT-CFM)
 (Curved &amp; Crossing Paths)             (Straight &amp; Non-crossing Paths)
        
@@ -70,9 +77,14 @@ x_1 (Data)                            x_1 (Data)
  / \ / \                              |   |   |
 *   *   *                             *   *   *
 x_0 (Noise)                           x_0 (Noise)
-  </pre></div><h2 id="mini-batch-exact-ot-coupling">Mini-batch Exact OT Coupling</h2><p>To implement this in practice, we use Mini-batch Optimal Transport. Given a batch of noise samples and data samples, we compute the cost matrix (pairwise distances) and use the Hungarian algorithm (Earth Mover's Distance) to find the optimal assignment.</p><div class="callout-tip">
+  </pre></div>
+<h2 id="mini-batch-exact-ot-coupling">Mini-batch Exact OT Coupling</h2>
+<p>To implement this in practice, we use Mini-batch Optimal Transport. Given a batch of noise samples and data samples, we compute the cost matrix (pairwise distances) and use the Hungarian algorithm (Earth Mover's Distance) to find the optimal assignment.</p>
+<div class="callout-tip">
 <strong>Tip:</strong> Straight paths allow ODE solvers (like Euler or Runge-Kutta) to take much larger step sizes, significantly speeding up the generation process.
-  </div><h2 id="code-mini-batch-ot-cfm-training-step">Code: Mini-batch OT-CFM Training Step</h2><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre class="code-block"><code class="language-python">
+  </div>
+<h2 id="code-mini-batch-ot-cfm-training-step">Code: Mini-batch OT-CFM Training Step</h2>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre class="code-block"><code class="language-python">
 import torch
 import scipy.optimize
 
@@ -110,18 +122,17 @@ def ot_cfm_loss(model, x1, x0):
     
     # 6. MSE Loss
     return torch.nn.functional.mse_loss(v_pred, v_target)
-  </code></pre></div><div class="exercise-box">
+  </code></pre></div>
+<div class="exercise-box">
 <h3 id="exercise-1-implementing-ot-coupling">Exercise 1: Implementing OT Coupling</h3>
 <p>Modify the `compute_ot_coupling` function to handle high-dimensional image data (e.g., flatten before `cdist`).</p>
 <details class="exercise-solution">
 <summary>Reveal Step-by-Step Solution</summary>
 <p>We already implemented it using <code>.view(B, -1)</code> before computing the cost matrix. This ensures compatibility with flattened vector spaces.</p>
 </details>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <p>Footnotes: Reference MIT 6.S184 (diffusion.csail.mit.edu). See also arXiv:2506.02070 on OT Flow Matching.</p>
-</div><div class="chapter-nav">
-<a href="./mit6s184-04-score-matching.html">Previous: Chapter 57</a>
-<a href="./mit6s184-06-guided-generation-cfg.html">Next: Chapter 59</a>
 </div>
           </div>
 

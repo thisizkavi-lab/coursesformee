@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -60,31 +62,7 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<section id="oop-paradigm">
+<div class="sidebar-overlay"></div>
 <h2 id="the-object-oriented-paradigm">The Object-Oriented Paradigm</h2>
 <p>Object-Oriented Programming (OOP) allows us to bundle data (state) and functions (behavior) into unified concepts called <em>Objects</em>. A <strong>Class</strong> acts as a blueprint, and an <strong>Object</strong> is a specific instantiation of that blueprint.</p>
 <div class="concept-diagram"><pre>
@@ -95,7 +73,6 @@ Blueprint (Class: BankAccount)
 Instance A (Object)          Instance B (Object)
   balance = 100                balance = 5000
             </pre></div>
-</section><section id="self-and-init">
 <h2 id="the-constructor-and-self">The Constructor and <code>self</code></h2>
 <p>The <code>__init__</code> method initializes a new object's state. The <code>self</code> parameter is a reference to the specific instance being created or manipulated. When you call <code>obj.method()</code>, Python implicitly translates it to <code>Class.method(obj)</code>.</p>
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>class BankAccount:
@@ -105,7 +82,6 @@ Instance A (Object)          Instance B (Object)
     def deposit(self, amount):
         self.balance += amount
 </code></pre></div>
-</section><section id="dunder-methods">
 <h2 id="dunder-magic-methods">Dunder (Magic) Methods</h2>
 <p>Double-underscore methods (dunders) allow custom classes to integrate deeply with Python's built-in operators and functions.</p>
 <ul>
@@ -114,7 +90,6 @@ Instance A (Object)          Instance B (Object)
 <li><code>__add__(self, other)</code>: Allows using the <code>+</code> operator.</li>
 <li><code>__eq__(self, other)</code>: Allows using the <code>==</code> operator.</li>
 </ul>
-</section><section id="case-study-fraction">
 <h2 id="case-study-a-fraction-class">Case Study: A Fraction Class</h2>
 <p>Let's implement a Fraction class that automatically reduces itself and supports addition.</p>
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>import math
@@ -133,7 +108,6 @@ class Fraction:
         new_den = self.den * other.den
         return Fraction(new_num, new_den)
 </code></pre></div>
-</section><section id="exercises">
 <h2 id="practical-exercises">Practical Exercises</h2>
 <div class="exercise-box">
 <h4>Exercise 1: Bajillion Class</h4>
@@ -149,60 +123,6 @@ class Fraction:
         return "".join(str(d) for d in self.digits)
 </code></pre></div>
 </details>
-</div>
-</section><footer class="footnotes-section">
-<p>[1] Reference: Stanford CS106A Syllabus and Assignment 5 (Bajillion)</p>
-</footer><div class="chapter-nav">
-<a href="./07-dictionaries-files.html">← Chapter 7: Dictionaries &amp; Files</a>
-<a href="./09-algorithms-systems.html">Chapter 9: Algorithms →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

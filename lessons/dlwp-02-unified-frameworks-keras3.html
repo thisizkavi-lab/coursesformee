@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -61,25 +63,22 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="chapter-header">
-<div class="badge">Part III · Deep Learning Foundations</div>
-
-<p class="subtitle">Mastering the modern deep learning stack with backend-agnostic workflows.</p>
-<p class="reading-time">⏱️ Reading Time: 35 mins</p>
-</div><h2 id="landscape">The Multi-Framework Landscape</h2><p>The deep learning landscape has evolved significantly. While TensorFlow initially dominated with static graphs, PyTorch brought the eager execution revolution, and JAX introduced highly optimized functional transformations.</p><h3 id="frameworks">PyTorch, TensorFlow, and JAX</h3><ul>
+<div class="sidebar-overlay"></div>
+<h2 id="landscape">The Multi-Framework Landscape</h2>
+<p>The deep learning landscape has evolved significantly. While TensorFlow initially dominated with static graphs, PyTorch brought the eager execution revolution, and JAX introduced highly optimized functional transformations.</p>
+<h3 id="frameworks">PyTorch, TensorFlow, and JAX</h3>
+<ul>
 <li><strong>PyTorch:</strong> Known for its Pythonic, imperative style and dynamic computational graphs.</li>
 <li><strong>TensorFlow:</strong> An expansive ecosystem prioritizing scalable production deployment.</li>
 <li><strong>JAX:</strong> Focused on composable functional transformations (<code>jax.grad</code>, <code>jax.jit</code>, <code>jax.vmap</code>) on NumPy-like arrays.</li>
-</ul><div class="callout callout-note">
+</ul>
+<div class="callout callout-note">
 <strong>Keras 3 Multi-Backend Architecture</strong>
 <p>Keras 3 allows you to write models once and run them on PyTorch, TensorFlow, or JAX transparently using the <code>keras.ops</code> module, which mirrors the NumPy API but works across all three backends.</p>
-</div><h2 id="keras-ops">Writing Backend-Agnostic Custom Layers</h2><p>By using <code>keras.ops</code> instead of backend-specific operations (like <code>tf.matmul</code> or <code>torch.matmul</code>), your custom layers become universally compatible.</p><div class="code-block">
+</div>
+<h2 id="keras-ops">Writing Backend-Agnostic Custom Layers</h2>
+<p>By using <code>keras.ops</code> instead of backend-specific operations (like <code>tf.matmul</code> or <code>torch.matmul</code>), your custom layers become universally compatible.</p>
+<div class="code-block">
 <pre><code>import keras
 from keras import layers
 import keras.ops as ops
@@ -110,21 +109,6 @@ class CustomAttentionLayer(layers.Layer):
 
 # This layer can now be used with OS backend set to "torch", "jax", or "tensorflow"!
 </code></pre>
-</div><div class="chapter-nav">
-<a href="./dlwp-01-what-is-deep-learning-tensors.html">← Previous: Chapter 44</a>
-<a href="./dlwp-03-classification-regression-workflows.html">Next: Chapter 46 →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

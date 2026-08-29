@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -60,19 +62,13 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="reading-time">Reading Time: 45 mins | Part III</div><h2 id="designing-from-scratch">Designing from Scratch</h2><p>Rather than tweaking existing proteins, <em>de novo</em> design builds entirely new proteins from physical and geometric first principles. This allows the creation of self-assembling nanocages, custom enzymes, and robust biosensors.</p><h2 id="deep-mental-model-parametric-generation">Deep Mental Model: Parametric Generation</h2><p>Many structural motifs, like alpha-helices or coiled-coils, can be described by continuous mathematical equations. We sample the parametric space to generate backbones, then design sequences to stabilize them.</p><div class="concept-diagram">
+<div class="sidebar-overlay"></div>
+<div class="reading-time">Reading Time: 45 mins | Part III</div>
+<h2 id="designing-from-scratch">Designing from Scratch</h2>
+<p>Rather than tweaking existing proteins, <em>de novo</em> design builds entirely new proteins from physical and geometric first principles. This allows the creation of self-assembling nanocages, custom enzymes, and robust biosensors.</p>
+<h2 id="deep-mental-model-parametric-generation">Deep Mental Model: Parametric Generation</h2>
+<p>Many structural motifs, like alpha-helices or coiled-coils, can be described by continuous mathematical equations. We sample the parametric space to generate backbones, then design sequences to stabilize them.</p>
+<div class="concept-diagram">
 <pre>
    Pitch (p)
    |&lt;---&gt;|
@@ -82,7 +78,9 @@
       \/      \/
       Radius (r)
             </pre>
-</div><h2 id="algorithmic-implementation-alpha-helical-backbone">Algorithmic Implementation: Alpha-Helical Backbone</h2><div class="code-block">
+</div>
+<h2 id="algorithmic-implementation-alpha-helical-backbone">Algorithmic Implementation: Alpha-Helical Backbone</h2>
+<div class="code-block">
 <pre><code>import numpy as np
 
 def generate_ideal_helix(num_residues, radius=2.3, rise_per_residue=1.5, residues_per_turn=3.6):
@@ -103,42 +101,17 @@ def generate_ideal_helix(num_residues, radius=2.3, rise_per_residue=1.5, residue
 helix_coords = generate_ideal_helix(5)
 print("First 5 CA coordinates:\n", np.round(helix_coords, 2))
 </code></pre>
-</div><div class="code-output">
+</div>
+<div class="code-output">
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>First 5 CA coordinates:
  [[ 2.3   0.    0.  ]
  [-0.4   2.26  1.5 ]
  [-2.18 -0.73  3.  ]
  [ 0.81 -2.15  4.5 ]
  [ 2.18  0.73  6.  ]]</code></pre></div>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <p><strong>Footnotes:</strong> Stanford CS371 Jan 25 lecture, Baker lab Nature &amp; Science papers.</p>
-</div><div class="chapter-nav">
-<a href="cs371-03-coevolutionary-genetics.html">← Previous Chapter</a>
-<a href="cs371-05-physics-virtual-screening.html">Next Chapter →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

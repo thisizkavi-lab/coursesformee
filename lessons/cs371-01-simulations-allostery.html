@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -60,19 +62,14 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="reading-time">Reading Time: 45 mins | Part III</div><h2 id="microsecond-to-millisecond-all-atom-simulations">Microsecond to Millisecond All-Atom Simulations</h2><p>In Stanford CS371, we explore the frontiers of computational biology by tracking atoms across time. Standard simulations historically captured only nanoseconds of biological time. Today, specialized architectures allow us to access the microsecond to millisecond timescale, where critical biological processes—like protein folding and allosteric modulation—actually occur.</p><p>G-protein-coupled receptors (GPCRs) are one of the most prominent drug targets. While traditional orthosteric drugs bind to the primary active site, <em>allosteric modulators</em> bind elsewhere, subtly altering the receptor's conformational landscape. Understanding this requires massive simulations and sophisticated change-point detection to identify metastable states.</p><h2 id="deep-mental-model-markov-state-models-msms">Deep Mental Model: Markov State Models (MSMs)</h2><p>Think of protein conformations as valleys in a vast, high-dimensional energy landscape. The protein spends most of its time vibrating in a valley (a metastable state) before occasionally surmounting a ridge (transition state) to fall into another valley.</p><div class="concept-diagram">
+<div class="sidebar-overlay"></div>
+<div class="reading-time">Reading Time: 45 mins | Part III</div>
+<h2 id="microsecond-to-millisecond-all-atom-simulations">Microsecond to Millisecond All-Atom Simulations</h2>
+<p>In Stanford CS371, we explore the frontiers of computational biology by tracking atoms across time. Standard simulations historically captured only nanoseconds of biological time. Today, specialized architectures allow us to access the microsecond to millisecond timescale, where critical biological processes—like protein folding and allosteric modulation—actually occur.</p>
+<p>G-protein-coupled receptors (GPCRs) are one of the most prominent drug targets. While traditional orthosteric drugs bind to the primary active site, <em>allosteric modulators</em> bind elsewhere, subtly altering the receptor's conformational landscape. Understanding this requires massive simulations and sophisticated change-point detection to identify metastable states.</p>
+<h2 id="deep-mental-model-markov-state-models-msms">Deep Mental Model: Markov State Models (MSMs)</h2>
+<p>Think of protein conformations as valleys in a vast, high-dimensional energy landscape. The protein spends most of its time vibrating in a valley (a metastable state) before occasionally surmounting a ridge (transition state) to fall into another valley.</p>
+<div class="concept-diagram">
 <pre>
          State A (Inactive)                     State B (Active)
             \_______/                              \_______/
@@ -82,9 +79,13 @@
 Energy          +-------------+     +------------------+
 Landscape 
             </pre>
-</div><div class="callout-deepdive">
+</div>
+<div class="callout-deepdive">
 <strong>Deep Dive:</strong> By simulating thousands of short trajectories and identifying transition probabilities, we can construct an MSM that accurately captures millisecond dynamics without requiring a single continuous millisecond-long simulation.
-        </div><h2 id="algorithmic-implementation-change-point-detection">Algorithmic Implementation: Change-Point Detection</h2><p>How do we identify when a protein jumps between states? We use change-point detection algorithms on the time-series of atomic distances.</p><div class="code-block">
+        </div>
+<h2 id="algorithmic-implementation-change-point-detection">Algorithmic Implementation: Change-Point Detection</h2>
+<p>How do we identify when a protein jumps between states? We use change-point detection algorithms on the time-series of atomic distances.</p>
+<div class="code-block">
 <pre><code>import numpy as np
 from scipy import signal
 
@@ -111,44 +112,20 @@ distances += np.random.normal(0, 0.5, 10000) # add thermal noise
 change_points = detect_conformational_changes(distances, penalty=0.1)
 print(f"Conformational shifts detected at indices: {change_points}")
 </code></pre>
-</div><div class="code-output">
+</div>
+<div class="code-output">
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>Conformational shifts detected at indices: [2999 6999]</code></pre></div>
-</div><div class="exercise-box" id="exercise">
+</div>
+<div class="exercise-box" id="exercise">
 <h3 id="exercise-building-a-transition-matrix">Exercise: Building a Transition Matrix</h3>
 <p>Given an array of discrete state assignments for a simulation trajectory `states = [0, 0, 1, 1, 1, 2, 0]`, write a function to compute the empirical transition probability matrix.</p>
 <details class="exercise-solution">
 <summary>Reveal Step-by-Step Solution</summary>
 <p>Initialize an N x N matrix with zeros. Iterate through the trajectory pairs `(states[i], states[i+1])` and increment the corresponding matrix cell. Finally, normalize each row so it sums to 1. Handle rows with zero transitions to avoid division by zero.</p>
 </details>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <p><strong>Footnotes:</strong> Stanford CS371 Jan 16 lecture, Dror et al. GPCR allostery papers.</p>
-</div><div class="chapter-nav">
-<a href="#">← Previous Chapter</a>
-<a href="cs371-02-crowdsourced-biology.html">Next Chapter →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

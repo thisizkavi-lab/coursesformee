@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -59,31 +61,10 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<h2 id="pandas-architecture">1. The Pandas Architecture: Series and DataFrames</h2><p>In NumPy, we worked with homogeneous arrays of numerical data. But real-world data is messy, tabular, and heterogeneous—mixing strings, dates, integers, and floats. Enter <strong>Pandas</strong>. Pandas provides two foundational data structures: the 1D <code>Series</code> and the 2D <code>DataFrame</code>. Both are built on top of NumPy, but they introduce the concept of an <strong>Index</strong>—explicit labels for rows and columns.</p><div class="concept-diagram">
+<div class="sidebar-overlay"></div>
+<h2 id="pandas-architecture">1. The Pandas Architecture: Series and DataFrames</h2>
+<p>In NumPy, we worked with homogeneous arrays of numerical data. But real-world data is messy, tabular, and heterogeneous—mixing strings, dates, integers, and floats. Enter <strong>Pandas</strong>. Pandas provides two foundational data structures: the 1D <code>Series</code> and the 2D <code>DataFrame</code>. Both are built on top of NumPy, but they introduce the concept of an <strong>Index</strong>—explicit labels for rows and columns.</p>
+<div class="concept-diagram">
 <pre>
 Pandas DataFrame Memory Model
 +-------+-------------------+-------------------+-------------------+
@@ -96,21 +77,31 @@ Pandas DataFrame Memory Model
  ^^^     ^^^ Each column is a Pandas Series (wrapping a NumPy array)
  Explicit Row Labels
 </pre>
-</div><h2 id="data-ingestion">2. Data Ingestion &amp; Export</h2><p>Getting data in and out of Pandas is often a single line of code. The workhorse function is <code>pd.read_csv()</code>.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">import pandas as pd
+</div>
+<h2 id="data-ingestion">2. Data Ingestion &amp; Export</h2>
+<p>Getting data in and out of Pandas is often a single line of code. The workhorse function is <code>pd.read_csv()</code>.</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">import pandas as pd
 
 # Ingestion: parsing dates and setting an index
 df = pd.read_csv("data.csv", sep=",", parse_dates=["timestamp"], index_col="id")
 
 # Export
 df.to_csv("cleaned_data.csv")
-</code></pre></div><h2 id="eda">3. Exploratory Data Analysis (EDA)</h2><p>Before modifying data, we must understand its shape and structure.</p><ul>
+</code></pre></div>
+<h2 id="eda">3. Exploratory Data Analysis (EDA)</h2>
+<p>Before modifying data, we must understand its shape and structure.</p>
+<ul>
 <li><code>df.head()</code> / <code>df.tail()</code>: View top/bottom rows.</li>
 <li><code>df.info()</code>: Memory usage, column dtypes, and non-null counts.</li>
 <li><code>df.describe()</code>: Summary statistics for numerical columns.</li>
 <li><code>df.value_counts()</code>: Frequency counts for categorical columns.</li>
-</ul><h2 id="indexing">4. Indexing &amp; Slicing Mechanics: .loc vs .iloc</h2><p>Pandas distinguishes between <em>implicit positional indexing</em> (like Python lists) and <em>explicit label indexing</em> (like Python dictionaries).</p><div class="callout-warning">
+</ul>
+<h2 id="indexing">4. Indexing &amp; Slicing Mechanics: .loc vs .iloc</h2>
+<p>Pandas distinguishes between <em>implicit positional indexing</em> (like Python lists) and <em>explicit label indexing</em> (like Python dictionaries).</p>
+<div class="callout-warning">
 <strong>Warning:</strong> Never use bracket slicing <code>df[0:5]</code> for rows unless you are exploring. Always use <code>.loc</code> (labels) or <code>.iloc</code> (integer positions) to avoid ambiguity.
-        </div><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python"># Position-based (rows 0, 1, 2; cols 0, 1)
+        </div>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python"># Position-based (rows 0, 1, 2; cols 0, 1)
 df.iloc[0:3, 0:2]
 
 # Label-based (rows 'A' to 'C'; columns 'Age' and 'Salary')
@@ -118,17 +109,24 @@ df.loc['A':'C', ['Age', 'Salary']]
 
 # Boolean masking (conditional querying)
 rich_and_young = df.loc[(df['Salary'] &gt; 100000) &amp; (df['Age'] &lt; 30)]
-</code></pre></div><h2 id="cleaning">5. Data Cleaning &amp; Missing Values</h2><p>Missing data is represented as <code>NaN</code> (Not a Number). You can detect nulls with <code>.isna()</code>, drop them with <code>.dropna()</code>, or impute them with <code>.fillna()</code>.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python"># Impute missing ages with the median age
+</code></pre></div>
+<h2 id="cleaning">5. Data Cleaning &amp; Missing Values</h2>
+<p>Missing data is represented as <code>NaN</code> (Not a Number). You can detect nulls with <code>.isna()</code>, drop them with <code>.dropna()</code>, or impute them with <code>.fillna()</code>.</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python"># Impute missing ages with the median age
 median_age = df['Age'].median()
 df['Age'] = df['Age'].fillna(median_age)
-</code></pre></div><h2 id="split-apply-combine">6. Split-Apply-Combine with GroupBy</h2><p>The <code>groupby</code> operation is the cornerstone of data aggregation. It conceptually splits the data based on a key, applies a function to each group independently, and combines the results.</p><div class="concept-diagram">
+</code></pre></div>
+<h2 id="split-apply-combine">6. Split-Apply-Combine with GroupBy</h2>
+<p>The <code>groupby</code> operation is the cornerstone of data aggregation. It conceptually splits the data based on a key, applies a function to each group independently, and combines the results.</p>
+<div class="concept-diagram">
 <pre>
 Split-Apply-Combine Process:
 1. SPLIT: DataFrame -&gt; [Group A], [Group B], [Group C]
 2. APPLY: mean(Group A), mean(Group B), mean(Group C)
 3. COMBINE: New DataFrame with index [A, B, C] and their respective means.
 </pre>
-</div><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python"># Average salary by department
+</div>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python"># Average salary by department
 dept_salaries = df.groupby('Department')['Salary'].mean()
 
 # Multiple statistics
@@ -136,11 +134,16 @@ df.groupby('Department').agg({
     'Salary': ['mean', 'max'],
     'Employee_ID': 'count'
 })
-</code></pre></div><h2 id="joins">7. Relational Joins &amp; Reshaping</h2><p>Pandas mirrors SQL's relational join semantics via <code>pd.merge()</code>.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python"># Inner Join
+</code></pre></div>
+<h2 id="joins">7. Relational Joins &amp; Reshaping</h2>
+<p>Pandas mirrors SQL's relational join semantics via <code>pd.merge()</code>.</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python"># Inner Join
 pd.merge(employees, departments, on="dept_id", how="inner")
-</code></pre></div><div class="callout-tip">
+</code></pre></div>
+<div class="callout-tip">
 <strong>Tip:</strong> Use <code>pd.concat()</code> to glue DataFrames vertically or horizontally when they don't have a relational link but share index/column structure.
-        </div><div class="exercise-box">
+        </div>
+<div class="exercise-box">
 <h3 id="exercise-1-data-cleaning">Exercise 1: Data Cleaning</h3>
 <p>Given a DataFrame of users with missing 'Age' and 'Income' columns, fill missing ages with the median age, and drop rows where 'Income' is missing.</p>
 <details class="exercise-solution">
@@ -150,62 +153,12 @@ df['Age'] = df['Age'].fillna(df['Age'].median())
 df = df.dropna(subset=['Income'])
 </code></pre></div>
 </details>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <hr/>
 <p><strong>Footnotes:</strong><br/>
             [1] Stanford CME193 Syllabus: Pandas Data Structures.<br/>
             [2] CME193 Colab Lecture 5: Advanced GroupBy &amp; Aggregations.</p>
-</div><div class="chapter-nav">
-<a href="./12-computational-linear-algebra.html">← Previous: Chapter 12</a> | 
-            <a href="./14-scipy-scientific-computing.html">Next: Chapter 14 →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -61,15 +63,14 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<h2 id="1-autoregressive-generation">1. Autoregressive Generation</h2><p>Modern LLMs are causal decoders. They predict the next token given all previous tokens. To scale efficiently, techniques like KV-Caching and parameter-efficient fine-tuning (LoRA) are essential.</p><div class="callout-tip">
+<div class="sidebar-overlay"></div>
+<h2 id="1-autoregressive-generation">1. Autoregressive Generation</h2>
+<p>Modern LLMs are causal decoders. They predict the next token given all previous tokens. To scale efficiently, techniques like KV-Caching and parameter-efficient fine-tuning (LoRA) are essential.</p>
+<div class="callout-tip">
 <strong>Sampling Strategies</strong>: Use <code>temperature</code> to control randomness, <code>top-k</code> to truncate the vocabulary to the top k tokens, and <code>top-p</code> (nucleus sampling) to truncate to the top percentile of mass.
-      </div><h2 id="2-code-walkthrough-generating-text-with-temperature">2. Code Walkthrough: Generating text with temperature</h2><div class="code-block">
+      </div>
+<h2 id="2-code-walkthrough-generating-text-with-temperature">2. Code Walkthrough: Generating text with temperature</h2>
+<div class="code-block">
 <pre><code class="language-python">
 import numpy as np
 
@@ -85,25 +86,14 @@ def sample_with_temperature(logits, temperature=1.0):
     probas = np.random.multinomial(1, preds, 1)
     return np.argmax(probas)
 </code></pre>
-</div><div class="exercise-box">
+</div>
+<div class="exercise-box">
 <h3 id="exercise-kv-caching-concept">Exercise: KV Caching Concept</h3>
 <p>Why do we cache Keys and Values in autoregressive decoding?</p>
 <details class="exercise-solution">
 <summary>Reveal Step-by-Step Solution</summary>
 <p>Since the previous tokens do not change, their Key and Value projections in the attention mechanism remain constant. Caching them prevents re-computing the matrix multiplications for all prior tokens on every new step.</p>
 </details>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

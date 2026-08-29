@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -61,15 +63,14 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<h2 id="1-the-scale-of-modern-ml">1. The Scale of Modern ML</h2><p>Training large models requires moving from a single GPU to multi-node clusters. Concepts like Data Parallelism, Model Parallelism, and Mixed Precision are essential tools for a Deep Learning Engineer.</p><div class="callout-warning">
+<div class="sidebar-overlay"></div>
+<h2 id="1-the-scale-of-modern-ml">1. The Scale of Modern ML</h2>
+<p>Training large models requires moving from a single GPU to multi-node clusters. Concepts like Data Parallelism, Model Parallelism, and Mixed Precision are essential tools for a Deep Learning Engineer.</p>
+<div class="callout-warning">
 <strong>Mixed Precision</strong>: FP16 halves the memory footprint but risks underflow. Loss scaling is typically needed to preserve small gradient values.
-      </div><h2 id="2-code-walkthrough-distribution-in-keras-3">2. Code Walkthrough: Distribution in Keras 3</h2><div class="code-block">
+      </div>
+<h2 id="2-code-walkthrough-distribution-in-keras-3">2. Code Walkthrough: Distribution in Keras 3</h2>
+<div class="code-block">
 <pre><code class="language-python">
 import keras
 import tensorflow as tf
@@ -91,25 +92,14 @@ with strategy.scope():
     model = keras.Model(inputs, outputs)
     model.compile(optimizer='adam', loss='sparse_categorical_crossentropy')
 </code></pre>
-</div><div class="exercise-box">
+</div>
+<div class="exercise-box">
 <h3 id="exercise-limits-of-deep-learning">Exercise: Limits of Deep Learning</h3>
 <p>What is the difference between interpolation and extrapolation in the context of neural networks?</p>
 <details class="exercise-solution">
 <summary>Reveal Step-by-Step Solution</summary>
 <p>Deep learning models excel at interpolating within the convex hull of their training data manifold. They typically fail to extrapolate—to perform logical reasoning in OOD (Out-Of-Distribution) tasks that require genuine abstraction, such as those evaluated by Chollet's ARC dataset.</p>
 </details>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

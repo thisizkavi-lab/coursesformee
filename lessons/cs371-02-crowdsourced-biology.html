@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -60,19 +62,13 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="reading-time">Reading Time: 45 mins | Part III</div><h2 id="gamification-in-scientific-discovery">Gamification in Scientific Discovery</h2><p>Automated algorithms excel at rapid local optimization, but human intuition remains unparalleled at navigating complex spatial topologies. By framing molecular design as a puzzle, projects like Foldit and EteRNA have crowdsourced solutions to protein folding and RNA design, often outperforming automated methods.</p><h2 id="deep-mental-model-human-intuition-vs-monte-carlo-sampling">Deep Mental Model: Human Intuition vs. Monte Carlo Sampling</h2><p>While an algorithm might blindly sample the local energy landscape via Monte Carlo methods, humans utilize global spatial planning, identifying large-scale topological shifts that algorithms struggle to cross.</p><div class="concept-diagram">
+<div class="sidebar-overlay"></div>
+<div class="reading-time">Reading Time: 45 mins | Part III</div>
+<h2 id="gamification-in-scientific-discovery">Gamification in Scientific Discovery</h2>
+<p>Automated algorithms excel at rapid local optimization, but human intuition remains unparalleled at navigating complex spatial topologies. By framing molecular design as a puzzle, projects like Foldit and EteRNA have crowdsourced solutions to protein folding and RNA design, often outperforming automated methods.</p>
+<h2 id="deep-mental-model-human-intuition-vs-monte-carlo-sampling">Deep Mental Model: Human Intuition vs. Monte Carlo Sampling</h2>
+<p>While an algorithm might blindly sample the local energy landscape via Monte Carlo methods, humans utilize global spatial planning, identifying large-scale topological shifts that algorithms struggle to cross.</p>
+<div class="concept-diagram">
 <pre>
 Automated Monte Carlo:              Human Player:
 [Start] -&gt; [Local Min] -&gt; [Stuck]   [Start] ---&gt; (Identifies global pattern)
@@ -83,9 +79,13 @@ Automated Monte Carlo:              Human Player:
                                                  v
                                           [Global Minimum]
             </pre>
-</div><div class="callout-tip">
+</div>
+<div class="callout-tip">
 <strong>Insight:</strong> Foldit players successfully discovered the crystal structure of an AIDS-causing retrovirus enzyme that had stumped scientists for a decade.
-        </div><h2 id="algorithmic-implementation-rna-secondary-structure-nussinov">Algorithmic Implementation: RNA Secondary Structure (Nussinov)</h2><p>Before designing RNA, we must predict how a sequence folds. The Nussinov dynamic programming algorithm predicts the secondary structure by maximizing base-pair matching.</p><div class="code-block">
+        </div>
+<h2 id="algorithmic-implementation-rna-secondary-structure-nussinov">Algorithmic Implementation: RNA Secondary Structure (Nussinov)</h2>
+<p>Before designing RNA, we must predict how a sequence folds. The Nussinov dynamic programming algorithm predicts the secondary structure by maximizing base-pair matching.</p>
+<div class="code-block">
 <pre><code>import numpy as np
 
 def nussinov(sequence):
@@ -118,44 +118,20 @@ seq = "GCACG"
 max_pairs = nussinov(seq)
 print(f"Maximum base pairs for {seq}: {max_pairs}")
 </code></pre>
-</div><div class="code-output">
+</div>
+<div class="code-output">
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>Maximum base pairs for GCACG: 2.0</code></pre></div>
-</div><div class="exercise-box" id="exercise">
+</div>
+<div class="exercise-box" id="exercise">
 <h3 id="exercise-traceback">Exercise: Traceback</h3>
 <p>Modify the Nussinov algorithm to perform a traceback and return the actual base pairings in dot-bracket notation (e.g., `(..)`).</p>
 <details class="exercise-solution">
 <summary>Reveal Step-by-Step Solution</summary>
 <p>Create a recursive function that starts at `(0, n-1)`. Check which of the 3 recurrence relations yielded `dp[i][j]`. If it came from `i` and `j` pairing, record the pair and recurse on `(i+1, j-1)`. Otherwise, follow the path of the maximum value.</p>
 </details>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <p><strong>Footnotes:</strong> Stanford CS371 Jan 18 lecture, Foldit Nature and EteRNA PNAS papers.</p>
-</div><div class="chapter-nav">
-<a href="cs371-01-simulations-allostery.html">← Previous Chapter</a>
-<a href="cs371-03-coevolutionary-genetics.html">Next Chapter →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

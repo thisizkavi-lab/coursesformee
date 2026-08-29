@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -59,16 +61,25 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<p><strong>Course:</strong> MIT 6.S184 | <strong>Reading Time:</strong> 45 mins | <strong>Part:</strong> Advanced Generative AI</p><h2 id="the-generative-modeling-challenge">The Generative Modeling Challenge</h2><p>In this chapter, we lay the mathematical groundwork for continuous-time generative models. The core challenge in generative modeling is to transform a simple, known distribution (like a standard Gaussian) into a complex, unknown data distribution (like natural images).</p><div class="callout-deepdive">
+<div class="sidebar-overlay"></div>
+<p><strong>Course:</strong> MIT 6.S184 | <strong>Reading Time:</strong> 45 mins | <strong>Part:</strong> Advanced Generative AI</p>
+<h2 id="the-generative-modeling-challenge">The Generative Modeling Challenge</h2>
+<p>In this chapter, we lay the mathematical groundwork for continuous-time generative models. The core challenge in generative modeling is to transform a simple, known distribution (like a standard Gaussian) into a complex, unknown data distribution (like natural images).</p>
+<div class="callout-deepdive">
 <strong>Pushforward Measures</strong><br/>
             A mapping $f: X \to Y$ takes a probability distribution $p_X$ on $X$ and "pushes it forward" to a new distribution $p_Y$ on $Y$, denoted as $f_\# p_X$.
-        </div><h2 id="vector-fields-and-odes">Vector Fields and ODEs</h2><p>Instead of single mappings, we consider continuous transformations parameterized by time $t \in [0, 1]$. We construct a vector field $v_t(x)$ which defines an Ordinary Differential Equation (ODE):</p><div class="concept-diagram"><pre>
+        </div>
+<h2 id="vector-fields-and-odes">Vector Fields and ODEs</h2>
+<p>Instead of single mappings, we consider continuous transformations parameterized by time $t \in [0, 1]$. We construct a vector field $v_t(x)$ which defines an Ordinary Differential Equation (ODE):</p>
+<div class="concept-diagram"><pre>
 dx/dt = v_t(x)
 x(0) ~ p_0 (Data)  ---- ODE Flow ----&gt; x(1) ~ p_1 (Noise)
-        </pre></div><h2 id="introduction-to-stochastic-calculus">Introduction to Stochastic Calculus</h2><p>When we add random noise to our continuous processes, ODEs become Stochastic Differential Equations (SDEs). A typical SDE looks like:</p><p>$dx_t = f(x_t, t)dt + g(t)dW_t$</p><p>Here $dW_t$ is the differential of a Wiener process (Brownian motion).</p><div class="code-block">
+        </pre></div>
+<h2 id="introduction-to-stochastic-calculus">Introduction to Stochastic Calculus</h2>
+<p>When we add random noise to our continuous processes, ODEs become Stochastic Differential Equations (SDEs). A typical SDE looks like:</p>
+<p>$dx_t = f(x_t, t)dt + g(t)dW_t$</p>
+<p>Here $dW_t$ is the differential of a Wiener process (Brownian motion).</p>
+<div class="code-block">
 <pre><code>import numpy as np
 import matplotlib.pyplot as plt
 
@@ -85,7 +96,8 @@ t, W = euler_maruyama()
 plt.plot(t, W)
 plt.title("1D Brownian Motion")
 plt.show()</code></pre>
-</div><div class="exercise-box">
+</div>
+<div class="exercise-box">
 <h3 id="exercise-2d-brownian-motion">Exercise: 2D Brownian Motion</h3>
 <p>Extend the provided 1D Euler-Maruyama solver to 2D. Plot the trajectory in the 2D plane.</p>
 <details class="exercise-solution">
@@ -99,17 +111,9 @@ plt.show()</code></pre>
     return W</code></pre>
 </div>
 </details>
-</div><div class="chapter-nav">
-<div>Previous: Chapter 53</div>
-<div>Next: <a href="./mit6s184-02-continuous-flows-flow-matching.html">Chapter 55</a></div>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <p>1. MIT 6.S184 Syllabus: <a href="https://diffusion.csail.mit.edu">diffusion.csail.mit.edu</a></p>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

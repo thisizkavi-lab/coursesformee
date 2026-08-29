@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -61,15 +63,15 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<h2 id="1-the-challenge-of-time">1. The Challenge of Time</h2><p>Until now, our models have treated inputs as independent and identically distributed (i.i.d). But what if you are predicting tomorrow's temperature? The order of the days matters. This chapter introduces sequence representation and recurrent neural networks (RNNs).</p><div class="callout-note">
+<div class="sidebar-overlay"></div>
+<h2 id="1-the-challenge-of-time">1. The Challenge of Time</h2>
+<p>Until now, our models have treated inputs as independent and identically distributed (i.i.d). But what if you are predicting tomorrow's temperature? The order of the days matters. This chapter introduces sequence representation and recurrent neural networks (RNNs).</p>
+<div class="callout-note">
 <strong>Timeseries Windowing</strong>: To train a neural network on sequences, we typically frame the problem using a <em>sliding window</em> of past observations (lags) to predict future ones.
-      </div><h2 id="2-recurrent-neural-networks-rnns">2. Recurrent Neural Networks (RNNs)</h2><p>RNNs process sequences by iterating through the elements and maintaining a <em>state</em> containing information relative to what they have seen so far. However, standard RNNs suffer from the <strong>vanishing gradient problem</strong>.</p><div class="concept-diagram">
+      </div>
+<h2 id="2-recurrent-neural-networks-rnns">2. Recurrent Neural Networks (RNNs)</h2>
+<p>RNNs process sequences by iterating through the elements and maintaining a <em>state</em> containing information relative to what they have seen so far. However, standard RNNs suffer from the <strong>vanishing gradient problem</strong>.</p>
+<div class="concept-diagram">
 <pre>
 LSTM Cell Architecture
 ----------------------
@@ -82,7 +84,10 @@ LSTM Cell Architecture
 [h_t-1] -+---------------+--------------+--------------------+
 [x_t] ---+
 </pre>
-</div><p>LSTMs and GRUs solve this using gating mechanisms. The Forget Gate decides what to discard from the cell state, the Input Gate decides what new information to add, and the Output Gate decides what to output as the hidden state.</p><h2 id="3-code-walkthrough-lstm-forecasting-in-keras-3">3. Code Walkthrough: LSTM Forecasting in Keras 3</h2><div class="code-block">
+</div>
+<p>LSTMs and GRUs solve this using gating mechanisms. The Forget Gate decides what to discard from the cell state, the Input Gate decides what new information to add, and the Output Gate decides what to output as the hidden state.</p>
+<h2 id="3-code-walkthrough-lstm-forecasting-in-keras-3">3. Code Walkthrough: LSTM Forecasting in Keras 3</h2>
+<div class="code-block">
 <pre><code class="language-python">
 import keras
 import numpy as np
@@ -110,7 +115,8 @@ model = keras.Model(inputs, outputs)
 model.compile(optimizer="adam", loss="mse")
 model.fit(X_train, y_train, epochs=5, batch_size=32)
 </code></pre>
-</div><div class="exercise-box">
+</div>
+<div class="exercise-box">
 <h3 id="exercise-bidirectional-gru">Exercise: Bidirectional GRU</h3>
 <p>Modify the model above to use a Bidirectional GRU layer instead of a single LSTM layer.</p>
 <details class="exercise-solution">
@@ -119,20 +125,9 @@ model.fit(X_train, y_train, epochs=5, batch_size=32)
 x = keras.layers.Bidirectional(keras.layers.GRU(32))(inputs)
           </code></pre></div>
 </details>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <p>[1] Reference: <a href="#">Deep Learning with Python, 3rd Edition</a> - Sequence modeling.</p>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

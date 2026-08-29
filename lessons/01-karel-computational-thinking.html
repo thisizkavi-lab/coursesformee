@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -60,31 +62,12 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<h2 id="sec1">What programming really is</h2><p>Programming is the act of instructing a deterministic machine. Computers lack intuition; they only understand precise, unambiguous commands. Karel the Robot is our sandbox for learning this precision.</p><h2 id="sec2">Karel's World</h2><p>Karel lives in a grid of Streets (rows) and Avenues (columns). Karel faces one of four directions (North, South, East, West) and can interact with walls and beepers.</p><div class="concept-diagram">
+<div class="sidebar-overlay"></div>
+<h2 id="sec1">What programming really is</h2>
+<p>Programming is the act of instructing a deterministic machine. Computers lack intuition; they only understand precise, unambiguous commands. Karel the Robot is our sandbox for learning this precision.</p>
+<h2 id="sec2">Karel's World</h2>
+<p>Karel lives in a grid of Streets (rows) and Avenues (columns). Karel faces one of four directions (North, South, East, West) and can interact with walls and beepers.</p>
+<div class="concept-diagram">
 <pre>
    +---+---+---+
  3 | . |   | . |
@@ -95,22 +78,35 @@
    +---+---+---+
      1   2   3
 </pre>
-</div><h2 id="sec3">Primitive Operations</h2><p>Karel understands four primitive commands:</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">
+</div>
+<h2 id="sec3">Primitive Operations</h2>
+<p>Karel understands four primitive commands:</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">
 move()
 turn_left()
 pick_beeper()
 put_beeper()
-        </code></pre></div><h2 id="sec4">Functional Decomposition</h2><p>We can build new commands from primitives, like <code>turn_right()</code>.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">
+        </code></pre></div>
+<h2 id="sec4">Functional Decomposition</h2>
+<p>We can build new commands from primitives, like <code>turn_right()</code>.</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">
 def turn_right():
     turn_left()
     turn_left()
     turn_left()
-        </code></pre></div><div class="callout-tip">
+        </code></pre></div>
+<div class="callout-tip">
 <strong>Don't Repeat Yourself (DRY):</strong> Use decomposition to avoid writing the same sequence of commands repeatedly.
-        </div><h2 id="sec5">Control Flow in a Microworld</h2><p>Use <code>while</code> loops to navigate unknown worlds. Sensor conditions like <code>front_is_clear()</code> let Karel react to the environment.</p><div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">
+        </div>
+<h2 id="sec5">Control Flow in a Microworld</h2>
+<p>Use <code>while</code> loops to navigate unknown worlds. Sensor conditions like <code>front_is_clear()</code> let Karel react to the environment.</p>
+<div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code class="language-python">
 while front_is_clear():
     move()
-        </code></pre></div><h2 id="sec6">Classic Algorithmic Challenges</h2><p>Solving the Steeple Chase and Checkerboard Karel requires understanding loop invariants and edge cases.</p><div class="exercise-box">
+        </code></pre></div>
+<h2 id="sec6">Classic Algorithmic Challenges</h2>
+<p>Solving the Steeple Chase and Checkerboard Karel requires understanding loop invariants and edge cases.</p>
+<div class="exercise-box">
 <h3 id="exercise-1-beeper-line">Exercise 1: Beeper Line</h3>
 <p>Write a program to make Karel place a beeper on every corner of the 1st street.</p>
 <details class="exercise-solution">
@@ -123,60 +119,10 @@ def fill_street():
     put_beeper() # Fencepost correction
                 </code></pre></div>
 </details>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <p>[1] <a href="#">Stanford CS106A Syllabus</a></p>
 <p>[2] <a href="#">Karel Reader</a></p>
-</div><div class="chapter-nav">
-<div></div>
-<div><a href="./02-python-fundamentals.html">Next: Chapter 2 →</a></div>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

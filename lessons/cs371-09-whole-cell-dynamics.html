@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -60,19 +62,14 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="reading-time">Reading Time: 45 mins | Part III</div><h2 id="simulating-biology-in-four-dimensions">Simulating Biology in Four Dimensions</h2><p>The cytoplasm is not a dilute soup; it's a dense, crowded matrix. Macromolecular crowding severely impacts diffusion rates and reaction kinetics. The ultimate goal of computational biology is a whole-cell stochastic model (e.g., Karr et al.'s Mycoplasma model) integrating all metabolic and physical states over time.</p><h2 id="deep-mental-model-colloidal-physics-of-the-cell">Deep Mental Model: Colloidal Physics of the Cell</h2><p>Proteins act like hard spheres undergoing Brownian motion, bumping into one another. As volume fraction increases, effective diffusion drops non-linearly.</p><h2 id="algorithmic-implementation-hard-sphere-crowding-simulator">Algorithmic Implementation: Hard-Sphere Crowding Simulator</h2><div class="code-block">
+<div class="sidebar-overlay"></div>
+<div class="reading-time">Reading Time: 45 mins | Part III</div>
+<h2 id="simulating-biology-in-four-dimensions">Simulating Biology in Four Dimensions</h2>
+<p>The cytoplasm is not a dilute soup; it's a dense, crowded matrix. Macromolecular crowding severely impacts diffusion rates and reaction kinetics. The ultimate goal of computational biology is a whole-cell stochastic model (e.g., Karr et al.'s Mycoplasma model) integrating all metabolic and physical states over time.</p>
+<h2 id="deep-mental-model-colloidal-physics-of-the-cell">Deep Mental Model: Colloidal Physics of the Cell</h2>
+<p>Proteins act like hard spheres undergoing Brownian motion, bumping into one another. As volume fraction increases, effective diffusion drops non-linearly.</p>
+<h2 id="algorithmic-implementation-hard-sphere-crowding-simulator">Algorithmic Implementation: Hard-Sphere Crowding Simulator</h2>
+<div class="code-block">
 <pre><code>import numpy as np
 
 def simulate_crowded_diffusion(num_steps=1000, dt=0.01, crowding_factor=0.8):
@@ -103,38 +100,13 @@ crowded_msd = simulate_crowded_diffusion(crowding_factor=0.8)
 print(f"MSD (Free Diffusion): {free_msd:.2f}")
 print(f"MSD (80% Crowded): {crowded_msd:.2f}")
 </code></pre>
-</div><div class="code-output">
+</div>
+<div class="code-output">
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>MSD (Free Diffusion): 20.35
 MSD (80% Crowded): 3.82</code></pre></div>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <p><strong>Footnotes:</strong> Stanford CS371 papers, Whole-cell modeling publications.</p>
-</div><div class="chapter-nav">
-<a href="cs371-08-superresolution-localization.html">← Previous Chapter</a>
-<a href="#">Next Chapter →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

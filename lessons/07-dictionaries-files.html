@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -60,31 +62,7 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<section id="dictionaries">
+<div class="sidebar-overlay"></div>
 <h2 id="dictionaries-hash-maps">Dictionaries &amp; Hash Maps</h2>
 <p>While lists find elements by numerical index (offset), dictionaries (hash maps) find elements via unique <strong>keys</strong>. This transforms an $O(N)$ scan operation into a highly efficient $O(1)$ lookup via hashing.</p>
 <div class="concept-diagram"><pre>
@@ -99,7 +77,6 @@ Hash Function Process:
 <li>Keys must be immutable (strings, integers, tuples).</li>
 <li>Values can be anything, including lists or other dictionaries.</li>
 </ul>
-</section><section id="dict-operations">
 <h2 id="dictionary-operations">Dictionary Operations</h2>
 <p>You interact with dictionaries primarily through key indexing, similar to lists.</p>
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>counts = {}
@@ -111,7 +88,6 @@ val = counts.get("banana", 0) # Safe lookup (returns 0 if not found)
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>for key, value in counts.items():
     print(f"{key}: {value}")
 </code></pre></div>
-</section><section id="file-io">
 <h2 id="file-streams-persistence">File Streams &amp; Persistence</h2>
 <p>To read data from disk into memory, we use the <code>open()</code> function inside a <code>with</code> context manager, which guarantees the file stream is safely closed when we are done.</p>
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>with open('data.csv', 'r') as file:
@@ -120,7 +96,6 @@ val = counts.get("banana", 0) # Safe lookup (returns 0 if not found)
         parts = line.split(',')
         print(parts)
 </code></pre></div>
-</section><section id="exercises">
 <h2 id="practical-exercises">Practical Exercises</h2>
 <div class="exercise-box">
 <h4>Exercise 1: Word Frequency Counter</h4>
@@ -138,60 +113,6 @@ val = counts.get("banana", 0) # Safe lookup (returns 0 if not found)
     return counts
 </code></pre></div>
 </details>
-</div>
-</section><footer class="footnotes-section">
-<p>[1] Reference: Stanford CS106A Syllabus and Assignment 4</p>
-</footer><div class="chapter-nav">
-<a href="./06-grids-images.html">← Chapter 6: Grids &amp; Images</a>
-<a href="./08-object-oriented-programming.html">Chapter 8: OOP →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

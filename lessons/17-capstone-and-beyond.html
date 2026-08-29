@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -59,31 +61,10 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<h2 id="full-synthesis">1. The Full Synthesis</h2><p>In CS106A, we learned the building blocks of computation—variables, memory models, control flow, functions, and object-oriented design. In CME193, we mapped these primitives onto the massive parallel scale of arrays, vectors, and computational graphs.</p><div class="concept-diagram">
+<div class="sidebar-overlay"></div>
+<h2 id="full-synthesis">1. The Full Synthesis</h2>
+<p>In CS106A, we learned the building blocks of computation—variables, memory models, control flow, functions, and object-oriented design. In CME193, we mapped these primitives onto the massive parallel scale of arrays, vectors, and computational graphs.</p>
+<div class="concept-diagram">
 <pre>
 The Evolutionary Ladder of Abstraction:
 1. Karel the Robot (while loops, logic)
@@ -92,76 +73,38 @@ The Evolutionary Ladder of Abstraction:
 4. NumPy / Pandas (Vectorization, Memory locality)
 5. PyTorch (Dynamic Graphs, Automatic Differentiation, GPU acceleration)
 </pre>
-</div><h2 id="software-architecture">2. Architecture of Real-World Software</h2><p>Scaling from a Jupyter Notebook to production software requires discipline. Modern engineering stacks use modular files, test-driven development with <code>pytest</code>, and environment managers (like <code>conda</code> or <code>pipenv</code>) to freeze dependencies.</p><div class="callout-note">
+</div>
+<h2 id="software-architecture">2. Architecture of Real-World Software</h2>
+<p>Scaling from a Jupyter Notebook to production software requires discipline. Modern engineering stacks use modular files, test-driven development with <code>pytest</code>, and environment managers (like <code>conda</code> or <code>pipenv</code>) to freeze dependencies.</p>
+<div class="callout-note">
 <strong>Testing Strategy:</strong> Always write isolated unit tests for pure functions, and integration tests for modules that interact with file systems or external APIs.
-        </div><h2 id="cs106b-preview">3. Stanford CS106B Preview</h2><p>What comes next? <strong>CS106B (Programming Abstractions)</strong> shifts focus to algorithmic complexity (Big-O), recursion, and memory-managed languages like C++. You will learn how the data structures (Dictionaries, Lists) we took for granted in Python are physically built in memory using Pointers, Linked Lists, Trees, and Graphs.</p><h2 id="ai-landscape">4. The Modern AI &amp; Scientific Python Landscape</h2><p>The ecosystem evolves rapidly. Beyond PyTorch, you will encounter:</p><ul>
+        </div>
+<h2 id="cs106b-preview">3. Stanford CS106B Preview</h2>
+<p>What comes next? <strong>CS106B (Programming Abstractions)</strong> shifts focus to algorithmic complexity (Big-O), recursion, and memory-managed languages like C++. You will learn how the data structures (Dictionaries, Lists) we took for granted in Python are physically built in memory using Pointers, Linked Lists, Trees, and Graphs.</p>
+<h2 id="ai-landscape">4. The Modern AI &amp; Scientific Python Landscape</h2>
+<p>The ecosystem evolves rapidly. Beyond PyTorch, you will encounter:</p>
+<ul>
 <li><strong>Hugging Face Transformers:</strong> Open-source foundation models (LLMs) and embeddings.</li>
 <li><strong>JAX:</strong> High-performance array computing and automatic differentiation via XLA.</li>
 <li><strong>Polars / DuckDB:</strong> Next-generation data manipulation, surpassing Pandas in speed by using Rust/C++ multi-threading.</li>
-</ul><h2 id="capstone-blueprints">5. Capstone Project Blueprints</h2><p>Here are architectural outlines for major engineering feats bridging the skills you've acquired:</p><ul>
+</ul>
+<h2 id="capstone-blueprints">5. Capstone Project Blueprints</h2>
+<p>Here are architectural outlines for major engineering feats bridging the skills you've acquired:</p>
+<ul>
 <li><strong>Algorithmic Stock Optimizer:</strong> Use <code>pandas</code> for time-series ingestion, <code>numpy</code> for covariance matrices, and <code>scipy.optimize</code> for Markowitz mean-variance portfolio allocation.</li>
 <li><strong>Semantic Search Engine:</strong> Vectorize documents with PyTorch embeddings, compute cosine similarities using NumPy, and return the closest semantic matches.</li>
 <li><strong>Image Classifier Web App:</strong> A PyTorch ResNet model served behind a Flask/FastAPI REST backend, containerized via Docker.</li>
-</ul><div class="exercise-box">
+</ul>
+<div class="exercise-box">
 <h3 id="the-grand-capstone-challenge">The Grand Capstone Challenge</h3>
 <p>Design a system that downloads a tabular dataset, trains a Random Forest and a PyTorch neural network, compares their accuracy metrics, and saves the best model architecture to disk. <em>(Refer to the GitHub repository for full architectural solution and tests)</em>.</p>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <hr/>
 <p><strong>Footnotes:</strong><br/>
             [1] Stanford CS106A &amp; CME193 Syllabi.<br/>
             [2] Stanford CS106B: Programming Abstractions.<br/>
             [3] Modern Scientific Stack Documentation: PyTorch, Polars, JAX.</p>
-</div><div class="chapter-nav">
-<a href="./16-pytorch-deep-learning.html">← Previous: Chapter 16</a> | 
-            <span class="disabled">Next: None (Grand Finale)</span>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

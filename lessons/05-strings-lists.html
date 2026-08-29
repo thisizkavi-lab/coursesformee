@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -60,31 +62,7 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<section id="sequences-memory">
+<div class="sidebar-overlay"></div>
 <h2 id="sequences-in-memory">Sequences in Memory</h2>
 <p>In Python, a sequence is a contiguously ordered collection of items. Elements in a sequence have a predictable order and can be accessed via numerical indices. The two most prominent sequences are strings (ordered collections of characters) and lists (ordered collections of arbitrary objects).</p>
 <div class="concept-diagram"><pre>
@@ -96,7 +74,6 @@ string "CODE"   |   'C'    |   'O'    |   'D'    |   'E'    |
 Index (Neg):      -4         -3         -2         -1
             </pre></div>
 <p>Python utilizes 0-based indexing. The first element is at index 0. It also seamlessly supports negative indexing, where <code>-1</code> retrieves the last element.</p>
-</section><section id="slicing-semantics">
 <h2 id="slicing-syntax-semantics">Slicing Syntax &amp; Semantics</h2>
 <p>Slicing allows you to extract a sub-sequence using the notation <code>seq[start:stop:step]</code>. The slice begins at <code>start</code> (inclusive) and goes up to, but not including, <code>stop</code> (exclusive), stepping by <code>step</code>.</p>
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>text = "PYTHON"
@@ -108,7 +85,6 @@ print(text[::-1])  # 'NOHTYP' (step of -1 reverses the sequence)
 <div class="callout-note">
 <strong>Note:</strong> Slicing a sequence always creates a new "shallow copy" of that sequence. Modifying the slice does not modify the original sequence (relevant for mutable sequences).
             </div>
-</section><section id="mutability">
 <h2 id="mutability-vs-immutability">Mutability vs Immutability</h2>
 <p>This is one of Python's most critical concepts. <strong>Strings are immutable</strong>. Once a string is created in memory, its characters cannot be changed. Attempting <code>text[0] = 'X'</code> will raise a TypeError. Operations like <code>.upper()</code> or <code>.replace()</code> return <em>new</em> strings.</p>
 <p><strong>Lists, however, are mutable</strong>. You can alter their elements in place without changing the list's memory address.</p>
@@ -120,7 +96,6 @@ s = "b" + s[1:] # Creates a new string "bat", reassigned to s
 lst = ['c', 'a', 't']
 lst[0] = 'b'    # Modifies the list in memory: ['b', 'a', 't']
 </code></pre></div>
-</section><section id="lists-in-depth">
 <h2 id="python-lists-in-depth">Python Lists in Depth</h2>
 <p>Under the hood, Python lists are dynamic arrays. They over-allocate memory to ensure that appending elements is amortized $O(1)$ time complexity. When the underlying array is full, Python allocates a new, larger array and copies the elements over.</p>
 <ul>
@@ -129,7 +104,6 @@ lst[0] = 'b'    # Modifies the list in memory: ['b', 'a', 't']
 <li><code>.insert(i, x)</code>: Inserts x at index i.</li>
 <li><code>.extend(iterable)</code>: Appends all items from iterable.</li>
 </ul>
-</section><section id="aliasing">
 <h2 id="aliasing-vs-cloning">Aliasing vs Cloning</h2>
 <p>Because variables are merely references to objects in memory, assignment creates an alias.</p>
 <div class="concept-diagram"><pre>
@@ -146,7 +120,6 @@ list_c = list_a.copy() # or list_a[:]
 list_c[0] = 5
 print(list_a) # Output: [99, 2, 3] (Unaffected)
 </code></pre></div>
-</section><section id="exercises">
 <h2 id="practical-exercises">Practical Exercises</h2>
 <div class="exercise-box">
 <h4>Exercise 1: Palindrome Verifier</h4>
@@ -166,60 +139,6 @@ print(list_a) # Output: [99, 2, 3] (Unaffected)
 print(is_palindrome("A man, a plan, a canal: Panama")) # True
 </code></pre></div>
 </details>
-</div>
-</section><footer class="footnotes-section">
-<p>[1] Reference: Stanford CS106A Syllabus and Lecture 8</p>
-</footer><div class="chapter-nav">
-<a href="./04-functions-decomposition.html">← Chapter 4: Functions</a>
-<a href="./06-grids-images.html">Chapter 6: Grids &amp; Images →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

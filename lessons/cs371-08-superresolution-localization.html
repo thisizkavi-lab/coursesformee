@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -60,19 +62,15 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="reading-time">Reading Time: 45 mins | Part III</div><h2 id="overcoming-abbe-s-limit">Overcoming Abbe's Limit</h2><p>The diffraction limit of light restricts optical resolution to ~250 nm. PALM/STORM techniques bypass this by sparsely activating fluorescent molecules so their diffraction blur (Point Spread Function, PSF) doesn't overlap. We then computationally localize the exact center of each emitter with nanometer precision.</p><h2 id="deep-mental-model-point-spread-function-fitting">Deep Mental Model: Point Spread Function Fitting</h2><p>Instead of treating a pixel as the location, we view the bright patch as a 2D probability distribution and find its exact continuous center via Maximum Likelihood Estimation.</p><h2 id="algorithmic-implementation-gaussian-mle-localization">Algorithmic Implementation: Gaussian MLE Localization</h2><p>Using SciPy to fit a 2D Gaussian to a fluorescent spot.</p><div class="code-block">
+<div class="sidebar-overlay"></div>
+<div class="reading-time">Reading Time: 45 mins | Part III</div>
+<h2 id="overcoming-abbe-s-limit">Overcoming Abbe's Limit</h2>
+<p>The diffraction limit of light restricts optical resolution to ~250 nm. PALM/STORM techniques bypass this by sparsely activating fluorescent molecules so their diffraction blur (Point Spread Function, PSF) doesn't overlap. We then computationally localize the exact center of each emitter with nanometer precision.</p>
+<h2 id="deep-mental-model-point-spread-function-fitting">Deep Mental Model: Point Spread Function Fitting</h2>
+<p>Instead of treating a pixel as the location, we view the bright patch as a 2D probability distribution and find its exact continuous center via Maximum Likelihood Estimation.</p>
+<h2 id="algorithmic-implementation-gaussian-mle-localization">Algorithmic Implementation: Gaussian MLE Localization</h2>
+<p>Using SciPy to fit a 2D Gaussian to a fluorescent spot.</p>
+<div class="code-block">
 <pre><code>import numpy as np
 from scipy.optimize import curve_fit
 
@@ -99,38 +97,13 @@ popt, _ = curve_fit(gaussian_2d, (x, y), data, p0=initial_guess)
 print(f"True location: X={true_params[1]}, Y={true_params[2]}")
 print(f"Fitted location: X={popt[1]:.2f}, Y={popt[2]:.2f}")
 </code></pre>
-</div><div class="code-output">
+</div>
+<div class="code-output">
 <div class="code-block"><div class="code-block-header"><span class="code-block-lang">python</span><button class="code-block-copy" type="button">Copy</button></div><pre><code>True location: X=5.2, Y=4.8
 Fitted location: X=5.19, Y=4.81</code></pre></div>
-</div><div class="footnotes-section">
+</div>
+<div class="footnotes-section">
 <p><strong>Footnotes:</strong> Stanford CS371 papers, Nature Methods super-resolution publications.</p>
-</div><div class="chapter-nav">
-<a href="cs371-07-cryoem-conformational-ensembles.html">← Previous Chapter</a>
-<a href="cs371-09-whole-cell-dynamics.html">Next Chapter →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 

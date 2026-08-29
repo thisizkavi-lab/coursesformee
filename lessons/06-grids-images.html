@@ -15,7 +15,9 @@
   <!-- Top Navigation Bar -->
   <nav class="navbar">
     <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
-    <a href="../index.html" class="navbar-brand">Coursebook</a>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
     <ul class="navbar-nav">
       <li><a href="../index.html">Courses</a></li>
       <li><a href="../assignments/index.html">Assignments</a></li>
@@ -60,31 +62,7 @@
           </header>
 
           <div class="chapter-body">
-            <div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<div class="content-container">
-<article class="article-content">
-<div class="chapter-body">
-<section id="grids">
+<div class="sidebar-overlay"></div>
 <h2 id="2d-grids-as-lists-of-lists">2D Grids as Lists of Lists</h2>
 <p>To represent 2-dimensional spaces, we use lists of lists. This is typically done in a <em>row-major order</em>, where the outer list represents rows, and each inner list represents the columns within that row.</p>
 <div class="concept-diagram"><pre>
@@ -100,7 +78,6 @@ grid = [
 <strong>Warning: The Reference Trap!</strong><br/>
                 Never create a 2D grid using <code>grid = [[0] * cols] * rows</code>. This creates multiple references to the <em>same</em> inner list. Modifying one row will modify them all! Instead, use a list comprehension: <code>grid = [[0 for _ in range(cols)] for _ in range(rows)]</code>.
             </div>
-</section><section id="images">
 <h2 id="digital-image-representation">Digital Image Representation</h2>
 <p>Digital images are simply grids of pixels. Each pixel stores color information using the RGB model (Red, Green, Blue). Each channel takes an integer value from 0 to 255.</p>
 <ul>
@@ -108,7 +85,6 @@ grid = [
 <li><code>(255, 255, 255)</code>: White</li>
 <li><code>(255, 0, 0)</code>: Pure Red</li>
 </ul>
-</section><section id="image-manipulation">
 <h2 id="image-manipulation-algorithms">Image Manipulation Algorithms</h2>
 <p>By iterating over an image grid, we can apply transformations pixel by pixel.</p>
 <h3 id="grayscale-conversion">Grayscale Conversion</h3>
@@ -122,10 +98,8 @@ grid = [
             pixel.g = luminance
             pixel.b = luminance
 </code></pre></div>
-</section><section id="case-study-sand">
 <h2 id="case-study-the-sand-simulation">Case Study: The Sand Simulation</h2>
 <p>In Stanford's Assignment 3, we simulate falling sand. The grid contains strings like <code>'s'</code> for sand, <code>'r'</code> for rock, and <code>'e'</code> for empty. A cell of sand moves down if the cell below is empty. To prevent scanning conflicts, the board is often updated from bottom to top.</p>
-</section><section id="exercises">
 <h2 id="practical-exercises">Practical Exercises</h2>
 <div class="exercise-box">
 <h4>Exercise 1: Horizontal Flip</h4>
@@ -147,60 +121,6 @@ grid = [
             right_pixel.r, right_pixel.g, right_pixel.b = temp_r, temp_g, temp_b
 </code></pre></div>
 </details>
-</div>
-</section><footer class="footnotes-section">
-<p>[1] Reference: Stanford CS106A Syllabus and Assignment 3 (Sand)</p>
-</footer><div class="chapter-nav">
-<a href="./05-strings-lists.html">← Chapter 5: Strings &amp; Lists</a>
-<a href="./07-dictionaries-files.html">Chapter 7: Dictionaries &amp; Files →</a>
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
-</div>
-</div>
-<!-- Bottom Chapter Navigation -->
-</article>
-<!-- Right Sticky TOC -->
-
 </div>
           </div>
 
