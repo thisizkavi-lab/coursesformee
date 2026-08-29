@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level 01: Foundations & Primitives — WaniKani Japanese</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>
+    (function() {
+      const saved = localStorage.getItem('coursebook-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <button class="navbar-toggle" aria-label="Toggle Navigation">☰</button>
+    <a href="../index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
+
+    <div class="navbar-right">
+      <ul class="navbar-nav">
+        <li><a href="../index.html">Courses</a></li>
+        <li><a href="../assignments/index.html">Assignments</a></li>
+        <li><a href="../resources/setup.html">Setup</a></li>
+      </ul>
+
+      <!-- Best-Practice SVG Theme Toggle -->
+      <button class="theme-toggle-btn" title="Toggle theme" aria-label="Toggle theme" type="button">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="m4.93 4.93 1.41 1.41"></path>
+          <path d="m17.66 17.66 1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="m6.34 17.66-1.41 1.41"></path>
+          <path d="m19.07 4.93-1.41 1.41"></path>
+        </svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Left Sidebar (Scoped to Japanese Course: 60 Levels) -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-back-link">← All Courses</a>
+        <div class="sidebar-course-badge course-badge-japanese">WaniKani · 日本語</div>
+        <h2 class="sidebar-course-title">Japanese Kanji & Vocabulary</h2>
+      </div>
+
+      <ul class="sidebar-links">
+        <li><a href="./japanese-level-01.html" class="active"><span class="chapter-num">01</span> Level 1 — Foundations & Primitives</a></li>
+        <li><a href="./japanese-level-02.html"><span class="chapter-num">02</span> Level 2 — Basic Numbers, Nature & Elements</a></li>
+        <li><a href="./japanese-level-03.html"><span class="chapter-num">03</span> Level 3 — Essential Verbs & Human Life</a></li>
+        <li><a href="./japanese-level-04.html"><span class="chapter-num">04</span> Level 4 — Time, Weather, Society & Body</a></li>
+        <li><a href="./japanese-level-05.html"><span class="chapter-num">05</span> Level 5 — Colors, Movement & Basic Science</a></li>
+        <li><a href="./japanese-level-06.html"><span class="chapter-num">06</span> Level 6 — Geography, States & Common Verbs</a></li>
+        <li><a href="./japanese-level-07.html"><span class="chapter-num">07</span> Level 7 — School, Family, Time & Home</a></li>
+        <li><a href="./japanese-level-08.html"><span class="chapter-num">08</span> Level 8 — Travel, Electricity, Work & Body</a></li>
+        <li><a href="./japanese-level-09.html"><span class="chapter-num">09</span> Level 9 — Trade, Health, Food & Operations</a></li>
+        <li><a href="./japanese-level-10.html"><span class="chapter-num">10</span> Level 10 — Transportation, Society & Language</a></li>
+        <li><a href="./japanese-level-11.html"><span class="chapter-num">11</span> Level 11 — Science, Nature, Relations & Action</a></li>
+        <li><a href="./japanese-level-12.html"><span class="chapter-num">12</span> Level 12 — Urban Life, Seasons & Emotions</a></li>
+        <li><a href="./japanese-level-13.html"><span class="chapter-num">13</span> Level 13 — Feelings, Buildings & Public Life</a></li>
+        <li><a href="./japanese-level-14.html"><span class="chapter-num">14</span> Level 14 — Art, Philosophy, Industry & Law</a></li>
+        <li><a href="./japanese-level-15.html"><span class="chapter-num">15</span> Level 15 — Food, Nature, Buildings & Direction</a></li>
+        <li><a href="./japanese-level-16.html"><span class="chapter-num">16</span> Level 16 — Government, Literature & Reflection</a></li>
+        <li><a href="./japanese-level-17.html"><span class="chapter-num">17</span> Level 17 — Medicine, Science, Love & Truth</a></li>
+        <li><a href="./japanese-level-18.html"><span class="chapter-num">18</span> Level 18 — News, Thought, Memory & Travel</a></li>
+        <li><a href="./japanese-level-19.html"><span class="chapter-num">19</span> Level 19 — Grammar, Space, Order & Logic</a></li>
+        <li><a href="./japanese-level-20.html"><span class="chapter-num">20</span> Level 20 — Disasters, Society, Body & Mind</a></li>
+        <li><a href="./japanese-level-21.html"><span class="chapter-num">21</span> Level 21 — Law, Justice, Politics & Finance</a></li>
+        <li><a href="./japanese-level-22.html"><span class="chapter-num">22</span> Level 22 — Administration, Industry & States</a></li>
+        <li><a href="./japanese-level-23.html"><span class="chapter-num">23</span> Level 23 — Craft, Law, Theater & Society</a></li>
+        <li><a href="./japanese-level-24.html"><span class="chapter-num">24</span> Level 24 — Manufacture, Measurement & Anatomy</a></li>
+        <li><a href="./japanese-level-25.html"><span class="chapter-num">25</span> Level 25 — Nature, Economy, Law & People</a></li>
+        <li><a href="./japanese-level-26.html"><span class="chapter-num">26</span> Level 26 — Creation, Structure & Reflection</a></li>
+        <li><a href="./japanese-level-27.html"><span class="chapter-num">27</span> Level 27 — Physical Body, Symptoms & Motion</a></li>
+        <li><a href="./japanese-level-28.html"><span class="chapter-num">28</span> Level 28 — Industry, Arts, Science & Power</a></li>
+        <li><a href="./japanese-level-29.html"><span class="chapter-num">29</span> Level 29 — Commerce, Navigation & Society</a></li>
+        <li><a href="./japanese-level-30.html"><span class="chapter-num">30</span> Level 30 — Culture, Technology & Expression</a></li>
+        <li><a href="./japanese-level-31.html"><span class="chapter-num">31</span> Level 31 — Engineering, Earth & Architecture</a></li>
+        <li><a href="./japanese-level-32.html"><span class="chapter-num">32</span> Level 32 — Living Things, Biology & Space</a></li>
+        <li><a href="./japanese-level-33.html"><span class="chapter-num">33</span> Level 33 — Materials, Food & Imperial Terms</a></li>
+        <li><a href="./japanese-level-34.html"><span class="chapter-num">34</span> Level 34 — Measurement, Motion & Theater</a></li>
+        <li><a href="./japanese-level-35.html"><span class="chapter-num">35</span> Level 35 — Science, Craft, Nature & Society</a></li>
+        <li><a href="./japanese-level-36.html"><span class="chapter-num">36</span> Level 36 — State, Economy, Heritage & Trade</a></li>
+        <li><a href="./japanese-level-37.html"><span class="chapter-num">37</span> Level 37 — Conflict, Astronomy & Warfare</a></li>
+        <li><a href="./japanese-level-38.html"><span class="chapter-num">38</span> Level 38 — Medicine, Administration & Life</a></li>
+        <li><a href="./japanese-level-39.html"><span class="chapter-num">39</span> Level 39 — Industry, Ecology & Governance</a></li>
+        <li><a href="./japanese-level-40.html"><span class="chapter-num">40</span> Level 40 — Philosophy, Music & Engineering</a></li>
+        <li><a href="./japanese-level-41.html"><span class="chapter-num">41</span> Level 41 — Geology, Nature & Military Science</a></li>
+        <li><a href="./japanese-level-42.html"><span class="chapter-num">42</span> Level 42 — Physics, Mechanics & Geography</a></li>
+        <li><a href="./japanese-level-43.html"><span class="chapter-num">43</span> Level 43 — Law, Ocean, Rituals & Literature</a></li>
+        <li><a href="./japanese-level-44.html"><span class="chapter-num">44</span> Level 44 — Astronomy, Myth & Ancient Lore</a></li>
+        <li><a href="./japanese-level-45.html"><span class="chapter-num">45</span> Level 45 — Geology, Anatomy & Ancient Texts</a></li>
+        <li><a href="./japanese-level-46.html"><span class="chapter-num">46</span> Level 46 — Craft, History & Subtle Nuances</a></li>
+        <li><a href="./japanese-level-47.html"><span class="chapter-num">47</span> Level 47 — Materials, Culture & Expression</a></li>
+        <li><a href="./japanese-level-48.html"><span class="chapter-num">48</span> Level 48 — Zoology, Botany & Human Conditions</a></li>
+        <li><a href="./japanese-level-49.html"><span class="chapter-num">49</span> Level 49 — Philosophy, Botany & High Lore</a></li>
+        <li><a href="./japanese-level-50.html"><span class="chapter-num">50</span> Level 50 — Astronomy, Ocean & Imperial Terms</a></li>
+        <li><a href="./japanese-level-51.html"><span class="chapter-num">51</span> Level 51 — Nature, Society & Literary Arts</a></li>
+        <li><a href="./japanese-level-52.html"><span class="chapter-num">52</span> Level 52 — Statesmanship, Law & Strategy</a></li>
+        <li><a href="./japanese-level-53.html"><span class="chapter-num">53</span> Level 53 — Biomedical, Marine & Ancient Roots</a></li>
+        <li><a href="./japanese-level-54.html"><span class="chapter-num">54</span> Level 54 — High Literature, Drama & Lore</a></li>
+        <li><a href="./japanese-level-55.html"><span class="chapter-num">55</span> Level 55 — Anatomy, Statecraft & Heritage</a></li>
+        <li><a href="./japanese-level-56.html"><span class="chapter-num">56</span> Level 56 — Music, Military, Nature & Faith</a></li>
+        <li><a href="./japanese-level-57.html"><span class="chapter-num">57</span> Level 57 — Geography, Craft, Marine & Life</a></li>
+        <li><a href="./japanese-level-58.html"><span class="chapter-num">58</span> Level 58 — Classical Science, Geology & Arts</a></li>
+        <li><a href="./japanese-level-59.html"><span class="chapter-num">59</span> Level 59 — Rare Kanji, Literature & Flora</a></li>
+        <li><a href="./japanese-level-60.html"><span class="chapter-num">60</span> Level 60 — The Pinnacle of Japanese Mastery</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <div class="japanese-container" data-level="1">
+        
+        <header class="chapter-header">
+          <div class="chapter-meta">
+            <span class="chapter-part-tag course-badge-japanese">WaniKani · Level 01</span>
+          </div>
+          <h1 class="chapter-title">Level 1: Foundations & Primitives</h1>
+          <p style="color:var(--text-secondary);margin-top:8px;font-size:1.05rem;">
+            Master 18 essential Kanji characters and 39 contextual vocabulary terms for this level.
+          </p>
+        </header>
+
+        <!-- Live Level Statistics & Progress Meter -->
+        <div class="level-stats-bar">
+          <div class="level-stats-info">
+            <div class="stat-item">
+              <span class="stat-label">Total Items</span>
+              <span class="stat-value">57</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Kanji</span>
+              <span class="stat-value">18</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Vocabulary</span>
+              <span class="stat-value">39</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Mastered</span>
+              <span class="stat-value" id="stat-mastered" style="color:#10b981;">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Learning</span>
+              <span class="stat-value" id="stat-learning" style="color:#f59e0b;">57</span>
+            </div>
+          </div>
+
+          <div class="level-progress-wrapper">
+            <div class="level-progress-header">
+              <span>Level Mastery</span>
+              <span class="progress-percentage-text">0/57 (0%)</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter & Study Toolbar -->
+        <div class="study-toolbar">
+          <div class="toolbar-row">
+            <!-- Filter Pills (ChatGPT/WaniKani style) -->
+            <div class="filter-pills-group">
+              <button class="filter-pill active" data-filter="all" type="button">
+                All Cards <span class="pill-badge">57</span>
+              </button>
+              <button class="filter-pill" data-filter="kanji" type="button">
+                Kanji <span class="pill-badge">18</span>
+              </button>
+              <button class="filter-pill" data-filter="vocab" type="button">
+                Vocabulary <span class="pill-badge">39</span>
+              </button>
+              <button class="filter-pill" data-filter="learning" type="button">
+                Learning <span class="pill-badge" id="badge-count-learning">57</span>
+              </button>
+              <button class="filter-pill" data-filter="mastered" type="button">
+                Mastered <span class="pill-badge" id="badge-count-mastered">0</span>
+              </button>
+            </div>
+
+            <!-- Search and Study Modes -->
+            <div class="search-and-tools">
+              <div class="search-input-wrapper">
+                <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="deck-search-input" placeholder="Search kanji, reading, meaning..." autocomplete="off">
+              </div>
+
+              <button class="tool-toggle-btn" id="toggle-furigana-btn" type="button" title="Show or hide furigana above kanji words">
+                🔤 Furigana
+              </button>
+
+              <button class="tool-toggle-btn" id="toggle-flashcard-btn" type="button" title="Test recall with flashcards">
+                🎴 Flashcard Mode
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Study Deck Grid -->
+        <div class="study-grid">
+          <!-- Kanji Card: 一 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_一">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N5</span>
+                  <span>·</span>
+                  <span>1 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">一</span>
+                <button class="audio-btn" data-speak="一" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">One</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">いち</span><span class="reading-pill pill-onyomi">いつ</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">ひと</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 二 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_二">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N5</span>
+                  <span>·</span>
+                  <span>2 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">二</span>
+                <button class="audio-btn" data-speak="二" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Two</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">に</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">ふた</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 九 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_九">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N5</span>
+                  <span>·</span>
+                  <span>2 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">九</span>
+                <button class="audio-btn" data-speak="九" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Nine</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">く</span><span class="reading-pill pill-onyomi">きゅう</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">ここの</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 七 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_七">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N5</span>
+                  <span>·</span>
+                  <span>2 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">七</span>
+                <button class="audio-btn" data-speak="七" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Seven</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">しち</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">なな</span><span class="reading-pill pill-kunyomi">なの</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 人 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_人">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N5</span>
+                  <span>·</span>
+                  <span>2 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">人</span>
+                <button class="audio-btn" data-speak="人" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Person</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">にん</span><span class="reading-pill pill-onyomi">じん</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">ひと</span><span class="reading-pill pill-kunyomi">と</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 入 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_入">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N5</span>
+                  <span>·</span>
+                  <span>2 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">入</span>
+                <button class="audio-btn" data-speak="入" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Enter</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">にゅう</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">はい</span><span class="reading-pill pill-kunyomi">い</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 八 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_八">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N5</span>
+                  <span>·</span>
+                  <span>2 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">八</span>
+                <button class="audio-btn" data-speak="八" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Eight</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">はち</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">や</span><span class="reading-pill pill-kunyomi">よう</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 力 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_力">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N4</span>
+                  <span>·</span>
+                  <span>2 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">力</span>
+                <button class="audio-btn" data-speak="力" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Power, ^Strength</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">りょく</span><span class="reading-pill pill-onyomi">りき</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">ちから</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 十 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_十">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N5</span>
+                  <span>·</span>
+                  <span>2 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">十</span>
+                <button class="audio-btn" data-speak="十" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Ten</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">じゅう</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">とお</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 三 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_三">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N5</span>
+                  <span>·</span>
+                  <span>3 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">三</span>
+                <button class="audio-btn" data-speak="三" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Three</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">さん</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">み</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 上 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_上">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N5</span>
+                  <span>·</span>
+                  <span>3 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">上</span>
+                <button class="audio-btn" data-speak="上" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Above, ^Up, ^Over</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">じょう</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">うえ</span><span class="reading-pill pill-kunyomi">あ</span><span class="reading-pill pill-kunyomi">のぼ</span><span class="reading-pill pill-kunyomi">うわ</span><span class="reading-pill pill-kunyomi">かみ</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 下 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_下">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N5</span>
+                  <span>·</span>
+                  <span>3 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">下</span>
+                <button class="audio-btn" data-speak="下" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Below, ^Down, ^Under, ^Beneath</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">か</span><span class="reading-pill pill-onyomi">げ</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">した</span><span class="reading-pill pill-kunyomi">さ</span><span class="reading-pill pill-kunyomi">くだ</span><span class="reading-pill pill-kunyomi">お</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 口 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_口">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N4</span>
+                  <span>·</span>
+                  <span>3 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">口</span>
+                <button class="audio-btn" data-speak="口" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Mouth</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">こう</span><span class="reading-pill pill-onyomi">^く</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">くち</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 大 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_大">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N5</span>
+                  <span>·</span>
+                  <span>3 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">大</span>
+                <button class="audio-btn" data-speak="大" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Big, ^Large</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">たい</span><span class="reading-pill pill-onyomi">だい</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">おお</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 女 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_女">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N5</span>
+                  <span>·</span>
+                  <span>3 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">女</span>
+                <button class="audio-btn" data-speak="女" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Woman</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">じょ</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">おんな</span><span class="reading-pill pill-kunyomi">め</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 山 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_山">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N5</span>
+                  <span>·</span>
+                  <span>3 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">山</span>
+                <button class="audio-btn" data-speak="山" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Mountain</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">さん</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">やま</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 川 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_川">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N5</span>
+                  <span>·</span>
+                  <span>3 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">川</span>
+                <button class="audio-btn" data-speak="川" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">River</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">!せん</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span class="reading-pill pill-kunyomi">かわ</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Kanji Card: 工 -->
+          <div class="study-card" data-type="kanji" data-item-id="k_1_工">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-kanji">Kanji</span>
+                <div class="card-badges-extra">
+                  <span>N4</span>
+                  <span>·</span>
+                  <span>3 strokes</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="kanji-character">工</span>
+                <button class="audio-btn" data-speak="工" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="card-meaning">Construction, ^Industry</div>
+                <div class="card-readings">
+                  <div class="reading-row">
+                    <span class="reading-type-label">On</span>
+                    <div class="reading-pills"><span class="reading-pill pill-onyomi">こう</span><span class="reading-pill pill-onyomi">^く</span></div>
+                  </div>
+                  <div class="reading-row">
+                    <span class="reading-type-label">Kun</span>
+                    <div class="reading-pills"><span style="color:var(--text-muted);font-size:0.8rem;">—</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Level 1</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 一 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_一">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>一<rt>いち</rt></ruby></span>
+                <button class="audio-btn" data-speak="一" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[いち]</div>
+                <div class="card-meaning">one, 1; best; first, foremost; beginning, start; a (single), one (of many); ace; bottom string (on a shamisen, etc.)</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 一つ -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_一つ">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>一<rt>ひと</rt></ruby>つ</span>
+                <button class="audio-btn" data-speak="一つ" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[ひとつ]</div>
+                <div class="card-meaning">one; for one thing; only; (not) even; just (e.g. &quot;just try it&quot;); some kind of, one type of</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 七 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_七">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>七<rt>しち</rt></ruby></span>
+                <button class="audio-btn" data-speak="七" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[なな, しち]</div>
+                <div class="card-meaning">seven</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 七つ -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_七つ">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>七<rt>なな</rt></ruby>つ</span>
+                <button class="audio-btn" data-speak="七つ" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[ななつ]</div>
+                <div class="card-meaning">seven; seven years of age; four o&#x27;clock (old time system)</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 九 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_九">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>九<rt>きゅう</rt></ruby></span>
+                <button class="audio-btn" data-speak="九" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[きゅう, く]</div>
+                <div class="card-meaning">nine, 9</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 九つ -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_九つ">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>九<rt>ここの</rt></ruby>つ</span>
+                <button class="audio-btn" data-speak="九つ" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[ここのつ]</div>
+                <div class="card-meaning">nine; nine years of age; twelve o&#x27;clock (old time system)</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 二 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_二">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>二<rt>に</rt></ruby></span>
+                <button class="audio-btn" data-speak="二" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[に]</div>
+                <div class="card-meaning">two, 2</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 二つ -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_二つ">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>二<rt>ふた</rt></ruby>つ</span>
+                <button class="audio-btn" data-speak="二つ" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[ふたつ]</div>
+                <div class="card-meaning">two</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 人 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_人">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>人<rt>ひと</rt></ruby></span>
+                <button class="audio-btn" data-speak="人" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[ひと]</div>
+                <div class="card-meaning">person, someone, somebody; human beings, mankind, man, people, humans; human (Homo sapiens); (other) people, others; character, personality, nature; capable person, competent person, suitable person, right person; adult, grown-up; I, me, one</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 二人 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_二人">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>二人<rt>ふたり</rt></ruby></span>
+                <button class="audio-btn" data-speak="二人" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[ふたり]</div>
+                <div class="card-meaning">two persons, two people, pair, couple</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 一人 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_一人">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>一人<rt>ひとり</rt></ruby></span>
+                <button class="audio-btn" data-speak="一人" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[ひとり]</div>
+                <div class="card-meaning">one person; being alone, being by oneself; being single, being unmarried; by oneself, alone; just, only, simply</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 入る -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_入る">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>入<rt>はい</rt></ruby>る</span>
+                <button class="audio-btn" data-speak="入る" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[はいる]</div>
+                <div class="card-meaning">to enter, to come in, to go in, to get in, to arrive; to join (a club, company, etc.), to enter (a university, the army, etc.), to enroll (in), to go into (e.g. politics), to get into; to be contained (in), to be included (in), to be inside (e.g. a box), to come under (a heading), to belong (in a category); to (be able to) fit (in a container, building, etc.), to be (able to be) held, to be (able to be) accommodated; to be introduced, to be brought in, to be installed; to be received, to be obtained; to be scored (of points), to be won (of votes); to turn on, to start functioning, to start working; to enter (a month, season, etc.), to reach (e.g. a climax), to get to (e.g. the main topic), to enter into (e.g. negotiations), to start (doing), to begin; to form (of a crack, fissure, etc.), to develop; to be put in (of effort, spirit, feeling, etc.), to be applied (e.g. of strength); to be ready (of tea, coffee, etc.), to be made; to enter the body (of alcohol), to become drunk</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 入れる -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_入れる">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>入<rt>い</rt></ruby>れる</span>
+                <button class="audio-btn" data-speak="入れる" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[いれる]</div>
+                <div class="card-meaning">to put in, to let in, to take in, to bring in, to insert, to install (e.g. software), to set (a jewel, etc.), to ink in (e.g. tattoo); to admit, to accept, to employ, to hire; to accept, to comply, to grant, to adopt (a policy, etc.), to take (advice, etc.), to listen to, to pay attention to; to include; to pay (one&#x27;s rent, etc.); to cast (a vote); to make (tea, coffee, etc.); to turn on (a switch, etc.); to send (a fax), to call</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 八 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_八">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>八<rt>はち</rt></ruby></span>
+                <button class="audio-btn" data-speak="八" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[はち]</div>
+                <div class="card-meaning">eight, 8</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 八つ -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_八つ">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>八<rt>やっ</rt></ruby>つ</span>
+                <button class="audio-btn" data-speak="八つ" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[やっつ]</div>
+                <div class="card-meaning">eight; eight years of age; two o&#x27;clock (old time system)</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 力 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_力">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>力<rt>ちから</rt></ruby></span>
+                <button class="audio-btn" data-speak="力" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[ちから]</div>
+                <div class="card-meaning">force, strength, might, vigour, vigor, energy; capability, ability, proficiency, capacity, faculty; efficacy, effect; effort, endeavours, endeavors, exertions; power, authority, influence, good offices, agency; support, help, aid, assistance; stress, emphasis; means, resources</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 十 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_十">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>十<rt>じゅう</rt></ruby></span>
+                <button class="audio-btn" data-speak="十" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[じゅう]</div>
+                <div class="card-meaning">ten, 10</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 三 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_三">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>三<rt>さん</rt></ruby></span>
+                <button class="audio-btn" data-speak="三" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[さん]</div>
+                <div class="card-meaning">three, 3</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 三つ -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_三つ">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>三<rt>みっ</rt></ruby>つ</span>
+                <button class="audio-btn" data-speak="三つ" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[みっつ]</div>
+                <div class="card-meaning">three; three years of age</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 三人 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_三人">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>三<rt>さん</rt></ruby><ruby>人<rt>にん</rt></ruby></span>
+                <button class="audio-btn" data-speak="三人" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[さんにん]</div>
+                <div class="card-meaning">three people</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 上 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_上">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>上<rt>うえ</rt></ruby></span>
+                <button class="audio-btn" data-speak="上" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[うえ]</div>
+                <div class="card-meaning">above, over, up; top, summit, upper part, head (e.g. of a staircase); surface, on (top of); the above (in a piece of writing), earlier part; superior, better, higher (position, rank, etc.), upper (class); elder, older, senior; with respect to ..., in terms of, as far as ... is concerned, when (e.g. drunk); besides ..., in addition to ..., on top of ..., as well as ...; after ..., upon ..., on ..., with (e.g. full awareness), as a result of ...; since ..., now that ..., because ...; honorable, venerable, dear</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 上げる -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_上げる">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>上<rt>あ</rt></ruby>げる</span>
+                <button class="audio-btn" data-speak="上げる" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[あげる]</div>
+                <div class="card-meaning">to raise, to elevate; to do up (one&#x27;s hair); to fly (a kite, etc.), to launch (fireworks, etc.), to surface (a submarine, etc.); to land (a boat); to show someone (into a room); to give; to send someone (away); to enrol (one&#x27;s child in school), to enroll; to increase (price, quality, status, etc.), to develop (talent, skill), to improve; to make (a loud sound), to raise (one&#x27;s voice); to earn (something desirable); to praise; to give (an example, etc.), to cite; to summon up (all of one&#x27;s energy, etc.); to offer up (incense, a prayer, etc.) to the gods (or Buddha, etc.); to bear (a child); to conduct (a ceremony, esp. a wedding); (of the tide) to come in; to vomit; to do for (the sake of someone else); to complete ...; to humbly do ...</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 上がる -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_上がる">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>上<rt>あ</rt></ruby>がる</span>
+                <button class="audio-btn" data-speak="上がる" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[あがる]</div>
+                <div class="card-meaning">to rise, to go up, to come up, to ascend, to be raised; to enter (esp. from outdoors), to come in, to go in; to enter (a school), to advance to the next grade; to get out (of water), to come ashore; to increase; to improve, to make progress; to be promoted, to advance; to be made (of profit, etc.); to occur (esp. of a favourable result); to be adequate (to cover expenses, etc.); to be finished, to be done, to be over; to stop (of rain), to lift; to stop (working properly), to cut out, to give out, to die; to win (in a card game, etc.); to be spoken loudly; to get nervous, to get stage fright; to be offered (to the gods, etc.); to go, to visit; to eat, to drink; to be listed (as a candidate); to serve (in one&#x27;s master&#x27;s home); to be complete, to finish; above, north of</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 上る -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_上る">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>上<rt>のぼ</rt></ruby>る</span>
+                <button class="audio-btn" data-speak="上る" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[のぼる]</div>
+                <div class="card-meaning">to ascend, to go up, to climb; to ascend (as a natural process, e.g. the Sun), to rise; to go to (the capital); to add up to; to advance (in price); to swim up (a river), to sail up; to come up (on the agenda)</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 下 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_下">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>下<rt>した</rt></ruby></span>
+                <button class="audio-btn" data-speak="下" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[した]</div>
+                <div class="card-meaning">below, down, under, younger (e.g. daughter); bottom; beneath, underneath; just after, right after; inferiority, one&#x27;s inferior (i.e. one&#x27;s junior); trade-in; preliminary, preparatory</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 下がる -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_下がる">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>下<rt>さ</rt></ruby>がる</span>
+                <button class="audio-btn" data-speak="下がる" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[さがる]</div>
+                <div class="card-meaning">to come down, to go down, to fall, to drop, to sink, to get lower; to hang, to dangle; to move back, to step back, to withdraw, to retire; to deteriorate, to fall off, to be downgraded; to get closer to the present day; below, south of</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 下げる -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_下げる">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>下<rt>さ</rt></ruby>げる</span>
+                <button class="audio-btn" data-speak="下げる" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[さげる]</div>
+                <div class="card-meaning">to hang, to suspend, to wear (e.g. decoration); to lower, to reduce, to bring down; to demote, to move back, to pull back; to clear (plates), to remove (food, etc. from table or altar); to keep on playing after one has formed a scoring combination with captured cards</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 下さい -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_下さい">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>下<rt>くだ</rt></ruby>さい</span>
+                <button class="audio-btn" data-speak="下さい" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[ください]</div>
+                <div class="card-meaning">please (give me); please (do for me)</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 口 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_口">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>口<rt>くち</rt></ruby></span>
+                <button class="audio-btn" data-speak="口" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[くち]</div>
+                <div class="card-meaning">mouth; opening, hole, gap, orifice; mouth (of a bottle), spout, nozzle, mouthpiece; gate, door, entrance, exit; speaking, speech, talk (i.e. gossip); taste, palate; mouth (to feed); opening (i.e. vacancy), available position; invitation, summons; kind, sort, type; opening (i.e. beginning); counter for mouthfuls, shares (of money), stove burners, and swords</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 入り口 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_入り口">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>入<rt>い</rt></ruby>り<ruby>口<rt>ぐち</rt></ruby></span>
+                <button class="audio-btn" data-speak="入り口" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[いりぐち]</div>
+                <div class="card-meaning">entrance, entry, gate, approach, mouth</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 大きい -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_大きい">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>大<rt>おお</rt></ruby>きい</span>
+                <button class="audio-btn" data-speak="大きい" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[おおきい]</div>
+                <div class="card-meaning">big, large, great; loud; extensive, spacious; important, decisive, valuable; older, grown up</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 大きさ -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_大きさ">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>大<rt>おお</rt></ruby>きさ</span>
+                <button class="audio-btn" data-speak="大きさ" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[おおきさ]</div>
+                <div class="card-meaning">size, dimensions, volume</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 大した -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_大した">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>大<rt>たい</rt></ruby>した</span>
+                <button class="audio-btn" data-speak="大した" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[たいした]</div>
+                <div class="card-meaning">considerable, great, important, significant, a big deal</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 大人 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_大人">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>大人<rt>おとな</rt></ruby></span>
+                <button class="audio-btn" data-speak="大人" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[おとな]</div>
+                <div class="card-meaning">adult, grown-up</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 女 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_女">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>女<rt>おんな</rt></ruby></span>
+                <button class="audio-btn" data-speak="女" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[おんな]</div>
+                <div class="card-meaning">woman, female; female lover, girlfriend, mistress, (someone&#x27;s) woman</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 山 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_山">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>山<rt>やま</rt></ruby></span>
+                <button class="audio-btn" data-speak="山" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[やま]</div>
+                <div class="card-meaning">mountain, hill; mine (e.g. coal mine); heap, pile; crown (of a hat), thread (of a screw), tread (of a tire), protruding part of an object, high part; climax, peak, critical point; guess, speculation, gamble; criminal case, crime; mountain climbing, mountaineering; festival float (esp. one mounted with a decorative halberd); deck (of playing cards on table, face down, from which cards are drawn), stack; wall, wall tile; wild</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 川 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_川">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>川<rt>かわ</rt></ruby></span>
+                <button class="audio-btn" data-speak="川" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[かわ]</div>
+                <div class="card-meaning">river, stream; River, the ... river</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 人口 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_人口">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>人<rt>じん</rt></ruby><ruby>口<rt>こう</rt></ruby></span>
+                <button class="audio-btn" data-speak="人口" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[じんこう]</div>
+                <div class="card-meaning">population; common talk</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+          <!-- Vocab Card: 人工 -->
+          <div class="study-card" data-type="vocab" data-item-id="v_1_人工">
+            <div>
+              <div class="card-top-meta">
+                <span class="card-type-tag card-type-vocab">Vocabulary</span>
+                <div class="card-badges-extra">
+                  <span>Level 1</span>
+                </div>
+              </div>
+
+              <div class="card-hero">
+                <span class="vocab-word"><ruby>人<rt>じん</rt></ruby><ruby>工<rt>こう</rt></ruby></span>
+                <button class="audio-btn" data-speak="人工" title="Listen Pronunciation" aria-label="Listen">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+              </div>
+
+              <div class="card-details">
+                <div class="vocab-reading-badge">[じんこう]</div>
+                <div class="card-meaning">artificial, man-made, human work, human skill, artificiality</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span style="font-size:0.72rem;color:var(--text-muted);">Vocabulary</span>
+              <button class="master-toggle-btn" type="button">○ Mark Learned</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom In-Course Level Navigation -->
+        <nav class="chapter-nav">
+          <a href="../index.html" class="chapter-nav-card prev">
+            <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            <div class="nav-card-text">
+              <span class="nav-card-label">Back to Catalog</span>
+              <span class="nav-card-title">All Courses</span>
+            </div>
+          </a>
+          <a href="./japanese-level-02.html" class="chapter-nav-card next">
+            <div class="nav-card-text">
+              <span class="nav-card-label">Next Level</span>
+              <span class="nav-card-title">Level 2: Basic Numbers, Nature & Elements</span>
+            </div>
+            <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        </nav>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

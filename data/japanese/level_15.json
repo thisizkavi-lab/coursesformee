@@ -1,0 +1,2086 @@
+{
+  "level": 15,
+  "title": "Level 15",
+  "kanji": [
+    {
+      "character": "寺",
+      "meanings": [
+        "Temple"
+      ],
+      "meaning_str": "Temple",
+      "onyomi": [
+        "!じ"
+      ],
+      "kunyomi": [
+        "てら"
+      ],
+      "strokes": 6,
+      "jlpt": "N2",
+      "radicals": [
+        "Temple"
+      ]
+    },
+    {
+      "character": "岩",
+      "meanings": [
+        "Boulder"
+      ],
+      "meaning_str": "Boulder",
+      "onyomi": [
+        "!がん"
+      ],
+      "kunyomi": [
+        "いわ"
+      ],
+      "strokes": 8,
+      "jlpt": "N2",
+      "radicals": [
+        "Mountain",
+        "Stone"
+      ]
+    },
+    {
+      "character": "帰",
+      "meanings": [
+        "Return",
+        "^Return Home"
+      ],
+      "meaning_str": "Return, ^Return Home",
+      "onyomi": [
+        "!き"
+      ],
+      "kunyomi": [
+        "かえ"
+      ],
+      "strokes": 10,
+      "jlpt": "N4",
+      "radicals": [
+        "Knife",
+        "Wolverine",
+        "Forehead",
+        "Towel"
+      ]
+    },
+    {
+      "character": "春",
+      "meanings": [
+        "Spring"
+      ],
+      "meaning_str": "Spring",
+      "onyomi": [
+        "!しゅん"
+      ],
+      "kunyomi": [
+        "はる"
+      ],
+      "strokes": 9,
+      "jlpt": "N4",
+      "radicals": [
+        "Spring",
+        "Sun"
+      ]
+    },
+    {
+      "character": "昼",
+      "meanings": [
+        "Noon"
+      ],
+      "meaning_str": "Noon",
+      "onyomi": [
+        "!ちゅう"
+      ],
+      "kunyomi": [
+        "ひる"
+      ],
+      "strokes": 9,
+      "jlpt": "N4",
+      "radicals": [
+        "Shrimp",
+        "Sun",
+        "Ground"
+      ]
+    },
+    {
+      "character": "晴",
+      "meanings": [
+        "Clear Up"
+      ],
+      "meaning_str": "Clear Up",
+      "onyomi": [
+        "!せい"
+      ],
+      "kunyomi": [
+        "は"
+      ],
+      "strokes": 12,
+      "jlpt": "N3",
+      "radicals": [
+        "Sun",
+        "Blue"
+      ]
+    },
+    {
+      "character": "秋",
+      "meanings": [
+        "Autumn",
+        "^Fall"
+      ],
+      "meaning_str": "Autumn, ^Fall",
+      "onyomi": [],
+      "kunyomi": [
+        "あき"
+      ],
+      "strokes": 9,
+      "jlpt": "N4",
+      "radicals": [
+        "Grain",
+        "Fire"
+      ]
+    },
+    {
+      "character": "計",
+      "meanings": [
+        "Measure",
+        "^Measurement"
+      ],
+      "meaning_str": "Measure, ^Measurement",
+      "onyomi": [
+        "けい"
+      ],
+      "kunyomi": [
+        "はか"
+      ],
+      "strokes": 9,
+      "jlpt": "N4",
+      "radicals": [
+        "Say",
+        "Cross"
+      ]
+    },
+    {
+      "character": "列",
+      "meanings": [
+        "Row"
+      ],
+      "meaning_str": "Row",
+      "onyomi": [
+        "れつ"
+      ],
+      "kunyomi": [],
+      "strokes": 6,
+      "jlpt": "N3",
+      "radicals": [
+        "Yakuza",
+        "Knife"
+      ]
+    },
+    {
+      "character": "区",
+      "meanings": [
+        "District",
+        "^Ward"
+      ],
+      "meaning_str": "District, ^Ward",
+      "onyomi": [
+        "く"
+      ],
+      "kunyomi": [],
+      "strokes": 4,
+      "jlpt": "N2",
+      "radicals": [
+        "Cage",
+        "Treasure"
+      ]
+    },
+    {
+      "character": "坂",
+      "meanings": [
+        "Slope"
+      ],
+      "meaning_str": "Slope",
+      "onyomi": [
+        "!はん"
+      ],
+      "kunyomi": [
+        "さか"
+      ],
+      "strokes": 7,
+      "jlpt": "N2",
+      "radicals": [
+        "Dirt",
+        "Anti"
+      ]
+    },
+    {
+      "character": "式",
+      "meanings": [
+        "Ritual",
+        "^Ceremony",
+        "^Equation"
+      ],
+      "meaning_str": "Ritual, ^Ceremony, ^Equation",
+      "onyomi": [
+        "しき"
+      ],
+      "kunyomi": [],
+      "strokes": 6,
+      "jlpt": "N3",
+      "radicals": [
+        "Ceremony",
+        "Construction"
+      ]
+    },
+    {
+      "character": "信",
+      "meanings": [
+        "Believe",
+        "^Trust"
+      ],
+      "meaning_str": "Believe, ^Trust",
+      "onyomi": [
+        "しん"
+      ],
+      "kunyomi": [],
+      "strokes": 9,
+      "jlpt": "N3",
+      "radicals": [
+        "Leader",
+        "Say"
+      ]
+    },
+    {
+      "character": "勇",
+      "meanings": [
+        "Courage",
+        "^Bravery",
+        "^Valor",
+        "^Valour"
+      ],
+      "meaning_str": "Courage, ^Bravery, ^Valor, ^Valour",
+      "onyomi": [
+        "ゆう"
+      ],
+      "kunyomi": [
+        "いさ"
+      ],
+      "strokes": 9,
+      "jlpt": "N2",
+      "radicals": [
+        "Mama",
+        "Man"
+      ]
+    },
+    {
+      "character": "単",
+      "meanings": [
+        "Simple"
+      ],
+      "meaning_str": "Simple",
+      "onyomi": [
+        "たん"
+      ],
+      "kunyomi": [],
+      "strokes": 9,
+      "jlpt": "N3",
+      "radicals": [
+        "Simple"
+      ]
+    },
+    {
+      "character": "司",
+      "meanings": [
+        "Director"
+      ],
+      "meaning_str": "Director",
+      "onyomi": [
+        "し"
+      ],
+      "kunyomi": [
+        "つかさど"
+      ],
+      "strokes": 5,
+      "jlpt": "N1",
+      "radicals": [
+        "Cape",
+        "Creeper"
+      ]
+    },
+    {
+      "character": "変",
+      "meanings": [
+        "Change",
+        "^Strange"
+      ],
+      "meaning_str": "Change, ^Strange",
+      "onyomi": [
+        "へん"
+      ],
+      "kunyomi": [
+        "か"
+      ],
+      "strokes": 9,
+      "jlpt": "N3",
+      "radicals": [
+        "Red",
+        "Winter"
+      ]
+    },
+    {
+      "character": "夫",
+      "meanings": [
+        "Husband"
+      ],
+      "meaning_str": "Husband",
+      "onyomi": [
+        "ふう",
+        "ふ"
+      ],
+      "kunyomi": [
+        "おっと"
+      ],
+      "strokes": 4,
+      "jlpt": "N3",
+      "radicals": [
+        "Husband"
+      ]
+    },
+    {
+      "character": "建",
+      "meanings": [
+        "Build",
+        "^Construct"
+      ],
+      "meaning_str": "Build, ^Construct",
+      "onyomi": [
+        "けん"
+      ],
+      "kunyomi": [
+        "た"
+      ],
+      "strokes": 9,
+      "jlpt": "N4",
+      "radicals": [
+        "Yoga",
+        "Brush"
+      ]
+    },
+    {
+      "character": "昨",
+      "meanings": [
+        "Previous",
+        "^Yesterday"
+      ],
+      "meaning_str": "Previous, ^Yesterday",
+      "onyomi": [
+        "さく"
+      ],
+      "kunyomi": [],
+      "strokes": 9,
+      "jlpt": "N3",
+      "radicals": [
+        "Sun",
+        "Key"
+      ]
+    },
+    {
+      "character": "毒",
+      "meanings": [
+        "Poison"
+      ],
+      "meaning_str": "Poison",
+      "onyomi": [
+        "どく"
+      ],
+      "kunyomi": [],
+      "strokes": 8,
+      "jlpt": "N2",
+      "radicals": [
+        "Life",
+        "Window"
+      ]
+    },
+    {
+      "character": "法",
+      "meanings": [
+        "Method",
+        "^Law"
+      ],
+      "meaning_str": "Method, ^Law",
+      "onyomi": [
+        "ほう"
+      ],
+      "kunyomi": [],
+      "strokes": 8,
+      "jlpt": "N3",
+      "radicals": [
+        "Tsunami",
+        "Past"
+      ]
+    },
+    {
+      "character": "泣",
+      "meanings": [
+        "Cry"
+      ],
+      "meaning_str": "Cry",
+      "onyomi": [
+        "!きゅう"
+      ],
+      "kunyomi": [
+        "な"
+      ],
+      "strokes": 8,
+      "jlpt": "N1",
+      "radicals": [
+        "Tsunami",
+        "Stand"
+      ]
+    },
+    {
+      "character": "浅",
+      "meanings": [
+        "Shallow"
+      ],
+      "meaning_str": "Shallow",
+      "onyomi": [
+        "!せん"
+      ],
+      "kunyomi": [
+        "あさ"
+      ],
+      "strokes": 9,
+      "jlpt": "N2",
+      "radicals": [
+        "Tsunami",
+        "Bar"
+      ]
+    },
+    {
+      "character": "紀",
+      "meanings": [
+        "Account",
+        "^Narrative"
+      ],
+      "meaning_str": "Account, ^Narrative",
+      "onyomi": [
+        "き"
+      ],
+      "kunyomi": [],
+      "strokes": 9,
+      "jlpt": "N1",
+      "radicals": [
+        "Thread",
+        "Oneself"
+      ]
+    },
+    {
+      "character": "英",
+      "meanings": [
+        "England",
+        "^English"
+      ],
+      "meaning_str": "England, ^English",
+      "onyomi": [
+        "えい"
+      ],
+      "kunyomi": [],
+      "strokes": 8,
+      "jlpt": "N4",
+      "radicals": [
+        "Flowers",
+        "Center"
+      ]
+    },
+    {
+      "character": "軍",
+      "meanings": [
+        "Army"
+      ],
+      "meaning_str": "Army",
+      "onyomi": [
+        "ぐん"
+      ],
+      "kunyomi": [],
+      "strokes": 9,
+      "jlpt": "N2",
+      "radicals": [
+        "Forehead",
+        "Car"
+      ]
+    },
+    {
+      "character": "飯",
+      "meanings": [
+        "Meal",
+        "^Food"
+      ],
+      "meaning_str": "Meal, ^Food",
+      "onyomi": [
+        "はん"
+      ],
+      "kunyomi": [
+        "めし"
+      ],
+      "strokes": 12,
+      "jlpt": "N4",
+      "radicals": [
+        "Eat",
+        "Anti"
+      ]
+    },
+    {
+      "character": "仏",
+      "meanings": [
+        "Buddha"
+      ],
+      "meaning_str": "Buddha",
+      "onyomi": [
+        "ぶつ"
+      ],
+      "kunyomi": [
+        "ほとけ"
+      ],
+      "strokes": 4,
+      "jlpt": "N2",
+      "radicals": [
+        "Leader",
+        "Private"
+      ]
+    },
+    {
+      "character": "築",
+      "meanings": [
+        "Construct",
+        "^Build"
+      ],
+      "meaning_str": "Construct, ^Build",
+      "onyomi": [
+        "ちく"
+      ],
+      "kunyomi": [
+        "きず"
+      ],
+      "strokes": 16,
+      "jlpt": "N2",
+      "radicals": [
+        "Bamboo",
+        "Saw",
+        "Tree"
+      ]
+    },
+    {
+      "character": "晩",
+      "meanings": [
+        "Night",
+        "^Evening"
+      ],
+      "meaning_str": "Night, ^Evening",
+      "onyomi": [
+        "ばん"
+      ],
+      "kunyomi": [],
+      "strokes": 12,
+      "jlpt": "N3",
+      "radicals": [
+        "Sun",
+        "Excuse"
+      ]
+    },
+    {
+      "character": "猫",
+      "meanings": [
+        "Cat"
+      ],
+      "meaning_str": "Cat",
+      "onyomi": [],
+      "kunyomi": [
+        "ねこ"
+      ],
+      "strokes": 11,
+      "jlpt": "N3",
+      "radicals": [
+        "Animal",
+        "Flowers",
+        "Rice Paddy"
+      ]
+    },
+    {
+      "character": "丈",
+      "meanings": [
+        "Height",
+        "^Ten Feet"
+      ],
+      "meaning_str": "Height, ^Ten Feet",
+      "onyomi": [
+        "じょう"
+      ],
+      "kunyomi": [
+        "たけ"
+      ],
+      "strokes": 3,
+      "jlpt": "N/A",
+      "radicals": [
+        "Height"
+      ]
+    }
+  ],
+  "vocabulary": [
+    {
+      "word": "好む",
+      "reading": "このむ",
+      "meanings": "to like, to prefer",
+      "furigana": [
+        {
+          "ruby": "好",
+          "rt": "この"
+        },
+        {
+          "ruby": "む"
+        }
+      ]
+    },
+    {
+      "word": "映画館",
+      "reading": "えいがかん",
+      "meanings": "movie theatre, movie theater, cinema",
+      "furigana": [
+        {
+          "ruby": "映",
+          "rt": "えい"
+        },
+        {
+          "ruby": "画",
+          "rt": "が"
+        },
+        {
+          "ruby": "館",
+          "rt": "かん"
+        }
+      ]
+    },
+    {
+      "word": "仏",
+      "reading": "ほとけ",
+      "meanings": "Buddha, Shakyamuni; Buddhist image, figure of Buddha; the dead, dead person, departed soul; merciful person",
+      "furigana": [
+        {
+          "ruby": "仏",
+          "rt": "ほとけ"
+        }
+      ]
+    },
+    {
+      "word": "仏教",
+      "reading": "ぶっきょう",
+      "meanings": "Buddhism",
+      "furigana": [
+        {
+          "ruby": "仏",
+          "rt": "ぶっ"
+        },
+        {
+          "ruby": "教",
+          "rt": "きょう"
+        }
+      ]
+    },
+    {
+      "word": "大仏",
+      "reading": "だいぶつ",
+      "meanings": "large statue of Buddha (trad. at least 4.8m high)",
+      "furigana": [
+        {
+          "ruby": "大",
+          "rt": "だい"
+        },
+        {
+          "ruby": "仏",
+          "rt": "ぶつ"
+        }
+      ]
+    },
+    {
+      "word": "信じる",
+      "reading": "しんじる",
+      "meanings": "to believe, to believe in, to place trust in, to confide in, to have faith in",
+      "furigana": [
+        {
+          "ruby": "信",
+          "rt": "しん"
+        },
+        {
+          "ruby": "じる"
+        }
+      ]
+    },
+    {
+      "word": "自信",
+      "reading": "じしん",
+      "meanings": "self-confidence, confidence (in oneself)",
+      "furigana": [
+        {
+          "ruby": "自",
+          "rt": "じ"
+        },
+        {
+          "ruby": "信",
+          "rt": "しん"
+        }
+      ]
+    },
+    {
+      "word": "信号",
+      "reading": "しんごう",
+      "meanings": "signal, signalling, signaling; traffic light, traffic signal",
+      "furigana": [
+        {
+          "ruby": "信",
+          "rt": "しん"
+        },
+        {
+          "ruby": "号",
+          "rt": "ごう"
+        }
+      ]
+    },
+    {
+      "word": "信心",
+      "reading": "しんじん",
+      "meanings": "faith, belief, piety, devotion, godliness",
+      "furigana": [
+        {
+          "ruby": "信",
+          "rt": "しん"
+        },
+        {
+          "ruby": "心",
+          "rt": "じん"
+        }
+      ]
+    },
+    {
+      "word": "信用",
+      "reading": "しんよう",
+      "meanings": "confidence, trust, faith, reputation; credit (finance)",
+      "furigana": [
+        {
+          "ruby": "信",
+          "rt": "しん"
+        },
+        {
+          "ruby": "用",
+          "rt": "よう"
+        }
+      ]
+    },
+    {
+      "word": "不信",
+      "reading": "ふしん",
+      "meanings": "distrust, mistrust, disbelief, discredit; insincerity; impiety, faithlessness",
+      "furigana": [
+        {
+          "ruby": "不",
+          "rt": "ふ"
+        },
+        {
+          "ruby": "信",
+          "rt": "しん"
+        }
+      ]
+    },
+    {
+      "word": "返信",
+      "reading": "へんしん",
+      "meanings": "reply (e.g. email, fax, letter), answer",
+      "furigana": [
+        {
+          "ruby": "返",
+          "rt": "へん"
+        },
+        {
+          "ruby": "信",
+          "rt": "しん"
+        }
+      ]
+    },
+    {
+      "word": "勇気",
+      "reading": "ゆうき",
+      "meanings": "courage, bravery, valour, valor, nerve, boldness",
+      "furigana": [
+        {
+          "ruby": "勇",
+          "rt": "ゆう"
+        },
+        {
+          "ruby": "気",
+          "rt": "き"
+        }
+      ]
+    },
+    {
+      "word": "区",
+      "reading": "く",
+      "meanings": "ward, borough, city (in Tokyo); district (e.g. electoral), section, zone (e.g. postal)",
+      "furigana": [
+        {
+          "ruby": "区",
+          "rt": "く"
+        }
+      ]
+    },
+    {
+      "word": "区分",
+      "reading": "くぶん",
+      "meanings": "division, section, demarcation, partition, segmentation, compartment, (traffic) lane; classification, sorting, grouping, segmentation; division",
+      "furigana": [
+        {
+          "ruby": "区",
+          "rt": "く"
+        },
+        {
+          "ruby": "分",
+          "rt": "ぶん"
+        }
+      ]
+    },
+    {
+      "word": "地区",
+      "reading": "ちく",
+      "meanings": "district, section, sector",
+      "furigana": [
+        {
+          "ruby": "地",
+          "rt": "ち"
+        },
+        {
+          "ruby": "区",
+          "rt": "く"
+        }
+      ]
+    },
+    {
+      "word": "単に",
+      "reading": "たんに",
+      "meanings": "simply, merely, only, solely",
+      "furigana": [
+        {
+          "ruby": "単",
+          "rt": "たん"
+        },
+        {
+          "ruby": "に"
+        }
+      ]
+    },
+    {
+      "word": "単語",
+      "reading": "たんご",
+      "meanings": "word, vocabulary",
+      "furigana": [
+        {
+          "ruby": "単",
+          "rt": "たん"
+        },
+        {
+          "ruby": "語",
+          "rt": "ご"
+        }
+      ]
+    },
+    {
+      "word": "上司",
+      "reading": "じょうし",
+      "meanings": "(one's) superior, (one's) boss, the higher-ups",
+      "furigana": [
+        {
+          "ruby": "上",
+          "rt": "じょう"
+        },
+        {
+          "ruby": "司",
+          "rt": "し"
+        }
+      ]
+    },
+    {
+      "word": "坂",
+      "reading": "さか",
+      "meanings": "slope, incline, hill; milestone, (age) mark",
+      "furigana": [
+        {
+          "ruby": "坂",
+          "rt": "さか"
+        }
+      ]
+    },
+    {
+      "word": "変",
+      "reading": "へん",
+      "meanings": "strange, odd, peculiar, weird, curious, eccentric, funny, suspicious, fishy; unexpected; change; incident, disturbance, disaster, accident, emergency; flat",
+      "furigana": [
+        {
+          "ruby": "変",
+          "rt": "へん"
+        }
+      ]
+    },
+    {
+      "word": "変人",
+      "reading": "へんじん",
+      "meanings": "eccentric, crank, oddball",
+      "furigana": [
+        {
+          "ruby": "変",
+          "rt": "へん"
+        },
+        {
+          "ruby": "人",
+          "rt": "じん"
+        }
+      ]
+    },
+    {
+      "word": "変化",
+      "reading": "へんか",
+      "meanings": "change, variation, alteration, mutation, transition, transformation, transfiguration, metamorphosis; variety, diversity; inflection, declension, conjugation; sidestepping",
+      "furigana": [
+        {
+          "ruby": "変",
+          "rt": "へん"
+        },
+        {
+          "ruby": "化",
+          "rt": "か"
+        }
+      ]
+    },
+    {
+      "word": "変死",
+      "reading": "へんし",
+      "meanings": "unnatural death, accidental death, violent death",
+      "furigana": [
+        {
+          "ruby": "変",
+          "rt": "へん"
+        },
+        {
+          "ruby": "死",
+          "rt": "し"
+        }
+      ]
+    },
+    {
+      "word": "大変",
+      "reading": "たいへん",
+      "meanings": "very, greatly, terribly, awfully; immense, enormous, great; serious, grave, dreadful, terrible; difficult, hard, challenging",
+      "furigana": [
+        {
+          "ruby": "大",
+          "rt": "たい"
+        },
+        {
+          "ruby": "変",
+          "rt": "へん"
+        }
+      ]
+    },
+    {
+      "word": "事変",
+      "reading": "じへん",
+      "meanings": "accident, disaster, incident, uprising, emergency",
+      "furigana": [
+        {
+          "ruby": "事",
+          "rt": "じ"
+        },
+        {
+          "ruby": "変",
+          "rt": "へん"
+        }
+      ]
+    },
+    {
+      "word": "夫",
+      "reading": "おっと",
+      "meanings": "husband",
+      "furigana": [
+        {
+          "ruby": "夫",
+          "rt": "おっと"
+        }
+      ]
+    },
+    {
+      "word": "岩",
+      "reading": "いわ",
+      "meanings": "rock, boulder; crag",
+      "furigana": [
+        {
+          "ruby": "岩",
+          "rt": "いわ"
+        }
+      ]
+    },
+    {
+      "word": "帰る",
+      "reading": "かえる",
+      "meanings": "to return, to come home, to go home, to go back; to leave (of a guest, customer, etc.); to get home, to get to home plate",
+      "furigana": [
+        {
+          "ruby": "帰",
+          "rt": "かえ"
+        },
+        {
+          "ruby": "る"
+        }
+      ]
+    },
+    {
+      "word": "建てる",
+      "reading": "たてる",
+      "meanings": "to build, to construct",
+      "furigana": [
+        {
+          "ruby": "建",
+          "rt": "た"
+        },
+        {
+          "ruby": "てる"
+        }
+      ]
+    },
+    {
+      "word": "建築",
+      "reading": "けんちく",
+      "meanings": "construction, architecture (of buildings)",
+      "furigana": [
+        {
+          "ruby": "建",
+          "rt": "けん"
+        },
+        {
+          "ruby": "築",
+          "rt": "ちく"
+        }
+      ]
+    },
+    {
+      "word": "式",
+      "reading": "しき",
+      "meanings": "way, style, fashion, method, system, form, type; ceremony, rite, ritual, celebration; wedding (ceremony); equation, formula, expression; enforcement regulations (of the ritsuryō legal codes)",
+      "furigana": [
+        {
+          "ruby": "式",
+          "rt": "しき"
+        }
+      ]
+    },
+    {
+      "word": "春",
+      "reading": "はる",
+      "meanings": "spring, springtime; New Year; prime (of life), height (of one's prosperity), heyday; adolescence, puberty; sexuality, sexual desire",
+      "furigana": [
+        {
+          "ruby": "春",
+          "rt": "はる"
+        }
+      ]
+    },
+    {
+      "word": "春休み",
+      "reading": "はるやすみ",
+      "meanings": "spring break, spring vacation",
+      "furigana": [
+        {
+          "ruby": "春",
+          "rt": "はる"
+        },
+        {
+          "ruby": "休",
+          "rt": "やす"
+        },
+        {
+          "ruby": "み"
+        }
+      ]
+    },
+    {
+      "word": "昨今",
+      "reading": "さっこん",
+      "meanings": "these days, nowadays, recently, lately",
+      "furigana": [
+        {
+          "ruby": "昨",
+          "rt": "さっ"
+        },
+        {
+          "ruby": "今",
+          "rt": "こん"
+        }
+      ]
+    },
+    {
+      "word": "昨日",
+      "reading": "きのう, さくじつ",
+      "meanings": "yesterday",
+      "furigana": [
+        {
+          "ruby": "昨日",
+          "rt": "きのう"
+        }
+      ]
+    },
+    {
+      "word": "昼",
+      "reading": "ひる",
+      "meanings": "noon, midday; daytime; lunch",
+      "furigana": [
+        {
+          "ruby": "昼",
+          "rt": "ひる"
+        }
+      ]
+    },
+    {
+      "word": "晩",
+      "reading": "ばん",
+      "meanings": "evening, night; dinner, evening meal; counter for nights",
+      "furigana": [
+        {
+          "ruby": "晩",
+          "rt": "ばん"
+        }
+      ]
+    },
+    {
+      "word": "今晩は",
+      "reading": "こんばんは",
+      "meanings": "good evening",
+      "furigana": [
+        {
+          "ruby": "今",
+          "rt": "こん"
+        },
+        {
+          "ruby": "晩",
+          "rt": "ばん"
+        },
+        {
+          "ruby": "は"
+        }
+      ]
+    },
+    {
+      "word": "毎晩",
+      "reading": "まいばん",
+      "meanings": "every night",
+      "furigana": [
+        {
+          "ruby": "毎",
+          "rt": "まい"
+        },
+        {
+          "ruby": "晩",
+          "rt": "ばん"
+        }
+      ]
+    },
+    {
+      "word": "晴れる",
+      "reading": "はれる",
+      "meanings": "to clear up, to clear away, to be sunny, to stop raining; to refresh (e.g. spirits); to be cleared (e.g. of a suspicion); to be dispelled, to be banished",
+      "furigana": [
+        {
+          "ruby": "晴",
+          "rt": "は"
+        },
+        {
+          "ruby": "れる"
+        }
+      ]
+    },
+    {
+      "word": "毒",
+      "reading": "どく",
+      "meanings": "poison, toxicant; harm, evil influence; ill will, spite, malice; abusive language",
+      "furigana": [
+        {
+          "ruby": "毒",
+          "rt": "どく"
+        }
+      ]
+    },
+    {
+      "word": "中毒",
+      "reading": "ちゅうどく",
+      "meanings": "poisoning; addiction",
+      "furigana": [
+        {
+          "ruby": "中",
+          "rt": "ちゅう"
+        },
+        {
+          "ruby": "毒",
+          "rt": "どく"
+        }
+      ]
+    },
+    {
+      "word": "有毒",
+      "reading": "ゆうどく",
+      "meanings": "poisonous, toxic",
+      "furigana": [
+        {
+          "ruby": "有",
+          "rt": "ゆう"
+        },
+        {
+          "ruby": "毒",
+          "rt": "どく"
+        }
+      ]
+    },
+    {
+      "word": "食中毒",
+      "reading": "しょくちゅうどく",
+      "meanings": "food poisoning",
+      "furigana": [
+        {
+          "ruby": "食",
+          "rt": "しょく"
+        },
+        {
+          "ruby": "中",
+          "rt": "ちゅう"
+        },
+        {
+          "ruby": "毒",
+          "rt": "どく"
+        }
+      ]
+    },
+    {
+      "word": "毒ガス",
+      "reading": "どくがす, どくガス",
+      "meanings": "poison gas",
+      "furigana": [
+        {
+          "ruby": "毒",
+          "rt": "どく"
+        },
+        {
+          "ruby": "ガス"
+        }
+      ]
+    },
+    {
+      "word": "方法",
+      "reading": "ほうほう",
+      "meanings": "method, process, manner, way, means, technique",
+      "furigana": [
+        {
+          "ruby": "方",
+          "rt": "ほう"
+        },
+        {
+          "ruby": "法",
+          "rt": "ほう"
+        }
+      ]
+    },
+    {
+      "word": "文法",
+      "reading": "ぶんぽう",
+      "meanings": "grammar",
+      "furigana": [
+        {
+          "ruby": "文",
+          "rt": "ぶん"
+        },
+        {
+          "ruby": "法",
+          "rt": "ぽう"
+        }
+      ]
+    },
+    {
+      "word": "不法",
+      "reading": "ふほう",
+      "meanings": "unlawful, illegal; unreasonable, outrageous, unjust, unwarranted",
+      "furigana": [
+        {
+          "ruby": "不",
+          "rt": "ふ"
+        },
+        {
+          "ruby": "法",
+          "rt": "ほう"
+        }
+      ]
+    },
+    {
+      "word": "泣く",
+      "reading": "なく",
+      "meanings": "to cry, to weep, to sob, to howl",
+      "furigana": [
+        {
+          "ruby": "泣",
+          "rt": "な"
+        },
+        {
+          "ruby": "く"
+        }
+      ]
+    },
+    {
+      "word": "浅い",
+      "reading": "あさい",
+      "meanings": "shallow, superficial; slight (wound), light (sleep), pale (colour), inadequate (knowledge); short (time), early, young",
+      "furigana": [
+        {
+          "ruby": "浅",
+          "rt": "あさ"
+        },
+        {
+          "ruby": "い"
+        }
+      ]
+    },
+    {
+      "word": "猫",
+      "reading": "ねこ",
+      "meanings": "cat (esp. the domestic cat, Felis catus); shamisen; geisha; wheelbarrow; clay bed-warmer; bottom (submissive partner of a homosexual relationship)",
+      "furigana": [
+        {
+          "ruby": "猫",
+          "rt": "ねこ"
+        }
+      ]
+    },
+    {
+      "word": "子猫",
+      "reading": "こねこ",
+      "meanings": "kitten; small cat",
+      "furigana": [
+        {
+          "ruby": "子",
+          "rt": "こ"
+        },
+        {
+          "ruby": "猫",
+          "rt": "ねこ"
+        }
+      ]
+    },
+    {
+      "word": "秋",
+      "reading": "あき",
+      "meanings": "autumn, fall",
+      "furigana": [
+        {
+          "ruby": "秋",
+          "rt": "あき"
+        }
+      ]
+    },
+    {
+      "word": "新築",
+      "reading": "しんちく",
+      "meanings": "new building, new construction",
+      "furigana": [
+        {
+          "ruby": "新",
+          "rt": "しん"
+        },
+        {
+          "ruby": "築",
+          "rt": "ちく"
+        }
+      ]
+    },
+    {
+      "word": "世紀",
+      "reading": "せいき",
+      "meanings": "century; era; of the century (e.g. fight of the century)",
+      "furigana": [
+        {
+          "ruby": "世",
+          "rt": "せい"
+        },
+        {
+          "ruby": "紀",
+          "rt": "き"
+        }
+      ]
+    },
+    {
+      "word": "紀元後",
+      "reading": "きげんご",
+      "meanings": "post-era",
+      "furigana": [
+        {
+          "ruby": "紀",
+          "rt": "き"
+        },
+        {
+          "ruby": "元",
+          "rt": "げん"
+        },
+        {
+          "ruby": "後",
+          "rt": "ご"
+        }
+      ]
+    },
+    {
+      "word": "英語",
+      "reading": "えいご",
+      "meanings": "English (language)",
+      "furigana": [
+        {
+          "ruby": "英",
+          "rt": "えい"
+        },
+        {
+          "ruby": "語",
+          "rt": "ご"
+        }
+      ]
+    },
+    {
+      "word": "英会話",
+      "reading": "えいかいわ",
+      "meanings": "English conversation; school for English conversation",
+      "furigana": [
+        {
+          "ruby": "英",
+          "rt": "えい"
+        },
+        {
+          "ruby": "会",
+          "rt": "かい"
+        },
+        {
+          "ruby": "話",
+          "rt": "わ"
+        }
+      ]
+    },
+    {
+      "word": "英文",
+      "reading": "えいぶん",
+      "meanings": "English writing, English sentence, English text; English literature, English lit",
+      "furigana": [
+        {
+          "ruby": "英",
+          "rt": "えい"
+        },
+        {
+          "ruby": "文",
+          "rt": "ぶん"
+        }
+      ]
+    },
+    {
+      "word": "英国",
+      "reading": "えいこく",
+      "meanings": "United Kingdom, Britain, Great Britain",
+      "furigana": [
+        {
+          "ruby": "英",
+          "rt": "えい"
+        },
+        {
+          "ruby": "国",
+          "rt": "こく"
+        }
+      ]
+    },
+    {
+      "word": "英和",
+      "reading": "えいわ",
+      "meanings": "English-Japanese; English-Japanese dictionary",
+      "furigana": [
+        {
+          "ruby": "英",
+          "rt": "えい"
+        },
+        {
+          "ruby": "和",
+          "rt": "わ"
+        }
+      ]
+    },
+    {
+      "word": "時計",
+      "reading": "とけい",
+      "meanings": "clock, watch, timepiece",
+      "furigana": [
+        {
+          "ruby": "時計",
+          "rt": "とけい"
+        }
+      ]
+    },
+    {
+      "word": "合計",
+      "reading": "ごうけい",
+      "meanings": "sum total, total amount",
+      "furigana": [
+        {
+          "ruby": "合",
+          "rt": "ごう"
+        },
+        {
+          "ruby": "計",
+          "rt": "けい"
+        }
+      ]
+    },
+    {
+      "word": "計画",
+      "reading": "けいかく",
+      "meanings": "plan, project, schedule, scheme, program, programme",
+      "furigana": [
+        {
+          "ruby": "計",
+          "rt": "けい"
+        },
+        {
+          "ruby": "画",
+          "rt": "かく"
+        }
+      ]
+    },
+    {
+      "word": "計算",
+      "reading": "けいさん",
+      "meanings": "calculation, reckoning, count; forecast",
+      "furigana": [
+        {
+          "ruby": "計",
+          "rt": "けい"
+        },
+        {
+          "ruby": "算",
+          "rt": "さん"
+        }
+      ]
+    },
+    {
+      "word": "軍人",
+      "reading": "ぐんじん",
+      "meanings": "serviceman, servicewoman, soldier, member of the armed forces, military personnel",
+      "furigana": [
+        {
+          "ruby": "軍",
+          "rt": "ぐん"
+        },
+        {
+          "ruby": "人",
+          "rt": "じん"
+        }
+      ]
+    },
+    {
+      "word": "海軍",
+      "reading": "かいぐん",
+      "meanings": "navy, naval force",
+      "furigana": [
+        {
+          "ruby": "海",
+          "rt": "かい"
+        },
+        {
+          "ruby": "軍",
+          "rt": "ぐん"
+        }
+      ]
+    },
+    {
+      "word": "飯",
+      "reading": "めし",
+      "meanings": "cooked rice; meal, food; one's living, livelihood",
+      "furigana": [
+        {
+          "ruby": "飯",
+          "rt": "めし"
+        }
+      ]
+    },
+    {
+      "word": "ご飯",
+      "reading": "ごはん",
+      "meanings": "cooked rice; meal",
+      "furigana": [
+        {
+          "ruby": "ご"
+        },
+        {
+          "ruby": "飯",
+          "rt": "はん"
+        }
+      ]
+    },
+    {
+      "word": "不器用",
+      "reading": "ぶきよう, ぶきっちょ",
+      "meanings": "clumsy, awkward, unskillful; incompetent, inept, bungling, (socially) awkward, gawky, gauche",
+      "furigana": [
+        {
+          "ruby": "不",
+          "rt": "ぶ"
+        },
+        {
+          "ruby": "器",
+          "rt": "き"
+        },
+        {
+          "ruby": "用",
+          "rt": "よう"
+        }
+      ]
+    },
+    {
+      "word": "お願い",
+      "reading": "おねがい",
+      "meanings": "request, favour (to ask), wish; please",
+      "furigana": [
+        {
+          "ruby": "お"
+        },
+        {
+          "ruby": "願",
+          "rt": "ねが"
+        },
+        {
+          "ruby": "い"
+        }
+      ]
+    },
+    {
+      "word": "飲み放題",
+      "reading": "のみほうだい",
+      "meanings": "all you can drink, bottomless cup",
+      "furigana": [
+        {
+          "ruby": "飲",
+          "rt": "の"
+        },
+        {
+          "ruby": "み"
+        },
+        {
+          "ruby": "放",
+          "rt": "ほう"
+        },
+        {
+          "ruby": "題",
+          "rt": "だい"
+        }
+      ]
+    },
+    {
+      "word": "食べ放題",
+      "reading": "たべほうだい",
+      "meanings": "all-you-can-eat, eating as much as one likes",
+      "furigana": [
+        {
+          "ruby": "食",
+          "rt": "た"
+        },
+        {
+          "ruby": "べ"
+        },
+        {
+          "ruby": "放",
+          "rt": "ほう"
+        },
+        {
+          "ruby": "題",
+          "rt": "だい"
+        }
+      ]
+    },
+    {
+      "word": "人殺し",
+      "reading": "ひとごろし",
+      "meanings": "murder, murderer",
+      "furigana": [
+        {
+          "ruby": "人",
+          "rt": "ひと"
+        },
+        {
+          "ruby": "殺",
+          "rt": "ごろ"
+        },
+        {
+          "ruby": "し"
+        }
+      ]
+    },
+    {
+      "word": "殺人者",
+      "reading": "さつじんしゃ",
+      "meanings": "killer, murderer",
+      "furigana": [
+        {
+          "ruby": "殺",
+          "rt": "さつ"
+        },
+        {
+          "ruby": "人",
+          "rt": "じん"
+        },
+        {
+          "ruby": "者",
+          "rt": "しゃ"
+        }
+      ]
+    },
+    {
+      "word": "指輪",
+      "reading": "ゆびわ",
+      "meanings": "(finger) ring",
+      "furigana": [
+        {
+          "ruby": "指",
+          "rt": "ゆび"
+        },
+        {
+          "ruby": "輪",
+          "rt": "わ"
+        }
+      ]
+    },
+    {
+      "word": "輪ゴム",
+      "reading": "わごむ, わゴム",
+      "meanings": "rubber band, elastic band",
+      "furigana": [
+        {
+          "ruby": "輪",
+          "rt": "わ"
+        },
+        {
+          "ruby": "ゴム"
+        }
+      ]
+    },
+    {
+      "word": "整理する",
+      "reading": "せいりする",
+      "meanings": "sorting, arrangement, organization, putting in order, adjustment, regulation; liquidation, settlement, consolidation, clearance (e.g. debt), paying off; retrenchment, curtailment, cutting down, disposal",
+      "furigana": [
+        {
+          "ruby": "整",
+          "rt": "せい"
+        },
+        {
+          "ruby": "理",
+          "rt": "り"
+        }
+      ]
+    },
+    {
+      "word": "暗記する",
+      "reading": "あんきする",
+      "meanings": "memorization, memorisation, learning by heart",
+      "furigana": [
+        {
+          "ruby": "暗",
+          "rt": "あん"
+        },
+        {
+          "ruby": "記",
+          "rt": "き"
+        }
+      ]
+    },
+    {
+      "word": "練習する",
+      "reading": "れんしゅうする",
+      "meanings": "practice, training, drill, (an) exercise, workout",
+      "furigana": [
+        {
+          "ruby": "練",
+          "rt": "れん"
+        },
+        {
+          "ruby": "習",
+          "rt": "しゅう"
+        }
+      ]
+    },
+    {
+      "word": "映す",
+      "reading": "うつす",
+      "meanings": "to project, to reflect, to cast (shadow)",
+      "furigana": [
+        {
+          "ruby": "映",
+          "rt": "うつ"
+        },
+        {
+          "ruby": "す"
+        }
+      ]
+    },
+    {
+      "word": "変事",
+      "reading": "へんじ",
+      "meanings": "accident, emergency, calamity",
+      "furigana": [
+        {
+          "ruby": "変",
+          "rt": "へん"
+        },
+        {
+          "ruby": "事",
+          "rt": "じ"
+        }
+      ]
+    },
+    {
+      "word": "同期中",
+      "reading": "どうきちゅう",
+      "meanings": "in sync",
+      "furigana": [
+        {
+          "ruby": "同",
+          "rt": "どう"
+        },
+        {
+          "ruby": "期",
+          "rt": "き"
+        },
+        {
+          "ruby": "中",
+          "rt": "ちゅう"
+        }
+      ]
+    },
+    {
+      "word": "寺",
+      "reading": "てら",
+      "meanings": "temple (Buddhist)",
+      "furigana": [
+        {
+          "ruby": "寺",
+          "rt": "てら"
+        }
+      ]
+    },
+    {
+      "word": "美味しい",
+      "reading": "おいしい",
+      "meanings": "good(-tasting), nice, delicious, tasty; attractive (offer, opportunity, etc.), appealing, convenient, favorable, desirable, profitable",
+      "furigana": [
+        {
+          "ruby": "美味",
+          "rt": "おい"
+        },
+        {
+          "ruby": "しい"
+        }
+      ]
+    },
+    {
+      "word": "変える",
+      "reading": "かえる",
+      "meanings": "to change, to alter, to transform, to convert, to turn, to vary; to reform, to revise, to amend",
+      "furigana": [
+        {
+          "ruby": "変",
+          "rt": "か"
+        },
+        {
+          "ruby": "える"
+        }
+      ]
+    },
+    {
+      "word": "丈夫",
+      "reading": "じょうぶ",
+      "meanings": "healthy, robust, strong, solid, durable",
+      "furigana": [
+        {
+          "ruby": "丈",
+          "rt": "じょう"
+        },
+        {
+          "ruby": "夫",
+          "rt": "ぶ"
+        }
+      ]
+    },
+    {
+      "word": "丈",
+      "reading": "たけ",
+      "meanings": "height, stature; length (esp. of clothing); all (one has), everything; magnificence (of a waka poem, etc.)",
+      "furigana": [
+        {
+          "ruby": "丈",
+          "rt": "たけ"
+        }
+      ]
+    },
+    {
+      "word": "頑丈",
+      "reading": "がんじょう",
+      "meanings": "solid, firm, stout, burly, strong, sturdy",
+      "furigana": [
+        {
+          "ruby": "頑",
+          "rt": "がん"
+        },
+        {
+          "ruby": "丈",
+          "rt": "じょう"
+        }
+      ]
+    },
+    {
+      "word": "見返す",
+      "reading": "みかえす",
+      "meanings": "to look (stare) back at (someone); to look at again, to re-examine; to prove oneself superior (to someone who had previously been condescending), to put a person to shame, to get one's own back; to look back (behind oneself)",
+      "furigana": [
+        {
+          "ruby": "見",
+          "rt": "み"
+        },
+        {
+          "ruby": "返",
+          "rt": "かえ"
+        },
+        {
+          "ruby": "す"
+        }
+      ]
+    },
+    {
+      "word": "軍",
+      "reading": "ぐん",
+      "meanings": "army, armed forces, troops; military authorities; team, group, troupe",
+      "furigana": [
+        {
+          "ruby": "軍",
+          "rt": "ぐん"
+        }
+      ]
+    },
+    {
+      "word": "列",
+      "reading": "れつ",
+      "meanings": "row, line, file, column, queue, rank, procession; company (of someone), group, ranks; sequence; counter for rows",
+      "furigana": [
+        {
+          "ruby": "列",
+          "rt": "れつ"
+        }
+      ]
+    },
+    {
+      "word": "伝",
+      "reading": "つて",
+      "meanings": "means of making contact, intermediary, go-between; connections, influence, pull, good offices",
+      "furigana": [
+        {
+          "ruby": "伝",
+          "rt": "つて"
+        }
+      ]
+    },
+    {
+      "word": "情けない",
+      "reading": "なさけない",
+      "meanings": "miserable, pitiable, shameful, deplorable, pathetic",
+      "furigana": [
+        {
+          "ruby": "情",
+          "rt": "なさ"
+        },
+        {
+          "ruby": "けない"
+        }
+      ]
+    },
+    {
+      "word": "放つ",
+      "reading": "はなつ",
+      "meanings": "to fire (gun, arrow, questions, etc.), to shoot, to hit (e.g. baseball), to break wind; to set free, to release, to let loose; to emit (e.g. light), to give off (e.g. a scent); to send out (a person to carry out a duty); to set fire to",
+      "furigana": [
+        {
+          "ruby": "放",
+          "rt": "はな"
+        },
+        {
+          "ruby": "つ"
+        }
+      ]
+    },
+    {
+      "word": "整える",
+      "reading": "ととのえる",
+      "meanings": "to put in order, to arrange, to tidy up, to fix, to straighten; to get ready, to prepare, to arrange, to supply, to assemble, to buy; to adjust, to regulate (e.g. rhythm, tune, one's breathing); to work out (e.g. business deal), to arrange (e.g. marriage), to settle",
+      "furigana": [
+        {
+          "ruby": "整",
+          "rt": "ととの"
+        },
+        {
+          "ruby": "える"
+        }
+      ]
+    },
+    {
+      "word": "昼休み",
+      "reading": "ひるやすみ",
+      "meanings": "lunch break, noon recess, noon rest period",
+      "furigana": [
+        {
+          "ruby": "昼",
+          "rt": "ひる"
+        },
+        {
+          "ruby": "休",
+          "rt": "やす"
+        },
+        {
+          "ruby": "み"
+        }
+      ]
+    },
+    {
+      "word": "晴れ",
+      "reading": "はれ",
+      "meanings": "clear weather, fine weather; formal, ceremonial, public; cleared of suspicion",
+      "furigana": [
+        {
+          "ruby": "晴",
+          "rt": "は"
+        },
+        {
+          "ruby": "れ"
+        }
+      ]
+    },
+    {
+      "word": "昨年",
+      "reading": "さくねん",
+      "meanings": "last year",
+      "furigana": [
+        {
+          "ruby": "昨",
+          "rt": "さく"
+        },
+        {
+          "ruby": "年",
+          "rt": "ねん"
+        }
+      ]
+    }
+  ]
+}

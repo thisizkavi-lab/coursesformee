@@ -1,0 +1,2391 @@
+{
+  "level": 37,
+  "title": "Level 37",
+  "kanji": [
+    {
+      "character": "跳",
+      "meanings": [
+        "Hop"
+      ],
+      "meaning_str": "Hop",
+      "onyomi": [
+        "ちょう"
+      ],
+      "kunyomi": [
+        "と",
+        "は"
+      ],
+      "strokes": 13,
+      "jlpt": "N1",
+      "radicals": [
+        "Foot",
+        "Omen"
+      ]
+    },
+    {
+      "character": "昭",
+      "meanings": [
+        "Shining"
+      ],
+      "meaning_str": "Shining",
+      "onyomi": [
+        "しょう"
+      ],
+      "kunyomi": [],
+      "strokes": 9,
+      "jlpt": "N1",
+      "radicals": [
+        "Sun",
+        "Call"
+      ]
+    },
+    {
+      "character": "漁",
+      "meanings": [
+        "Fishing"
+      ],
+      "meaning_str": "Fishing",
+      "onyomi": [
+        "ぎょ",
+        "りょう"
+      ],
+      "kunyomi": [
+        "あさ"
+      ],
+      "strokes": 14,
+      "jlpt": "N2",
+      "radicals": [
+        "Tsunami",
+        "Fish"
+      ]
+    },
+    {
+      "character": "償",
+      "meanings": [
+        "Reparation"
+      ],
+      "meaning_str": "Reparation",
+      "onyomi": [
+        "しょう"
+      ],
+      "kunyomi": [
+        "つぐな"
+      ],
+      "strokes": 17,
+      "jlpt": "N1",
+      "radicals": [
+        "Leader",
+        "Prize"
+      ]
+    },
+    {
+      "character": "刑",
+      "meanings": [
+        "Punish"
+      ],
+      "meaning_str": "Punish",
+      "onyomi": [
+        "けい"
+      ],
+      "kunyomi": [],
+      "strokes": 6,
+      "jlpt": "N1",
+      "radicals": [
+        "Lantern",
+        "Knife"
+      ]
+    },
+    {
+      "character": "募",
+      "meanings": [
+        "Recruit"
+      ],
+      "meaning_str": "Recruit",
+      "onyomi": [
+        "ぼ"
+      ],
+      "kunyomi": [
+        "つの"
+      ],
+      "strokes": 12,
+      "jlpt": "N2",
+      "radicals": [
+        "Greenhouse",
+        "Power"
+      ]
+    },
+    {
+      "character": "執",
+      "meanings": [
+        "Tenacious"
+      ],
+      "meaning_str": "Tenacious",
+      "onyomi": [
+        "しゅう",
+        "しつ"
+      ],
+      "kunyomi": [
+        "と"
+      ],
+      "strokes": 11,
+      "jlpt": "N1",
+      "radicals": [
+        "Happiness",
+        "Circle"
+      ]
+    },
+    {
+      "character": "塁",
+      "meanings": [
+        "Base",
+        "^Baseball Base"
+      ],
+      "meaning_str": "Base, ^Baseball Base",
+      "onyomi": [
+        "るい"
+      ],
+      "kunyomi": [],
+      "strokes": 12,
+      "jlpt": "N1",
+      "radicals": [
+        "Rice Paddy",
+        "Explosion",
+        "Dirt"
+      ]
+    },
+    {
+      "character": "崩",
+      "meanings": [
+        "Crumble"
+      ],
+      "meaning_str": "Crumble",
+      "onyomi": [
+        "ほう"
+      ],
+      "kunyomi": [
+        "くず"
+      ],
+      "strokes": 11,
+      "jlpt": "N1",
+      "radicals": [
+        "Mountain",
+        "Moon"
+      ]
+    },
+    {
+      "character": "患",
+      "meanings": [
+        "Afflicted"
+      ],
+      "meaning_str": "Afflicted",
+      "onyomi": [
+        "かん"
+      ],
+      "kunyomi": [
+        "わずら"
+      ],
+      "strokes": 11,
+      "jlpt": "N2",
+      "radicals": [
+        "Skewer",
+        "Heart"
+      ]
+    },
+    {
+      "character": "戻",
+      "meanings": [
+        "Return"
+      ],
+      "meaning_str": "Return",
+      "onyomi": [
+        "!れい"
+      ],
+      "kunyomi": [
+        "もど"
+      ],
+      "strokes": 7,
+      "jlpt": "N3",
+      "radicals": [
+        "Door",
+        "Big"
+      ]
+    },
+    {
+      "character": "抗",
+      "meanings": [
+        "Confront"
+      ],
+      "meaning_str": "Confront",
+      "onyomi": [
+        "こう"
+      ],
+      "kunyomi": [
+        "あらが"
+      ],
+      "strokes": 7,
+      "jlpt": "N1",
+      "radicals": [
+        "Fingers",
+        "Lid",
+        "Table"
+      ]
+    },
+    {
+      "character": "抵",
+      "meanings": [
+        "Resist"
+      ],
+      "meaning_str": "Resist",
+      "onyomi": [
+        "てい"
+      ],
+      "kunyomi": [],
+      "strokes": 8,
+      "jlpt": "N1",
+      "radicals": [
+        "Fingers",
+        "Clan",
+        "Ground"
+      ]
+    },
+    {
+      "character": "旬",
+      "meanings": [
+        "In Season",
+        "^Time Of Month",
+        "^Season"
+      ],
+      "meaning_str": "In Season, ^Time Of Month, ^Season",
+      "onyomi": [
+        "しゅん",
+        "じゅん"
+      ],
+      "kunyomi": [],
+      "strokes": 6,
+      "jlpt": "N1",
+      "radicals": [
+        "Prison",
+        "Sun"
+      ]
+    },
+    {
+      "character": "湾",
+      "meanings": [
+        "Gulf"
+      ],
+      "meaning_str": "Gulf",
+      "onyomi": [
+        "わん"
+      ],
+      "kunyomi": [],
+      "strokes": 12,
+      "jlpt": "N2",
+      "radicals": [
+        "Tsunami",
+        "Red",
+        "Bow"
+      ]
+    },
+    {
+      "character": "爆",
+      "meanings": [
+        "Explode"
+      ],
+      "meaning_str": "Explode",
+      "onyomi": [
+        "ばく"
+      ],
+      "kunyomi": [
+        "は"
+      ],
+      "strokes": 19,
+      "jlpt": "N2",
+      "radicals": [
+        "Fire",
+        "Violence"
+      ]
+    },
+    {
+      "character": "弾",
+      "meanings": [
+        "Bullet"
+      ],
+      "meaning_str": "Bullet",
+      "onyomi": [
+        "だん"
+      ],
+      "kunyomi": [
+        "ひ",
+        "はず",
+        "たま"
+      ],
+      "strokes": 12,
+      "jlpt": "N1",
+      "radicals": [
+        "Bow",
+        "Simple"
+      ]
+    },
+    {
+      "character": "聴",
+      "meanings": [
+        "Listen"
+      ],
+      "meaning_str": "Listen",
+      "onyomi": [
+        "ちょう"
+      ],
+      "kunyomi": [
+        "き"
+      ],
+      "strokes": 17,
+      "jlpt": "N1",
+      "radicals": [
+        "Ear",
+        "Cross",
+        "Net",
+        "Heart"
+      ]
+    },
+    {
+      "character": "跡",
+      "meanings": [
+        "Traces"
+      ],
+      "meaning_str": "Traces",
+      "onyomi": [
+        "せき"
+      ],
+      "kunyomi": [
+        "あと"
+      ],
+      "strokes": 13,
+      "jlpt": "N2",
+      "radicals": [
+        "Foot",
+        "Red"
+      ]
+    },
+    {
+      "character": "遣",
+      "meanings": [
+        "Dispatch"
+      ],
+      "meaning_str": "Dispatch",
+      "onyomi": [
+        "けん"
+      ],
+      "kunyomi": [
+        "つか",
+        "や"
+      ],
+      "strokes": 13,
+      "jlpt": "N1",
+      "radicals": [
+        "Scooter",
+        "Insect",
+        "Bear"
+      ]
+    },
+    {
+      "character": "闘",
+      "meanings": [
+        "Struggle"
+      ],
+      "meaning_str": "Struggle",
+      "onyomi": [
+        "とう"
+      ],
+      "kunyomi": [
+        "たたか"
+      ],
+      "strokes": 18,
+      "jlpt": "N1",
+      "radicals": [
+        "Gate",
+        "Beans",
+        "Measurement"
+      ]
+    },
+    {
+      "character": "陣",
+      "meanings": [
+        "Army Base"
+      ],
+      "meaning_str": "Army Base",
+      "onyomi": [
+        "じん"
+      ],
+      "kunyomi": [],
+      "strokes": 10,
+      "jlpt": "N1",
+      "radicals": [
+        "Building",
+        "Car"
+      ]
+    },
+    {
+      "character": "香",
+      "meanings": [
+        "Fragrance"
+      ],
+      "meaning_str": "Fragrance",
+      "onyomi": [
+        "こう",
+        "^きょう"
+      ],
+      "kunyomi": [
+        "かお",
+        "か"
+      ],
+      "strokes": 9,
+      "jlpt": "N2",
+      "radicals": [
+        "Grain",
+        "Sun"
+      ]
+    },
+    {
+      "character": "兆",
+      "meanings": [
+        "Omen"
+      ],
+      "meaning_str": "Omen",
+      "onyomi": [
+        "ちょう"
+      ],
+      "kunyomi": [
+        "きざ"
+      ],
+      "strokes": 6,
+      "jlpt": "N2",
+      "radicals": [
+        "Omen"
+      ]
+    },
+    {
+      "character": "臨",
+      "meanings": [
+        "Look To"
+      ],
+      "meaning_str": "Look To",
+      "onyomi": [
+        "りん"
+      ],
+      "kunyomi": [
+        "のぞ"
+      ],
+      "strokes": 18,
+      "jlpt": "N1",
+      "radicals": [
+        "Servant",
+        "Gun",
+        "Products"
+      ]
+    },
+    {
+      "character": "削",
+      "meanings": [
+        "Whittle Down"
+      ],
+      "meaning_str": "Whittle Down",
+      "onyomi": [
+        "さく"
+      ],
+      "kunyomi": [
+        "けず"
+      ],
+      "strokes": 9,
+      "jlpt": "N1",
+      "radicals": [
+        "Triceratops",
+        "Moon",
+        "Knife"
+      ]
+    },
+    {
+      "character": "契",
+      "meanings": [
+        "Pledge"
+      ],
+      "meaning_str": "Pledge",
+      "onyomi": [
+        "けい"
+      ],
+      "kunyomi": [],
+      "strokes": 9,
+      "jlpt": "N1",
+      "radicals": [
+        "Life",
+        "Sword",
+        "Big"
+      ]
+    },
+    {
+      "character": "恵",
+      "meanings": [
+        "Favor"
+      ],
+      "meaning_str": "Favor",
+      "onyomi": [
+        "え",
+        "けい"
+      ],
+      "kunyomi": [
+        "めぐ"
+      ],
+      "strokes": 10,
+      "jlpt": "N1",
+      "radicals": [
+        "Cross",
+        "Rice Paddy",
+        "Heart"
+      ]
+    },
+    {
+      "character": "抱",
+      "meanings": [
+        "Hug"
+      ],
+      "meaning_str": "Hug",
+      "onyomi": [
+        "!ほう"
+      ],
+      "kunyomi": [
+        "だ",
+        "^かか",
+        "^いだ"
+      ],
+      "strokes": 8,
+      "jlpt": "N3",
+      "radicals": [
+        "Fingers",
+        "Wrap"
+      ]
+    },
+    {
+      "character": "掲",
+      "meanings": [
+        "Display"
+      ],
+      "meaning_str": "Display",
+      "onyomi": [
+        "けい"
+      ],
+      "kunyomi": [
+        "かか"
+      ],
+      "strokes": 11,
+      "jlpt": "N1",
+      "radicals": [
+        "Fingers",
+        "Sun",
+        "Prison",
+        "Spoon"
+      ]
+    },
+    {
+      "character": "狙",
+      "meanings": [
+        "Aim"
+      ],
+      "meaning_str": "Aim",
+      "onyomi": [
+        "そ"
+      ],
+      "kunyomi": [
+        "ねら"
+      ],
+      "strokes": 8,
+      "jlpt": "N/A",
+      "radicals": [
+        "Animal",
+        "Top Hat"
+      ]
+    },
+    {
+      "character": "葬",
+      "meanings": [
+        "Burial"
+      ],
+      "meaning_str": "Burial",
+      "onyomi": [
+        "そう"
+      ],
+      "kunyomi": [
+        "ほうむ"
+      ],
+      "strokes": 12,
+      "jlpt": "N1",
+      "radicals": [
+        "Flowers",
+        "Yakuza",
+        "Spoon",
+        "Twenty"
+      ]
+    }
+  ],
+  "vocabulary": [
+    {
+      "word": "一人暮らし",
+      "reading": "ひとりぐらし",
+      "meanings": "living by oneself, living alone",
+      "furigana": [
+        {
+          "ruby": "一人",
+          "rt": "ひとり"
+        },
+        {
+          "ruby": "暮",
+          "rt": "ぐ"
+        },
+        {
+          "ruby": "らし"
+        }
+      ]
+    },
+    {
+      "word": "彼女",
+      "reading": "かのじょ",
+      "meanings": "she, her; girlfriend",
+      "furigana": [
+        {
+          "ruby": "彼",
+          "rt": "かの"
+        },
+        {
+          "ruby": "女",
+          "rt": "じょ"
+        }
+      ]
+    },
+    {
+      "word": "恥知らず",
+      "reading": "はじしらず",
+      "meanings": "shameless, shameless person",
+      "furigana": [
+        {
+          "ruby": "恥",
+          "rt": "はじ"
+        },
+        {
+          "ruby": "知",
+          "rt": "し"
+        },
+        {
+          "ruby": "らず"
+        }
+      ]
+    },
+    {
+      "word": "試験地獄",
+      "reading": "しけんじごく",
+      "meanings": "(entrance) examination hell",
+      "furigana": [
+        {
+          "ruby": "試",
+          "rt": "し"
+        },
+        {
+          "ruby": "験",
+          "rt": "けん"
+        },
+        {
+          "ruby": "地",
+          "rt": "じ"
+        },
+        {
+          "ruby": "獄",
+          "rt": "ごく"
+        }
+      ]
+    },
+    {
+      "word": "船酔い",
+      "reading": "ふなよい",
+      "meanings": "seasickness",
+      "furigana": [
+        {
+          "ruby": "船",
+          "rt": "ふな"
+        },
+        {
+          "ruby": "酔",
+          "rt": "よ"
+        },
+        {
+          "ruby": "い"
+        }
+      ]
+    },
+    {
+      "word": "〜鍋",
+      "reading": "なべ",
+      "meanings": "pan, pot, saucepan; stew, hot pot",
+      "furigana": [
+        {
+          "ruby": "鍋",
+          "rt": "なべ"
+        }
+      ]
+    },
+    {
+      "word": "払い",
+      "reading": "はらい",
+      "meanings": "payment, bill, account; sweeping, clearing away; sweeping stroke (e.g. when writing kanji)",
+      "furigana": [
+        {
+          "ruby": "払",
+          "rt": "はら"
+        },
+        {
+          "ruby": "い"
+        }
+      ]
+    },
+    {
+      "word": "油絵",
+      "reading": "あぶらえ",
+      "meanings": "oil painting",
+      "furigana": [
+        {
+          "ruby": "油",
+          "rt": "あぶら"
+        },
+        {
+          "ruby": "絵",
+          "rt": "え"
+        }
+      ]
+    },
+    {
+      "word": "甘酢",
+      "reading": "あまず",
+      "meanings": "sweet vinegar",
+      "furigana": [
+        {
+          "ruby": "甘",
+          "rt": "あま"
+        },
+        {
+          "ruby": "酢",
+          "rt": "ず"
+        }
+      ]
+    },
+    {
+      "word": "盛り上がる",
+      "reading": "もりあがる",
+      "meanings": "to swell, to rise, to bulge, to be piled up; to rouse, to get excited",
+      "furigana": [
+        {
+          "ruby": "盛",
+          "rt": "も"
+        },
+        {
+          "ruby": "り"
+        },
+        {
+          "ruby": "上",
+          "rt": "あ"
+        },
+        {
+          "ruby": "がる"
+        }
+      ]
+    },
+    {
+      "word": "遅い",
+      "reading": "おそい",
+      "meanings": "slow, time-consuming, sluggish; late (in the day), towards the end (of the day or night), until a time far into the day or night; later (than expected or usual), late, behind schedule, behind time, tardy, overdue, unpunctual; too late, having missed the boat",
+      "furigana": [
+        {
+          "ruby": "遅",
+          "rt": "おそ"
+        },
+        {
+          "ruby": "い"
+        }
+      ]
+    },
+    {
+      "word": "恥ずかしがる",
+      "reading": "はずかしがる",
+      "meanings": "to be shy of, to be bashful, to be abashed, to blush",
+      "furigana": [
+        {
+          "ruby": "恥",
+          "rt": "は"
+        },
+        {
+          "ruby": "ずかしがる"
+        }
+      ]
+    },
+    {
+      "word": "破れる",
+      "reading": "やぶれる",
+      "meanings": "to get torn, to tear, to rip, to break, to wear out; to be broken off (of negotiations, etc.), to break down, to collapse, to fall into ruin",
+      "furigana": [
+        {
+          "ruby": "破",
+          "rt": "やぶ"
+        },
+        {
+          "ruby": "れる"
+        }
+      ]
+    },
+    {
+      "word": "自己紹介",
+      "reading": "じこしょうかい",
+      "meanings": "self-introduction",
+      "furigana": [
+        {
+          "ruby": "自",
+          "rt": "じ"
+        },
+        {
+          "ruby": "己",
+          "rt": "こ"
+        },
+        {
+          "ruby": "紹",
+          "rt": "しょう"
+        },
+        {
+          "ruby": "介",
+          "rt": "かい"
+        }
+      ]
+    },
+    {
+      "word": "紹介する",
+      "reading": "しょうかいする",
+      "meanings": "introduction, presentation, referral, showcase (of a product)",
+      "furigana": [
+        {
+          "ruby": "紹",
+          "rt": "しょう"
+        },
+        {
+          "ruby": "介",
+          "rt": "かい"
+        }
+      ]
+    },
+    {
+      "word": "紹介状",
+      "reading": "しょうかいじょう",
+      "meanings": "letter of introduction",
+      "furigana": [
+        {
+          "ruby": "紹",
+          "rt": "しょう"
+        },
+        {
+          "ruby": "介",
+          "rt": "かい"
+        },
+        {
+          "ruby": "状",
+          "rt": "じょう"
+        }
+      ]
+    },
+    {
+      "word": "汁物",
+      "reading": "しるもの",
+      "meanings": "soup",
+      "furigana": [
+        {
+          "ruby": "汁",
+          "rt": "しる"
+        },
+        {
+          "ruby": "物",
+          "rt": "もの"
+        }
+      ]
+    },
+    {
+      "word": "味噌汁",
+      "reading": "みそしる",
+      "meanings": "miso soup",
+      "furigana": [
+        {
+          "ruby": "味",
+          "rt": "み"
+        },
+        {
+          "ruby": "噌",
+          "rt": "そ"
+        },
+        {
+          "ruby": "汁",
+          "rt": "しる"
+        }
+      ]
+    },
+    {
+      "word": "酔っ払い",
+      "reading": "よっぱらい",
+      "meanings": "drunkard",
+      "furigana": [
+        {
+          "ruby": "酔",
+          "rt": "よ"
+        },
+        {
+          "ruby": "っ"
+        },
+        {
+          "ruby": "払",
+          "rt": "ぱら"
+        },
+        {
+          "ruby": "い"
+        }
+      ]
+    },
+    {
+      "word": "二日酔い",
+      "reading": "ふつかよい",
+      "meanings": "hangover",
+      "furigana": [
+        {
+          "ruby": "二日",
+          "rt": "ふつか"
+        },
+        {
+          "ruby": "酔",
+          "rt": "よ"
+        },
+        {
+          "ruby": "い"
+        }
+      ]
+    },
+    {
+      "word": "給油所",
+      "reading": "きゅうゆじょ, きゅうゆしょ",
+      "meanings": "gas station, petrol station, filling station, service station, fuel depot",
+      "furigana": [
+        {
+          "ruby": "給",
+          "rt": "きゅう"
+        },
+        {
+          "ruby": "油",
+          "rt": "ゆ"
+        },
+        {
+          "ruby": "所",
+          "rt": "じょ"
+        }
+      ]
+    },
+    {
+      "word": "跳ぶ",
+      "reading": "とぶ",
+      "meanings": "to fly, to soar; to jump, to leap, to spring, to bound, to hop; to spatter, to scatter, to splash, to fly (e.g. of sparks); to hurry, to rush; to flee, to run off, to escape; to disappear, to vanish, to fade, to thin out; to break off, to come off, to fall off, to blow (of a fuse); to be sent out (of an order), to fly (of false rumours, catcalls, etc.); to come flying (of a punch, kick, etc.); to be missing (of a page, stitch, etc.), to skip, to jump (e.g. of a conversation)",
+      "furigana": [
+        {
+          "ruby": "飛",
+          "rt": "と"
+        },
+        {
+          "ruby": "ぶ"
+        }
+      ]
+    },
+    {
+      "word": "昭和",
+      "reading": "しょうわ",
+      "meanings": "Shōwa era (1926.12.25-1989.1.7); reminiscent of the Shōwa era, Shōwa-nostalgic, old-fashioned, quaint, old-school",
+      "furigana": [
+        {
+          "ruby": "昭",
+          "rt": "しょう"
+        },
+        {
+          "ruby": "和",
+          "rt": "わ"
+        }
+      ]
+    },
+    {
+      "word": "漁師",
+      "reading": "りょうし",
+      "meanings": "fisherman",
+      "furigana": [
+        {
+          "ruby": "漁",
+          "rt": "りょう"
+        },
+        {
+          "ruby": "師",
+          "rt": "し"
+        }
+      ]
+    },
+    {
+      "word": "漁船",
+      "reading": "ぎょせん",
+      "meanings": "fishing boat",
+      "furigana": [
+        {
+          "ruby": "漁",
+          "rt": "ぎょ"
+        },
+        {
+          "ruby": "船",
+          "rt": "せん"
+        }
+      ]
+    },
+    {
+      "word": "漁業",
+      "reading": "ぎょぎょう",
+      "meanings": "fishing industry, fishery",
+      "furigana": [
+        {
+          "ruby": "漁",
+          "rt": "ぎょ"
+        },
+        {
+          "ruby": "業",
+          "rt": "ぎょう"
+        }
+      ]
+    },
+    {
+      "word": "償う",
+      "reading": "つぐなう",
+      "meanings": "to make up for, to compensate for, to indemnify, to recompense, to redeem (e.g. a fault), to atone for",
+      "furigana": [
+        {
+          "ruby": "償",
+          "rt": "つぐな"
+        },
+        {
+          "ruby": "う"
+        }
+      ]
+    },
+    {
+      "word": "弁償",
+      "reading": "べんしょう",
+      "meanings": "compensation, indemnification, reparation, restitution, recompense",
+      "furigana": [
+        {
+          "ruby": "弁",
+          "rt": "べん"
+        },
+        {
+          "ruby": "償",
+          "rt": "しょう"
+        }
+      ]
+    },
+    {
+      "word": "刑務所",
+      "reading": "けいむしょ",
+      "meanings": "prison, jail, gaol, penitentiary",
+      "furigana": [
+        {
+          "ruby": "刑",
+          "rt": "けい"
+        },
+        {
+          "ruby": "務",
+          "rt": "む"
+        },
+        {
+          "ruby": "所",
+          "rt": "しょ"
+        }
+      ]
+    },
+    {
+      "word": "死刑",
+      "reading": "しけい",
+      "meanings": "death penalty, capital punishment",
+      "furigana": [
+        {
+          "ruby": "死",
+          "rt": "し"
+        },
+        {
+          "ruby": "刑",
+          "rt": "けい"
+        }
+      ]
+    },
+    {
+      "word": "刑事",
+      "reading": "けいじ",
+      "meanings": "(police) detective; criminal matter",
+      "furigana": [
+        {
+          "ruby": "刑",
+          "rt": "けい"
+        },
+        {
+          "ruby": "事",
+          "rt": "じ"
+        }
+      ]
+    },
+    {
+      "word": "刑期",
+      "reading": "けいき",
+      "meanings": "prison term",
+      "furigana": [
+        {
+          "ruby": "刑",
+          "rt": "けい"
+        },
+        {
+          "ruby": "期",
+          "rt": "き"
+        }
+      ]
+    },
+    {
+      "word": "刑罰",
+      "reading": "けいばつ",
+      "meanings": "(criminal) punishment, penalty, sentence",
+      "furigana": [
+        {
+          "ruby": "刑",
+          "rt": "けい"
+        },
+        {
+          "ruby": "罰",
+          "rt": "ばつ"
+        }
+      ]
+    },
+    {
+      "word": "終身刑",
+      "reading": "しゅうしんけい",
+      "meanings": "life imprisonment, life sentence",
+      "furigana": [
+        {
+          "ruby": "終",
+          "rt": "しゅう"
+        },
+        {
+          "ruby": "身",
+          "rt": "しん"
+        },
+        {
+          "ruby": "刑",
+          "rt": "けい"
+        }
+      ]
+    },
+    {
+      "word": "募る",
+      "reading": "つのる",
+      "meanings": "to become stronger, to grow in intensity, to grow violent, to become worse; to invite contributions, etc., to solicit help, participation, etc., to recruit (e.g. soldiers)",
+      "furigana": [
+        {
+          "ruby": "募",
+          "rt": "つの"
+        },
+        {
+          "ruby": "る"
+        }
+      ]
+    },
+    {
+      "word": "募金",
+      "reading": "ぼきん",
+      "meanings": "fund-raising, collection of funds",
+      "furigana": [
+        {
+          "ruby": "募",
+          "rt": "ぼ"
+        },
+        {
+          "ruby": "金",
+          "rt": "きん"
+        }
+      ]
+    },
+    {
+      "word": "募集",
+      "reading": "ぼしゅう",
+      "meanings": "recruitment, invitation, selection, advertisement, taking applications; raising (funds, donations, etc.), collection, subscription, solicitation; flotation (of shares, loans, etc.)",
+      "furigana": [
+        {
+          "ruby": "募",
+          "rt": "ぼ"
+        },
+        {
+          "ruby": "集",
+          "rt": "しゅう"
+        }
+      ]
+    },
+    {
+      "word": "応募",
+      "reading": "おうぼ",
+      "meanings": "application, subscription, entry (competition, raffle, etc.), enlistment",
+      "furigana": [
+        {
+          "ruby": "応",
+          "rt": "おう"
+        },
+        {
+          "ruby": "募",
+          "rt": "ぼ"
+        }
+      ]
+    },
+    {
+      "word": "執る",
+      "reading": "とる",
+      "meanings": "to take (trouble), to attend (to business), to command (army)",
+      "furigana": [
+        {
+          "ruby": "執",
+          "rt": "と"
+        },
+        {
+          "ruby": "る"
+        }
+      ]
+    },
+    {
+      "word": "執着",
+      "reading": "しゅうちゃく",
+      "meanings": "attachment, adhesion, insistence, tenacity, fixation, obsession, clinging (e.g. to old customs)",
+      "furigana": [
+        {
+          "ruby": "執",
+          "rt": "しゅう"
+        },
+        {
+          "ruby": "着",
+          "rt": "ちゃく"
+        }
+      ]
+    },
+    {
+      "word": "執筆",
+      "reading": "しっぴつ",
+      "meanings": "writing, authoring",
+      "furigana": [
+        {
+          "ruby": "執",
+          "rt": "しっ"
+        },
+        {
+          "ruby": "筆",
+          "rt": "ぴつ"
+        }
+      ]
+    },
+    {
+      "word": "塁",
+      "reading": "るい",
+      "meanings": "base, bag, sack; fortress, stronghold",
+      "furigana": [
+        {
+          "ruby": "塁",
+          "rt": "るい"
+        }
+      ]
+    },
+    {
+      "word": "塁打",
+      "reading": "るいだ",
+      "meanings": "base hit",
+      "furigana": [
+        {
+          "ruby": "塁",
+          "rt": "るい"
+        },
+        {
+          "ruby": "打",
+          "rt": "だ"
+        }
+      ]
+    },
+    {
+      "word": "塁審",
+      "reading": "るいしん",
+      "meanings": "base umpire",
+      "furigana": [
+        {
+          "ruby": "塁",
+          "rt": "るい"
+        },
+        {
+          "ruby": "審",
+          "rt": "しん"
+        }
+      ]
+    },
+    {
+      "word": "崩す",
+      "reading": "くずす",
+      "meanings": "to destroy, to demolish, to pull down, to tear down, to level; to disturb, to put into disorder, to throw off balance, to make shaky; to relax (one's pose), to make oneself at ease; to break (a bill), to change, to make change; to write in cursive style, to write in running style; to break into a smile, to let off a smile; to lower (a price)",
+      "furigana": [
+        {
+          "ruby": "崩",
+          "rt": "くず"
+        },
+        {
+          "ruby": "す"
+        }
+      ]
+    },
+    {
+      "word": "崩壊",
+      "reading": "ほうかい",
+      "meanings": "collapse, crumbling, breaking down, caving in; (radioactive) decay, disintegration",
+      "furigana": [
+        {
+          "ruby": "崩",
+          "rt": "ほう"
+        },
+        {
+          "ruby": "壊",
+          "rt": "かい"
+        }
+      ]
+    },
+    {
+      "word": "患う",
+      "reading": "わずらう",
+      "meanings": "to be ill, to suffer from; to have trouble doing ..., to be unable to ..., to fail to ...",
+      "furigana": [
+        {
+          "ruby": "患",
+          "rt": "わずら"
+        },
+        {
+          "ruby": "う"
+        }
+      ]
+    },
+    {
+      "word": "患者",
+      "reading": "かんじゃ",
+      "meanings": "patient",
+      "furigana": [
+        {
+          "ruby": "患",
+          "rt": "かん"
+        },
+        {
+          "ruby": "者",
+          "rt": "じゃ"
+        }
+      ]
+    },
+    {
+      "word": "急患",
+      "reading": "きゅうかん",
+      "meanings": "emergency case",
+      "furigana": [
+        {
+          "ruby": "急",
+          "rt": "きゅう"
+        },
+        {
+          "ruby": "患",
+          "rt": "かん"
+        }
+      ]
+    },
+    {
+      "word": "戻す",
+      "reading": "もどす",
+      "meanings": "to put back, to return, to give back, to restore (to a previous state, e.g. defrosting, reconstituting, reconciling), to turn back (e.g. clock hand); to vomit, to throw up; to recover (of a market price)",
+      "furigana": [
+        {
+          "ruby": "戻",
+          "rt": "もど"
+        },
+        {
+          "ruby": "す"
+        }
+      ]
+    },
+    {
+      "word": "戻る",
+      "reading": "もどる",
+      "meanings": "to turn back (e.g. half-way); to return, to go back; to recover (e.g. something lost), to be returned; to rebound, to spring back",
+      "furigana": [
+        {
+          "ruby": "戻",
+          "rt": "もど"
+        },
+        {
+          "ruby": "る"
+        }
+      ]
+    },
+    {
+      "word": "対向する",
+      "reading": "たいこうする",
+      "meanings": "counter-, corresponding, face, opposite",
+      "furigana": [
+        {
+          "ruby": "対",
+          "rt": "たい"
+        },
+        {
+          "ruby": "向",
+          "rt": "こう"
+        }
+      ]
+    },
+    {
+      "word": "反抗する",
+      "reading": "はんこうする",
+      "meanings": "opposition, resistance, insubordination, defiance, hostility, rebellion",
+      "furigana": [
+        {
+          "ruby": "反",
+          "rt": "はん"
+        },
+        {
+          "ruby": "抗",
+          "rt": "こう"
+        }
+      ]
+    },
+    {
+      "word": "抗戦",
+      "reading": "こうせん",
+      "meanings": "resistance",
+      "furigana": [
+        {
+          "ruby": "抗",
+          "rt": "こう"
+        },
+        {
+          "ruby": "戦",
+          "rt": "せん"
+        }
+      ]
+    },
+    {
+      "word": "抗体",
+      "reading": "こうたい",
+      "meanings": "antibody",
+      "furigana": [
+        {
+          "ruby": "抗",
+          "rt": "こう"
+        },
+        {
+          "ruby": "体",
+          "rt": "たい"
+        }
+      ]
+    },
+    {
+      "word": "抵抗する",
+      "reading": "ていこうする",
+      "meanings": "resistance, opposition, standing up to; reluctance, repulsion, repugnance; resistance, drag, friction; electrical resistance; resistor",
+      "furigana": [
+        {
+          "ruby": "抵",
+          "rt": "てい"
+        },
+        {
+          "ruby": "抗",
+          "rt": "こう"
+        }
+      ]
+    },
+    {
+      "word": "大抵",
+      "reading": "たいてい",
+      "meanings": "mostly, ordinarily, usually, generally; probably; most, almost all; ordinary; proper, appropriate, moderate",
+      "furigana": [
+        {
+          "ruby": "大",
+          "rt": "たい"
+        },
+        {
+          "ruby": "抵",
+          "rt": "てい"
+        }
+      ]
+    },
+    {
+      "word": "上旬",
+      "reading": "じょうじゅん",
+      "meanings": "first third of a month, first ten days of a month",
+      "furigana": [
+        {
+          "ruby": "上",
+          "rt": "じょう"
+        },
+        {
+          "ruby": "旬",
+          "rt": "じゅん"
+        }
+      ]
+    },
+    {
+      "word": "下旬",
+      "reading": "げじゅん",
+      "meanings": "last third of a month, 21st to the last day of a month",
+      "furigana": [
+        {
+          "ruby": "下",
+          "rt": "げ"
+        },
+        {
+          "ruby": "旬",
+          "rt": "じゅん"
+        }
+      ]
+    },
+    {
+      "word": "中旬",
+      "reading": "ちゅうじゅん",
+      "meanings": "middle ten days of a month, 11th to 20th day of a month",
+      "furigana": [
+        {
+          "ruby": "中",
+          "rt": "ちゅう"
+        },
+        {
+          "ruby": "旬",
+          "rt": "じゅん"
+        }
+      ]
+    },
+    {
+      "word": "旬",
+      "reading": "しゅん",
+      "meanings": "season (for fruit, seafood, etc.), best time of the year (for); in vogue, popular, hot, fresh",
+      "furigana": [
+        {
+          "ruby": "旬",
+          "rt": "しゅん"
+        }
+      ]
+    },
+    {
+      "word": "湾",
+      "reading": "わん",
+      "meanings": "bay, gulf, inlet",
+      "furigana": [
+        {
+          "ruby": "湾",
+          "rt": "わん"
+        }
+      ]
+    },
+    {
+      "word": "台湾",
+      "reading": "たいわん",
+      "meanings": "Taiwan",
+      "furigana": [
+        {
+          "ruby": "台",
+          "rt": "たい"
+        },
+        {
+          "ruby": "湾",
+          "rt": "わん"
+        }
+      ]
+    },
+    {
+      "word": "爆発",
+      "reading": "ばくはつ",
+      "meanings": "explosion, detonation, blast, blowing up, eruption; outburst (of emotion), explosion (e.g. of anger), eruption (e.g. of discontent)",
+      "furigana": [
+        {
+          "ruby": "爆",
+          "rt": "ばく"
+        },
+        {
+          "ruby": "発",
+          "rt": "はつ"
+        }
+      ]
+    },
+    {
+      "word": "爆弾",
+      "reading": "ばくだん",
+      "meanings": "bomb; alcohol with liquor added (esp. wine-based shōchū highball, also beer with whiskey)",
+      "furigana": [
+        {
+          "ruby": "爆",
+          "rt": "ばく"
+        },
+        {
+          "ruby": "弾",
+          "rt": "だん"
+        }
+      ]
+    },
+    {
+      "word": "爆笑",
+      "reading": "ばくしょう",
+      "meanings": "roar of laughter (from multiple people), burst of laughter, uproarious laughter; laughing hard (of a single person)",
+      "furigana": [
+        {
+          "ruby": "爆",
+          "rt": "ばく"
+        },
+        {
+          "ruby": "笑",
+          "rt": "しょう"
+        }
+      ]
+    },
+    {
+      "word": "自爆",
+      "reading": "じばく",
+      "meanings": "suicide bombing (e.g. crashing one's plane into a target), self-destruction, blowing oneself up",
+      "furigana": [
+        {
+          "ruby": "自",
+          "rt": "じ"
+        },
+        {
+          "ruby": "爆",
+          "rt": "ばく"
+        }
+      ]
+    },
+    {
+      "word": "爆撃",
+      "reading": "ばくげき",
+      "meanings": "bombing (raid)",
+      "furigana": [
+        {
+          "ruby": "爆",
+          "rt": "ばく"
+        },
+        {
+          "ruby": "撃",
+          "rt": "げき"
+        }
+      ]
+    },
+    {
+      "word": "弾",
+      "reading": "たま",
+      "meanings": "ball, sphere, globe, orb; bead (of sweat, dew, etc.), drop, droplet; ball (in sports); pile (of noodles, etc.); bullet; bulb (i.e. a light bulb); lens (of glasses, etc.); bead (of an abacus); ball (i.e. a testicle); gem, jewel (esp. spherical; sometimes used figuratively), pearl; female entertainer (e.g. a geisha); item, funds or person used as part of a plot; coin; precious, beautiful, excellent",
+      "furigana": [
+        {
+          "ruby": "玉",
+          "rt": "たま"
+        }
+      ]
+    },
+    {
+      "word": "弾む",
+      "reading": "はずむ",
+      "meanings": "to spring, to bound, to bounce; to be stimulated, to be encouraged, to get lively; to pay handsomely, to splurge, to part eagerly with (money, etc.); to breathe hard, to pant, to be out of breath",
+      "furigana": [
+        {
+          "ruby": "弾",
+          "rt": "はず"
+        },
+        {
+          "ruby": "む"
+        }
+      ]
+    },
+    {
+      "word": "弾丸",
+      "reading": "だんがん",
+      "meanings": "bullet, shot, shell",
+      "furigana": [
+        {
+          "ruby": "弾",
+          "rt": "だん"
+        },
+        {
+          "ruby": "丸",
+          "rt": "がん"
+        }
+      ]
+    },
+    {
+      "word": "聴力",
+      "reading": "ちょうりょく",
+      "meanings": "hearing ability",
+      "furigana": [
+        {
+          "ruby": "聴",
+          "rt": "ちょう"
+        },
+        {
+          "ruby": "力",
+          "rt": "りょく"
+        }
+      ]
+    },
+    {
+      "word": "聴者",
+      "reading": "ちょうしゃ",
+      "meanings": "listener; person with normal hearing (i.e. not deaf), hearing person",
+      "furigana": [
+        {
+          "ruby": "聴",
+          "rt": "ちょう"
+        },
+        {
+          "ruby": "者",
+          "rt": "しゃ"
+        }
+      ]
+    },
+    {
+      "word": "聴く",
+      "reading": "きく",
+      "meanings": "to hear; to listen (e.g. to music); to ask, to enquire, to query; to hear about, to hear of, to learn of; to follow (advice, order, etc.), to obey, to listen to, to comply with; to hear (e.g. a plea), to grant (a request), to accept (e.g. an argument), to give consideration to; to smell (esp. incense), to sample (a fragrance); to taste (alcohol), to try",
+      "furigana": [
+        {
+          "ruby": "聞",
+          "rt": "き"
+        },
+        {
+          "ruby": "く"
+        }
+      ]
+    },
+    {
+      "word": "盗聴",
+      "reading": "とうちょう",
+      "meanings": "interception (email), wiretap, bug",
+      "furigana": [
+        {
+          "ruby": "盗",
+          "rt": "とう"
+        },
+        {
+          "ruby": "聴",
+          "rt": "ちょう"
+        }
+      ]
+    },
+    {
+      "word": "跡",
+      "reading": "あと",
+      "meanings": "trace, tracks, mark, sign; site, remains, ruins; scar",
+      "furigana": [
+        {
+          "ruby": "跡",
+          "rt": "あと"
+        }
+      ]
+    },
+    {
+      "word": "奇跡",
+      "reading": "きせき",
+      "meanings": "miracle, wonder, marvel",
+      "furigana": [
+        {
+          "ruby": "奇",
+          "rt": "き"
+        },
+        {
+          "ruby": "跡",
+          "rt": "せき"
+        }
+      ]
+    },
+    {
+      "word": "証跡",
+      "reading": "しょうせき",
+      "meanings": "proof, evidence, trace",
+      "furigana": [
+        {
+          "ruby": "証",
+          "rt": "しょう"
+        },
+        {
+          "ruby": "跡",
+          "rt": "せき"
+        }
+      ]
+    },
+    {
+      "word": "遺跡",
+      "reading": "いせき",
+      "meanings": "(archeological) remains, ruins, relics",
+      "furigana": [
+        {
+          "ruby": "遺",
+          "rt": "い"
+        },
+        {
+          "ruby": "跡",
+          "rt": "せき"
+        }
+      ]
+    },
+    {
+      "word": "遣う",
+      "reading": "つかう",
+      "meanings": "to use (a tool, method, etc.), to make use of, to put to use; to use (a person, animal, puppet, etc.), to employ, to handle, to manage, to manipulate; to use (time, money, etc.), to spend, to consume; to use (language), to speak",
+      "furigana": [
+        {
+          "ruby": "使",
+          "rt": "つか"
+        },
+        {
+          "ruby": "う"
+        }
+      ]
+    },
+    {
+      "word": "闘う",
+      "reading": "たたかう",
+      "meanings": "to make war (on), to wage war (against), to go to war (with), to fight (with), to do battle (against); to compete (against); to struggle (against adversities, etc.), to fight, to contend, to resist",
+      "furigana": [
+        {
+          "ruby": "戦",
+          "rt": "たたか"
+        },
+        {
+          "ruby": "う"
+        }
+      ]
+    },
+    {
+      "word": "戦闘",
+      "reading": "せんとう",
+      "meanings": "battle, fight, combat",
+      "furigana": [
+        {
+          "ruby": "戦",
+          "rt": "せん"
+        },
+        {
+          "ruby": "闘",
+          "rt": "とう"
+        }
+      ]
+    },
+    {
+      "word": "闘志",
+      "reading": "とうし",
+      "meanings": "fighting spirit, (will to) fight",
+      "furigana": [
+        {
+          "ruby": "闘",
+          "rt": "とう"
+        },
+        {
+          "ruby": "志",
+          "rt": "し"
+        }
+      ]
+    },
+    {
+      "word": "陣",
+      "reading": "じん",
+      "meanings": "battle formation; camp, encampment, position; group, gang, party, corps; war, battle, campaign",
+      "furigana": [
+        {
+          "ruby": "陣",
+          "rt": "じん"
+        }
+      ]
+    },
+    {
+      "word": "陣営",
+      "reading": "じんえい",
+      "meanings": "camp (supporters of a doctrine, party, etc.), faction (of a party); military camp, encampment, cantonment",
+      "furigana": [
+        {
+          "ruby": "陣",
+          "rt": "じん"
+        },
+        {
+          "ruby": "営",
+          "rt": "えい"
+        }
+      ]
+    },
+    {
+      "word": "香り",
+      "reading": "かおり",
+      "meanings": "aroma, fragrance, scent, smell",
+      "furigana": [
+        {
+          "ruby": "香",
+          "rt": "かお"
+        },
+        {
+          "ruby": "り"
+        }
+      ]
+    },
+    {
+      "word": "香港",
+      "reading": "ほんこん",
+      "meanings": "Hong Kong, Hongkong",
+      "furigana": [
+        {
+          "ruby": "香港",
+          "rt": "ホンコン"
+        }
+      ]
+    },
+    {
+      "word": "香水",
+      "reading": "こうすい",
+      "meanings": "perfume, scent",
+      "furigana": [
+        {
+          "ruby": "香",
+          "rt": "こう"
+        },
+        {
+          "ruby": "水",
+          "rt": "すい"
+        }
+      ]
+    },
+    {
+      "word": "香川県",
+      "reading": "かがわけん",
+      "meanings": "Kagawa Prefecture (Shikoku)",
+      "furigana": [
+        {
+          "ruby": "香",
+          "rt": "か"
+        },
+        {
+          "ruby": "川",
+          "rt": "がわ"
+        },
+        {
+          "ruby": "県",
+          "rt": "けん"
+        }
+      ]
+    },
+    {
+      "word": "兆候",
+      "reading": "ちょうこう",
+      "meanings": "sign, indication, omen, symptom",
+      "furigana": [
+        {
+          "ruby": "兆",
+          "rt": "ちょう"
+        },
+        {
+          "ruby": "候",
+          "rt": "こう"
+        }
+      ]
+    },
+    {
+      "word": "前兆",
+      "reading": "ぜんちょう",
+      "meanings": "omen, portent, sign, presage, harbinger, premonition, precursor, foreboding, presentiment",
+      "furigana": [
+        {
+          "ruby": "前",
+          "rt": "ぜん"
+        },
+        {
+          "ruby": "兆",
+          "rt": "ちょう"
+        }
+      ]
+    },
+    {
+      "word": "臨む",
+      "reading": "のぞむ",
+      "meanings": "to look out on, to overlook, to front onto; to face (a situation, crisis, etc.), to meet (e.g. death), to be confronted by; to deal with (an issue); to attend (e.g. a function), to appear (e.g. in court), to be present at, to go to (e.g. a place), to take part in, to participate, to join",
+      "furigana": [
+        {
+          "ruby": "臨",
+          "rt": "のぞ"
+        },
+        {
+          "ruby": "む"
+        }
+      ]
+    },
+    {
+      "word": "臨海",
+      "reading": "りんかい",
+      "meanings": "coastal, seaside, oceanfront, maritime",
+      "furigana": [
+        {
+          "ruby": "臨",
+          "rt": "りん"
+        },
+        {
+          "ruby": "海",
+          "rt": "かい"
+        }
+      ]
+    },
+    {
+      "word": "臨時",
+      "reading": "りんじ",
+      "meanings": "temporary, provisional, interim; special, extraordinary, extra",
+      "furigana": [
+        {
+          "ruby": "臨",
+          "rt": "りん"
+        },
+        {
+          "ruby": "時",
+          "rt": "じ"
+        }
+      ]
+    },
+    {
+      "word": "削る",
+      "reading": "けずる",
+      "meanings": "to shave (wood, leather, etc.), to sharpen (e.g. pencil), to plane, to whittle, to pare, to scrape off, to erode; to cut down (budget, expenses, staff, time, etc.), to curtail, to reduce; to delete, to erase, to remove, to cross out, to strike out",
+      "furigana": [
+        {
+          "ruby": "削",
+          "rt": "けず"
+        },
+        {
+          "ruby": "る"
+        }
+      ]
+    },
+    {
+      "word": "削除",
+      "reading": "さくじょ",
+      "meanings": "deletion, elimination, erasure, striking out",
+      "furigana": [
+        {
+          "ruby": "削",
+          "rt": "さく"
+        },
+        {
+          "ruby": "除",
+          "rt": "じょ"
+        }
+      ]
+    },
+    {
+      "word": "削減",
+      "reading": "さくげん",
+      "meanings": "cut, reduction, curtailment",
+      "furigana": [
+        {
+          "ruby": "削",
+          "rt": "さく"
+        },
+        {
+          "ruby": "減",
+          "rt": "げん"
+        }
+      ]
+    },
+    {
+      "word": "契約",
+      "reading": "けいやく",
+      "meanings": "contract, compact, agreement",
+      "furigana": [
+        {
+          "ruby": "契",
+          "rt": "けい"
+        },
+        {
+          "ruby": "約",
+          "rt": "やく"
+        }
+      ]
+    },
+    {
+      "word": "契機",
+      "reading": "けいき",
+      "meanings": "opportunity, chance; trigger, cause",
+      "furigana": [
+        {
+          "ruby": "契",
+          "rt": "けい"
+        },
+        {
+          "ruby": "機",
+          "rt": "き"
+        }
+      ]
+    },
+    {
+      "word": "恵む",
+      "reading": "めぐむ",
+      "meanings": "to bless, to show mercy to; to give (money, etc.)",
+      "furigana": [
+        {
+          "ruby": "恵",
+          "rt": "めぐ"
+        },
+        {
+          "ruby": "む"
+        }
+      ]
+    },
+    {
+      "word": "知恵",
+      "reading": "ちえ",
+      "meanings": "wisdom, wit, sagacity, sense, intelligence; prajna (insight leading to enlightenment)",
+      "furigana": [
+        {
+          "ruby": "知",
+          "rt": "ち"
+        },
+        {
+          "ruby": "恵",
+          "rt": "え"
+        }
+      ]
+    },
+    {
+      "word": "抱く",
+      "reading": "だく, いだく",
+      "meanings": "to hold in one's arms (e.g. a baby), to embrace, to hug; to have sex with, to make love to, to sleep with; to sit on (eggs), to brood",
+      "furigana": [
+        {
+          "ruby": "抱",
+          "rt": "だ"
+        },
+        {
+          "ruby": "く"
+        }
+      ]
+    },
+    {
+      "word": "掲げる",
+      "reading": "かかげる",
+      "meanings": "to put up (a notice, sign, etc.), to hang out (e.g. a banner), to fly (e.g. a flag), to hoist, to raise, to display; to hold up high, to raise overhead; to tout (a principle, plan, etc.), to herald, to hold up (an ideal), to parade (e.g. a slogan); to publish, to print, to carry (e.g. an article); to tuck up (e.g. sleeves), to roll up",
+      "furigana": [
+        {
+          "ruby": "掲",
+          "rt": "かか"
+        },
+        {
+          "ruby": "げる"
+        }
+      ]
+    },
+    {
+      "word": "掲示",
+      "reading": "けいじ",
+      "meanings": "notice, bulletin, post, posting, placard",
+      "furigana": [
+        {
+          "ruby": "掲",
+          "rt": "けい"
+        },
+        {
+          "ruby": "示",
+          "rt": "じ"
+        }
+      ]
+    },
+    {
+      "word": "掲載",
+      "reading": "けいさい",
+      "meanings": "publication (e.g. of an article in a newspaper), carrying (e.g. a story), running (e.g. a serial), insertion (e.g. of an advertisement), printing, posting (e.g. on the web)",
+      "furigana": [
+        {
+          "ruby": "掲",
+          "rt": "けい"
+        },
+        {
+          "ruby": "載",
+          "rt": "さい"
+        }
+      ]
+    },
+    {
+      "word": "狙い",
+      "reading": "ねらい",
+      "meanings": "aim",
+      "furigana": [
+        {
+          "ruby": "狙",
+          "rt": "ねら"
+        },
+        {
+          "ruby": "い"
+        }
+      ]
+    },
+    {
+      "word": "狙撃",
+      "reading": "そげき",
+      "meanings": "shooting, sniping",
+      "furigana": [
+        {
+          "ruby": "狙",
+          "rt": "そ"
+        },
+        {
+          "ruby": "撃",
+          "rt": "げき"
+        }
+      ]
+    },
+    {
+      "word": "葬式",
+      "reading": "そうしき",
+      "meanings": "funeral",
+      "furigana": [
+        {
+          "ruby": "葬",
+          "rt": "そう"
+        },
+        {
+          "ruby": "式",
+          "rt": "しき"
+        }
+      ]
+    },
+    {
+      "word": "葬る",
+      "reading": "ほうむる",
+      "meanings": "to bury, to inter, to entomb; to cover up, to hush up, to shelve",
+      "furigana": [
+        {
+          "ruby": "葬",
+          "rt": "ほうむ"
+        },
+        {
+          "ruby": "る"
+        }
+      ]
+    },
+    {
+      "word": "火葬",
+      "reading": "かそう",
+      "meanings": "cremation",
+      "furigana": [
+        {
+          "ruby": "火",
+          "rt": "か"
+        },
+        {
+          "ruby": "葬",
+          "rt": "そう"
+        }
+      ]
+    },
+    {
+      "word": "派遣",
+      "reading": "はけん",
+      "meanings": "dispatch, despatch, deployment; temporary employee (esp. from an agency), temporary worker, agency temp",
+      "furigana": [
+        {
+          "ruby": "派",
+          "rt": "は"
+        },
+        {
+          "ruby": "遣",
+          "rt": "けん"
+        }
+      ]
+    },
+    {
+      "word": "弾力",
+      "reading": "だんりょく",
+      "meanings": "elasticity, flexibility",
+      "furigana": [
+        {
+          "ruby": "弾",
+          "rt": "だん"
+        },
+        {
+          "ruby": "力",
+          "rt": "りょく"
+        }
+      ]
+    },
+    {
+      "word": "支払い",
+      "reading": "しはらい",
+      "meanings": "payment",
+      "furigana": [
+        {
+          "ruby": "支",
+          "rt": "し"
+        },
+        {
+          "ruby": "払",
+          "rt": "はら"
+        },
+        {
+          "ruby": "い"
+        }
+      ]
+    },
+    {
+      "word": "串",
+      "reading": "くし",
+      "meanings": "spit, skewer; proxy (computer server)",
+      "furigana": [
+        {
+          "ruby": "串",
+          "rt": "くし"
+        }
+      ]
+    },
+    {
+      "word": "串焼き",
+      "reading": "くしやき",
+      "meanings": "grilling on a skewer, spit-roasting",
+      "furigana": [
+        {
+          "ruby": "串",
+          "rt": "くし"
+        },
+        {
+          "ruby": "焼",
+          "rt": "や"
+        },
+        {
+          "ruby": "き"
+        }
+      ]
+    },
+    {
+      "word": "眉",
+      "reading": "まゆ",
+      "meanings": "eyebrow, eyebrows",
+      "furigana": [
+        {
+          "ruby": "眉",
+          "rt": "まゆ"
+        }
+      ]
+    },
+    {
+      "word": "眉間",
+      "reading": "みけん",
+      "meanings": "brow, glabella, middle forehead, area between the eyebrows",
+      "furigana": [
+        {
+          "ruby": "眉",
+          "rt": "み"
+        },
+        {
+          "ruby": "間",
+          "rt": "けん"
+        }
+      ]
+    }
+  ]
+}

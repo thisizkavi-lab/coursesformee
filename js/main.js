@@ -1,6 +1,7 @@
 // ==========================================================================
 // COURSEBOOK INTERACTIVE JAVASCRIPT
-// Instant Dark/Light Theme (SVG Icon), Sidebar Auto-Scroll, TOC & Code Copy
+// Instant Dark/Light Theme (SVG Icon), Sidebar Auto-Scroll, TOC, Code Copy
+// & Interactive Japanese Study Decks (WaniKani 1-60)
 // ==========================================================================
 
 // 1. Immediate execution before DOM ready to prevent flash
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTocScrollSpy();
   initSidebarActive();
   initHighlight();
+  initJapaneseStudyDeck();
 });
 
 // --- Theme Management (Dark / Light) ---
@@ -96,10 +98,8 @@ function initCodeCopy() {
         const textToCopy = codeEl.innerText.trim();
         try {
           await navigator.clipboard.writeText(textToCopy);
-          copyBtn.textContent = '✓ Copied';
           copyBtn.classList.add('copied');
           setTimeout(() => {
-            copyBtn.textContent = 'Copy';
             copyBtn.classList.remove('copied');
           }, 2000);
         } catch (err) {
@@ -111,10 +111,8 @@ function initCodeCopy() {
           textarea.select();
           document.execCommand('copy');
           document.body.removeChild(textarea);
-          copyBtn.textContent = '✓ Copied';
           copyBtn.classList.add('copied');
           setTimeout(() => {
-            copyBtn.textContent = 'Copy';
             copyBtn.classList.remove('copied');
           }, 2000);
         }
@@ -165,5 +163,171 @@ function initHighlight() {
     document.querySelectorAll('pre code').forEach((block) => {
       hljs.highlightElement(block);
     });
+  }
+}
+
+// ==========================================================================
+// INTERACTIVE JAPANESE STUDY DECK ENGINE (Audio, Furigana, Flashcards & Progress)
+// ==========================================================================
+function initJapaneseStudyDeck() {
+  const container = document.querySelector('.japanese-container');
+  if (!container) return;
+
+  const levelId = container.getAttribute('data-level') || '1';
+  const storageKey = `coursebook_jp_mastered_lvl_${levelId}`;
+  let masteredSet = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]'));
+
+  const cards = Array.from(container.querySelectorAll('.study-card'));
+  const totalCards = cards.length;
+
+  // 1. Initial State Sync
+  cards.forEach(card => {
+    const itemId = card.getAttribute('data-item-id');
+    if (masteredSet.has(itemId)) {
+      card.classList.add('mastered');
+      const btn = card.querySelector('.master-toggle-btn');
+      if (btn) btn.innerHTML = '✓ Mastered';
+    }
+  });
+
+  updateProgress();
+
+  // 2. Audio Pronunciation Button
+  container.querySelectorAll('.audio-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const textToSpeak = btn.getAttribute('data-speak');
+      if (textToSpeak && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(textToSpeak);
+        utter.lang = 'ja-JP';
+        utter.rate = 0.9;
+        window.speechSynthesis.speak(utter);
+      }
+    });
+  });
+
+  // 3. Mark Mastered Toggle
+  container.querySelectorAll('.master-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const card = btn.closest('.study-card');
+      const itemId = card.getAttribute('data-item-id');
+
+      if (card.classList.contains('mastered')) {
+        card.classList.remove('mastered');
+        btn.innerHTML = '○ Mark Learned';
+        masteredSet.delete(itemId);
+      } else {
+        card.classList.add('mastered');
+        btn.innerHTML = '✓ Mastered';
+        masteredSet.add(itemId);
+      }
+
+      localStorage.setItem(storageKey, JSON.stringify(Array.from(masteredSet)));
+      updateProgress();
+      filterCards();
+    });
+  });
+
+  // 4. Furigana Toggle
+  const furiganaToggle = document.getElementById('toggle-furigana-btn');
+  if (furiganaToggle) {
+    furiganaToggle.addEventListener('click', () => {
+      document.body.classList.toggle('hide-furigana');
+      furiganaToggle.classList.toggle('active');
+    });
+  }
+
+  // 5. Flashcard Mode Toggle
+  const flashcardToggle = document.getElementById('toggle-flashcard-btn');
+  if (flashcardToggle) {
+    flashcardToggle.addEventListener('click', () => {
+      document.body.classList.toggle('flashcard-mode');
+      flashcardToggle.classList.toggle('active');
+      cards.forEach(c => c.classList.remove('revealed'));
+    });
+  }
+
+  // Card click in flashcard mode to reveal
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      if (document.body.classList.contains('flashcard-mode')) {
+        card.classList.toggle('revealed');
+      }
+    });
+  });
+
+  // 6. Filter Pills (All, Kanji, Vocabulary, Learning, Mastered)
+  let currentFilter = 'all';
+  const filterPills = container.querySelectorAll('.filter-pill');
+  filterPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      currentFilter = pill.getAttribute('data-filter');
+      filterCards();
+    });
+  });
+
+  // 7. Live Search Filter
+  const searchInput = document.getElementById('deck-search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      filterCards();
+    });
+  }
+
+  function filterCards() {
+    const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+
+    cards.forEach(card => {
+      const type = card.getAttribute('data-type'); // 'kanji' or 'vocab'
+      const isMastered = card.classList.contains('mastered');
+      const text = card.textContent.toLowerCase();
+
+      // Check Category Filter
+      let matchesFilter = true;
+      if (currentFilter === 'kanji' && type !== 'kanji') matchesFilter = false;
+      else if (currentFilter === 'vocab' && type !== 'vocab') matchesFilter = false;
+      else if (currentFilter === 'learning' && isMastered) matchesFilter = false;
+      else if (currentFilter === 'mastered' && !isMastered) matchesFilter = false;
+
+      // Check Search Query
+      let matchesSearch = true;
+      if (query && !text.includes(query)) {
+        matchesSearch = false;
+      }
+
+      if (matchesFilter && matchesSearch) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function updateProgress() {
+    const masteredCount = masteredSet.size;
+    const learningCount = totalCards - masteredCount;
+    const percentage = totalCards > 0 ? Math.round((masteredCount / totalCards) * 100) : 0;
+
+    const progressFill = document.querySelector('.progress-fill');
+    if (progressFill) progressFill.style.width = `${percentage}%`;
+
+    const progressText = document.querySelector('.progress-percentage-text');
+    if (progressText) progressText.textContent = `${masteredCount}/${totalCards} (${percentage}%)`;
+
+    const statMastered = document.getElementById('stat-mastered');
+    if (statMastered) statMastered.textContent = masteredCount;
+
+    const statLearning = document.getElementById('stat-learning');
+    if (statLearning) statLearning.textContent = learningCount;
+
+    const badgeMastered = document.getElementById('badge-count-mastered');
+    if (badgeMastered) badgeMastered.textContent = masteredCount;
+
+    const badgeLearning = document.getElementById('badge-count-learning');
+    if (badgeLearning) badgeLearning.textContent = learningCount;
   }
 }
