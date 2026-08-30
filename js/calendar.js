@@ -120,42 +120,24 @@ function renderCalendar() {
 
   const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
   const lastDate = new Date(currentYear, currentMonth + 1, 0).getDate();
-  const prevLastDate = new Date(currentYear, currentMonth, 0).getDate();
 
-  // 1. Previous Month Days (Padding)
-  for (let i = firstDayIndex; i > 0; i--) {
-    const dayNum = prevLastDate - i + 1;
-    const prevMonth = currentMonth === 0 ? 11 : currentMonth - 1;
-    const prevYear = currentMonth === 0 ? currentYear - 1 : currentYear;
-    const dateStr = formatDateKey(prevYear, prevMonth, dayNum);
-
-    const cell = createDayCell(dayNum, dateStr, true);
-    daysGrid.appendChild(cell);
-  }
-
-  // 2. Current Month Days
+  // Render ONLY the current month's days
   for (let day = 1; day <= lastDate; day++) {
     const dateStr = formatDateKey(currentYear, currentMonth, day);
-    const cell = createDayCell(day, dateStr, false);
-    daysGrid.appendChild(cell);
-  }
-
-  // 3. Next Month Days (Padding)
-  const totalCells = firstDayIndex + lastDate;
-  const nextDays = (7 - (totalCells % 7)) % 7;
-  for (let day = 1; day <= nextDays; day++) {
-    const nextMonth = currentMonth === 11 ? 0 : currentMonth + 1;
-    const nextYear = currentMonth === 11 ? currentYear + 1 : currentYear;
-    const dateStr = formatDateKey(nextYear, nextMonth, day);
-
-    const cell = createDayCell(day, dateStr, true);
+    const cell = createDayCell(day, dateStr);
+    
+    // Offset the first day to the correct weekday column in the 7-day grid
+    if (day === 1 && firstDayIndex > 0) {
+      cell.style.gridColumnStart = firstDayIndex + 1;
+    }
+    
     daysGrid.appendChild(cell);
   }
 }
 
-function createDayCell(dayNum, dateStr, isOtherMonth) {
+function createDayCell(dayNum, dateStr) {
   const cell = document.createElement("div");
-  cell.className = `cal-day-cell ${isOtherMonth ? "other-month" : ""}`;
+  cell.className = "cal-day-cell";
   cell.setAttribute("data-date", dateStr);
 
   const todayStr = "2026-08-31"; // Current anchored reference date

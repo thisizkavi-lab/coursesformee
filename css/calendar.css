@@ -171,14 +171,25 @@
 .calendar-weekdays-row {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
   text-align: center;
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
-  padding-bottom: 10px;
+  padding: 12px 6px;
   border-bottom: 1px solid var(--border-light);
+  margin-bottom: 12px;
+}
+
+.calendar-weekdays-row span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 0;
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
 }
 
 .calendar-weekdays-row span.weekend {
@@ -188,38 +199,39 @@
 .calendar-days-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-  margin-top: 10px;
+  gap: 10px;
 }
 
 .cal-day-cell {
-  min-height: 96px;
+  min-height: 130px; /* Spacious, best-practice size */
   background: var(--bg-secondary);
-  border: 1px solid transparent;
-  border-radius: 8px;
-  padding: 8px 10px;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  box-shadow: var(--shadow-sm);
 }
 
 .cal-day-cell:hover {
-  background: var(--bg-tertiary);
-  border-color: var(--border-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.05);
+  background: var(--bg-card);
+  border-color: var(--accent-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.08);
 }
 
-.cal-day-cell.other-month {
-  opacity: 0.35;
+html[data-theme="dark"] .cal-day-cell:hover {
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.35);
 }
 
 .cal-day-cell.is-today {
   border-color: var(--accent-primary) !important;
   background: var(--accent-light) !important;
+  box-shadow: 0 0 0 1px var(--accent-primary);
 }
 
 .cal-day-cell.is-selected {
@@ -229,15 +241,18 @@
 
 .cal-day-top {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 8px;
 }
 
 .cal-day-num {
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 800;
   font-family: var(--font-mono);
   color: var(--text-primary);
+  line-height: 1;
 }
 
 .cal-day-cell.is-today .cal-day-num {
@@ -245,12 +260,12 @@
 }
 
 .cal-jp-holiday-badge {
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   font-weight: 700;
   color: #e11d48;
   background: #ffe4e6;
-  border-radius: 3px;
-  padding: 1px 4px;
+  border-radius: 4px;
+  padding: 2px 6px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -258,65 +273,74 @@
 }
 
 html[data-theme="dark"] .cal-jp-holiday-badge {
-  background: rgba(244, 63, 94, 0.18);
+  background: rgba(244, 63, 94, 0.2);
   color: #fda4af;
 }
 
 .cal-day-events {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  margin-top: 4px;
+  gap: 5px;
+  flex: 1;
 }
 
 .cal-event-pill {
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  padding: 1px 5px;
-  border-radius: 3px;
+  padding: 3px 7px;
+  border-radius: 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1.25;
 }
 
 .event-univ {
   background: rgba(14, 165, 233, 0.15);
   color: #0284c7;
+  border-left: 2px solid #0284c7;
 }
 
 html[data-theme="dark"] .event-univ {
   background: rgba(56, 189, 248, 0.18);
   color: #38bdf8;
+  border-left: 2px solid #38bdf8;
 }
 
 .event-research {
   background: rgba(168, 85, 247, 0.15);
   color: #7c3aed;
+  border-left: 2px solid #7c3aed;
 }
 
 html[data-theme="dark"] .event-research {
   background: rgba(192, 132, 252, 0.18);
   color: #c084fc;
+  border-left: 2px solid #c084fc;
 }
 
 .event-course {
   background: rgba(16, 185, 129, 0.15);
   color: #059669;
+  border-left: 2px solid #059669;
 }
 
 html[data-theme="dark"] .event-course {
   background: rgba(52, 211, 153, 0.18);
   color: #34d399;
+  border-left: 2px solid #34d399;
 }
 
 .event-personal {
   background: rgba(245, 158, 11, 0.15);
   color: #d97706;
+  border-left: 2px solid #d97706;
 }
 
 html[data-theme="dark"] .event-personal {
   background: rgba(251, 191, 36, 0.18);
   color: #fbbf24;
+  border-left: 2px solid #fbbf24;
 }
 
 .cal-day-dots {
