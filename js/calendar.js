@@ -205,30 +205,35 @@ function createDayCell(dayNum, dateStr) {
   const userTasks = userCalendarData[dateStr] || [];
 
   let badgesHtml = "";
-  if (holidayName) {
-    badgesHtml += `<span class="cal-jp-holiday-badge" title="Japanese Holiday: ${holidayName}">🎌 ${holidayName}</span>`;
-  }
   if (nepaliFestival) {
     badgesHtml += `<span class="cal-nepal-festival-badge" title="Nepali Festival: ${nepaliFestival}">${nepaliFestival}</span>`;
   }
-
-  let eventsHtml = "";
-  if (milestone) {
-    eventsHtml += `<span class="cal-event-pill event-${milestone.type}" title="${milestone.title}">${milestone.title}</span>`;
+  if (holidayName) {
+    badgesHtml += `<span class="cal-jp-holiday-badge" title="Japanese Holiday: ${holidayName}">🎌 ${holidayName}</span>`;
   }
 
-  userTasks.slice(0, 2).forEach(task => {
-    eventsHtml += `<span class="cal-event-pill event-personal" title="${task.text}">${task.completed ? "✓ " : ""}${task.text}</span>`;
+  // Combine items to show max 2 items cleanly without overflowing
+  const allEvents = [];
+  if (milestone) {
+    allEvents.push({ title: milestone.title, type: milestone.type });
+  }
+  userTasks.forEach(task => {
+    allEvents.push({ title: `${task.completed ? "✓ " : ""}${task.text}`, type: "personal" });
   });
 
-  if (userTasks.length > 2) {
-    eventsHtml += `<span style="font-size:0.6rem;color:var(--text-muted);">+${userTasks.length - 2} more</span>`;
+  let eventsHtml = "";
+  allEvents.slice(0, 2).forEach(ev => {
+    eventsHtml += `<span class="cal-event-pill event-${ev.type}" title="${ev.title}">${ev.title}</span>`;
+  });
+
+  if (allEvents.length > 2) {
+    eventsHtml += `<span style="font-size:0.64rem;font-weight:600;color:var(--text-muted);padding-left:2px;">+${allEvents.length - 2} more</span>`;
   }
 
   cell.innerHTML = `
     <div class="cal-day-top">
       <span class="cal-day-num">${dayNum}</span>
-      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;max-width:75%;">
+      <div class="cal-day-badges-wrapper">
         ${badgesHtml}
       </div>
     </div>
