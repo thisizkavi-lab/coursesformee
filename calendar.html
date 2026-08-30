@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master's Calendar & Life OS (2026–2028) — Coursebook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/calendar.css">
+  <script>
+    (function() {
+      const saved = localStorage.getItem('coursebook-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <a href="./index.html" class="navbar-brand">
+      <span>📖</span> Coursebook
+    </a>
+
+    <div class="navbar-right">
+      <ul class="navbar-nav">
+        <li><a href="./index.html">Courses</a></li>
+        <li><a href="./calendar.html" class="active">Calendar</a></li>
+        <li><a href="./assignments/index.html">Assignments</a></li>
+        <li><a href="./resources/setup.html">Setup</a></li>
+      </ul>
+
+      <!-- Best-Practice SVG Theme Toggle -->
+      <button class="theme-toggle-btn" title="Toggle theme" aria-label="Toggle theme" type="button">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="m4.93 4.93 1.41 1.41"></path>
+          <path d="m17.66 17.66 1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="m6.34 17.66-1.41 1.41"></path>
+          <path d="m19.07 4.93-1.41 1.41"></path>
+        </svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Calendar Page Container -->
+  <div class="calendar-page-container">
+    
+    <!-- Hero Banner: Master's Degree 2-Year Plan (2026-2028) -->
+    <header class="calendar-hero-banner">
+      <div class="calendar-hero-top">
+        <div class="calendar-title-group">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <span class="course-code-badge course-badge-stanford">Master's Degree (2026 – 2028)</span>
+            <span class="course-code-badge course-badge-japanese">Japan · JST</span>
+          </div>
+          <h1>Master's Study & Life Calendar</h1>
+          <p>
+            Your two-year central operating system: University schedule, research milestones, Japanese national holidays, daily habits, and course progression algorithm.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2-Year Semester Roadmap Navigation -->
+      <div>
+        <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:8px;">
+          2-Year Academic Roadmap (Click to Jump)
+        </div>
+        <div class="timeline-semesters">
+          <div class="semester-pill active" data-start-year="2026" data-start-month="7" data-end-year="2027" data-end-month="1">
+            <div class="semester-tag">M1 Semester 1</div>
+            <div class="semester-title">Fall 2026: Core Foundations</div>
+            <div class="semester-dates">Sep 2026 – Feb 2027</div>
+          </div>
+
+          <div class="semester-pill" data-start-year="2027" data-start-month="3" data-end-year="2027" data-end-month="7">
+            <div class="semester-tag">M1 Semester 2</div>
+            <div class="semester-title">Spring 2027: Research Kickoff</div>
+            <div class="semester-dates">Apr 2027 – Aug 2027</div>
+          </div>
+
+          <div class="semester-pill" data-start-year="2027" data-start-month="8" data-end-year="2028" data-end-month="1">
+            <div class="semester-tag">M2 Semester 3</div>
+            <div class="semester-title">Fall 2027: Core Experiments</div>
+            <div class="semester-dates">Sep 2027 – Feb 2028</div>
+          </div>
+
+          <div class="semester-pill" data-start-year="2028" data-start-month="3" data-end-year="2028" data-end-month="8">
+            <div class="semester-tag">M2 Semester 4</div>
+            <div class="semester-title">Spring 2028: Thesis & Defense</div>
+            <div class="semester-dates">Apr 2028 – Sep 2028</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Layout Grid -->
+    <div class="calendar-layout-grid">
+      
+      <!-- Left Column: Interactive Month Calendar -->
+      <section class="calendar-card">
+        
+        <!-- Month Navigation Bar -->
+        <div class="calendar-month-controls">
+          <div class="month-heading-group">
+            <h2 class="month-display-title" id="month-display-title">August 2026</h2>
+            <div class="month-nav-btns">
+              <button class="cal-btn" id="prev-month-btn" aria-label="Previous Month">←</button>
+              <button class="cal-btn" id="next-month-btn" aria-label="Next Month">→</button>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px;">
+            <button class="cal-btn today-btn" id="today-btn">Today (Aug 31)</button>
+          </div>
+        </div>
+
+        <!-- 7-Day Weekday Labels -->
+        <div class="calendar-weekdays-row">
+          <span class="weekend">Sun</span>
+          <span>Mon</span>
+          <span>Tue</span>
+          <span>Wed</span>
+          <span>Thu</span>
+          <span>Fri</span>
+          <span class="weekend">Sat</span>
+        </div>
+
+        <!-- Dynamic 35-42 Days Grid -->
+        <div class="calendar-days-grid" id="calendar-days-grid">
+          <!-- Populated by calendar.js -->
+        </div>
+
+        <!-- Legend / Key -->
+        <div style="display:flex;align-items:center;gap:16px;margin-top:20px;padding-top:14px;border-top:1px solid var(--border-light);flex-wrap:wrap;font-size:0.75rem;color:var(--text-muted);">
+          <span style="font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Key:</span>
+          <span>🎌 Japanese Holiday</span>
+          <span style="color:#0284c7;">● University</span>
+          <span style="color:#7c3aed;">● Research</span>
+          <span style="color:#059669;">● Coursework</span>
+          <span style="color:#d97706;">● Tasks</span>
+        </div>
+      </section>
+
+      <!-- Right Column: Daily Life Algorithm & Habit Consistency Dashboard -->
+      <aside class="routine-dashboard">
+        
+        <!-- Today's Daily Algorithm & Schedule Routine -->
+        <div class="routine-card">
+          <div class="routine-card-header">
+            <h3 class="routine-card-title">
+              <span>⚡</span> Daily Life Algorithm
+            </h3>
+            <span style="font-size:0.72rem;font-weight:600;color:var(--text-muted);">Routine</span>
+          </div>
+
+          <div class="timeblock-list">
+            <!-- Morning Block -->
+            <div class="timeblock-item morning">
+              <span class="timeblock-time">06:30–08:30</span>
+              <div class="timeblock-content">
+                <div class="timeblock-label">🌅 Morning Activation</div>
+                <div class="timeblock-desc">Hydration, light cardio / stretch, healthy breakfast, Japanese Kanji review.</div>
+              </div>
+            </div>
+
+            <!-- University & Lab Block -->
+            <div class="timeblock-item univ">
+              <span class="timeblock-time">09:00–13:00</span>
+              <div class="timeblock-content">
+                <div class="timeblock-label">🔬 University & Lab Research</div>
+                <div class="timeblock-desc">Graduate lectures, research meetings, lab experimentation, and paper reading.</div>
+              </div>
+            </div>
+
+            <!-- Afternoon Deep Work -->
+            <div class="timeblock-item deepwork">
+              <span class="timeblock-time">14:00–17:30</span>
+              <div class="timeblock-content">
+                <div class="timeblock-label">💻 Computational Deep Work</div>
+                <div class="timeblock-desc">Code implementation, algorithms, simulation pipeline, data processing.</div>
+              </div>
+            </div>
+
+            <!-- Coursebook & Skill Mastery -->
+            <div class="timeblock-item health">
+              <span class="timeblock-time">18:30–20:30</span>
+              <div class="timeblock-content">
+                <div class="timeblock-label">📖 Coursebook Mastery</div>
+                <div class="timeblock-desc">Complete 1 lesson (CS106A / CME193 / Biophysics / Deep Learning).</div>
+              </div>
+            </div>
+
+            <!-- Health & Night Routine -->
+            <div class="timeblock-item evening">
+              <span class="timeblock-time">21:00–23:00</span>
+              <div class="timeblock-content">
+                <div class="timeblock-label">🌙 Nutrition, Exercise & Review</div>
+                <div class="timeblock-desc">Nutritious dinner, workout session, log day's progress, plan tomorrow, sleep by 23:00.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Daily Habit Consistency Tracker -->
+        <div class="routine-card">
+          <div class="routine-card-header">
+            <h3 class="routine-card-title">
+              <span>🎯</span> Consistency Tracker
+            </h3>
+            <span style="font-size:0.72rem;font-weight:600;color:#10b981;">Today</span>
+          </div>
+
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:12px;">
+            Check off your core daily algorithm habits to maintain high momentum:
+          </p>
+
+          <div class="daily-habits-list">
+            <div class="habit-checkbox-item" data-habit-id="exercise">
+              <span class="habit-check-icon">✓</span>
+              <span class="habit-name">🏋️ Exercise / Workout (45 min)</span>
+            </div>
+
+            <div class="habit-checkbox-item" data-habit-id="coursebook">
+              <span class="habit-check-icon">✓</span>
+              <span class="habit-name">📖 Complete 1 Coursebook Lesson</span>
+            </div>
+
+            <div class="habit-checkbox-item" data-habit-id="japanese">
+              <span class="habit-check-icon">✓</span>
+              <span class="habit-name">🎴 Japanese Kanji & Vocab (1 Level / Review)</span>
+            </div>
+
+            <div class="habit-checkbox-item" data-habit-id="nutrition">
+              <span class="habit-check-icon">✓</span>
+              <span class="habit-name">🥗 Clean Nutrition & Hydration</span>
+            </div>
+
+            <div class="habit-checkbox-item" data-habit-id="sleep">
+              <span class="habit-check-icon">✓</span>
+              <span class="habit-name">⏰ In Bed & Sleep by 23:00</span>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+  <!-- Day Planner Modal / Drawer -->
+  <div class="day-modal-backdrop" id="day-modal-backdrop">
+    <div class="day-modal-card">
+      <div class="day-modal-header">
+        <div>
+          <span style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:var(--text-muted);letter-spacing:0.05em;">Day Schedule & Plan</span>
+          <h3 class="day-modal-date-title" id="day-modal-date-title">August 31, 2026</h3>
+        </div>
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">✕</button>
+      </div>
+
+      <!-- Holiday / Milestone Alert -->
+      <div id="day-modal-holiday-note"></div>
+
+      <!-- Custom Day Tasks -->
+      <div>
+        <div style="font-size:0.82rem;font-weight:700;color:var(--text-primary);margin-bottom:10px;">
+          Tasks & Focus Items for this Day:
+        </div>
+
+        <div class="task-input-row" style="margin-bottom:12px;">
+          <input type="text" id="new-task-input" placeholder="Add task (e.g. Lab meeting prep, CS106A Ch 3, Gym)...">
+          <button class="add-task-btn" id="add-task-btn" type="button">Add Task</button>
+        </div>
+
+        <div class="modal-tasks-list" id="modal-tasks-list">
+          <!-- Tasks dynamically rendered by calendar.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/main.js"></script>
+  <script src="./js/calendar.js"></script>
+</body>
+</html>

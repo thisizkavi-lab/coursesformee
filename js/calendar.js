@@ -1,0 +1,446 @@
+// ==========================================================================
+// MASTER'S DEGREE & LIFE OS CALENDAR ENGINE (2026 - 2028)
+// Interactive 2-Year Monthly Planner, Japan Holidays, Habit Tracker & Tasks
+// ==========================================================================
+
+const JAPAN_HOLIDAYS = {
+  // 2026
+  "2026-01-01": "元日",
+  "2026-01-12": "成人の日",
+  "2026-02-11": "建国記念の日",
+  "2026-02-23": "天皇誕生日",
+  "2026-03-20": "春分の日",
+  "2026-04-29": "昭和の日",
+  "2026-05-03": "憲法記念日",
+  "2026-05-04": "みどりの日",
+  "2026-05-05": "こどもの日",
+  "2026-05-06": "振替休日",
+  "2026-07-20": "海の日",
+  "2026-08-11": "山の日",
+  "2026-09-21": "敬老の日",
+  "2026-09-22": "国民の休日",
+  "2026-09-23": "秋分の日",
+  "2026-10-12": "スポーツの日",
+  "2026-11-03": "文化の日",
+  "2026-11-23": "勤労感謝の日",
+
+  // 2027
+  "2027-01-01": "元日",
+  "2027-01-11": "成人の日",
+  "2027-02-11": "建国記念の日",
+  "2027-02-23": "天皇誕生日",
+  "2027-03-21": "春分の日",
+  "2027-03-22": "振替休日",
+  "2027-04-29": "昭和の日",
+  "2027-05-03": "憲法記念日",
+  "2027-05-04": "みどりの日",
+  "2027-05-05": "こどもの日",
+  "2027-07-19": "海の日",
+  "2027-08-11": "山の日",
+  "2027-09-20": "敬老の日",
+  "2027-09-23": "秋分の日",
+  "2027-10-11": "スポーツの日",
+  "2027-11-03": "文化の日",
+  "2027-11-23": "勤労感謝の日",
+
+  // 2028
+  "2028-01-01": "元日",
+  "2028-01-10": "成人の日",
+  "2028-02-11": "建国記念の日",
+  "2028-02-23": "天皇誕生日",
+  "2028-03-20": "春分の日",
+  "2028-04-29": "昭和の日",
+  "2028-05-03": "憲法記念日",
+  "2028-05-04": "みどりの日",
+  "2028-05-05": "こどもの日",
+  "2028-07-17": "海の日",
+  "2028-08-11": "山の日",
+  "2028-09-18": "敬老の日",
+  "2028-09-22": "秋分の日",
+  "2028-10-09": "スポーツの日",
+  "2028-11-03": "文化の日",
+  "2028-11-23": "勤労感謝の日"
+};
+
+const ACADEMIC_MILESTONES = {
+  "2026-09-01": { title: "🍁 Fall 2026 Semester Starts", type: "univ" },
+  "2026-09-15": { title: "🔬 Lab Orientation & Research Topic", type: "research" },
+  "2026-10-01": { title: "🐍 CS106A + CME193 Midpoint", type: "course" },
+  "2026-11-15": { title: "📝 Fall Course Midterm Reports", type: "univ" },
+  "2026-12-25": { title: "❄️ Winter Break Starts", type: "personal" },
+  "2027-01-15": { title: "📊 Term Exams & First Lab Presentation", type: "research" },
+  "2027-04-01": { title: "🌸 Spring 2027 Semester Starts", type: "univ" },
+  "2027-05-10": { title: "🧬 CS279 Biomolecular Project Kickoff", type: "course" },
+  "2027-07-20": { title: "🔬 Master's Thesis Topic Proposal", type: "research" },
+  "2027-09-01": { title: "🍁 Fall 2027 Semester (M2 Year)", type: "univ" },
+  "2027-10-15": { title: "⚡ Deep Learning & Flow Models (DLWP/MIT)", type: "course" },
+  "2027-12-01": { title: "🧪 Thesis Core Experiment Milestone", type: "research" },
+  "2028-04-01": { title: "🌸 Spring 2028 Final Semester", type: "univ" },
+  "2028-06-15": { title: "📑 Master's Thesis Draft Submission", type: "research" },
+  "2028-07-25": { title: "🎓 Final Master's Thesis Defense", type: "research" },
+  "2028-09-20": { title: "🎉 Master's Degree Graduation Ceremony", type: "univ" }
+};
+
+// Current active view state (defaulting to Aug/Sep 2026)
+let currentYear = 2026;
+let currentMonth = 7; // August (0-indexed: 7 = August)
+let selectedDateStr = "2026-08-31";
+
+// Persistent Data Model
+const STORAGE_KEY_CALENDAR = "coursebook_master_calendar_data";
+const STORAGE_KEY_HABITS = "coursebook_daily_habits";
+
+let userCalendarData = JSON.parse(localStorage.getItem(STORAGE_KEY_CALENDAR) || "{}");
+let userHabitsData = JSON.parse(localStorage.getItem(STORAGE_KEY_HABITS) || "{}");
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderCalendar();
+  initCalendarEvents();
+  initHabitCheckboxes();
+});
+
+function renderCalendar() {
+  const monthDisplay = document.getElementById("month-display-title");
+  const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  if (monthDisplay) {
+    monthDisplay.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+  }
+
+  // Highlight current active semester pill
+  updateActiveSemesterPill();
+
+  const daysGrid = document.getElementById("calendar-days-grid");
+  if (!daysGrid) return;
+
+  daysGrid.innerHTML = "";
+
+  const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
+  const lastDate = new Date(currentYear, currentMonth + 1, 0).getDate();
+  const prevLastDate = new Date(currentYear, currentMonth, 0).getDate();
+
+  // 1. Previous Month Days (Padding)
+  for (let i = firstDayIndex; i > 0; i--) {
+    const dayNum = prevLastDate - i + 1;
+    const prevMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+    const prevYear = currentMonth === 0 ? currentYear - 1 : currentYear;
+    const dateStr = formatDateKey(prevYear, prevMonth, dayNum);
+
+    const cell = createDayCell(dayNum, dateStr, true);
+    daysGrid.appendChild(cell);
+  }
+
+  // 2. Current Month Days
+  for (let day = 1; day <= lastDate; day++) {
+    const dateStr = formatDateKey(currentYear, currentMonth, day);
+    const cell = createDayCell(day, dateStr, false);
+    daysGrid.appendChild(cell);
+  }
+
+  // 3. Next Month Days (Padding)
+  const totalCells = firstDayIndex + lastDate;
+  const nextDays = (7 - (totalCells % 7)) % 7;
+  for (let day = 1; day <= nextDays; day++) {
+    const nextMonth = currentMonth === 11 ? 0 : currentMonth + 1;
+    const nextYear = currentMonth === 11 ? currentYear + 1 : currentYear;
+    const dateStr = formatDateKey(nextYear, nextMonth, day);
+
+    const cell = createDayCell(day, dateStr, true);
+    daysGrid.appendChild(cell);
+  }
+}
+
+function createDayCell(dayNum, dateStr, isOtherMonth) {
+  const cell = document.createElement("div");
+  cell.className = `cal-day-cell ${isOtherMonth ? "other-month" : ""}`;
+  cell.setAttribute("data-date", dateStr);
+
+  const todayStr = "2026-08-31"; // Current anchored reference date
+  if (dateStr === todayStr) {
+    cell.classList.add("is-today");
+  }
+  if (dateStr === selectedDateStr) {
+    cell.classList.add("is-selected");
+  }
+
+  const holidayName = JAPAN_HOLIDAYS[dateStr];
+  const milestone = ACADEMIC_MILESTONES[dateStr];
+  const userTasks = userCalendarData[dateStr] || [];
+
+  let holidayBadgeHtml = "";
+  if (holidayName) {
+    holidayBadgeHtml = `<span class="cal-jp-holiday-badge" title="Japanese Holiday: ${holidayName}">🎌 ${holidayName}</span>`;
+  }
+
+  let eventsHtml = "";
+  if (milestone) {
+    eventsHtml += `<span class="cal-event-pill event-${milestone.type}" title="${milestone.title}">${milestone.title}</span>`;
+  }
+
+  userTasks.slice(0, 2).forEach(task => {
+    eventsHtml += `<span class="cal-event-pill event-personal" title="${task.text}">${task.completed ? "✓ " : ""}${task.text}</span>`;
+  });
+
+  if (userTasks.length > 2) {
+    eventsHtml += `<span style="font-size:0.6rem;color:var(--text-muted);">+${userTasks.length - 2} more</span>`;
+  }
+
+  cell.innerHTML = `
+    <div class="cal-day-top">
+      <span class="cal-day-num">${dayNum}</span>
+      ${holidayBadgeHtml}
+    </div>
+    <div class="cal-day-events">
+      ${eventsHtml}
+    </div>
+  `;
+
+  cell.addEventListener("click", () => {
+    openDayModal(dateStr);
+  });
+
+  return cell;
+}
+
+function formatDateKey(year, monthIndex, day) {
+  const y = year;
+  const m = String(monthIndex + 1).padStart(2, "0");
+  const d = String(day).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
+
+function updateActiveSemesterPill() {
+  document.querySelectorAll(".semester-pill").forEach(pill => {
+    const startY = parseInt(pill.getAttribute("data-start-year"), 10);
+    const startM = parseInt(pill.getAttribute("data-start-month"), 10);
+    const endY = parseInt(pill.getAttribute("data-end-year"), 10);
+    const endM = parseInt(pill.getAttribute("data-end-month"), 10);
+
+    const isCurrent = (currentYear > startY || (currentYear === startY && currentMonth >= startM)) &&
+                      (currentYear < endY || (currentYear === endY && currentMonth <= endM));
+
+    if (isCurrent) {
+      pill.classList.add("active");
+    } else {
+      pill.classList.remove("active");
+    }
+  });
+}
+
+function initCalendarEvents() {
+  const prevBtn = document.getElementById("prev-month-btn");
+  const nextBtn = document.getElementById("next-month-btn");
+  const todayBtn = document.getElementById("today-btn");
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      currentMonth--;
+      if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      }
+      renderCalendar();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      currentMonth++;
+      if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      }
+      renderCalendar();
+    });
+  }
+
+  if (todayBtn) {
+    todayBtn.addEventListener("click", () => {
+      currentYear = 2026;
+      currentMonth = 7; // August
+      renderCalendar();
+      openDayModal("2026-08-31");
+    });
+  }
+
+  // Semester Quick Jump
+  document.querySelectorAll(".semester-pill").forEach(pill => {
+    pill.addEventListener("click", () => {
+      currentYear = parseInt(pill.getAttribute("data-start-year"), 10);
+      currentMonth = parseInt(pill.getAttribute("data-start-month"), 10);
+      renderCalendar();
+    });
+  });
+
+  // Modal Close Events
+  const modalBackdrop = document.getElementById("day-modal-backdrop");
+  const modalCloseBtn = document.getElementById("modal-close-btn");
+
+  if (modalCloseBtn && modalBackdrop) {
+    modalCloseBtn.addEventListener("click", () => {
+      modalBackdrop.classList.remove("active");
+    });
+  }
+
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalBackdrop) {
+        modalBackdrop.classList.remove("active");
+      }
+    });
+  }
+
+  // Add Task Input Handler
+  const addTaskBtn = document.getElementById("add-task-btn");
+  const taskInput = document.getElementById("new-task-input");
+
+  if (addTaskBtn && taskInput) {
+    addTaskBtn.addEventListener("click", () => {
+      handleAddTask();
+    });
+
+    taskInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        handleAddTask();
+      }
+    });
+  }
+}
+
+function openDayModal(dateStr) {
+  selectedDateStr = dateStr;
+  const modalBackdrop = document.getElementById("day-modal-backdrop");
+  const modalTitle = document.getElementById("day-modal-date-title");
+  const holidayNote = document.getElementById("day-modal-holiday-note");
+
+  if (!modalBackdrop) return;
+
+  const dateObj = new Date(dateStr + "T00:00:00");
+  const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = dateObj.toLocaleDateString("en-US", options);
+
+  if (modalTitle) modalTitle.textContent = formattedDate;
+
+  // Holiday or Academic Milestone Banner
+  const holiday = JAPAN_HOLIDAYS[dateStr];
+  const milestone = ACADEMIC_MILESTONES[dateStr];
+
+  if (holidayNote) {
+    let noteHtml = "";
+    if (holiday) {
+      noteHtml += `<div style="color:#e11d48;font-weight:600;font-size:0.85rem;margin-bottom:4px;">🎌 Japanese Holiday: ${holiday}</div>`;
+    }
+    if (milestone) {
+      noteHtml += `<div style="color:var(--accent-primary);font-weight:600;font-size:0.85rem;">🎓 Milestone: ${milestone.title}</div>`;
+    }
+    holidayNote.innerHTML = noteHtml;
+  }
+
+  renderDayTasks(dateStr);
+  modalBackdrop.classList.add("active");
+
+  // Re-render calendar grid to update selection
+  renderCalendar();
+}
+
+function renderDayTasks(dateStr) {
+  const listEl = document.getElementById("modal-tasks-list");
+  if (!listEl) return;
+
+  listEl.innerHTML = "";
+  const tasks = userCalendarData[dateStr] || [];
+
+  if (tasks.length === 0) {
+    listEl.innerHTML = `<div style="text-align:center;color:var(--text-muted);font-size:0.84rem;padding:12px;">No tasks added for this day yet. Add one below!</div>`;
+    return;
+  }
+
+  tasks.forEach((task, idx) => {
+    const item = document.createElement("div");
+    item.className = `modal-task-item ${task.completed ? "completed" : ""}`;
+    item.innerHTML = `
+      <div style="display:flex;align-items:center;gap:10px;">
+        <input type="checkbox" ${task.completed ? "checked" : ""} data-idx="${idx}">
+        <span>${task.text}</span>
+      </div>
+      <button class="task-del-btn" data-idx="${idx}" title="Delete task">✕</button>
+    `;
+
+    const checkbox = item.querySelector("input[type='checkbox']");
+    checkbox.addEventListener("change", (e) => {
+      tasks[idx].completed = e.target.checked;
+      userCalendarData[dateStr] = tasks;
+      saveCalendarData();
+      renderDayTasks(dateStr);
+      renderCalendar();
+    });
+
+    const delBtn = item.querySelector(".task-del-btn");
+    delBtn.addEventListener("click", () => {
+      tasks.splice(idx, 1);
+      if (tasks.length === 0) {
+        delete userCalendarData[dateStr];
+      } else {
+        userCalendarData[dateStr] = tasks;
+      }
+      saveCalendarData();
+      renderDayTasks(dateStr);
+      renderCalendar();
+    });
+
+    listEl.appendChild(item);
+  });
+}
+
+function handleAddTask() {
+  const taskInput = document.getElementById("new-task-input");
+  if (!taskInput || !taskInput.value.trim()) return;
+
+  const text = taskInput.value.trim();
+  if (!userCalendarData[selectedDateStr]) {
+    userCalendarData[selectedDateStr] = [];
+  }
+
+  userCalendarData[selectedDateStr].push({
+    text: text,
+    completed: false,
+    created_at: new Date().toISOString()
+  });
+
+  saveCalendarData();
+  taskInput.value = "";
+  renderDayTasks(selectedDateStr);
+  renderCalendar();
+}
+
+function saveCalendarData() {
+  localStorage.setItem(STORAGE_KEY_CALENDAR, JSON.stringify(userCalendarData));
+}
+
+// --- Daily Consistency Habit Checklist ---
+function initHabitCheckboxes() {
+  const todayKey = "2026-08-31";
+  const todayHabits = userHabitsData[todayKey] || {};
+
+  document.querySelectorAll(".habit-checkbox-item").forEach(item => {
+    const habitId = item.getAttribute("data-habit-id");
+    if (todayHabits[habitId]) {
+      item.classList.add("checked");
+    }
+
+    item.addEventListener("click", () => {
+      item.classList.toggle("checked");
+      const isChecked = item.classList.contains("checked");
+
+      if (!userHabitsData[todayKey]) {
+        userHabitsData[todayKey] = {};
+      }
+      userHabitsData[todayKey][habitId] = isChecked;
+
+      localStorage.setItem(STORAGE_KEY_HABITS, JSON.stringify(userHabitsData));
+    });
+  });
+}
