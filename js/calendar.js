@@ -62,6 +62,57 @@ const JAPAN_HOLIDAYS = {
   "2028-11-23": "勤労感謝の日"
 };
 
+const NEPALI_FESTIVALS = {
+  // 2026
+  "2026-09-14": "🪷 Teej (हरितालिका तीज)",
+  "2026-10-10": "🌾 Dashain: Ghatasthapana (घटस्थापना)",
+  "2026-10-16": "🌸 Dashain: Fulpati (फूलपाती)",
+  "2026-10-17": "⚔️ Dashain: Maha Ashtami (महाष्टमी)",
+  "2026-10-18": "🛡️ Dashain: Maha Navami (महानवमी)",
+  "2026-10-19": "🇳🇵 Dashain: Vijaya Dashami (बडा दशैं - टीका)",
+  "2026-10-24": "🌕 Dashain: Kojagrat Purnima (कोजाग्रत पूर्णिमा)",
+  "2026-11-07": "🦅 Tihar: Kaag Tihar (काग तिहार)",
+  "2026-11-08": "🐕 Tihar: Kukur Tihar & 🪔 Laxmi Puja (लक्ष्मी पूजा)",
+  "2026-11-09": "🐮 Tihar: Govardhan Puja / Mha Puja (गोवर्धन / म्ह पूजा)",
+  "2026-11-10": "🌺 Tihar: Bhai Tika (भाइटीका)",
+  "2026-11-15": "☀️ Chhath Puja (छठ पर्व)",
+  "2027-01-14": "🍲 Maghe Sankranti (माघे संक्रान्ति)",
+  "2027-03-06": "🔱 Maha Shivaratri (महाशिवरात्रि)",
+  "2027-03-23": "🎨 Holi: Fagu Purnima (होली)",
+  "2027-04-14": "🇳🇵 Nepali New Year 2084 (नयाँ वर्ष बैशाख १)",
+  "2027-05-20": "☸️ Buddha Jayanti (बुद्ध जयन्ती)",
+
+  // 2027
+  "2027-09-04": "🪷 Teej (हरितालिका तीज)",
+  "2027-09-30": "🌾 Dashain: Ghatasthapana (घटस्थापना)",
+  "2027-10-06": "🌸 Dashain: Fulpati (फूलपाती)",
+  "2027-10-07": "⚔️ Dashain: Maha Ashtami (महाष्टमी)",
+  "2027-10-08": "🛡️ Dashain: Maha Navami (महानवमी)",
+  "2027-10-09": "🇳🇵 Dashain: Vijaya Dashami (बडा दशैं - टीका)",
+  "2027-10-14": "🌕 Dashain: Kojagrat Purnima (कोजाग्रत पूर्णिमा)",
+  "2027-10-28": "🦅 Tihar: Kaag Tihar (काग तिहार)",
+  "2027-10-29": "🪔 Tihar: Laxmi Puja (लक्ष्मी पूजा)",
+  "2027-10-30": "🐮 Tihar: Govardhan Puja / Mha Puja (गोवर्धन / म्ह पूजा)",
+  "2027-10-31": "🌺 Tihar: Bhai Tika (भाइटीका)",
+  "2027-11-04": "☀️ Chhath Puja (छठ पर्व)",
+  "2028-01-15": "🍲 Maghe Sankranti (माघे संक्रान्ति)",
+  "2028-02-23": "🔱 Maha Shivaratri (महाशिवरात्रि)",
+  "2028-03-11": "🎨 Holi: Fagu Purnima (होली)",
+  "2028-04-13": "🇳🇵 Nepali New Year 2085 (नयाँ वर्ष बैशाख १)",
+  "2028-05-09": "☸️ Buddha Jayanti (बुद्ध जयन्ती)",
+
+  // 2028
+  "2028-08-23": "🪷 Teej (हरितालिका तीज)",
+  "2028-10-18": "🌾 Dashain: Ghatasthapana (घटस्थापना)",
+  "2028-10-25": "🌸 Dashain: Fulpati (फूलपाती)",
+  "2028-10-26": "⚔️ Dashain: Maha Ashtami / Navami (अष्टमी/नवमी)",
+  "2028-10-27": "🇳🇵 Dashain: Vijaya Dashami (बडा दशैं - टीका)",
+  "2028-11-16": "🪔 Tihar: Laxmi Puja (लक्ष्मी पूजा)",
+  "2028-11-17": "🐮 Tihar: Govardhan Puja (गोवर्धन पूजा)",
+  "2028-11-18": "🌺 Tihar: Bhai Tika (भाइटीका)",
+  "2028-11-22": "☀️ Chhath Puja (छठ पर्व)"
+};
+
 const ACADEMIC_MILESTONES = {
   "2026-09-01": { title: "🍁 Fall 2026 Semester Starts", type: "univ" },
   "2026-09-15": { title: "🔬 Lab Orientation & Research Topic", type: "research" },
@@ -149,12 +200,16 @@ function createDayCell(dayNum, dateStr) {
   }
 
   const holidayName = JAPAN_HOLIDAYS[dateStr];
+  const nepaliFestival = NEPALI_FESTIVALS[dateStr];
   const milestone = ACADEMIC_MILESTONES[dateStr];
   const userTasks = userCalendarData[dateStr] || [];
 
-  let holidayBadgeHtml = "";
+  let badgesHtml = "";
   if (holidayName) {
-    holidayBadgeHtml = `<span class="cal-jp-holiday-badge" title="Japanese Holiday: ${holidayName}">🎌 ${holidayName}</span>`;
+    badgesHtml += `<span class="cal-jp-holiday-badge" title="Japanese Holiday: ${holidayName}">🎌 ${holidayName}</span>`;
+  }
+  if (nepaliFestival) {
+    badgesHtml += `<span class="cal-nepal-festival-badge" title="Nepali Festival: ${nepaliFestival}">${nepaliFestival}</span>`;
   }
 
   let eventsHtml = "";
@@ -173,7 +228,9 @@ function createDayCell(dayNum, dateStr) {
   cell.innerHTML = `
     <div class="cal-day-top">
       <span class="cal-day-num">${dayNum}</span>
-      ${holidayBadgeHtml}
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;max-width:75%;">
+        ${badgesHtml}
+      </div>
     </div>
     <div class="cal-day-events">
       ${eventsHtml}
@@ -306,12 +363,16 @@ function openDayModal(dateStr) {
 
   if (modalTitle) modalTitle.textContent = formattedDate;
 
-  // Holiday or Academic Milestone Banner
+  // Holiday, Nepali Festival or Academic Milestone Banner
   const holiday = JAPAN_HOLIDAYS[dateStr];
+  const nepali = NEPALI_FESTIVALS[dateStr];
   const milestone = ACADEMIC_MILESTONES[dateStr];
 
   if (holidayNote) {
     let noteHtml = "";
+    if (nepali) {
+      noteHtml += `<div style="color:#b45309;font-weight:700;font-size:0.88rem;margin-bottom:6px;background:#fef3c7;padding:6px 12px;border-radius:6px;border:1px solid #fde68a;">🇳🇵 Nepali Festival: ${nepali}</div>`;
+    }
     if (holiday) {
       noteHtml += `<div style="color:#e11d48;font-weight:600;font-size:0.85rem;margin-bottom:4px;">🎌 Japanese Holiday: ${holiday}</div>`;
     }
