@@ -122,8 +122,10 @@
             </div>
           </div>
 
-          <div style="display:flex;align-items:center;gap:8px;">
-            <button class="cal-btn today-btn" id="today-btn">Today (Aug 31)</button>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <button class="cal-btn today-btn" id="today-btn">Today</button>
+            <button class="cal-btn" id="export-plan-btn" title="Backup your calendar & habits as JSON">📥 Export</button>
+            <label class="cal-btn" style="cursor:pointer;" title="Restore backup from JSON">📤 Import<input type="file" id="import-plan-input" accept=".json" style="display:none;"></label>
           </div>
         </div>
 
@@ -221,7 +223,14 @@
             <h3 class="routine-card-title">
               <span>🎯</span> Consistency Tracker
             </h3>
-            <span style="font-size:0.72rem;font-weight:600;color:#10b981;">Today</span>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-size:0.75rem;font-weight:700;color:var(--text-muted);" id="habit-header-date">Today</span>
+              <span style="font-size:0.72rem;font-weight:700;color:#10b981;background:rgba(16,185,129,0.1);padding:2px 6px;border-radius:4px;" id="habit-completed-count">0/5 done</span>
+            </div>
+          </div>
+
+          <div style="height:6px;background:var(--border-light);border-radius:999px;overflow:hidden;margin-bottom:12px;">
+            <div id="habit-progress-fill" style="height:100%;width:0%;background:linear-gradient(90deg,#10b981,#34d399);border-radius:999px;transition:width 0.3s ease;"></div>
           </div>
 
           <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:12px;">

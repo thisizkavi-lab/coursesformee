@@ -266,6 +266,10 @@ html[data-theme="dark"] .cal-day-cell:hover {
   color: var(--accent-primary);
 }
 
+.cal-day-cell.is-weekend .cal-day-num {
+  color: #f43f5e;
+}
+
 .cal-day-badges-wrapper {
   display: flex;
   align-items: center;

@@ -132,10 +132,17 @@ const ACADEMIC_MILESTONES = {
   "2028-09-20": { title: "🎉 Master's Degree Graduation Ceremony", type: "univ" }
 };
 
-// Current active view state (defaulting to Aug/Sep 2026)
-let currentYear = 2026;
-let currentMonth = 7; // August (0-indexed: 7 = August)
-let selectedDateStr = "2026-08-31";
+// Real-time Current Date Detection
+const realNow = new Date();
+const realYear = realNow.getFullYear();
+const realMonth = realNow.getMonth();
+const realDay = realNow.getDate();
+const todayStr = formatDateKey(realYear, realMonth, realDay);
+
+// Current active view state (defaults to real current month/year within 2026-2028)
+let currentYear = (realYear >= 2026 && realYear <= 2028) ? realYear : 2026;
+let currentMonth = (realYear >= 2026 && realYear <= 2028) ? realMonth : 8; // Default September
+let selectedDateStr = todayStr;
 
 // Persistent Data Model
 const STORAGE_KEY_CALENDAR = "coursebook_master_calendar_data";
@@ -148,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCalendar();
   initCalendarEvents();
   initHabitCheckboxes();
+  initBackupHandlers();
 });
 
 function renderCalendar() {
@@ -159,6 +167,13 @@ function renderCalendar() {
 
   if (monthDisplay) {
     monthDisplay.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+  }
+
+  // Update Today Button Label
+  const todayBtn = document.getElementById("today-btn");
+  if (todayBtn) {
+    const shortMonth = monthNames[realMonth] ? monthNames[realMonth].slice(0, 3) : "Sep";
+    todayBtn.textContent = `Today (${shortMonth} ${realDay})`;
   }
 
   // Highlight current active semester pill
@@ -191,12 +206,18 @@ function createDayCell(dayNum, dateStr) {
   cell.className = "cal-day-cell";
   cell.setAttribute("data-date", dateStr);
 
-  const todayStr = "2026-08-31"; // Current anchored reference date
   if (dateStr === todayStr) {
     cell.classList.add("is-today");
   }
   if (dateStr === selectedDateStr) {
     cell.classList.add("is-selected");
+  }
+
+  // Weekend Styling (Sunday = 0, Saturday = 6)
+  const cellDate = new Date(dateStr + "T00:00:00");
+  const dayOfWeek = cellDate.getDay();
+  if (dayOfWeek === 0 || dayOfWeek === 6) {
+    cell.classList.add("is-weekend");
   }
 
   const holidayName = JAPAN_HOLIDAYS[dateStr];
@@ -303,10 +324,11 @@ function initCalendarEvents() {
 
   if (todayBtn) {
     todayBtn.addEventListener("click", () => {
-      currentYear = 2026;
-      currentMonth = 7; // August
+      currentYear = (realYear >= 2026 && realYear <= 2028) ? realYear : 2026;
+      currentMonth = (realYear >= 2026 && realYear <= 2028) ? realMonth : 8;
+      selectedDateStr = todayStr;
       renderCalendar();
-      openDayModal("2026-08-31");
+      openDayModal(todayStr);
     });
   }
 
@@ -470,16 +492,27 @@ function saveCalendarData() {
 
 // --- Daily Consistency Habit Checklist ---
 function initHabitCheckboxes() {
-  const todayKey = "2026-08-31";
+  const todayKey = todayStr;
   const todayHabits = userHabitsData[todayKey] || {};
+
+  // Update header text to show current date
+  const habitHeaderDate = document.getElementById("habit-header-date");
+  if (habitHeaderDate) {
+    const d = new Date(todayKey + "T00:00:00");
+    habitHeaderDate.textContent = d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  }
+
+  updateHabitProgress();
 
   document.querySelectorAll(".habit-checkbox-item").forEach(item => {
     const habitId = item.getAttribute("data-habit-id");
     if (todayHabits[habitId]) {
       item.classList.add("checked");
+    } else {
+      item.classList.remove("checked");
     }
 
-    item.addEventListener("click", () => {
+    item.onclick = () => {
       item.classList.toggle("checked");
       const isChecked = item.classList.contains("checked");
 
@@ -489,6 +522,79 @@ function initHabitCheckboxes() {
       userHabitsData[todayKey][habitId] = isChecked;
 
       localStorage.setItem(STORAGE_KEY_HABITS, JSON.stringify(userHabitsData));
-    });
+      updateHabitProgress();
+    };
   });
+}
+
+function updateHabitProgress() {
+  const todayKey = todayStr;
+  const todayHabits = userHabitsData[todayKey] || {};
+  const allHabitItems = document.querySelectorAll(".habit-checkbox-item");
+  const total = allHabitItems.length;
+  let count = 0;
+  allHabitItems.forEach(item => {
+    const id = item.getAttribute("data-habit-id");
+    if (todayHabits[id]) count++;
+  });
+
+  const countEl = document.getElementById("habit-completed-count");
+  if (countEl) countEl.textContent = `${count}/${total} done`;
+
+  const barEl = document.getElementById("habit-progress-fill");
+  if (barEl) {
+    const pct = total > 0 ? Math.round((count / total) * 100) : 0;
+    barEl.style.width = `${pct}%`;
+  }
+}
+
+// --- Data Backup (Export & Import) ---
+function initBackupHandlers() {
+  const exportBtn = document.getElementById("export-plan-btn");
+  if (exportBtn) {
+    exportBtn.addEventListener("click", () => {
+      const backupData = {
+        exported_at: new Date().toISOString(),
+        calendar_tasks: userCalendarData,
+        habits: userHabitsData
+      };
+      const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `masters-study-plan-backup-${todayStr}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+  }
+
+  const importInput = document.getElementById("import-plan-input");
+  if (importInput) {
+    importInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        try {
+          const parsed = JSON.parse(event.target.result);
+          if (parsed.calendar_tasks) {
+            userCalendarData = Object.assign({}, userCalendarData, parsed.calendar_tasks);
+            localStorage.setItem(STORAGE_KEY_CALENDAR, JSON.stringify(userCalendarData));
+          }
+          if (parsed.habits) {
+            userHabitsData = Object.assign({}, userHabitsData, parsed.habits);
+            localStorage.setItem(STORAGE_KEY_HABITS, JSON.stringify(userHabitsData));
+          }
+          alert("✓ Backup successfully restored!");
+          renderCalendar();
+          initHabitCheckboxes();
+        } catch (err) {
+          alert("Invalid backup file. Please upload a valid JSON file.");
+        }
+      };
+      reader.readAsText(file);
+    });
+  }
 }
